@@ -88,9 +88,16 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .slide.in .rule::before { transform: skewX(-20deg) scaleX(1); }
 .slide.in .rule::after { transform: scaleX(1); }
 
+/* building logo, top left of every slide; the PNG is white, darkened on light slides */
+.slide-top {
+  position: absolute; top: 20px; left: var(--gutter); z-index: 3;
+  display: flex; align-items: center; gap: 20px;
+}
+.logo { display: block; width: clamp(84px, 7vw, 132px); height: auto; filter: drop-shadow(0 1px 6px rgba(36,37,48,.35)); }
+.light .logo { filter: brightness(0); opacity: .86; }
+
 /* placeholder tag for slides awaiting content */
 .ph {
-  position: absolute; top: 20px; left: var(--gutter); z-index: 3;
   font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
   padding: 5px 10px; border: 1px dashed currentColor; opacity: .55;
 }
@@ -100,7 +107,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .hero .copy {
   display: flex; flex-direction: column; justify-content: center;
   gap: clamp(28px, 4.2vh, 64px);
-  padding: 8vh var(--gutter) 8vh calc(var(--gutter) * .9);
+  padding: max(8vh, 104px) var(--gutter) 8vh calc(var(--gutter) * .9);
 }
 .hero .copy .body { margin-top: clamp(8px, 2vh, 32px); }
 .hero .media { position: relative; overflow: hidden; }
@@ -335,6 +342,7 @@ body.menu-open .menu-media img { transform: scale(1); }
    `placeholder: true` marks a section still waiting on content from the PDF. */
 const IMG = {
   tower: "assets/tower.jpg",
+  logo: "assets/logo.png",
 };
 
 const SLIDES = [
@@ -454,7 +462,10 @@ const deck = document.getElementById("deck");
 
 deck.innerHTML = SLIDES.map((s, i) => `
   <section class="slide ${s.layout} ${s.theme}${s.reverse ? " reverse" : ""}" id="${esc(s.id)}" data-i="${i}" aria-label="${esc(s.nav)}">
-    ${s.placeholder ? '<span class="ph">Placeholder</span>' : ""}
+    <div class="slide-top">
+      <img class="logo" src="${IMG.logo}" alt="${i === 0 ? "357 Green" : ""}">
+      ${s.placeholder ? '<span class="ph">Placeholder</span>' : ""}
+    </div>
     ${R[s.layout](s)}
   </section>`).join("");
 
