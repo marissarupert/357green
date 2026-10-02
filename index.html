@@ -24,6 +24,9 @@
   --font: "Jost", "Futura", "Century Gothic", system-ui, sans-serif;
   --ease: cubic-bezier(.2,.7,.1,1);
   --gutter: clamp(16px, 4vw, 80px);
+  --logo-top: clamp(28px, 5.5vh, 56px);
+  --logo-w: clamp(84px, 7vw, 132px);
+  --logo-clear: calc(var(--logo-top) + var(--logo-w) * .51 + 28px); /* space content keeps below the logo */
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -88,9 +91,16 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .slide.in .rule::before { transform: skewX(-20deg) scaleX(1); }
 .slide.in .rule::after { transform: scaleX(1); }
 
+/* building logo, top left of every slide; the PNG is white, darkened on light slides */
+.slide-top {
+  position: absolute; top: var(--logo-top); left: var(--gutter); z-index: 3;
+  display: flex; align-items: center; gap: 20px;
+}
+.logo { display: block; width: var(--logo-w); height: auto; filter: drop-shadow(0 1px 6px rgba(36,37,48,.35)); }
+.light .logo { filter: brightness(0); opacity: .86; }
+
 /* placeholder tag for slides awaiting content */
 .ph {
-  position: absolute; top: 20px; left: var(--gutter); z-index: 3;
   font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
   padding: 5px 10px; border: 1px dashed currentColor; opacity: .55;
 }
@@ -100,7 +110,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .hero .copy {
   display: flex; flex-direction: column; justify-content: center;
   gap: clamp(28px, 4.2vh, 64px);
-  padding: 8vh var(--gutter) 8vh calc(var(--gutter) * .9);
+  padding: max(8vh, var(--logo-clear)) var(--gutter) 8vh calc(var(--gutter) * .9);
 }
 .hero .copy .body { margin-top: clamp(8px, 2vh, 32px); }
 .hero .media { position: relative; overflow: hidden; }
@@ -121,12 +131,12 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .hero.reverse .media::after { inset: 0 0 0 auto; background: linear-gradient(270deg, rgba(36,37,48,.25), transparent); }
 
 /* ---------- statement ---------- */
-.statement { place-items: center; text-align: center; padding: 12vh var(--gutter); }
+.statement { place-items: center; text-align: center; padding: max(12vh, var(--logo-clear)) var(--gutter) 12vh; }
 .statement .inner { display: grid; gap: 36px; justify-items: center; max-width: 1200px; }
 .statement .rule { width: min(60vw, 520px); }
 
 /* ---------- stats ---------- */
-.stats { align-content: center; padding: 12vh var(--gutter); gap: clamp(32px, 6vh, 72px); }
+.stats { align-content: center; padding: max(12vh, var(--logo-clear)) var(--gutter) 12vh; gap: clamp(32px, 6vh, 72px); }
 .stats .head { display: grid; gap: 20px; max-width: 900px; }
 .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--rule-light); }
 .dark .stat-grid { border-top-color: var(--rule-dark); }
@@ -138,7 +148,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .stat .lbl { font-size: 14px; letter-spacing: .14em; text-transform: uppercase; opacity: .7; }
 
 /* ---------- features (expandable list) ---------- */
-.features { grid-template-columns: 1fr 1.2fr; gap: clamp(32px, 6vw, 120px); align-items: center; padding: 12vh var(--gutter); }
+.features { grid-template-columns: 1fr 1.2fr; gap: clamp(32px, 6vw, 120px); align-items: center; padding: max(12vh, var(--logo-clear)) var(--gutter) 12vh; }
 .features .head { display: grid; gap: 28px; }
 .acc { border-top: 1px solid var(--rule-dark); }
 .light .acc { border-top-color: var(--rule-light); }
@@ -163,7 +173,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .acc-panel p { padding: 0 0 28px 54px; font-size: 18px; line-height: 1.65; opacity: .75; max-width: 36em; }
 
 /* ---------- contact ---------- */
-.contact { align-content: center; justify-items: start; padding: 12vh var(--gutter); gap: 36px; }
+.contact { align-content: center; justify-items: start; padding: max(12vh, var(--logo-clear)) var(--gutter) 12vh; gap: 36px; }
 .cta {
   display: inline-flex; align-items: center; gap: 14px;
   padding: 18px 30px; border: 1px solid var(--copper-2); color: var(--white);
@@ -335,6 +345,7 @@ body.menu-open .menu-media img { transform: scale(1); }
    `placeholder: true` marks a section still waiting on content from the PDF. */
 const IMG = {
   tower: "assets/tower.jpg",
+  logo: "assets/logo.png",
 };
 
 const SLIDES = [
@@ -454,7 +465,10 @@ const deck = document.getElementById("deck");
 
 deck.innerHTML = SLIDES.map((s, i) => `
   <section class="slide ${s.layout} ${s.theme}${s.reverse ? " reverse" : ""}" id="${esc(s.id)}" data-i="${i}" aria-label="${esc(s.nav)}">
-    ${s.placeholder ? '<span class="ph">Placeholder</span>' : ""}
+    <div class="slide-top">
+      <img class="logo" src="${IMG.logo}" alt="${i === 0 ? "357 Green" : ""}">
+      ${s.placeholder ? '<span class="ph">Placeholder</span>' : ""}
+    </div>
     ${R[s.layout](s)}
   </section>`).join("");
 

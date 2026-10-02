@@ -11,7 +11,7 @@ Content lives in the `SLIDES` array near the top of the `<script>` block. Each e
 - `nav` is the label shown in the hamburger menu
 - `placeholder: true` shows the dashed "Placeholder" tag; remove it once the section has real content
 
-Images are mapped by key in `IMG`.
+Images are mapped by key in `IMG`. The building logo (`assets/logo.png`, white on transparent) sits top left on every section and is darkened automatically on `light` sections.
 
 ## Status
 
