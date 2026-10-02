@@ -91,8 +91,10 @@ def steps(front_a, front_b, count, back, rise, cls):
 
 def label(x, y, key, cls="lbl", rot=0, anchor="middle"):
     t = f' transform="rotate({rot:g} {x:g} {y:g})"' if rot else ""
+    parts = key.split(".")
+    fallback = (parts[-2] if parts[-1] in ("name", "label") else parts[-1]).removeprefix("b_").replace("_", " ")
     return (f'<text class="{cls}" x="{x:g}" y="{y:g}" text-anchor="{anchor}"{t} '
-            f'data-copy="{key}">{key.split(".")[-1].replace("_", " ")}</text>')
+            f'data-copy="{key}">{fallback}</text>')
 
 
 def arrow(p, q, name):
@@ -156,13 +158,15 @@ def build():
              + '<line class="detail" x1="1500" y1="810" x2="1770" y2="1000"/>'
              + label(1520, 640, "context.b_333_n_green", "lbl-ctx", 0, "start") + '</g>')
     g.append('<g id="context">' + "".join(c) + '</g>')
+    pieces, feet = [], {}  # feet: piece -> (footprint polygons, leader anchor)
 
     # --------------------------------------------------------- activated plaza
     floor = [(698, 800), (1190, 905), (1300, 565), (1215, 575), (1150, 560), (1034, 520), (950, 503), (870, 608),
              (722, 660), (712, 712)]
     stair_svg, s_top_a, _ = steps((930, 712), (990, 726), 16, (6.5, -7.5), 4.5, "stair")
     seat_svg, _, seat_top_b = steps((990, 726), (1160, 764), 8, (13, -15), 9, "seat")
-    g.append('<g id="activated_plaza" class="piece" data-piece="activated_plaza">'
+    feet["activated_plaza"] = ([floor], (944, 852))
+    pieces.append('<g id="activated_plaza" class="piece" data-piece="activated_plaza" tabindex="0" role="button">'
              + '<g id="plaza_floor">' + poly(floor, "roof") + '</g>'
              + '<g id="stepped_seating">' + seat_svg + '</g>'
              + '<g id="stairs">' + stair_svg + '</g>'
@@ -173,17 +177,19 @@ def build():
     corridor = [(915, 298), (1060, 295), (1093, 392), (1095, 475), (1150, 546), (1034, 520), (950, 503), (963, 460),
                 (950, 425)]
     band = [(820, 826), (880, 839), (990, 726), (930, 712)]
-    g.append('<g id="paseo" class="piece" data-piece="paseo">'
+    feet["paseo"] = ([band, corridor], (850, 832))
+    pieces.append('<g id="paseo" class="piece" data-piece="paseo" tabindex="0" role="button">'
              + '<g id="paseo_green_st_entry">' + poly(band, "roof") + '</g>'
              + '<g id="paseo_halsted_link">' + poly(corridor, "roof") + '</g>'
-             + label(1005, 395, "pieces.paseo.name", "lbl", -72)
+             + label(1005, 395, "pieces.paseo.label", "lbl", -72)
              + '</g>')
 
     # ---------------------------------------------------- residential bike room
     bike_top = [(1093, 322), (1108, 300), (1195, 290), (1388, 316), (1345, 385), (1215, 412), (1150, 400), (1095, 345)]
     bike_drop = [70, 50, 50, 110, 150, 163, 160, 130]
-    bike_svg, _ = prism(bike_top, bike_drop, floor_lines=(0.52,))
-    g.append('<g id="residential_bike_room" class="piece" data-piece="residential_bike_room">'
+    bike_svg, bike_base = prism(bike_top, bike_drop, floor_lines=(0.52,))
+    feet["residential_bike_room"] = ([bike_base], (1215, 575))
+    pieces.append('<g id="residential_bike_room" class="piece" data-piece="residential_bike_room" tabindex="0" role="button">'
              + bike_svg
              + label(1240, 345, "pieces.residential_bike_room.name")
              + '</g>')
@@ -192,10 +198,11 @@ def build():
     retail_top = [(337, 597), (542, 395), (600, 398), (920, 338), (950, 385), (963, 420), (950, 458), (870, 563),
                   (722, 600), (683, 668)]
     retail_drop = [105, 105, 105, 60, 40, 40, 45, 45, 60, 105]
-    retail_svg, _ = prism(retail_top, retail_drop, floor_lines=(0.5,), mullion=34)
+    retail_svg, retail_base = prism(retail_top, retail_drop, floor_lines=(0.5,), mullion=34)
     upper = [(675, 466), (925, 410), (950, 456), (688, 516)]
     upper_svg, _ = prism(upper, 85, mullion=34)
-    g.append('<g id="retail" class="piece" data-piece="retail">'
+    feet["retail"] = ([retail_base], (510, 737))
+    pieces.append('<g id="retail" class="piece" data-piece="retail" tabindex="0" role="button">'
              + '<g id="retail_podium">' + retail_svg + '</g>'
              + '<g id="retail_upper">' + upper_svg + '</g>'
              + label(560, 530, "pieces.retail.name")
@@ -203,11 +210,21 @@ def build():
 
     # -------------------------------------------------------- residential lobby
     lobby_top = [(705, 720), (915, 676), (930, 640), (722, 684)]
-    lobby_svg, _ = prism(lobby_top, 44, mullion=30)
-    g.append('<g id="residential_lobby" class="piece" data-piece="residential_lobby">'
+    lobby_svg, lobby_base = prism(lobby_top, 44, mullion=30)
+    feet["residential_lobby"] = ([lobby_base], (810, 742))
+    pieces.append('<g id="residential_lobby" class="piece" data-piece="residential_lobby" tabindex="0" role="button">'
              + lobby_svg
              + label(812, 752, "pieces.residential_lobby.name", "lbl", -11.5)
              + '</g>')
+
+    # footprints sit under the pieces, leaders over them; both show only when lifted
+    g.append('<g id="footprints">' + "".join(
+        f'<g id="footprint_{k}" class="footprint" data-for="{k}">' + "".join(poly(f, "foot") for f in fs) + '</g>'
+        for k, (fs, _) in feet.items()) + '</g>')
+    g.append('<g id="pieces">' + "".join(pieces) + '</g>')
+    g.append('<g id="leaders">' + "".join(
+        f'<path id="leader_{k}" class="leader" data-for="{k}" data-x="{x}" data-y="{y}" d="M{x},{y} V{y}"/><circle class="leader-dot" data-for="{k}" cx="{x}" cy="{y}" r="3"/>'
+        for k, (_, (x, y)) in feet.items()) + '</g>')
 
     # ------------------------------------------------------ circulation arrows
     g.append('<g id="circulation_arrows">'
@@ -223,6 +240,13 @@ def build():
              + '<path id="arc_green" class="arc" d="M640,880 Q1000,1066 1375,895"/>'
              + '<text class="lbl-ctx"><textPath href="#arc_green" startOffset="30%" data-copy="labels.visual_connection">'
                'visual connection</textPath></text>'
+             + '</g>')
+
+    # ------------------------------------------- paseo route, green st -> halsted
+    route = "M780,925 L850,832 L960,719 L1064,527 L1010,420 L985,300 L975,232"
+    g.append('<g id="circulation_route">'
+             + f'<path id="route_base" class="route" d="{route}"/>'
+             + f'<path id="route_flow" class="route-flow" d="{route}"/>'
              + '</g>')
 
     return "\n".join(g)

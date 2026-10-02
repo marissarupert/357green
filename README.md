@@ -23,6 +23,11 @@ Headings and body use Jost from Google Fonts as a stand-in for Futura.
 
 ## Floor plans (`floor-plans/`)
 
-Interactive exploded axos of the plans, one self-contained `floor-plans/index.html` (inline SVG, no libraries). Names and descriptions live in the `PLANS` object at the top of the `<script>`; brand colors and the font stack are CSS variables at the top of the `<style>`.
+A 16:9 slide deck on white built around an interactive exploded axo of each plan. It's one self-contained `floor-plans/index.html` (inline SVG, vanilla JS, no libraries) that scales to its container and embeds in an iframe (Ceros / Wix). On phones the slide stacks vertically instead of letterboxing.
 
-The podium drawing is traced from the SCB "podium circulation" sheet (DPD intake, 09.08.2026). `floor-plans/tools/build_podium.py` holds the traced geometry and regenerates the SVG between the `axo:podium` markers; hand edits inside those markers are overwritten if it is re-run.
+- **Copy**: `PLANS` (piece names, descriptions, street labels), `KEY` and `SLIDES` sit at the top of the `<script>`. Each slide either lifts a piece, turns circulation on, or explodes the podium.
+- **Brand**: the five colors, the per-piece colors (`--c-retail` and so on), and the font stack are CSS variables at the top of the `<style>`. Rust is reserved for the hovered or selected piece and the circulation route.
+- **Interaction**: hover or tab to a piece to highlight it, click/tap/Enter to lift it, Esc resets. Navigate slides with the arrow buttons, ← → keys, or a swipe.
+- **Logo**: two dashed placeholders (header and cover), marked with comments, are waiting for the real SVG.
+
+The podium drawing is traced from the SCB "podium circulation" sheet (DPD intake, 09.08.2026). `floor-plans/tools/build_podium.py` holds the traced geometry and regenerates the SVG between the `axo:podium` markers. Hand edits inside those markers are overwritten if it is re-run.
