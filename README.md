@@ -28,16 +28,15 @@ npm run build    # writes the finished deck to dist/
 | Next slide | → ↓ Space PageDown, click anywhere, swipe left/up, ↓ button bottom right |
 | Previous slide | ← ↑ PageUp, swipe right/down, ↑ button bottom right |
 | First / last | Home / End |
-| Jump to a section or slide | the menu bar at the top: click a section, or hover it to pick one of its slides |
-| Section menu | M, or ☰ in the menu bar (7 sections, Development to Floor Plans) |
-| Full screen | F, or ⛶ in the menu bar |
+| Menu | ☰ top right, or M: the 7 sections drop down; point at one to see its slides, click to jump. Esc or a click outside closes it |
+| Full screen | F, or Full screen in the menu |
 
 On the **Views** slides, ←/→ pan the focused panorama instead of
 changing slides; click a panorama or Tab to it first.
 
-The menu bar stays pinned above the slide (the slide scales into the space
-below it). It shows the current section, the slide number and progress
-through the deck; on narrow screens the section tabs fold into ☰. Every slide
+A slim bar stays pinned above the slide (the slide scales into the space
+below it) with the 357 mark (back to the start), the current section, the
+menu button and a progress line along its bottom edge. Every slide
 has its own link (for example `…/#project-overview`), so you can open the deck
 straight to a slide.
 

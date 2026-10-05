@@ -32,7 +32,7 @@ const slides = content.map((s, i) => {
 
 const deck = createDeck({ stage, slides, onChange: (i) => { chrome.update(i); topbar.update(i) } })
 deck.lightbox = createLightbox(stage, deck)
-const chrome = createChrome(stage, deck, { sections, slides })
+const chrome = createChrome(stage, deck, { slides })
 const topbar = createTopbar(app, deck, { sections, slides, chrome })
 
 slides.forEach((s) => s.type?.mount?.(s.el, s, deck))
