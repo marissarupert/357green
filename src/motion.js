@@ -9,6 +9,8 @@ import { gsap } from 'gsap'
 //   line      hairline draws left to right
 //   push      slow push-in on a full-bleed image
 //   tag       label tag slides in from the left
+//   draw      callout leader line draws out from its dot
+//   pop       callout dot scales up from nothing
 //   count     (automatic) figures inside count up
 
 export const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)')
@@ -24,6 +26,9 @@ const FROM = {
       .to(el, { '--line': 1, duration: 0.9, ease: 'power3.inOut' }, at + 0.25),
   push: (el, tl, at) => tl.fromTo(el, { scale: 1.08 }, { scale: 1, duration: 7, ease: 'power1.out' }, at),
   tag: (el, tl, at) => tl.from(el, { xPercent: -100, autoAlpha: 0, duration: 0.6, ease: 'power3.out' }, at),
+  // These two hand transform back to CSS afterwards so hover states still apply.
+  draw: (el, tl, at) => tl.from(el, { scaleX: 0, duration: 0.7, ease: 'power2.inOut', clearProps: 'transform' }, at),
+  pop: (el, tl, at) => tl.from(el, { scale: 0, autoAlpha: 0, duration: 0.45, ease: 'back.out(2.4)', clearProps: 'transform,opacity,visibility' }, at),
 }
 
 function countUp(el, tl, at) {

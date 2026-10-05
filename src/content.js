@@ -248,22 +248,22 @@ export const slides = [
     eyebrow: 'Architecture',
     title: 'Elevated Materiality',
     diagrams: [
-      { src: 'assets/diagrams/materiality-cladding.jpg', alt: 'Tower cladding module', box: [45, 395, 416, 450] },
-      { src: 'assets/diagrams/materiality-terraces.jpg', alt: 'Tower cladding at terraces', box: [1300, 395, 442, 450] },
+      { src: 'assets/diagrams/materiality-cladding.jpg', alt: 'Tower cladding module', box: [40, 370, 491, 531] },
+      { src: 'assets/diagrams/materiality-terraces.jpg', alt: 'Tower cladding at terraces', box: [1248, 370, 522, 531] },
     ],
     // at = label top-left, line = [x1, x2, y], dot = [x, y] (stage px; dots
     // sit where the source drawings put their leader-line dots)
     callouts: [
-      { label: 'Primary vertical profile', at: [720, 457], line: [306, 712, 480], dot: [306, 480] },
-      { label: 'Secondary vertical profile', at: [722, 503], line: [215, 712, 526], dot: [215, 526] },
-      { label: 'Clear glass guardrail', at: [722, 561], line: [931, 1431, 584], dot: [1431, 584] },
-      { label: 'Metal spandrel', at: [722, 604], line: [879, 1403, 627], dot: [1403, 627] },
-      { label: 'Spandrel glass horizontal', at: [722, 649], line: [193, 710, 672], dot: [193, 672] },
-      { label: 'Vision glass high performance<br>low-e coating', at: [722, 737], line: [224, 706, 760], dot: [224, 760] },
+      { label: 'Primary vertical profile', at: [720, 447], line: [348, 712, 470], dot: [348, 470] },
+      { label: 'Secondary vertical profile', at: [722, 502], line: [241, 712, 525], dot: [241, 525] },
+      { label: 'Clear glass guardrail', at: [722, 570], line: [931, 1403, 593], dot: [1403, 593] },
+      { label: 'Metal spandrel', at: [722, 621], line: [879, 1370, 644], dot: [1370, 644] },
+      { label: 'Spandrel glass horizontal', at: [722, 674], line: [215, 710, 697], dot: [215, 697] },
+      { label: 'Vision glass high performance<br>low-e coating', at: [722, 778], line: [251, 706, 801], dot: [251, 801] },
     ],
     notes: [
-      { title: 'Tower Cladding', body: '2 story module provides texture at<br>larger scale for tower', x: 57, y: 889 },
-      { title: 'Tower Cladding at Terraces', body: 'Glass facade continues along one side so terraces feel carved<br>away from overall mass and offer all-season utility', x: 1056, y: 895 },
+      { title: 'Tower Cladding', body: '2 story module provides texture at<br>larger scale for tower', x: 57, y: 921 },
+      { title: 'Tower Cladding at Terraces', body: 'Glass facade continues along one side so terraces feel carved<br>away from overall mass and offer all-season utility', x: 1056, y: 921 },
     ],
   },
 

@@ -159,11 +159,15 @@
 .s-callouts .callouts { left: 0; top: 0; width: 1920px; height: 1080px; pointer-events: none; }
 .s-callouts .callouts > * { pointer-events: auto; }
 .s-callouts .leader { position: absolute; height: 1px; background: var(--slate); transition: background .25s, height .25s; }
-.s-callouts .dot { position: absolute; width: 9px; height: 9px; margin: -4.5px 0 0 -4.5px; border-radius: 50%; background: var(--midnight); transition: background .25s, transform .25s var(--ease), box-shadow .25s; }
+.s-callouts .dot { position: absolute; width: 18px; height: 18px; margin: -9px 0 0 -9px; border-radius: 50%; background: var(--white); border: 3px solid var(--copper); box-shadow: 0 1px 4px rgba(28, 29, 43, .35); transition: background .25s, transform .25s var(--ease), box-shadow .25s; }
 .s-callouts .dot::before { content: ""; position: absolute; inset: -14px; border-radius: 50%; }
+/* one soft pulse when the dot lands, so viewers see it's a hotspot */
+.s-callouts .dot::after { content: ""; position: absolute; inset: -3px; border-radius: 50%; border: 2px solid var(--copper); opacity: 0; pointer-events: none; }
+.s-callouts.is-current .dot::after { animation: callout-pulse 1.4s ease-out var(--pulse, 0s) 1; }
+@keyframes callout-pulse { 0% { transform: scale(1); opacity: .8; } 100% { transform: scale(2.6); opacity: 0; } }
 .s-callouts .label { position: absolute; text-align: left; font-size: 23px; line-height: 38px; color: var(--midnight); transition: color .25s; }
 .s-callouts .active.leader { background: var(--copper); height: 2px; }
-.s-callouts .active.dot { background: var(--copper); transform: scale(1.8); box-shadow: 0 0 0 6px rgba(165, 85, 47, .25); }
+.s-callouts .active.dot { background: var(--copper); transform: scale(1.35); box-shadow: 0 0 0 7px rgba(165, 85, 47, .22); }
 .s-callouts .active.label { color: var(--copper); }
 .s-callouts .label:focus-visible, .s-callouts .dot:focus-visible { outline: none; }
 .s-callouts .note h3 { font-size: 28px; font-weight: var(--w-medium); color: var(--copper); text-transform: uppercase; line-height: 1; }
