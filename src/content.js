@@ -202,9 +202,12 @@ export const slides = [
       { src: 'assets/logos/john-deere.png', alt: 'John Deere', width: 103 },
       { src: 'assets/logos/sidley.png', alt: 'Sidley', width: 104 },
     ],
-    // Paste an embeddable map URL here (Google My Maps, Mapbox, etc.).
-    // Left empty, the slot shows the "MAP" placeholder from the static deck.
-    map: { url: '', title: 'Fulton Market neighborhood map' },
+    // Embedded interactive map (Stream GIS, ArcGIS Instant App). Swap the URL
+    // to change it; left empty, the slot shows the static deck's "MAP" box.
+    map: {
+      url: 'https://streamgis.maps.arcgis.com/apps/instant/basic/index.html?appid=3d12fababd414716a631c254206783e6',
+      title: 'Fulton Market neighborhood map',
+    },
   },
   // ---------- 03 Architecture ----------
   { id: 'architecture', ref: 10, type: 'divider', section: 'architecture', theme: 'dark', number: '03', title: 'Architecture' },

@@ -61,7 +61,7 @@ image paths. Layout code never needs to change.
 | `divider` | 5, 8, 10, 18, 34, 40, 43 | numeral and title animate in, watermark drifts |
 | `iconStats` | 6 | numbers count up; carousel bars switch photos |
 | `bullets` | 7 | carousel bars switch photos |
-| `location` | 9 | numbers count up; map iframe slot (`map.url`) |
+| `location` | 9 | numbers count up; embedded interactive map (`map.url`) |
 | `features` | 11 | features come in one after another, automatically |
 | `diagram` | 12 | |
 | `callouts` | 13 | hover/focus a label or dot to highlight both |
@@ -101,7 +101,7 @@ Where these appear in the deck they are marked with a dashed "Placeholder" label
 
 - **Futura 100** web fonts (Jost stands in)
 - **Slide 2** video file
-- **Slide 9** map embed URL and the two "##" hotel figures
+- **Slide 9** the two "##" hotel figures
 - **Slide 16** layered or higher-resolution building section, for the zone legend
 - **Slide 20** source diagram with the 01–11 spot positions
 - **Views** original wide panoramas (the deck's are 863 px wide)
