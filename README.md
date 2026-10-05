@@ -72,7 +72,7 @@ image paths. Layout code never needs to change.
 | `section` | 16 | section wipes up, callouts draw out; hover a legend item to highlight that zone |
 | `featureGrid` | 17 | subtle clouds drift across the sky behind the text (`clouds`), still under reduced motion |
 | `split` | 19, 29 | 19 (`axo: true`): podium pieces drop in and the paseo route draws down from Halsted; hover a piece or key entry to pick it out, click to lift it (Esc sets it back), Paseo route toggle |
-| `keyed` | 20 | hover/focus a key item to highlight its spot (add `spot: [x, y]`) |
+| `keyed` | 20 | section drawing builds up from the ground (ascent fills, levels tick up, sightlines and connections draw out); hover/focus a key item to highlight its spot (add `spot: [x, y]`) |
 | `amenities` | 30 | each "View more photos" opens a lightbox gallery |
 | `programming` | 35 | each "View plan" jumps to its test fit |
 | `testfit` | 36–39 | Low/High Rise and Open/Perimeter toggles swap plan and stats |
@@ -109,7 +109,7 @@ Where these appear in the deck they are marked with a dashed "Placeholder" label
 - **Futura 100** web fonts (Jost stands in)
 - **Slide 2** video file
 - **Slide 9** the two "##" hotel figures
-- **Slide 20** source diagram with the 01–11 spot positions
+- **Slide 20** keyed site plan with the 01–11 positions (the section is redrawn as `src/assets/svg/plaza-ascent.svg`)
 - **Views** original wide panoramas (the deck's are 863 px wide)
 
 Low-resolution in the source PDF, and soft on large screens: plaza section (20),

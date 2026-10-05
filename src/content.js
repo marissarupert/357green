@@ -364,8 +364,8 @@ export const slides = [
     theme: 'light',
     eyebrow: 'Tenant Experience',
     title: 'Plaza & Ascent',
-    image: { src: 'assets/diagrams/plaza-ascent.png', alt: 'Section through the plaza and ascent' },
-    // Add spot: [x, y] (stage px) to each item once the keyed diagram arrives.
+    drawing: 'plaza-ascent', // src/assets/svg/plaza-ascent.svg, redrawn from the section diagram
+    // Add spot: [x, y] (stage px) to each item once the keyed site plan arrives.
     items: [
       { n: '01', label: 'Trees match neighboring<br>developments' },
       { n: '02', label: 'Herringbone<br>patterned pavers' },

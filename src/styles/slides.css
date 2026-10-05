@@ -363,6 +363,51 @@
 .s-keyed .spot { width: 38px; height: 38px; margin: -19px 0 0 -19px; border-radius: 50%; background: var(--white); border: 2px solid var(--copper); color: var(--copper); font-size: 16px; font-weight: var(--w-medium); transition: transform .25s var(--ease), background .25s, color .25s; }
 .s-keyed .spot.active { background: var(--copper); color: var(--white); transform: scale(1.2); }
 
+/* full-width section drawing (Plaza & Ascent): title sits in the sky over the park */
+.s-keyed:has(.drawing.svg) .eyebrow { top: 54px; }
+.s-keyed:has(.drawing.svg) .title { top: 150px; font-size: 96px; }
+.s-keyed .drawing.svg { left: 40px; top: 40px; width: 1840px; height: 490px; }
+.s-keyed .drawing.svg svg { width: 100%; height: 100%; display: block; overflow: visible; }
+.s-keyed:has(.drawing.svg) .key { left: 60px; top: 600px; grid-template-columns: repeat(4, 452px); row-gap: 30px; }
+.s-keyed:has(.drawing.svg) .key .l { font-size: 24px; line-height: 34px; }
+.s-keyed:has(.drawing.svg) .key button { line-height: 34px; }
+.s-keyed:has(.drawing.svg) .key .n { width: 54px; font-size: 26px; }
+.s-keyed .key-note { left: 60px; top: 918px; }
+.s-keyed .key-note .ph-tag { color: var(--slate); font-size: 12px; }
+
+.pa-svg text { font-family: var(--font); }
+.pa-mass { fill: color-mix(in srgb, var(--slate) 16%, var(--white)); stroke: var(--slate); stroke-width: 1.5; }
+.pa-floor { stroke: var(--slate); stroke-width: 1.5; }
+.pa-slab { fill: color-mix(in srgb, var(--slate) 55%, var(--white)); }
+.pa-glass { fill: color-mix(in srgb, var(--powder) 38%, var(--white)); }
+.pa-mullion { stroke: var(--slate); stroke-width: 1.5; }
+.pa-col { fill: var(--slate); }
+.pa-ascent { fill: var(--copper); }
+.pa-deck { stroke: var(--midnight); stroke-width: 4; }
+.pa-rail { fill: none; stroke: var(--midnight); stroke-width: 1.6; }
+.pa-post { stroke: var(--midnight); stroke-width: 1.2; }
+.pa-ground { fill: none; stroke: var(--midnight); stroke-width: 5; stroke-linejoin: round; }
+.pa-tree circle { fill: color-mix(in srgb, var(--powder) 80%, var(--slate)); }
+.pa-tree-lt circle { fill: color-mix(in srgb, var(--powder) 55%, var(--white)); }
+.pa-trunk { fill: var(--slate); }
+.pa-car { fill: var(--slate); }
+.pa-wheel { fill: var(--midnight); }
+.pa-planter { fill: color-mix(in srgb, var(--espresso) 35%, var(--white)); stroke: var(--espresso); stroke-width: 1.2; }
+.pa-green { fill: color-mix(in srgb, var(--powder) 70%, var(--slate)); }
+.pa-person { fill: var(--midnight); }
+.pa-sight { fill: none; stroke: var(--copper); stroke-width: 2.6; stroke-dasharray: 11 8; }
+.pa-sight-head { fill: var(--copper); }
+.pa-conn { fill: none; stroke: color-mix(in srgb, var(--powder) 55%, var(--midnight)); stroke-width: 2.6; stroke-dasharray: 11 8; }
+.pa-conn-head { fill: color-mix(in srgb, var(--powder) 55%, var(--midnight)); }
+.s-keyed.is-current .pa-conn { animation: pa-flow 1.6s linear 3.6s infinite; }
+@keyframes pa-flow { to { stroke-dashoffset: -38; } }
+.pa-lbl { font-size: 15.5px; font-weight: var(--w-demi); letter-spacing: .08em; fill: var(--midnight); }
+.pa-lbl-sight { fill: var(--copper); }
+.pa-lbl-conn { fill: color-mix(in srgb, var(--powder) 55%, var(--midnight)); }
+.pa-tag { font-size: 15px; font-weight: var(--w-demi); letter-spacing: .02em; fill: var(--copper); }
+.pa-tag.on-copper { fill: var(--white); }
+@media (prefers-reduced-motion: reduce) { .s-keyed.is-current .pa-conn { animation: none; } }
+
 /* ---------- programming (slide 35) ---------- */
 .s-programming .eyebrow { left: 60px; top: 54px; font-size: 20px; letter-spacing: .1em; }
 .s-programming .title { left: 59px; top: 178px; font-size: 110px; line-height: 1; white-space: nowrap; }

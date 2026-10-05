@@ -1,0 +1,131 @@
+<!-- Plaza & Ascent section, redrawn in the brand palette from the supplied diagram.
+     Generated; positions are in the source diagram's 2000 x 545 px space. -->
+<svg class="pa-svg" viewBox="20 20 1970 525" role="img" aria-label="Section through the plaza, the ascent and the paseo, from the adjacent park and North Green Street up 25 feet to North Halsted Street">
+<g id="pa-building">
+<rect class="pa-glass" x="728" y="240" width="1060" height="100"/>
+<polygon class="pa-glass" points="1305,340 1788,330 1788,342 1305,342"/>
+<rect class="pa-mass" x="728" y="33" width="1124" height="207"/>
+<line class="pa-floor" x1="728" y1="93" x2="1852" y2="93"/>
+<line class="pa-floor" x1="728" y1="160" x2="1852" y2="160"/>
+<rect class="pa-slab" x="728" y="225" width="1124" height="15"/>
+<line class="pa-mullion" x1="1788" y1="240" x2="1788" y2="330"/>
+</g>
+<polygon id="pa-ascent" class="pa-ascent" points="728,340 728,468 728,461.3 739.3,461.3 739.3,454.7 750.7,454.7 750.7,448 762,448 890,448 890,441.7 903.3,441.7 903.3,435.3 916.7,435.3 916.7,429 930,429 930,422.7 943.3,422.7 943.3,416.3 956.7,416.3 956.7,410 970,410 1075,410 1075,403.4 1087,403.4 1087,396.8 1099,396.8 1099,390.2 1111,390.2 1111,383.6 1123,383.6 1123,377 1135,377 1240,377 1240,370 1253,370 1253,363 1266,363 1266,356 1279,356 1279,349 1292,349 1292,342 1305,342 1305,342 1305,340"/>
+<g id="pa-cols">
+<rect class="pa-col" x="809" y="240" width="18" height="208"/>
+<rect class="pa-col" x="1100" y="240" width="18" height="170"/>
+<rect class="pa-col" x="1262" y="240" width="18" height="137"/>
+<rect class="pa-col" x="1553" y="240" width="18" height="95"/>
+</g>
+<g id="pa-terrace">
+<line class="pa-deck" x1="728" y1="340" x2="1305" y2="340"/>
+<line class="pa-rail" x1="728" y1="322" x2="1300" y2="322"/>
+<line class="pa-post" x1="746" y1="322" x2="746" y2="340"/>
+<line class="pa-post" x1="772" y1="322" x2="772" y2="340"/>
+<line class="pa-post" x1="798" y1="322" x2="798" y2="340"/>
+<line class="pa-post" x1="824" y1="322" x2="824" y2="340"/>
+<line class="pa-post" x1="850" y1="322" x2="850" y2="340"/>
+<line class="pa-post" x1="876" y1="322" x2="876" y2="340"/>
+<line class="pa-post" x1="902" y1="322" x2="902" y2="340"/>
+<line class="pa-post" x1="928" y1="322" x2="928" y2="340"/>
+<line class="pa-post" x1="954" y1="322" x2="954" y2="340"/>
+<line class="pa-post" x1="980" y1="322" x2="980" y2="340"/>
+<line class="pa-post" x1="1006" y1="322" x2="1006" y2="340"/>
+<line class="pa-post" x1="1032" y1="322" x2="1032" y2="340"/>
+<line class="pa-post" x1="1058" y1="322" x2="1058" y2="340"/>
+<line class="pa-post" x1="1084" y1="322" x2="1084" y2="340"/>
+<line class="pa-post" x1="1110" y1="322" x2="1110" y2="340"/>
+<line class="pa-post" x1="1136" y1="322" x2="1136" y2="340"/>
+<line class="pa-post" x1="1162" y1="322" x2="1162" y2="340"/>
+<line class="pa-post" x1="1188" y1="322" x2="1188" y2="340"/>
+<line class="pa-post" x1="1214" y1="322" x2="1214" y2="340"/>
+<line class="pa-post" x1="1240" y1="322" x2="1240" y2="340"/>
+<line class="pa-post" x1="1266" y1="322" x2="1266" y2="340"/>
+<line class="pa-post" x1="1292" y1="322" x2="1292" y2="340"/>
+</g>
+<g id="pa-rails">
+<polyline class="pa-rail" points="728,446 762,426"/>
+<line class="pa-post" x1="728" y1="446" x2="728" y2="468"/><line class="pa-post" x1="762" y1="426" x2="762" y2="448"/>
+<polyline class="pa-rail" points="890,426 970,388"/>
+<line class="pa-post" x1="890" y1="426" x2="890" y2="448"/><line class="pa-post" x1="970" y1="388" x2="970" y2="410"/>
+<polyline class="pa-rail" points="1075,388 1135,355"/>
+<line class="pa-post" x1="1075" y1="388" x2="1075" y2="410"/><line class="pa-post" x1="1135" y1="355" x2="1135" y2="377"/>
+<polyline class="pa-rail" points="1240,355 1305,320"/>
+<line class="pa-post" x1="1240" y1="355" x2="1240" y2="377"/><line class="pa-post" x1="1305" y1="320" x2="1305" y2="342"/>
+</g>
+<g id="pa-trees">
+<g class="pa-tree"><rect class="pa-trunk" x="67.5" y="368" width="5" height="100"/><circle cx="70" cy="368" r="26"/><circle cx="50.5" cy="382.3" r="18.72"/><circle cx="90.8" cy="379.7" r="19.5"/></g>
+<g class="pa-tree"><rect class="pa-trunk" x="125.5" y="366" width="5" height="102"/><circle cx="128" cy="366" r="30"/><circle cx="105.5" cy="382.5" r="21.599999999999998"/><circle cx="152.0" cy="379.5" r="22.5"/></g>
+<g class="pa-tree"><rect class="pa-trunk" x="185.5" y="371" width="5" height="97"/><circle cx="188" cy="371" r="25"/><circle cx="169.25" cy="384.75" r="18.0"/><circle cx="208.0" cy="382.25" r="18.75"/></g>
+<g class="pa-tree pa-tree-lt"><rect class="pa-trunk" x="402.5" y="375" width="5" height="93"/><circle cx="405" cy="375" r="30"/><circle cx="382.5" cy="391.5" r="21.599999999999998"/><circle cx="429.0" cy="388.5" r="22.5"/></g>
+</g>
+<g id="pa-car"><path class="pa-car" d="M331,466 v-14 q0,-7 7,-8 l6,-9 q2,-3 6,-3 h14 q4,0 6,3 l5,9 q6,1 6,8 v14 z"/><circle class="pa-wheel" cx="342" cy="467" r="5"/><circle class="pa-wheel" cx="367" cy="467" r="5"/></g>
+<g id="pa-planters">
+<rect class="pa-planter" x="468" y="455" width="164" height="11"/>
+<path class="pa-green" d="M471,455 q4,-4 8,0 q4,-7 8,0 q4,-4 8,0 q4,-7 8,0 q4,-4 8,0 q4,-7 8,0 q4,-4 8,0 q4,-7 8,0 q4,-4 8,0 q4,-7 8,0 q4,-4 8,0 q4,-7 8,0 q4,-4 8,0 q4,-7 8,0 q4,-4 8,0 q4,-7 8,0 q4,-4 8,0 q4,-7 8,0 q4,-4 8,0 z"/>
+<rect class="pa-planter" x="1306" y="330" width="102" height="11"/>
+<path class="pa-green" d="M1309,330 q4,-4 8,0 q4,-7 8,0 q4,-4 8,0 q4,-7 8,0 q4,-4 8,0 q4,-7 8,0 q4,-4 8,0 q4,-7 8,0 q4,-4 8,0 q4,-7 8,0 q4,-4 8,0 q4,-7 8,0 z"/>
+<rect class="pa-planter" x="1512" y="326" width="103" height="11"/>
+<path class="pa-green" d="M1515,326 q4,-4 8,0 q4,-7 8,0 q4,-4 8,0 q4,-7 8,0 q4,-4 8,0 q4,-7 8,0 q4,-4 8,0 q4,-7 8,0 q4,-4 8,0 q4,-7 8,0 q4,-4 8,0 q4,-7 8,0 z"/>
+<rect class="pa-planter" x="1763" y="319" width="82" height="11"/>
+<path class="pa-green" d="M1766,319 q4,-4 8,0 q4,-7 8,0 q4,-4 8,0 q4,-7 8,0 q4,-4 8,0 q4,-7 8,0 q4,-4 8,0 q4,-7 8,0 q4,-4 8,0 z"/>
+</g>
+<polyline id="pa-ground" class="pa-ground" points="37,468 248,468 248,473 384,473 384,468 728,468 728,461.3 739.3,461.3 739.3,454.7 750.7,454.7 750.7,448 762,448 890,448 890,441.7 903.3,441.7 903.3,435.3 916.7,435.3 916.7,429 930,429 930,422.7 943.3,422.7 943.3,416.3 956.7,416.3 956.7,410 970,410 1075,410 1075,403.4 1087,403.4 1087,396.8 1099,396.8 1099,390.2 1111,390.2 1111,383.6 1123,383.6 1123,377 1135,377 1240,377 1240,370 1253,370 1253,363 1266,363 1266,356 1279,356 1279,349 1292,349 1292,342 1305,342 1305,342 1905,327"/>
+<g id="pa-people">
+<g class="pa-person"><g transform="translate(478 455) scale(1.0 1.0)"><circle cx="0" cy="-26" r="3.6"/><path d="M-3.6,-21 h7.2 l1.4,10 h-2.2 l-.6,11 h-2.2 l-.6,-8 h-.8 l-.6,8 h-2.2 l-.6,-11 h-2.2 z"/></g></g>
+<g class="pa-person"><g transform="translate(586 455) scale(-1.0 1.0)"><circle cx="0" cy="-26" r="3.6"/><path d="M-3.6,-21 h7.2 l1.4,10 h-2.2 l-.6,11 h-2.2 l-.6,-8 h-.8 l-.6,8 h-2.2 l-.6,-11 h-2.2 z"/></g></g>
+<g class="pa-person"><g transform="translate(672 468) scale(1.0 1.0)"><circle cx="0" cy="-26" r="3.6"/><path d="M-3.6,-21 h7.2 l1.4,10 h-2.2 l-.6,11 h-2.2 l-.6,-8 h-.8 l-.6,8 h-2.2 l-.6,-11 h-2.2 z"/></g></g>
+<g class="pa-person"><g transform="translate(735 322) scale(-1.0 1.0)"><circle cx="0" cy="-26" r="3.6"/><path d="M-3.6,-21 h7.2 l1.4,10 h-2.2 l-.6,11 h-2.2 l-.6,-8 h-.8 l-.6,8 h-2.2 l-.6,-11 h-2.2 z"/></g></g>
+<g class="pa-person"><g transform="translate(884 322) scale(1.0 1.0)"><circle cx="0" cy="-26" r="3.6"/><path d="M-3.6,-21 h7.2 l1.4,10 h-2.2 l-.6,11 h-2.2 l-.6,-8 h-.8 l-.6,8 h-2.2 l-.6,-11 h-2.2 z"/></g></g>
+<g class="pa-person"><g transform="translate(921 322) scale(-1.0 1.0)"><circle cx="0" cy="-26" r="3.6"/><path d="M-3.6,-21 h7.2 l1.4,10 h-2.2 l-.6,11 h-2.2 l-.6,-8 h-.8 l-.6,8 h-2.2 l-.6,-11 h-2.2 z"/></g></g>
+<g class="pa-person"><g transform="translate(1064 322) scale(1.0 1.0)"><circle cx="0" cy="-26" r="3.6"/><path d="M-3.6,-21 h7.2 l1.4,10 h-2.2 l-.6,11 h-2.2 l-.6,-8 h-.8 l-.6,8 h-2.2 l-.6,-11 h-2.2 z"/></g></g>
+<g class="pa-person"><g transform="translate(1212 322) scale(1.0 1.0)"><circle cx="0" cy="-26" r="3.6"/><path d="M-3.6,-21 h7.2 l1.4,10 h-2.2 l-.6,11 h-2.2 l-.6,-8 h-.8 l-.6,8 h-2.2 l-.6,-11 h-2.2 z"/></g></g>
+<g class="pa-person"><g transform="translate(1222 322) scale(-1.0 1.0)"><circle cx="0" cy="-26" r="3.6"/><path d="M-3.6,-21 h7.2 l1.4,10 h-2.2 l-.6,11 h-2.2 l-.6,-8 h-.8 l-.6,8 h-2.2 l-.6,-11 h-2.2 z"/></g></g>
+<g class="pa-person"><g transform="translate(1320 330) scale(1.0 1.0)"><circle cx="0" cy="-26" r="3.6"/><path d="M-3.6,-21 h7.2 l1.4,10 h-2.2 l-.6,11 h-2.2 l-.6,-8 h-.8 l-.6,8 h-2.2 l-.6,-11 h-2.2 z"/></g></g>
+<g class="pa-person"><g transform="translate(1443 339) scale(-1.0 1.0)"><circle cx="0" cy="-26" r="3.6"/><path d="M-3.6,-21 h7.2 l1.4,10 h-2.2 l-.6,11 h-2.2 l-.6,-8 h-.8 l-.6,8 h-2.2 l-.6,-11 h-2.2 z"/></g></g>
+<g class="pa-person"><g transform="translate(1580 335) scale(1.0 1.0)"><circle cx="0" cy="-26" r="3.6"/><path d="M-3.6,-21 h7.2 l1.4,10 h-2.2 l-.6,11 h-2.2 l-.6,-8 h-.8 l-.6,8 h-2.2 l-.6,-11 h-2.2 z"/></g></g>
+<g class="pa-person"><g transform="translate(1797 329) scale(-1.0 1.0)"><circle cx="0" cy="-26" r="3.6"/><path d="M-3.6,-21 h7.2 l1.4,10 h-2.2 l-.6,11 h-2.2 l-.6,-8 h-.8 l-.6,8 h-2.2 l-.6,-11 h-2.2 z"/></g></g>
+<g class="pa-person"><g transform="translate(762 448) scale(1.0 1.0)"><circle cx="0" cy="-26" r="3.6"/><path d="M-3.6,-21 h7.2 l1.4,10 h-2.2 l-.6,11 h-2.2 l-.6,-8 h-.8 l-.6,8 h-2.2 l-.6,-11 h-2.2 z"/></g></g>
+<g class="pa-person"><g transform="translate(866 448) scale(-1.0 1.0)"><circle cx="0" cy="-26" r="3.6"/><path d="M-3.6,-21 h7.2 l1.4,10 h-2.2 l-.6,11 h-2.2 l-.6,-8 h-.8 l-.6,8 h-2.2 l-.6,-11 h-2.2 z"/></g></g>
+<g class="pa-person"><g transform="translate(966 416) scale(1.0 1.0)"><circle cx="0" cy="-26" r="3.6"/><path d="M-3.6,-21 h7.2 l1.4,10 h-2.2 l-.6,11 h-2.2 l-.6,-8 h-.8 l-.6,8 h-2.2 l-.6,-11 h-2.2 z"/></g></g>
+<g class="pa-person"><g transform="translate(1024 410) scale(-1.0 1.0)"><circle cx="0" cy="-26" r="3.6"/><path d="M-3.6,-21 h7.2 l1.4,10 h-2.2 l-.6,11 h-2.2 l-.6,-8 h-.8 l-.6,8 h-2.2 l-.6,-11 h-2.2 z"/></g></g>
+<g class="pa-person"><g transform="translate(1135 377) scale(1.0 1.0)"><circle cx="0" cy="-26" r="3.6"/><path d="M-3.6,-21 h7.2 l1.4,10 h-2.2 l-.6,11 h-2.2 l-.6,-8 h-.8 l-.6,8 h-2.2 l-.6,-11 h-2.2 z"/></g></g>
+<g class="pa-person"><g transform="translate(1215 377) scale(-1.0 1.0)"><circle cx="0" cy="-26" r="3.6"/><path d="M-3.6,-21 h7.2 l1.4,10 h-2.2 l-.6,11 h-2.2 l-.6,-8 h-.8 l-.6,8 h-2.2 l-.6,-11 h-2.2 z"/></g></g>
+</g>
+<g id="pa-sight">
+<path id="pa-sight-0" class="pa-sight" d="M728,314 L98,382"/>
+<polygon class="pa-sight-head" points="98,382 111.6,386.4 110.3,374.8"/>
+<path id="pa-sight-1" class="pa-sight" d="M965,404 L182,436"/>
+<polygon class="pa-sight-head" points="182,436 195.2,441.3 194.8,429.6"/>
+<path id="pa-sight-2" class="pa-sight" d="M728,314 L590,430"/>
+<polygon class="pa-sight-head" points="590,430 603.7,426.1 596.2,417.2"/>
+<g class="pa-lbl-wrap"><text class="pa-lbl pa-lbl-sight" transform="translate(430 336) rotate(-6.2)" text-anchor="middle">VIEW TO ADJACENT PARK</text></g>
+<g class="pa-lbl-wrap"><text class="pa-lbl pa-lbl-sight" transform="translate(648 362) rotate(-40)" text-anchor="middle">VIEW TO PLAZA</text></g>
+</g>
+<g id="pa-conn">
+<path id="pa-conn-halsted" class="pa-conn" d="M740,480 C980,476 1180,430 1460,408 S1790,394 1872,393"/>
+<polygon class="pa-conn-head" points="1880,393 1867,387.1 1867,398.9"/>
+<path id="pa-conn-park" class="pa-conn" d="M1225,446 C1010,488 820,514 600,514 L203,514"/>
+<polygon class="pa-conn-head" points="195,514 208,519.9 208,508.1"/>
+<text class="pa-lbl pa-lbl-conn" x="1686" y="432" text-anchor="middle">PEDESTRIAN CONNECTION TO HALSTED</text>
+<text class="pa-lbl pa-lbl-conn" x="392" y="537" text-anchor="middle">PEDESTRIAN CONNECTION TO PARK</text>
+</g>
+<g id="pa-elev">
+<text class="pa-tag" x="550" y="448" text-anchor="middle">+0.0'</text>
+<text class="pa-tag" x="630" y="448" text-anchor="middle">+1.5'</text>
+<text class="pa-tag on-copper" x="848" y="440" text-anchor="middle">+4.0'</text>
+<text class="pa-tag on-copper" x="1003" y="402" text-anchor="middle">+10.0'</text>
+<text class="pa-tag on-copper" x="1183" y="369" text-anchor="middle">+16.0'</text>
+<text class="pa-tag" x="1357" y="326" text-anchor="middle">+22.5'</text>
+<text class="pa-tag" x="1880" y="318" text-anchor="middle">+25.0'</text>
+</g>
+<g id="pa-labels">
+<text class="pa-lbl pa-place" x="128" y="500" text-anchor="middle">ADJACENT PARK</text>
+<text class="pa-lbl pa-place" x="318" y="500" text-anchor="middle">NORTH GREEN ST</text>
+<text class="pa-lbl pa-place" x="526" y="500" text-anchor="middle">THE PLAZA</text>
+<text class="pa-lbl pa-place" x="1022" y="448" text-anchor="middle">THE ASCENT</text>
+<text class="pa-lbl pa-place" x="1450" y="374" text-anchor="middle">THE PASEO</text>
+<text class="pa-lbl pa-place" x="1925" y="374" text-anchor="end">NORTH HALSTED ST</text>
+<text class="pa-lbl pa-place" x="948" y="292" text-anchor="middle">BALCONY TERRACE</text>
+</g>
+</svg>
