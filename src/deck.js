@@ -12,13 +12,11 @@ export function createDeck({ stage, slides, onChange }) {
   let scale = 1
   const blockers = new Set() // overlays (menu, lightbox) that take over the keys
 
-  // ---------- fit the 16:9 stage to the window below the top bar, letterboxed ----------
+  // ---------- fit the 16:9 stage to the window, letterboxed ----------
   const fit = () => {
     const vw = innerWidth || document.documentElement.clientWidth
-    const bar = document.querySelector('.topbar')?.offsetHeight || 0
-    const vh = (innerHeight || document.documentElement.clientHeight) - bar
+    const vh = innerHeight || document.documentElement.clientHeight
     scale = Math.min(vw / W, vh / H) || 1
-    stage.style.top = `${bar + vh / 2}px`
     stage.style.transform = `translate(-50%, -50%) scale(${scale})`
   }
   addEventListener('resize', fit)

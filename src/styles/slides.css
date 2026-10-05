@@ -129,7 +129,7 @@
 .s-bullets .photo { left: 0; top: 0; width: 939px; height: 1080px; }
 .s-bullets .photo-bars { left: 60px; top: 994px; }
 .s-bullets .panel { left: 939px; top: 0; width: 981px; height: 1080px; background: var(--midnight); }
-.s-bullets .eyebrow { right: 61px; top: 41px; font-size: 20px; letter-spacing: .1em; color: var(--copper); }
+.s-bullets .eyebrow { right: 130px; top: 41px; /* clear of the ☰ menu button */ font-size: 20px; letter-spacing: .1em; color: var(--copper); }
 .s-bullets .title { left: 1020px; top: 155px; font-size: 119px; line-height: 1; white-space: nowrap; }
 .s-bullets .subtitle { left: 1026px; top: 328px; font-size: 50px; font-weight: var(--w-medium); color: #cdd8ea; line-height: 1; white-space: nowrap; }
 .s-bullets .rule-bar { left: 1020px; top: 433px; width: 771px; }
@@ -439,7 +439,7 @@
 .s-testfit .rule-bar { left: 59px; top: 337px; width: 588px; --bh: 13px; }
 .s-testfit .plan { left: 0; top: 0; width: 1920px; height: 1080px; pointer-events: none; }
 .s-testfit .pimg { position: absolute; }
-.s-testfit .toggles { right: 60px; top: 44px; z-index: 5; }
+.s-testfit .toggles { right: 130px; top: 44px; z-index: 5; } /* clear of the ☰ menu button */
 
 /* ---------- views (slides 41, 42) ---------- */
 .s-views .strip { position: absolute; left: 0; width: 1920px; overflow: hidden; cursor: grab; touch-action: pan-y; background: #e9edf1; transition: top .5s var(--ease), height .5s var(--ease); }
@@ -454,7 +454,7 @@
 .s-views .strip.none .missing { display: grid; }
 .s-views .strip.none .pan { display: none; }
 .s-views .view-tag { top: 40px; height: 65px; width: 375px; padding: 0 0 0 42px; clip-path: polygon(0 0, 100% 0, calc(100% - 34px) 100%, 0 100%); }
-.s-views .toggles { right: 40px; top: 24px; z-index: 5; }
+.s-views .toggles { right: 130px; top: 24px; z-index: 5; } /* clear of the ☰ menu button */
 
 /* ---------- floor plans (slides 44, 45) ---------- */
 .s-floorplan .eyebrow { left: 60px; top: 54px; font-size: 20px; letter-spacing: .1em; }

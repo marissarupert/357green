@@ -15,48 +15,46 @@ const pad = (n) => String(n).padStart(2, '0')
 const nameOf = (s, sectionLabel) =>
   strip(s.title) || strip(s.label) || (strip(s.eyebrow) !== sectionLabel && strip(s.eyebrow)) || humanize(s.id)
 
-// Slim bar pinned above the slide: the 357 mark and a menu button. The menu
-// drops down from the bar: the seven sections on the left, the slides of the
-// one you point at on the right, slide counter and full screen underneath.
-// ☰ or M opens and closes it; Esc, a click outside or picking a slide closes it.
-// The deck scales the slide into the space below the bar.
-export function createTopbar(app, deck, { sections, slides, chrome }) {
+// A floating ☰ in the top-right corner, over the slide. It drops the menu
+// down from the top: the 357 mark (back to the start), the seven sections on
+// the left, the slides of the one you point at on the right, slide counter
+// and full screen underneath. ☰ or M opens and closes it; Esc, a click
+// outside or picking a slide closes it.
+export function createMenu(app, deck, { sections, slides, chrome }) {
   const groups = sections.map((sec) => ({
     ...sec,
     items: slides.map((s, i) => ({ s, i })).filter(({ s }) => s.section === sec.id),
   }))
 
   app.insertAdjacentHTML('afterbegin', `
-    <header class="topbar">
-      <button class="tb-logo" aria-label="357 Green, back to the start">${logo357}</button>
-      <p class="tb-here" aria-hidden="true"></p>
-      <button class="tb-burger" aria-label="Menu (M)" aria-expanded="false" aria-controls="tb-panel"><i></i><i></i><i></i></button>
-      <span class="tb-progress" aria-hidden="true"><i></i></span>
-      <nav class="tb-panel" id="tb-panel" aria-label="Sections">
-        <ol class="tb-secs">
+    <div class="deck-nav">
+      <button class="mn-burger" aria-label="Menu (M)" aria-expanded="false" aria-controls="mn-panel"><i></i><i></i><i></i></button>
+      <nav class="mn-panel" id="mn-panel" aria-label="Sections">
+        <button class="mn-logo" aria-label="357 Green, back to the start">${logo357}</button>
+        <ol class="mn-secs">
           ${groups.map((g, n) => `
-            <li><button class="tb-sec" data-section="${esc(g.id)}" data-go="${g.items[0]?.i ?? -1}"${g.items.length ? '' : ' disabled'}>
+            <li><button class="mn-sec" data-section="${esc(g.id)}" data-go="${g.items[0]?.i ?? -1}"${g.items.length ? '' : ' disabled'}>
               <span class="n">${pad(n + 1)}</span><span class="t">${esc(g.label)}</span>
             </button></li>`).join('')}
         </ol>
-        <div class="tb-slides">
+        <div class="mn-slides">
           ${groups.map((g) => `
-            <ol class="tb-list" data-section="${esc(g.id)}">
-              ${g.items.map(({ s, i }) => `<li><button class="tb-item" data-go="${i}" tabindex="-1"><span class="n">${pad(i + 1)}</span><span class="t">${esc(nameOf(s, g.label))}</span></button></li>`).join('')}
+            <ol class="mn-list" data-section="${esc(g.id)}">
+              ${g.items.map(({ s, i }) => `<li><button class="mn-item" data-go="${i}" tabindex="-1"><span class="n">${pad(i + 1)}</span><span class="t">${esc(nameOf(s, g.label))}</span></button></li>`).join('')}
             </ol>`).join('')}
         </div>
-        <div class="tb-foot">
-          <p class="tb-count"><b></b> / ${pad(slides.length)}</p>
-          <button class="tb-fs">${icon.full}<span>Full screen</span></button>
+        <div class="mn-foot">
+          <p class="mn-count"><b></b> / ${pad(slides.length)}</p>
+          <button class="mn-fs">${icon.full}<span>Full screen</span></button>
         </div>
       </nav>
-    </header>`)
+    </div>`)
 
-  const bar = app.querySelector('.topbar')
+  const bar = app.querySelector('.deck-nav')
   const $ = (sel) => bar.querySelector(sel)
-  const burger = $('.tb-burger')
-  const secBtns = [...bar.querySelectorAll('.tb-sec')]
-  const lists = [...bar.querySelectorAll('.tb-list')]
+  const burger = $('.mn-burger')
+  const secBtns = [...bar.querySelectorAll('.mn-sec')]
+  const lists = [...bar.querySelectorAll('.mn-list')]
   let current = 0
 
   // ---------- which section's slides the right-hand pane shows ----------
@@ -78,13 +76,13 @@ export function createTopbar(app, deck, { sections, slides, chrome }) {
     onKey(e) {
       if (e.key === 'Escape' || e.key === 'm' || e.key === 'M') { close(); return true }
       if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
-        const col = document.activeElement?.closest('.tb-list') ? [...bar.querySelectorAll('.tb-list.on button')] : secBtns.filter((b) => !b.disabled)
+        const col = document.activeElement?.closest('.mn-list') ? [...bar.querySelectorAll('.mn-list.on button')] : secBtns.filter((b) => !b.disabled)
         const at = col.indexOf(document.activeElement)
         col[(at + (e.key === 'ArrowDown' ? 1 : -1) + col.length) % col.length]?.focus()
         return true
       }
-      if (e.key === 'ArrowRight') { bar.querySelector('.tb-list.on button')?.focus(); return true }
-      if (e.key === 'ArrowLeft') { bar.querySelector('.tb-sec.shown')?.focus(); return true }
+      if (e.key === 'ArrowRight') { bar.querySelector('.mn-list.on button')?.focus(); return true }
+      if (e.key === 'ArrowLeft') { bar.querySelector('.mn-sec.shown')?.focus(); return true }
       return e.key !== 'Tab' && e.key !== 'Enter' && e.key !== ' '
     },
   }
@@ -125,10 +123,10 @@ export function createTopbar(app, deck, { sections, slides, chrome }) {
     close()
     if (i >= 0) deck.go(i)
   })
-  $('.tb-logo').addEventListener('click', () => { close(); deck.go(0) })
+  $('.mn-logo').addEventListener('click', () => { close(); deck.go(0) })
 
   // ---------- full screen ----------
-  const fsBtn = $('.tb-fs')
+  const fsBtn = $('.mn-fs')
   fsBtn.addEventListener('click', chrome.toggleFullscreen)
   document.addEventListener('fullscreenchange', () => {
     fsBtn.innerHTML = `${document.fullscreenElement ? icon.exit : icon.full}<span>${document.fullscreenElement ? 'Exit full screen' : 'Full screen'}</span>`
@@ -139,10 +137,8 @@ export function createTopbar(app, deck, { sections, slides, chrome }) {
       current = i
       const sec = slides[i]?.section
       secBtns.forEach((b) => b.classList.toggle('here', b.dataset.section === sec))
-      bar.querySelectorAll('.tb-item').forEach((b) => b.classList.toggle('here', Number(b.dataset.go) === i))
-      $('.tb-here').textContent = groups.find((g) => g.id === sec)?.label ?? ''
-      $('.tb-count b').textContent = pad(i + 1)
-      $('.tb-progress i').style.transform = `scaleX(${(i + 1) / slides.length})`
+      bar.querySelectorAll('.mn-item').forEach((b) => b.classList.toggle('here', Number(b.dataset.go) === i))
+      $('.mn-count b').textContent = pad(i + 1)
     },
   }
 }
