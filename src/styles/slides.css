@@ -274,6 +274,7 @@
 .s-split .rule-bar { left: 59px; top: 354px; width: 788px; }
 .s-split .body { left: 59px; top: 422px; width: 770px; font-size: 35px; font-weight: var(--w-book); line-height: 50px; color: var(--midnight); }
 .s-split .media { overflow: hidden; }
+.s-split .media .cover-img { object-position: var(--focus, 50% 50%); }
 .s-split .media.diagram { left: 920px; top: 117px; width: 1002px; height: 795px; }
 .s-split .media.photo { left: 899px; top: 0; width: 1021px; height: 1080px; }
 .s-split .media.photo ~ .eyebrow { left: 61px; top: 57px; }

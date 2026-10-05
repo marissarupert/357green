@@ -400,7 +400,7 @@ export const slides = [
     eyebrowAccent: 'Ground Floor',
     title: 'Lobby & Retail',
     body: 'A warm, daylit arrival sequence wraps ~7,300 SF of street-activating retail beneath the tower, animating the corner of Green, Kinzie and Halsted.',
-    image: { src: 'assets/renders/lobby-retail.jpg', alt: 'Lobby and retail at the base of the tower' },
+    image: { src: 'assets/renders/lobby-retail.jpg', alt: 'Lobby and retail at the base of the tower', focus: '24% 50%' },
   },
 
   {
