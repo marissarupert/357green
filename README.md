@@ -68,7 +68,7 @@ image paths. Layout code never needs to change.
 | `render` | 14–15, 21–28, 31–33 | slow push-in, label tag slides in (`zoom`/`focus` crop the image) |
 | `section` | 16 | section wipes up, callouts draw out; hover a legend item to highlight that zone |
 | `featureGrid` | 17 | subtle clouds drift across the sky behind the text (`clouds`), still under reduced motion |
-| `split` | 19, 29 | 19 (`axo: true`): podium pieces drop in and the paseo route draws down from Halsted; hover a piece or key entry to pick it out, click to lift it (Esc sets it back), Explode / Paseo route toggles |
+| `split` | 19, 29 | 19 (`axo: true`): podium pieces drop in and the paseo route draws down from Halsted; hover a piece or key entry to pick it out, click to lift it (Esc sets it back), Paseo route toggle |
 | `keyed` | 20 | hover/focus a key item to highlight its spot (add `spot: [x, y]`) |
 | `amenities` | 30 | each "View more photos" opens a lightbox gallery |
 | `programming` | 35 | each "View plan" jumps to its test fit |

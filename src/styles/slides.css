@@ -318,12 +318,12 @@
 .axo svg.has-focus #axo-context, .axo svg.has-focus #axo-circulation_arrows,
 .axo svg.has-focus .piece:not(.is-hot):not(.is-selected) { opacity: .4; }
 .axo .footprint .foot { fill: none; stroke: var(--midnight); stroke-width: .9; stroke-dasharray: 4 4; }
-.axo .footprint { opacity: 0; transition: opacity .3s ease var(--delay, 0s); }
+.axo .footprint { opacity: 0; transition: opacity .3s ease; }
 .axo .footprint.is-on { opacity: .8; }
 .axo .leader { fill: none; stroke: var(--midnight); stroke-width: 1.2;
-  stroke-dasharray: var(--len, 0) 10000; stroke-dashoffset: var(--len, 0); transition: stroke-dashoffset .4s ease var(--delay, 0s); }
+  stroke-dasharray: var(--len, 0) 10000; stroke-dashoffset: var(--len, 0); transition: stroke-dashoffset .4s ease; }
 .axo .leader.is-on { stroke-dashoffset: 0; }
-.axo .leader-dot { fill: var(--midnight); opacity: 0; transition: opacity .3s ease var(--delay, 0s); }
+.axo .leader-dot { fill: var(--midnight); opacity: 0; transition: opacity .3s ease; }
 .axo .leader-dot.is-on { opacity: 1; }
 /* the route draws from its Halsted end down to Green Street, then flows downhill */
 .axo #axo-visual_connection_arcs { opacity: 0; transition: opacity .5s ease; }

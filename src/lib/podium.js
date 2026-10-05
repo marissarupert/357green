@@ -3,8 +3,8 @@
 // On entry the context fades in, the podium pieces drop into place one by one,
 // then the paseo route draws itself down from Halsted Street to Green Street.
 // Hover a piece (or its key entry) to pick it out; click or Enter lifts it off
-// its footprint, again or Esc sets it back. "Explode" lifts every piece;
-// "Paseo route" shows or hides the route and the visual connections.
+// its footprint, again or Esc sets it back. "Paseo route" shows or hides the
+// route and the visual connections.
 import { gsap } from 'gsap'
 import svg from '../assets/svg/podium-axo.svg?raw'
 import { esc } from './html.js'
@@ -20,8 +20,6 @@ export const PIECES = [
 ]
 const DROP = ['activated_plaza', 'paseo', 'retail', 'residential_lobby', 'residential_bike_room'] // entrance order
 const LIFT = 150 // drawing units a selected piece rises
-const EXPLODE = { activated_plaza: 40, paseo: 95, residential_bike_room: 150, retail: 205, residential_lobby: 270 }
-const STAGGER = 0.09
 
 export const render = () => `
   <div class="abs axo" data-interactive>
@@ -31,7 +29,6 @@ export const render = () => `
     </ul>
     <div class="axo-ctl" data-in="up" data-at="1.5">
       <div class="seg"><button type="button" data-act="route" aria-pressed="true">Paseo route</button></div>
-      <div class="seg"><button type="button" data-act="explode" aria-pressed="false">Explode</button></div>
     </div>
   </div>`
 
@@ -43,18 +40,15 @@ export function mount(el) {
   const byKey = (k) => layer.querySelector(`.piece[data-piece="${k}"]`)
   const forKey = (k) => draw.querySelectorAll(`[data-for="${k}"]`)
   const routeBtn = root.querySelector('[data-act="route"]')
-  const explodeBtn = root.querySelector('[data-act="explode"]')
-  let selected = null, exploded = false, hot = null
+  let selected = null, hot = null
 
   // the route draws from its Halsted end, so set its dash to its length
   const route = draw.querySelector('#axo-route_base')
   route.style.setProperty('--len', Math.ceil(route.getTotalLength()))
 
-  function lift(k, amount, delay = 0) {
-    const fast = reducedMotion.matches
-    gsap.to(byKey(k), { y: -amount, duration: fast ? 0 : 0.45, delay: fast ? 0 : delay, ease: 'power2.out', overwrite: 'auto' })
+  function lift(k, amount) {
+    gsap.to(byKey(k), { y: -amount, duration: reducedMotion.matches ? 0 : 0.45, ease: 'power2.out', overwrite: 'auto' })
     forKey(k).forEach((n) => {
-      n.style.setProperty('--delay', `${delay}s`)
       if (n.matches('.leader') && amount > 0) {
         n.setAttribute('d', `M${n.dataset.x},${n.dataset.y} V${n.dataset.y - amount}`)
         n.style.setProperty('--len', amount)
@@ -69,32 +63,23 @@ export function mount(el) {
     })
     root.querySelectorAll('.axo-key button').forEach((b) => b.classList.toggle('on', b.dataset.piece === (hot || selected)))
     draw.classList.toggle('has-focus', !!(hot || selected))
-    explodeBtn.setAttribute('aria-pressed', exploded)
   }
   // keep the drawing's stacking order, except a lifted piece draws on top
   const restoreOrder = () => pieces.forEach((p) => layer.appendChild(p))
 
   function reset() {
-    pieces.slice().reverse().forEach((p, i) => lift(p.dataset.piece, 0, exploded ? i * STAGGER / 2 : 0))
-    selected = null; exploded = false
+    pieces.forEach((p) => lift(p.dataset.piece, 0))
+    selected = null
     setTimeout(() => { if (!selected) restoreOrder() }, 450)
     paint()
   }
   function select(k) {
     if (selected === k) return reset()
-    if (exploded) { exploded = false; pieces.forEach((p) => p.dataset.piece !== k && lift(p.dataset.piece, 0)) }
     if (selected) lift(selected, 0)
     restoreOrder()
     selected = k
     layer.appendChild(byKey(k))
     lift(k, LIFT)
-    paint()
-  }
-  function explode() {
-    if (exploded) return reset()
-    restoreOrder()
-    selected = null; exploded = true
-    pieces.forEach((p, i) => lift(p.dataset.piece, EXPLODE[p.dataset.piece] ?? LIFT, i * STAGGER))
     paint()
   }
   const showRoute = (on) => { routeBtn.setAttribute('aria-pressed', on); draw.classList.toggle('show-route', on) }
@@ -115,9 +100,8 @@ export function mount(el) {
   root.querySelectorAll('.axo-key button').forEach((b) => bind(b, b.dataset.piece))
   draw.addEventListener('click', () => { if (selected) reset() })
   routeBtn.addEventListener('click', () => showRoute(routeBtn.getAttribute('aria-pressed') !== 'true'))
-  explodeBtn.addEventListener('click', explode)
   el.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && (selected || exploded)) { e.preventDefault(); e.stopPropagation(); reset() }
+    if (e.key === 'Escape' && selected) { e.preventDefault(); e.stopPropagation(); reset() }
   })
 
   el._axo = {
@@ -133,7 +117,7 @@ export function mount(el) {
       gsap.set(pieces, { y: 0 })
       gsap.set([...pieces, draw.querySelector('#axo-context'), draw.querySelector('#axo-circulation_arrows')], { clearProps: 'opacity' })
       pieces.forEach((p) => forKey(p.dataset.piece).forEach((n) => n.classList.remove('is-on')))
-      selected = null; exploded = false; hot = null
+      selected = null; hot = null
       restoreOrder(); paint(); showRoute(false)
     },
   }
