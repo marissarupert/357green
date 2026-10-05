@@ -26,25 +26,25 @@ const testFits = {
     rise: 'low', layout: 'open', title: 'Open Office',
     seats: '275 Seats', seatsDetail: '256 workstations  - 18 offices - reception',
     rsf: '117 RSF/ Seat', area: '31,070 USF · 32,230 RSF',
-    plan: { src: 'assets/plans/testfit-lowrise-open.jpg', alt: 'Low-rise open office test fit', box: [896, 113, 879, 917] },
+    plan: { src: 'assets/plans/testfit-lowrise-open.jpg', alt: 'Low-rise open office test fit', box: [923, 129, 831, 906] },
   },
   'low-perimeter': {
     rise: 'low', layout: 'perimeter', title: 'Perimeter Office',
     seats: '103 Seats', seatsDetail: '25 workstations · 77 offices (50 perimeter) · reception',
     rsf: '312 RSF/seat', area: '31,070 USF · 32,230 RSF',
-    plan: { src: 'assets/plans/testfit-lowrise-perimeter.jpg', alt: 'Low-rise perimeter office test fit', box: [934, 76, 915, 984] },
+    plan: { src: 'assets/plans/testfit-lowrise-perimeter.jpg', alt: 'Low-rise perimeter office test fit', box: [929, 116, 909, 940] },
   },
   'high-open': {
     rise: 'high', layout: 'open', title: 'Open Office',
     seats: '222 Seats', seatsDetail: '207 workstations · 14 offices · reception',
     rsf: '124 RSF/seat', area: '26,610 USF · 27,650 RSF',
-    plan: { src: 'assets/plans/testfit-highrise-open.jpg', alt: 'High-rise open office test fit', box: [905, 79, 993, 992] },
+    plan: { src: 'assets/plans/testfit-highrise-open.jpg', alt: 'High-rise open office test fit', box: [917, 98, 876, 945] },
   },
   'high-perimeter': {
     rise: 'high', layout: 'perimeter', title: 'Perimeter Office',
     seats: '90 Seats', seatsDetail: '27 workstations · 63 offices (42 perimeter) ·<br>reception',
     rsf: '307 RSF/seat', area: '26,610 USF · 27,650 RSF',
-    plan: { src: 'assets/plans/testfit-highrise-perimeter.jpg', alt: 'High-rise perimeter office test fit', box: [929, 61, 987, 1004] },
+    plan: { src: 'assets/plans/testfit-highrise-perimeter.jpg', alt: 'High-rise perimeter office test fit', box: [933, 99, 861, 929] },
   },
 }
 

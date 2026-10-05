@@ -111,5 +111,5 @@ Where these appear in the deck they are marked with a dashed "Placeholder" label
 - **Views** original wide panoramas (the deck's are 863 px wide)
 
 Low-resolution in the source PDF, and soft on large screens: plaza section (20),
-test-fit plans (36–39), views (41, 42),
+views (41, 42),
 aerial (11) and the Fulton Market photo (9).
