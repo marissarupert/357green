@@ -31,8 +31,7 @@ npm run build    # writes the finished deck to dist/
 | Section menu | M, or the ☰ button bottom left (7 sections, Development to Floor Plans) |
 | Full screen | F, or the ⛶ button bottom left |
 
-On **Shaped By the Site** each Next press reveals one more feature before the deck
-moves on. On the **Views** slides, ←/→ pan the focused panorama instead of
+On the **Views** slides, ←/→ pan the focused panorama instead of
 changing slides; click a panorama or Tab to it first.
 
 The menu and full-screen buttons fade out when the mouse is still. Every slide
@@ -63,7 +62,7 @@ image paths. Layout code never needs to change.
 | `iconStats` | 6 | numbers count up; carousel bars switch photos |
 | `bullets` | 7 | carousel bars switch photos |
 | `location` | 9 | numbers count up; map iframe slot (`map.url`) |
-| `features` | 11 | features reveal one per Next press |
+| `features` | 11 | features come in one after another, automatically |
 | `diagram` | 12 | |
 | `callouts` | 13 | hover/focus a label or dot to highlight both |
 | `render` | 14–15, 21–28, 31–33 | slow push-in, label tag slides in (`zoom`/`focus` crop the image) |

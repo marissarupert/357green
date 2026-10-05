@@ -129,7 +129,7 @@
 .s-bullets .list li + li { margin-top: 63px; }
 .s-bullets .mark { position: absolute; left: 0; color: var(--copper); }
 
-/* ---------- features, one at a time (slide 11) ---------- */
+/* ---------- features, staggered in (slide 11) ---------- */
 .s-features .media { left: 1100px; top: 0; width: 820px; height: 1080px; overflow: hidden; }
 .s-features .eyebrow { left: 60px; top: 54px; font-size: 20px; letter-spacing: .1em; }
 .s-features .title { left: 59px; top: 158px; font-size: 119px; line-height: 1; white-space: nowrap; }
