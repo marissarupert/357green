@@ -102,7 +102,8 @@ export const slides = [
     title: 'The New<br>Standard',
     body: 'The office market has entered a new phase. Progressive, employee-centric organizations now prioritize quality as the most important workplace criterion, for the benefit of people, culture, and, simply put, the joy of work. Fulton Market has entered a new phase, too. It’s now a mature submarket with a single premier office development site remaining, 357 Green.',
     kicker: 'Take the opportunity to make a forever mark on Chicago’s skyline.',
-    image: { src: 'assets/renders/tower-sunset.jpg', alt: '357 Green tower at sunset against the Chicago skyline' },
+    image: { src: 'assets/renders/new-standard.jpg', alt: '357 Green tower at sunset against the Chicago skyline', focus: '50% 30%' },
+    bleed: true,
   },
 
   {

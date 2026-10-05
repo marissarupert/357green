@@ -57,7 +57,7 @@ image paths. Layout code never needs to change.
 |---|---|---|
 | `cover` | 1 | logo, copper rule, then tagline animate in |
 | `video` | 2 | muted looping video; poster + placeholder until `video.src` is set |
-| `intro` | 3 | |
+| `intro` | 3 | `bleed: true`: full-bleed render with a slow push-in, text in a left column over a midnight gradient |
 | `overview` | 4 | numbers count up, rows stagger in |
 | `divider` | 5, 8, 10, 18, 34, 40, 43 | numeral and title animate in, watermark drifts |
 | `iconStats` | 6 | numbers count up; carousel bars switch photos |

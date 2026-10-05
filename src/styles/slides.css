@@ -106,6 +106,19 @@
 .s-intro .rule-bar { left: 75px; top: 512px; width: 739px; --bh: 13px; --rule: rgba(255, 255, 255, .8); }
 .s-intro .body { left: 75px; top: 599px; width: 1010px; font-size: 30px; line-height: 47px; letter-spacing: -.008em; }
 .s-intro .kicker { left: 75px; top: 893px; font-size: 30px; font-weight: var(--w-demi); line-height: 1; white-space: nowrap; }
+/* full bleed: the render under the whole slide, text in a column over the sky */
+.s-intro .media.bleed { left: 0; width: 1920px; }
+.s-intro .media.bleed .push { position: absolute; inset: 0; transform-origin: 45% 30%; }
+.s-intro .media.bleed .cover-img { object-position: var(--focus, 50% 50%); }
+.s-intro .scrim { left: 0; top: 0; width: 1920px; height: 1080px; pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(28, 29, 43, .9) 0%, rgba(28, 29, 43, .78) 26%, rgba(28, 29, 43, .38) 40%, rgba(28, 29, 43, 0) 52%),
+    linear-gradient(0deg, rgba(28, 29, 43, .45) 0%, rgba(28, 29, 43, 0) 30%); }
+.s-intro:has(.bleed) .title { left: 70px; top: 120px; font-size: 124px; line-height: 136px; }
+.s-intro:has(.bleed) .rule-bar { left: 76px; top: 432px; width: 600px; }
+.s-intro:has(.bleed) .body { left: 76px; top: 490px; width: 640px; font-size: 26px; line-height: 40px; text-shadow: 0 1px 12px rgba(28, 29, 43, .35); }
+.s-intro:has(.bleed) .kicker { left: 76px; top: 900px; width: 640px; font-size: 27px; line-height: 38px; white-space: normal; color: var(--white); }
+.s-intro:has(.bleed) .kicker::before { content: ""; display: block; width: 54px; height: 3px; margin-bottom: 18px; background: var(--copper); }
 
 /* ---------- section dividers ---------- */
 .s-divider .heading { left: 50px; top: 580px; display: flex; align-items: baseline; gap: 98px; line-height: 1; white-space: nowrap; }
