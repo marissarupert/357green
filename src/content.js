@@ -48,12 +48,13 @@ const testFits = {
   },
 }
 
-// Panoramas shared by the two Views slides. Labels are as printed in the
-// static deck (slide 42's east view is also labelled HIGH-RISE there).
+// Panoramas shared by the two Views slides. The static deck tags slide 42's
+// east view "HIGH-RISE", but the photo itself is captioned "View East |
+// Mid-Rise", so it is labelled Mid-Rise here.
 const views = [
   { id: 'east-high', direction: 'east', height: 'high-rise', label: 'View East | High-Rise', src: 'assets/views/east-high-rise.jpg' },
   { id: 'west-high', direction: 'west', height: 'high-rise', label: 'View West | High-Rise', src: 'assets/views/west-high-rise.jpg' },
-  { id: 'east-high-2', direction: 'east', height: 'high-rise', label: 'View East | High-Rise', src: 'assets/views/east-high-rise-2.jpg' },
+  { id: 'east-mid', direction: 'east', height: 'mid-rise', label: 'View East | Mid-Rise', src: 'assets/views/east-mid-rise.jpg' },
   { id: 'west-mid', direction: 'west', height: 'mid-rise', label: 'View West | Mid-Rise', src: 'assets/views/west-mid-rise.jpg' },
 ]
 
@@ -437,7 +438,7 @@ export const slides = [
   // ---------- 06 Views ----------
   { id: 'views', ref: 40, type: 'divider', section: 'views', theme: 'dark', number: '06', title: 'Views' },
   { id: 'views-high-rise', ref: 41, type: 'views', section: 'views', theme: 'light', views, show: ['east-high', 'west-high'], strips: [[0, 526], [552, 528]] },
-  { id: 'views-mid-rise', ref: 42, type: 'views', section: 'views', theme: 'light', views, show: ['east-high-2', 'west-mid'], strips: [[0, 493], [557, 523]] },
+  { id: 'views-mid-rise', ref: 42, type: 'views', section: 'views', theme: 'light', views, show: ['east-mid', 'west-mid'], strips: [[0, 493], [557, 523]] },
 
   // ---------- 07 Floor Plans ----------
   { id: 'floor-plans', ref: 43, type: 'divider', section: 'floor-plans', theme: 'dark', number: '07', title: 'Floor Plans' },

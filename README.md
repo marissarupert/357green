@@ -106,7 +106,7 @@ Where these appear in the deck they are marked with a dashed "Placeholder" label
 - **Slides 6, 7** carousel photos 2–4 (the static deck shows four bars, one photo)
 - **Slide 16** layered or higher-resolution building section, for the zone legend
 - **Slide 20** source diagram with the 01–11 spot positions
-- **Views** original wide panoramas (the deck's are 863 px wide) and an East Mid-Rise view
+- **Views** original wide panoramas (the deck's are 863 px wide)
 
 Low-resolution in the source PDF, and soft on large screens: elevation (12),
 materiality (13), building section (16), paseo diagram (19), plaza section (20),
