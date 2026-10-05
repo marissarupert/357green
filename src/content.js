@@ -459,11 +459,11 @@ export const slides = [
     eyebrow: 'Floor Plans',
     title: 'Lobby',
     legend: [
-      { swatch: '#ae9ac1', label: 'Retail' },
-      { swatch: '#fdfbbc', label: 'Lobby' },
-      { swatch: '#d3d3d3', label: 'Back of house, trash, loading' },
+      { swatch: '#b77859', label: 'Retail' },
+      { swatch: '#bccad5', label: 'Lobby' },
+      { swatch: '#8d9899', label: 'Loading Dock / Service Entry' },
     ],
-    image: { src: 'assets/plans/lobby.jpg', alt: 'Ground floor plan', box: [745, -3, 1177, 1005] },
+    image: { src: 'assets/plans/lobby.jpg', alt: 'Ground floor plan', box: [746, 0, 1174, 954] },
   },
 
   {
@@ -476,11 +476,11 @@ export const slides = [
     title: 'Second Floor',
     subtitle: 'Amenity Footprint',
     legend: [
-      { swatch: '#f8c5a8', label: 'Amenity and patio' },
-      { swatch: '#ffffff', label: 'Open to below', outline: true },
-      { swatch: '#caba8c', label: 'Terrace and landscape' },
+      { swatch: '#b77859', label: 'Paseo Lounge and Conference' },
+      { swatch: '#bccad5', label: 'Paseo + Terrace' },
+      { swatch: '#8d9899', label: 'Parking Entry' },
     ],
-    image: { src: 'assets/plans/second-floor.jpg', alt: 'Second floor amenity plan', box: [716, -1, 1207, 974] },
+    image: { src: 'assets/plans/second-floor.jpg', alt: 'Second floor amenity plan', box: [719, 0, 1201, 954] },
   },
 
   // ---------- closing ----------

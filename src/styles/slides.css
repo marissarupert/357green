@@ -296,18 +296,16 @@
 .s-floorplan .title { left: 53px; top: 178px; font-size: 110px; line-height: 1; white-space: nowrap; }
 .s-floorplan .subtitle { left: 60px; top: 328px; font-size: 50px; line-height: 1; color: var(--midnight); white-space: nowrap; }
 .s-floorplan .rule-bar { left: 60px; top: 350px; width: 621px; }
-.s-floorplan .legend-head { left: 60px; top: 465px; font-size: 28px; font-weight: var(--w-medium); text-transform: uppercase; color: var(--copper); line-height: 1; }
-.s-floorplan .legend { left: 60px; top: 527px; width: 509px; list-style: none; color: var(--midnight); }
-.s-floorplan .legend li { display: flex; height: 78px; padding-top: 17px; border-top: 1px solid var(--slate); font-size: 28px; line-height: 1; }
+.s-floorplan .legend-head { left: 65px; top: 439px; font-size: 32px; font-weight: var(--w-medium); text-transform: uppercase; letter-spacing: .04em; color: var(--copper); line-height: 1; }
+.s-floorplan .legend { left: 65px; top: 496px; width: 571px; list-style: none; color: var(--midnight); }
+.s-floorplan .legend li { display: flex; align-items: center; height: 85px; border-top: 1px solid var(--slate); font-size: 33px; line-height: 1; white-space: nowrap; }
 .s-floorplan .legend li:last-child { border-bottom: 1px solid var(--slate); }
-.s-floorplan .legend i { width: 64px; height: 35px; margin-right: 48px; flex: none; }
-.s-floorplan .legend li { align-items: flex-start; }
-.s-floorplan .legend li { padding-top: 17px; }
-.s-floorplan .legend li > i + * { margin-top: 11px; }
+.s-floorplan .legend i { width: 69px; height: 38px; margin-right: 55px; flex: none; }
+.s-floorplan .rule-bar { top: 355px; }
 .s-floorplan .has-sub .title { left: 59px; top: 175px; }
-.s-floorplan .has-sub .rule-bar { top: 432px; }
-.s-floorplan .has-sub .legend-head { top: 551px; }
-.s-floorplan .has-sub .legend { top: 613px; }
+.s-floorplan .has-sub .rule-bar { top: 438px; }
+.s-floorplan .has-sub .legend-head { top: 503px; }
+.s-floorplan .has-sub .legend { top: 560px; }
 
 /* ---------- thank you (slide 46) ---------- */
 .s-contact .title { left: 59px; top: 178px; font-size: 110px; line-height: 1; white-space: nowrap; }

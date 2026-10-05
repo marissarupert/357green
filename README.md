@@ -108,5 +108,5 @@ Where these appear in the deck they are marked with a dashed "Placeholder" label
 
 Low-resolution in the source PDF, and soft on large screens: elevation (12),
 building section (16), paseo diagram (19), plaza section (20),
-lobby render (29), test-fit plans (36–39), floor plans (44, 45), views (41, 42),
+lobby render (29), test-fit plans (36–39), views (41, 42),
 aerial (11), sustainability background (17) and the Fulton Market photo (9).
