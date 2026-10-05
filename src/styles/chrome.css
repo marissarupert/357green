@@ -1,0 +1,95 @@
+/* ---------- up/down arrows, bottom right of every slide (as in the deck) ---------- */
+.deck-arrows {
+  position: absolute; left: 1844px; top: 976px; z-index: 20;
+  display: grid; gap: 3px;
+  color: var(--white);
+  transition: color .3s;
+}
+#stage.on-light .deck-arrows { color: var(--midnight); }
+.deck-arrows button { width: 45px; height: 44px; display: block; transition: transform .25s var(--ease), color .25s, opacity .25s; }
+.deck-arrows button svg { width: 100%; height: 100%; display: block; }
+.deck-arrows button:hover { color: var(--copper); transform: scale(1.08); }
+.deck-arrows button:disabled { opacity: .3; pointer-events: none; }
+
+/* ---------- presenter controls: menu + fullscreen, bottom left, auto-hide ---------- */
+.deck-controls {
+  position: absolute; left: 24px; bottom: 22px; z-index: 40;
+  display: flex; gap: 10px;
+  transition: opacity .4s;
+}
+#stage.idle .deck-controls { opacity: 0; pointer-events: none; }
+.ctl {
+  width: 44px; height: 44px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: rgba(28, 29, 43, .55); color: var(--white);
+  backdrop-filter: blur(6px);
+  transition: background .25s, transform .25s var(--ease);
+}
+.ctl:hover { background: var(--copper); transform: scale(1.06); }
+.ctl svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ---------- progress: a thin copper line along the bottom edge ---------- */
+.deck-progress { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; z-index: 30; background: rgba(255, 255, 255, .08); }
+#stage.on-light .deck-progress { background: rgba(28, 29, 43, .08); }
+.deck-progress i { position: absolute; inset: 0 auto 0 0; width: 0; background: var(--copper); opacity: .85; transition: width .5s var(--ease); }
+
+/* ---------- section menu ---------- */
+.deck-menu {
+  position: absolute; inset: 0; z-index: 50;
+  background: var(--midnight);
+  display: grid; grid-template-columns: 1fr 640px;
+  clip-path: inset(0 0 100% 0); visibility: hidden;
+  transition: clip-path .6s var(--ease), visibility 0s .6s;
+}
+.deck-menu.open { clip-path: inset(0); visibility: visible; transition: clip-path .6s var(--ease), visibility 0s; }
+.deck-menu .wm { position: absolute; left: -300px; top: -220px; width: 2830px; color: var(--watermark); pointer-events: none; }
+.deck-menu .wm svg { width: 100%; height: auto; }
+.menu-list { position: relative; padding: 120px 0 0 120px; list-style: none; }
+.menu-head { position: relative; padding: 0 0 36px 120px; margin-top: 110px; font-size: 22px; letter-spacing: .14em; color: var(--powder); }
+.menu-item {
+  display: flex; align-items: baseline; gap: 34px; width: 1000px;
+  padding: 14px 0 16px; border-bottom: 1px solid rgba(255, 255, 255, .14);
+  text-align: left; color: rgba(255, 255, 255, .72);
+  transition: color .25s;
+}
+.menu-item .n { width: 74px; font-size: 46px; font-weight: var(--w-light); color: var(--copper); font-variant-numeric: tabular-nums; }
+.menu-item .t { position: relative; font-size: 52px; line-height: 1.1; }
+.menu-item .t::after {
+  content: ""; position: absolute; left: 0; bottom: -6px; width: 106px; height: 6px;
+  background: var(--copper); clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+  transform: scaleX(0); transform-origin: left; transition: transform .4s var(--ease);
+}
+.menu-item:focus-visible { outline: none; }
+.menu-item:hover, .menu-item:focus-visible, .menu-item.active { color: var(--white); }
+.menu-item:hover .t::after, .menu-item:focus-visible .t::after, .menu-item.active .t::after { transform: scaleX(1); }
+.menu-item:disabled { opacity: .35; cursor: default; }
+.menu-item:disabled .t::after { display: none; }
+.menu-side { position: relative; display: flex; flex-direction: column; justify-content: space-between; padding: 110px 120px 120px 0; align-items: flex-end; }
+.menu-side .logo { width: 212px; color: var(--white); }
+.menu-side .logo svg { width: 100%; height: auto; }
+.menu-close { width: 56px; height: 56px; }
+.menu-close svg { width: 26px; height: 26px; }
+
+/* ---------- lightbox ---------- */
+.lightbox {
+  position: absolute; inset: 0; z-index: 60;
+  background: rgba(20, 21, 31, .97);
+  opacity: 0; visibility: hidden;
+  transition: opacity .35s, visibility 0s .35s;
+}
+.lightbox.open { opacity: 1; visibility: visible; transition: opacity .35s, visibility 0s; }
+.lb-frame { position: absolute; left: 160px; top: 70px; width: 1600px; height: 900px; }
+.lb-frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+.lb-tag {
+  position: absolute; left: 160px; top: 1000px;
+  display: flex; align-items: center; gap: 24px;
+  font-size: 22px; font-weight: var(--w-medium); letter-spacing: .12em; text-transform: uppercase;
+}
+.lb-tag .of { color: var(--grey); letter-spacing: .08em; }
+.lb-nav { position: absolute; top: 490px; width: 64px; height: 64px; border: 2px solid rgba(255,255,255,.8); }
+.lb-nav.prev { left: 60px; }
+.lb-nav.next { right: 60px; }
+.lb-nav svg { width: 26px; height: 26px; }
+.lb-close { position: absolute; right: 48px; top: 40px; width: 56px; height: 56px; }
+.lb-close svg { width: 26px; height: 26px; }
+.lightbox.single .lb-nav, .lightbox.single .of { display: none; }
