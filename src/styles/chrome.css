@@ -11,28 +11,6 @@
 .deck-arrows button:hover { color: var(--copper); transform: scale(1.08); }
 .deck-arrows button:disabled { opacity: .3; pointer-events: none; }
 
-/* ---------- presenter controls: menu + fullscreen, bottom left, auto-hide ---------- */
-.deck-controls {
-  position: absolute; left: 24px; bottom: 22px; z-index: 40;
-  display: flex; gap: 10px;
-  transition: opacity .4s;
-}
-#stage.idle .deck-controls { opacity: 0; pointer-events: none; }
-.ctl {
-  width: 44px; height: 44px; border-radius: 50%;
-  display: grid; place-items: center;
-  background: rgba(28, 29, 43, .55); color: var(--white);
-  backdrop-filter: blur(6px);
-  transition: background .25s, transform .25s var(--ease);
-}
-.ctl:hover { background: var(--copper); transform: scale(1.06); }
-.ctl svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-
-/* ---------- progress: a thin copper line along the bottom edge ---------- */
-.deck-progress { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; z-index: 30; background: rgba(255, 255, 255, .08); }
-#stage.on-light .deck-progress { background: rgba(28, 29, 43, .08); }
-.deck-progress i { position: absolute; inset: 0 auto 0 0; width: 0; background: var(--copper); opacity: .85; transition: width .5s var(--ease); }
-
 /* ---------- section menu ---------- */
 .deck-menu {
   position: absolute; inset: 0; z-index: 50;
@@ -93,3 +71,80 @@
 .lb-close { position: absolute; right: 48px; top: 40px; width: 56px; height: 56px; }
 .lb-close svg { width: 26px; height: 26px; }
 .lightbox.single .lb-nav, .lightbox.single .of { display: none; }
+
+/* ---------- top bar: pinned above the slide (the stage scales into the space below) ---------- */
+.topbar {
+  --tb-h: 56px;
+  position: fixed; left: 0; right: 0; top: 0; z-index: 100; height: var(--tb-h);
+  display: flex; align-items: center; gap: 22px; padding: 0 14px 0 22px;
+  background: var(--midnight);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .07), 0 8px 24px rgba(0, 0, 0, .25);
+  color: var(--white); font-size: 13px; font-weight: var(--w-medium); letter-spacing: .12em; text-transform: uppercase;
+  user-select: none;
+}
+.topbar button:focus-visible { outline: 2px solid var(--copper); outline-offset: -2px; }
+.tb-logo { flex: none; height: 30px; padding: 0 6px 0 0; color: var(--white); transition: color .25s; }
+.tb-logo svg { height: 100%; width: auto; display: block; }
+.tb-logo:hover { color: var(--powder); }
+
+.tb-nav { position: relative; flex: 1; min-width: 0; height: 100%; }
+.tb-nav ul { display: flex; height: 100%; list-style: none; }
+.tb-sec { position: relative; height: 100%; }
+.tb-tab {
+  height: 100%; padding: 0 14px; display: flex; align-items: center; gap: 8px; white-space: nowrap;
+  color: rgba(255, 255, 255, .6); transition: color .25s;
+}
+.tb-tab .n { font-size: 10px; letter-spacing: .06em; color: var(--copper); font-variant-numeric: tabular-nums; transform: translateY(-4px); }
+.tb-sec:hover .tb-tab, .tb-tab:focus-visible, .tb-sec.on .tb-tab { color: var(--white); }
+.tb-tab:disabled { opacity: .35; cursor: default; }
+.tb-ink {
+  position: absolute; left: 0; bottom: 9px; height: 3px; width: 0; pointer-events: none;
+  background: var(--copper); clip-path: polygon(3px 0, 100% 0, calc(100% - 3px) 100%, 0 100%);
+  transition: transform .5s var(--ease), width .5s var(--ease), opacity .3s;
+}
+
+/* each section's slides drop down under its tab */
+.tb-drop {
+  position: absolute; left: 0; top: calc(100% - 4px); min-width: 300px; max-height: calc(100vh - 80px); overflow: auto;
+  padding: 10px 0; background: var(--midnight); border-top: 2px solid var(--copper);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, .4);
+  opacity: 0; visibility: hidden; transform: translateY(-6px);
+  transition: opacity .2s, transform .25s var(--ease), visibility 0s .25s;
+}
+.tb-sec:hover .tb-drop, .tb-sec:focus-within .tb-drop { opacity: 1; visibility: visible; transform: none; transition: opacity .2s, transform .25s var(--ease), visibility 0s; }
+.tb-sec.shut .tb-drop { opacity: 0; visibility: hidden; transform: translateY(-6px); }
+.tb-item {
+  display: flex; align-items: baseline; gap: 14px; width: 100%; padding: 9px 22px 9px 18px; text-align: left;
+  font-size: 14px; font-weight: var(--w-regular); letter-spacing: .02em; text-transform: none; white-space: nowrap;
+  color: rgba(255, 255, 255, .75); border-left: 3px solid transparent; transition: color .2s, background .2s, border-color .2s;
+}
+.tb-item .n { width: 20px; font-size: 11px; letter-spacing: .04em; color: var(--grey, #8b8d98); font-variant-numeric: tabular-nums; }
+.tb-item:hover, .tb-item:focus-visible { color: var(--white); background: rgba(255, 255, 255, .06); outline: none; }
+.tb-item.here { color: var(--white); border-left-color: var(--copper); }
+.tb-item.here .n { color: var(--copper); }
+
+.tb-here { display: none; }
+.tb-right { margin-left: auto; display: flex; align-items: center; gap: 6px; }
+.tb-count { margin-right: 10px; color: rgba(255, 255, 255, .5); font-variant-numeric: tabular-nums; letter-spacing: .08em; white-space: nowrap; }
+.tb-count b { color: var(--white); font-weight: var(--w-medium); }
+.tb-btn { width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; color: rgba(255, 255, 255, .8); transition: background .25s, color .25s; }
+.tb-btn:hover { background: var(--copper); color: var(--white); }
+.tb-btn svg { width: 19px; height: 19px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+/* progress through the deck along the bar's bottom edge */
+.tb-progress { position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: rgba(255, 255, 255, .06); }
+.tb-progress i { position: absolute; inset: 0; background: var(--copper); transform: scaleX(0); transform-origin: left; transition: transform .5s var(--ease); }
+
+/* narrow screens: the tabs give way to the current section name; ☰ opens the full menu */
+@media (max-width: 1180px) {
+  .tb-nav { display: none; }
+  .tb-here { display: block; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: rgba(255, 255, 255, .85); }
+}
+@media (max-width: 600px) {
+  .topbar { --tb-h: 48px; gap: 12px; padding: 0 6px 0 16px; font-size: 11px; }
+  .tb-logo { height: 24px; }
+  .tb-count { margin-right: 2px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tb-ink, .tb-progress i, .tb-drop { transition: none; }
+}

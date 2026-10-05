@@ -3,7 +3,7 @@
 // box on the tower pulses once, and the callouts draw out top to bottom.
 // Hovering or focusing a legend item fades the section back except that zone.
 // Fields: eyebrow, title,
-//         section{src, alt, box:[l,t,w,h]}, detail{src, alt, box}, ring:[l,t,w,h],
+//         drawing{src, alt, box:[l,t,w,h]}, detail{src, alt, box}, ring:[l,t,w,h],
 //         zones[{key, label, swatch, src, box}], callouts[{text, y, x1, x2, x}]
 import { esc, img, nBand, ruleBar } from '../lib/html.js'
 
@@ -14,10 +14,10 @@ export default {
     <p class="abs eyebrow" data-in="up">${esc(s.eyebrow)}</p>
     <h1 class="abs title" data-in="up">${esc(s.title)}</h1>
     ${ruleBar()}
-    <div class="abs drawing" data-in="wipe" data-at="0.35" style="${box(s.section.box)}">
-      ${img(s.section.src, s.section.alt)}
+    <div class="abs drawing" data-in="wipe" data-at="0.35" style="${box(s.drawing.box)}">
+      ${img(s.drawing.src, s.drawing.alt)}
     </div>
-    <div class="abs zone-dim" style="${box(s.section.box)}"></div>
+    <div class="abs zone-dim" style="${box(s.drawing.box)}"></div>
     ${s.zones.map((z) => `<div class="abs zone" data-zone="${esc(z.key)}" style="${box(z.box)}">${img(z.src, '')}</div>`).join('')}
     <span class="abs ring" style="${box(s.ring)}"></span>
     <div class="abs detail" data-in="up" data-at="1.1" style="${box(s.detail.box)}">${img(s.detail.src, s.detail.alt)}</div>

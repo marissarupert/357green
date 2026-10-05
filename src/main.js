@@ -5,6 +5,7 @@ import { sections, slides as content } from './content.js'
 import { types } from './slides/index.js'
 import { createDeck } from './deck.js'
 import { createChrome } from './chrome.js'
+import { createTopbar } from './topbar.js'
 import { createLightbox } from './lightbox.js'
 import { esc } from './lib/html.js'
 
@@ -29,9 +30,10 @@ const slides = content.map((s, i) => {
   return { ...s, el, type }
 })
 
-const deck = createDeck({ stage, slides, onChange: (i) => chrome.update(i) })
+const deck = createDeck({ stage, slides, onChange: (i) => { chrome.update(i); topbar.update(i) } })
 deck.lightbox = createLightbox(stage, deck)
 const chrome = createChrome(stage, deck, { sections, slides })
+const topbar = createTopbar(app, deck, { sections, slides, chrome })
 
 slides.forEach((s) => s.type?.mount?.(s.el, s, deck))
 

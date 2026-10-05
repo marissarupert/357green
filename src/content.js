@@ -302,7 +302,7 @@ export const slides = [
     eyebrow: 'Architecture',
     title: 'Building Section',
     // Positions in stage px, scaled from the source drawings (section at 0.514).
-    section: { src: 'assets/diagrams/building-section.jpg', alt: 'Building section through the tower', box: [444, 345, 996, 715] },
+    drawing: { src: 'assets/diagrams/building-section.jpg', alt: 'Building section through the tower', box: [444, 345, 996, 715] },
     detail: { src: 'assets/diagrams/section-detail.jpg', alt: 'Typical office floor section, 13’3” to bottom of slab', box: [50, 428, 394, 484] },
     ring: [753, 606, 42, 44],
     zones: [
