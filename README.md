@@ -68,7 +68,7 @@ image paths. Layout code never needs to change.
 | `render` | 14–15, 21–28, 31–33 | slow push-in, label tag slides in (`zoom`/`focus` crop the image) |
 | `section` | 16 | section wipes up, callouts draw out; hover a legend item to highlight that zone |
 | `featureGrid` | 17 | subtle clouds drift across the sky behind the text (`clouds`), still under reduced motion |
-| `split` | 19, 29 | |
+| `split` | 19, 29 | 19 (`axo: true`): podium pieces drop in and the paseo route draws down from Halsted; hover a piece or key entry to pick it out, click to lift it (Esc sets it back), Explode / Paseo route toggles |
 | `keyed` | 20 | hover/focus a key item to highlight its spot (add `spot: [x, y]`) |
 | `amenities` | 30 | each "View more photos" opens a lightbox gallery |
 | `programming` | 35 | each "View plan" jumps to its test fit |
@@ -79,6 +79,10 @@ image paths. Layout code never needs to change.
 
 All positions are in 1920×1080 stage pixels taken from the static deck, so a
 new slide of an existing type lines up automatically.
+
+The podium axo on slide 19 is a traced SVG (`src/assets/svg/podium-axo.svg`)
+from the SCB podium circulation sheet, made in the floor-plans session
+(branch `claude/relaxed-cerf-azko0e`, `floor-plans/tools/build_podium.py`).
 
 ## Swap an asset
 
@@ -105,6 +109,6 @@ Where these appear in the deck they are marked with a dashed "Placeholder" label
 - **Slide 20** source diagram with the 01–11 spot positions
 - **Views** original wide panoramas (the deck's are 863 px wide)
 
-Low-resolution in the source PDF, and soft on large screens: paseo diagram (19), plaza section (20),
+Low-resolution in the source PDF, and soft on large screens: plaza section (20),
 lobby render (29), test-fit plans (36–39), views (41, 42),
 aerial (11) and the Fulton Market photo (9).

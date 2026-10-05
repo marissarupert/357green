@@ -353,7 +353,7 @@ export const slides = [
     eyebrow: 'Tenant Experience',
     title: 'Built to Connect',
     body: 'A key feature of 357 Green is the paseo: a public pedestrian path that descends from Halsted Street to Green Street, threading through the podium and opening onto an activated plaza. It’s a placemaking front door for both the building and the block.',
-    image: { src: 'assets/diagrams/paseo.jpg', alt: 'Site plan of the paseo connecting Halsted Street and Green Street' },
+    axo: true, // interactive podium axo (src/lib/podium.js) in place of the paseo diagram
   },
 
   {
