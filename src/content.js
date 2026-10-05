@@ -196,11 +196,11 @@ export const slides = [
     ],
     neighborsLabel: 'HQ Neighbors',
     neighbors: [
-      { src: 'assets/logos/mcdonalds.png', alt: 'McDonald’s', width: 56 },
-      { src: 'assets/logos/wpp.png', alt: 'WPP', width: 121 },
-      { src: 'assets/logos/bcg.svg', alt: 'BCG', width: 92 },
-      { src: 'assets/logos/john-deere.png', alt: 'John Deere', width: 103 },
-      { src: 'assets/logos/sidley.png', alt: 'Sidley', width: 104 },
+      { src: 'assets/logos/mcdonalds.png', alt: 'McDonald’s', height: 52 },
+      { src: 'assets/logos/wpp.png', alt: 'WPP', height: 38, whiten: true },
+      { src: 'assets/logos/bcg.svg', alt: 'BCG', height: 40, whiten: true },
+      { src: 'assets/logos/john-deere.png', alt: 'John Deere', height: 64 },
+      { src: 'assets/logos/sidley.png', alt: 'Sidley', height: 30 },
     ],
     // Embedded interactive map (Stream GIS, ArcGIS Instant App). Swap the URL
     // to change it; left empty, the slot shows the static deck's "MAP" box.

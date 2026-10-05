@@ -27,6 +27,8 @@
 
 /* ---------- location: stats over photo + map slot (slide 9) ---------- */
 .s-location .bg { left: -1px; top: -1px; width: 1008px; height: 1082px; overflow: hidden; }
+/* darker wash on the left so the stats read clearly over the skyline */
+.s-location .bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(28, 29, 43, .82) 0%, rgba(28, 29, 43, .62) 55%, rgba(28, 29, 43, .3) 100%), linear-gradient(0deg, rgba(28, 29, 43, .55) 0%, rgba(28, 29, 43, 0) 35%); }
 .s-location .eyebrow { left: 44px; top: 127px; font-size: 30px; letter-spacing: .11em; }
 .s-location .title { left: 38px; top: 187px; font-size: 119px; line-height: 1; white-space: nowrap; }
 .s-location .rule-bar { left: 44px; top: 355px; width: 830px; --rule: rgba(255, 255, 255, .8); }
@@ -35,12 +37,18 @@
 .s-location .stat .l { margin-top: 16px; font-size: 30px; line-height: 47px; }
 .s-location .hq-rule { left: 47px; top: 792px; width: 827px; --rule: rgba(255, 255, 255, .8); }
 .s-location .hq-label { left: 47px; top: 842px; font-size: 30px; letter-spacing: .095em; }
-.s-location .logos { left: 48px; top: 905px; height: 72px; display: flex; align-items: center; gap: 69px; }
+.s-location .logos { left: 48px; top: 905px; width: 826px; height: 72px; display: flex; align-items: center; justify-content: space-between; }
 .s-location .logos span { display: block; }
-.s-location .logos img { width: 100%; height: auto; }
+.s-location .logos img { height: 100%; width: auto; }
+.s-location .logos .whiten img { filter: brightness(0) invert(1); }
 .s-location .map { left: 1006px; top: 0; width: 914px; height: 1080px; background: #3071d6; overflow: hidden; }
-.s-location .map:has(iframe) { background: #e9edf1; }
-.s-location .map iframe { width: 100%; height: 100%; border: 0; display: block; }
+.s-location .map:has(iframe) { background: var(--midnight); }
+.s-location .map iframe { position: relative; width: 100%; height: 100%; border: 0; display: block; }
+/* copper hairline along the seam between photo and map */
+.s-location .map::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--copper); z-index: 2; }
+.s-location .map .loading { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; gap: 14px; font-size: 26px; letter-spacing: .12em; text-transform: uppercase; color: var(--powder); }
+.s-location .map .loading span { font-size: 17px; letter-spacing: .06em; text-transform: none; opacity: .7; }
+.s-location .map .map-tag { left: 4px; top: 0; z-index: 3; pointer-events: none; }
 .s-location .map .word { position: absolute; inset: 0; display: grid; place-items: center; font-size: 160px; font-weight: var(--w-demi); line-height: 1; padding-top: 30px; }
 .s-location .map .ph-tag { position: absolute; left: 40px; bottom: 40px; font-size: 16px; }
 
