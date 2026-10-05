@@ -103,7 +103,7 @@ Where these appear in the deck they are marked with a dashed "Placeholder" label
 - **Futura 100** web fonts (Jost stands in)
 - **Slide 2** video file
 - **Slide 9** map embed URL and the two "##" hotel figures
-- **Slide 7** photos of SCB's Chicago case studies (135 South LaSalle, 210 N Carpenter, Canal Station)
+- **Slide 7** names for the first and fourth SCB case-study photos
 - **Slide 16** layered or higher-resolution building section, for the zone legend
 - **Slide 20** source diagram with the 01–11 spot positions
 - **Views** original wide panoramas (the deck's are 863 px wide)

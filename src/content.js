@@ -167,13 +167,13 @@ export const slides = [
       'Diverse skillset across office, hospitality and<br>residential',
       'Award-winning local team',
     ],
+    // SCB case studies. `focus` picks which part of each photo shows in the
+    // tall frame (object-position). Projects without a caption need a name.
     photos: [
-      { src: 'assets/photos/scb-chicago.jpg', alt: 'Chicago’s Tribune Tower and Michigan Avenue at dusk' },
-      // SCB's Chicago case studies (from scb.com). Swap each placeholder for
-      // { src: 'assets/photos/<file>.jpg', caption, focus } once supplied.
-      { placeholder: 'photo from scb.com', caption: '135 South LaSalle' },
-      { placeholder: 'photo from scb.com', caption: '210 N Carpenter' },
-      { placeholder: 'photo from scb.com', caption: 'Canal Station' },
+      { src: 'assets/photos/scb-riverwalk-tower.jpg', alt: 'SCB office tower on the Chicago Riverwalk', focus: '62% 50%' },
+      { src: 'assets/photos/scb-tribune-tower.jpg', caption: 'Tribune Tower', focus: '50% 40%' },
+      { src: 'assets/photos/scb-harrison-street.jpg', caption: 'Harrison Street', focus: '68% 50%' },
+      { src: 'assets/photos/scb-canopy-rendering.jpg', alt: 'SCB office tower entrance canopy, rendering', focus: '55% 50%' },
     ],
   },
 
