@@ -168,12 +168,12 @@ export const slides = [
       'Award-winning local team',
     ],
     // SCB case studies. `focus` picks which part of each photo shows in the
-    // tall frame (object-position). Projects without a caption need a name.
+    // tall frame (object-position).
     photos: [
       { src: 'assets/photos/scb-10-120-south-riverside.jpg', caption: '10 & 120 South Riverside', focus: '62% 50%' },
       { src: 'assets/photos/scb-tribune-tower.jpg', caption: 'Tribune Tower', focus: '50% 40%' },
       { src: 'assets/photos/scb-harrison-street.jpg', caption: 'Harrison Street', focus: '68% 50%' },
-      { src: 'assets/photos/scb-canopy-rendering.jpg', alt: 'SCB office tower entrance canopy, rendering', focus: '55% 50%' },
+      { src: 'assets/photos/scb-the-bell.jpg', caption: 'The Bell', focus: '50% 12%' },
     ],
   },
 
