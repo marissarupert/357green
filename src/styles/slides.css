@@ -170,6 +170,30 @@
 .s-callouts .active.dot { background: var(--copper); transform: scale(1.35); box-shadow: 0 0 0 7px rgba(165, 85, 47, .22); }
 .s-callouts .active.label { color: var(--copper); }
 .s-callouts .label:focus-visible, .s-callouts .dot:focus-visible { outline: none; }
+.s-callouts .label, .s-callouts .dot { cursor: pointer; }
+
+/* zoom lens: the drawing around the active dot, magnified, on its leader line */
+.s-callouts .lens {
+  position: absolute; width: 180px; height: 180px; border-radius: 50%; z-index: 4;
+  background-color: var(--white); background-repeat: no-repeat;
+  border: 3px solid var(--copper); box-shadow: 0 10px 30px rgba(28, 29, 43, .28);
+  opacity: 0; transform: scale(.6); pointer-events: none;
+  transition: opacity .25s, transform .35s var(--ease);
+}
+.s-callouts .lens.on { opacity: 1; transform: scale(1); }
+
+/* locked callout: everything but a spotlight around its dot fades back */
+.s-callouts .dim {
+  left: 0; top: 0; width: 1920px; height: 1080px; z-index: 1; pointer-events: none;
+  background: radial-gradient(circle at var(--sx, 0) var(--sy, 0), transparent 0 70px, rgba(255, 255, 255, .78) 92px);
+  opacity: 0; transition: opacity .35s;
+}
+.s-callouts.locked .dim { opacity: 1; }
+.s-callouts .callouts { z-index: 2; }
+/* dimmed with filter, not opacity, so it can't fight the entrance animation */
+.s-callouts.locked .callouts .label:not(.chosen), .s-callouts.locked .callouts .leader:not(.chosen) { filter: opacity(.3); }
+.s-callouts.locked .callouts .dot:not(.chosen) { filter: opacity(.45); }
+.s-callouts .callouts .label, .s-callouts .callouts .leader, .s-callouts .callouts .dot { transition: filter .3s, color .25s, background .25s, height .25s, transform .25s var(--ease), box-shadow .25s; }
 .s-callouts .note h3 { font-size: 28px; font-weight: var(--w-medium); color: var(--copper); text-transform: uppercase; line-height: 1; }
 .s-callouts .note .hairline { position: relative; display: block; margin-top: 18px; width: 589px; height: 2px; background: var(--midnight); }
 .s-callouts .note p { margin-top: 20px; font-size: 25px; line-height: 30px; color: var(--midnight); }

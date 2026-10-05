@@ -64,7 +64,7 @@ image paths. Layout code never needs to change.
 | `location` | 9 | numbers count up; embedded interactive map (`map.url`) |
 | `features` | 11 | features come in one after another, automatically |
 | `diagram` | 12 | |
-| `callouts` | 13 | hover/focus a label or dot to highlight both |
+| `callouts` | 13 | callouts play in; hover a label or dot for a zoom lens, click to spotlight (Esc to clear) |
 | `render` | 14–15, 21–28, 31–33 | slow push-in, label tag slides in (`zoom`/`focus` crop the image) |
 | `section` | 16 | zone legend waits on a layered/higher-res section |
 | `featureGrid` | 17 | |
