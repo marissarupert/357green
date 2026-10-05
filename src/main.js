@@ -35,5 +35,6 @@ const chrome = createChrome(stage, deck, { sections, slides })
 
 slides.forEach((s) => s.type?.mount?.(s.el, s, deck))
 
-// Wait for the font so first-slide text doesn't reflow mid-animation.
-document.fonts.ready.then(() => deck.start())
+// Wait for the font so first-slide text doesn't reflow mid-animation, but
+// never longer than a second.
+Promise.race([document.fonts.ready, new Promise((r) => setTimeout(r, 1000))]).then(() => deck.start())

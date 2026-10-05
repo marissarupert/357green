@@ -14,10 +14,13 @@ export function createDeck({ stage, slides, onChange }) {
 
   // ---------- fit the 16:9 stage to the window, letterboxed ----------
   const fit = () => {
-    scale = Math.min(innerWidth / W, innerHeight / H)
+    const vw = innerWidth || document.documentElement.clientWidth
+    const vh = innerHeight || document.documentElement.clientHeight
+    scale = Math.min(vw / W, vh / H) || 1
     stage.style.transform = `translate(-50%, -50%) scale(${scale})`
   }
   addEventListener('resize', fit)
+  new ResizeObserver(fit).observe(document.documentElement)
   fit()
 
   // ---------- images load for the current slide and its neighbours ----------
@@ -63,7 +66,8 @@ export function createDeck({ stage, slides, onChange }) {
     gsap.fromTo(next, { opacity: 0 }, { opacity: 1, duration: instant || reducedMotion.matches ? 0.01 : 0.4, ease: 'power1.out' })
     entrance = playEntrance(next, (tl) => slides[i].type?.enter?.(next, tl, slides[i], { backwards }))
 
-    if (location.hash.slice(1) !== slides[i].id) history.replaceState(null, '', `#${slides[i].id}`)
+    // Sandboxed frames (embedded previews) can refuse history updates.
+    if (location.hash.slice(1) !== slides[i].id) try { history.replaceState(null, '', `#${slides[i].id}`) } catch {}
     onChange?.(i)
   }
 
