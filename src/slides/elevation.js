@@ -2,7 +2,8 @@
 // On entry the ground draws, each elevation rises from it, the level markers
 // tick on as the building passes them, then the callouts reach out to both
 // towers top to bottom. Hover or focus a level to run a guide across both
-// towers; hover or focus a callout to pick out what it points at.
+// towers; hover or focus a callout (or one of its terracotta points) to pick
+// out what it points at.
 // Fields: eyebrow,
 //   fit{scale, x, y}  maps source-drawing px to stage px (stage = x + scale * px)
 //   and, all in source-drawing px:
@@ -45,7 +46,7 @@ export default {
       const [d1, d2] = c.dots, at = cTime(i)
       return `
       <span class="abs lead" data-co="${i}" data-in="line" data-at="${(at + 0.1).toFixed(2)}" style="left:${X(d1)}px;top:${Y(c.y)}px;width:${L(d2 - d1)}px"></span>
-      ${c.dots.map((d) => `<span class="abs dot" data-co="${i}" data-in="pop" data-at="${(at + 0.55).toFixed(2)}" style="left:${X(d)}px;top:${Y(c.y)}px"></span>`).join('')}
+      ${c.dots.map((d) => `<span class="abs dot" data-co="${i}" data-in="pop" data-at="${(at + 0.55).toFixed(2)}" style="left:${X(d)}px;top:${Y(c.y)}px;--pulse:${(at + 0.85).toFixed(2)}s"></span>`).join('')}
       <button class="abs callout${c.anchor ? ` at-${esc(c.anchor)}` : ''}" data-co="${i}" data-in="fade" data-at="${at.toFixed(2)}" style="left:${X(s.labelX)}px;top:${Y(c.y)}px">${rich(c.text)}</button>`
     }).join('')}
     ${nBand([0, 963, 1920, 117], { origin: [-21, 726 - 963] })}`
@@ -59,6 +60,6 @@ export default {
       b.addEventListener('pointerleave', off); b.addEventListener('blur', off)
     })
     bind('.level', 'data-level')
-    bind('.callout', 'data-co')
+    bind('.callout, .dot', 'data-co')
   },
 }

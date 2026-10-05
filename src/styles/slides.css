@@ -169,15 +169,19 @@
 .s-elevation .level.on { color: var(--copper); }
 .s-elevation .level:focus-visible { outline: none; }
 .s-elevation .lead { height: 1.5px; margin-top: -.75px; background: #333; transition: background-color .25s; }
-.s-elevation .dot { width: 9px; height: 9px; margin: -4.5px 0 0 -4.5px; border-radius: 50%; background: #222; transition: background-color .25s, box-shadow .25s; }
+/* Same terracotta points as Elevated Materiality (slide 13). */
+.s-elevation .dot { width: 18px; height: 18px; margin: -9px 0 0 -9px; border-radius: 50%; background: var(--white); border: 3px solid var(--copper); box-shadow: 0 1px 4px rgba(28, 29, 43, .35); cursor: pointer; transition: background-color .25s, transform .25s var(--ease), box-shadow .25s; }
+.s-elevation .dot::before { content: ""; position: absolute; inset: -12px; border-radius: 50%; }
+.s-elevation .dot::after { content: ""; position: absolute; inset: -3px; border-radius: 50%; border: 2px solid var(--copper); opacity: 0; pointer-events: none; }
+.s-elevation.is-current .dot::after { animation: callout-pulse 1.4s ease-out var(--pulse, 0s) 1; }
 .s-elevation .callout {
   padding: 1px 12px; white-space: nowrap; background: var(--white); transform: translate(-50%, -50%);
   font-size: 14px; font-weight: var(--w-demi); line-height: 17px; letter-spacing: .03em; text-transform: uppercase; text-align: center; color: #222;
   transition: color .25s;
 }
 .s-elevation .callout.at-last { transform: translate(-50%, calc(-100% + 9.5px)); }
-.s-elevation .lead.on, .s-elevation .dot.on { background: var(--copper); }
-.s-elevation .dot.on { box-shadow: 0 0 0 4px rgba(165, 85, 47, .25); }
+.s-elevation .lead.on { background: var(--copper); }
+.s-elevation .dot.on { background: var(--copper); transform: scale(1.35); box-shadow: 0 0 0 7px rgba(165, 85, 47, .22); }
 .s-elevation .callout.on { color: var(--copper); }
 .s-elevation .callout:focus-visible { outline: none; }
 
