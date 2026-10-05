@@ -396,14 +396,14 @@
 .pa-planter { fill: color-mix(in srgb, var(--espresso) 35%, var(--white)); stroke: var(--espresso); stroke-width: 1.2; }
 .pa-green { fill: color-mix(in srgb, var(--powder) 70%, var(--slate)); }
 .pa-person { fill: var(--midnight); }
-.pa-sight { fill: none; stroke: var(--copper); stroke-width: 2.6; stroke-dasharray: 11 8; }
-.pa-sight-head { fill: var(--copper); }
+.pa-sight { fill: none; stroke: var(--midnight); stroke-width: 2.6; stroke-dasharray: 11 8; }
+.pa-sight-head { fill: var(--midnight); }
 .pa-conn { fill: none; stroke: color-mix(in srgb, var(--powder) 55%, var(--midnight)); stroke-width: 2.6; stroke-dasharray: 11 8; }
 .pa-conn-head { fill: color-mix(in srgb, var(--powder) 55%, var(--midnight)); }
 .s-keyed.is-current .pa-conn { animation: pa-flow 1.6s linear 3.6s infinite; }
 @keyframes pa-flow { to { stroke-dashoffset: -38; } }
 .pa-lbl { font-size: 15.5px; font-weight: var(--w-demi); letter-spacing: .08em; fill: var(--midnight); }
-.pa-lbl-sight { fill: var(--copper); }
+.pa-lbl-sight { fill: var(--midnight); }
 .pa-lbl-conn { fill: color-mix(in srgb, var(--powder) 55%, var(--midnight)); }
 .pa-tag { font-size: 15px; font-weight: var(--w-demi); letter-spacing: .02em; fill: var(--copper); }
 .pa-tag.on-copper { fill: var(--white); }
