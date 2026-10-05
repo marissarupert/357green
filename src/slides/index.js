@@ -8,7 +8,7 @@ import iconStats from './iconStats.js'
 import bullets from './bullets.js'
 import location from './location.js'
 import features from './features.js'
-import diagram from './diagram.js'
+import elevation from './elevation.js'
 import callouts from './callouts.js'
 import render from './render.js'
 import section from './section.js'
@@ -23,7 +23,7 @@ import floorplan from './floorplan.js'
 import contact from './contact.js'
 
 export const types = {
-  cover, video, intro, overview, divider, iconStats, bullets, location, features, diagram,
+  cover, video, intro, overview, divider, iconStats, bullets, location, features, elevation,
   callouts, render, section, featureGrid, split, keyed, amenities, programming, testfit,
   views, floorplan, contact,
 }

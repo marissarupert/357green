@@ -12,6 +12,7 @@ import { gsap } from 'gsap'
 //   draw      callout leader line draws out from its dot
 //   pop       callout dot scales up from nothing
 //   wipe      revealed from the bottom up (a section building floor by floor)
+//   rise      a vertical line grows up from its foot, in step with a wipe
 //   count     (automatic) figures inside count up
 
 export const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)')
@@ -30,6 +31,7 @@ const FROM = {
   // These two hand transform back to CSS afterwards so hover states still apply.
   draw: (el, tl, at) => tl.from(el, { scaleX: 0, duration: 0.7, ease: 'power2.inOut', clearProps: 'transform' }, at),
   wipe: (el, tl, at) => tl.fromTo(el, { clipPath: 'inset(100% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.6, ease: 'power2.inOut', clearProps: 'clipPath' }, at),
+  rise: (el, tl, at) => tl.from(el, { scaleY: 0, transformOrigin: '50% 100%', duration: 1.6, ease: 'power2.inOut', clearProps: 'transform,transformOrigin' }, at),
   pop: (el, tl, at) => tl.from(el, { scale: 0, autoAlpha: 0, duration: 0.45, ease: 'back.out(2.4)', clearProps: 'transform,opacity,visibility' }, at),
 }
 

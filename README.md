@@ -63,7 +63,7 @@ image paths. Layout code never needs to change.
 | `bullets` | 7 | carousel bars switch photos |
 | `location` | 9 | numbers count up; embedded interactive map (`map.url`) |
 | `features` | 11 | features come in one after another, automatically |
-| `diagram` | 12 | |
+| `elevation` | 12 | elevations rise from the ground as level markers tick on, callouts reach out to both towers; hover a level for a guide line across both, hover a callout to pick out its points |
 | `callouts` | 13 | callouts play in; hover a label or dot for a zoom lens, click to spotlight (Esc to clear) |
 | `render` | 14–15, 21–28, 31–33 | slow push-in, label tag slides in (`zoom`/`focus` crop the image) |
 | `section` | 16 | section wipes up, callouts draw out; hover a legend item to highlight that zone |
@@ -105,7 +105,6 @@ Where these appear in the deck they are marked with a dashed "Placeholder" label
 - **Slide 20** source diagram with the 01–11 spot positions
 - **Views** original wide panoramas (the deck's are 863 px wide)
 
-Low-resolution in the source PDF, and soft on large screens: elevation (12),
-paseo diagram (19), plaza section (20),
+Low-resolution in the source PDF, and soft on large screens: paseo diagram (19), plaza section (20),
 lobby render (29), test-fit plans (36–39), views (41, 42),
 aerial (11) and the Fulton Market photo (9).

@@ -232,11 +232,34 @@ export const slides = [
   {
     id: 'elevation',
     ref: 12,
-    type: 'diagram',
+    type: 'elevation',
     section: 'architecture',
     theme: 'light',
     eyebrow: 'Architecture Elevation',
-    image: { src: 'assets/diagrams/elevation.jpg', alt: 'Tower elevation drawings' },
+    // Positions below are in px on the source drawing (2000 × 1053).
+    fit: { scale: 0.86, x: 100, y: 63.6 },
+    drawings: [
+      { src: 'assets/diagrams/elevation-west.jpg', alt: 'Narrow tower elevation', box: [178, 44, 472, 968] },
+      { src: 'assets/diagrams/elevation-east.jpg', alt: 'Broad tower elevation', box: [1000, 44, 768, 968] },
+    ],
+    ground: [5, 1995, 1013],
+    dims: { x: [192, 1789], top: 35 },
+    levelLines: [[50, 255], [1772, 1960]],
+    levels: [
+      { label: 'T/ Screen Wall', value: '484\' - 6"', y: 48 },
+      { label: 'Building Height', value: '439\' - 6"', y: 169 },
+      { label: 'Amenity', value: '213\' - 6"', y: 586 },
+      { label: 'T/ Parking', value: '108\' - 6"', y: 798 },
+    ],
+    labelX: 770,
+    callouts: [
+      { text: 'Architectural glass and<br>warm metal panel system<br>at mechanical enclosure', y: 110, dots: [464, 1038], anchor: 'last' },
+      { text: 'Glass guardrail', y: 156, dots: [411, 1250] },
+      { text: 'Architectural glass and warm<br>metal panel curtain wall system', y: 448, dots: [496, 1034] },
+      { text: 'Warm metal panel cladding', y: 764, dots: [463, 1037] },
+      { text: 'Architectural glass and warm<br>metal panel curtain wall system<br>with extruded metal mullion', y: 830, dots: [545, 1014] },
+      { text: 'Architectural glass<br>curtain wall system', y: 954, dots: [272, 1062] },
+    ],
   },
 
   {
