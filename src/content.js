@@ -305,6 +305,7 @@ export const slides = [
     eyebrow: 'Sustainability',
     title: 'Built well by design',
     background: 'assets/renders/sustainability.jpg',
+    clouds: ['assets/renders/clouds-far.png', 'assets/renders/clouds-near.png'],
     features: [
       { title: 'Lifestyle & Wellness', body: 'Accessible terraces and green space,<br>with the paseo open to the public.' },
       { title: 'Energy', body: 'A high-performance facade with<br>optimized heating and cooling.' },

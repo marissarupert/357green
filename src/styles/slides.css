@@ -233,6 +233,7 @@
 .s-featureGrid .f h3 { font-size: 50px; font-weight: var(--w-book); line-height: 1; }
 .s-featureGrid .f p { margin-top: 15px; font-size: 25px; line-height: 38px; color: var(--powder); }
 .s-featureGrid .badges { margin: 21px 0 0 -1px; display: flex; gap: 29px; align-items: center; }
+.s-featureGrid .sky { left: 0; top: 0; width: 1920px; height: 1080px; pointer-events: none; }
 
 /* ---------- split text + image (slides 19, 29) ---------- */
 .s-split .eyebrow { left: 60px; top: 54px; font-size: 20px; letter-spacing: .1em; }

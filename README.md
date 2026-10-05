@@ -67,7 +67,7 @@ image paths. Layout code never needs to change.
 | `callouts` | 13 | callouts play in; hover a label or dot for a zoom lens, click to spotlight (Esc to clear) |
 | `render` | 14–15, 21–28, 31–33 | slow push-in, label tag slides in (`zoom`/`focus` crop the image) |
 | `section` | 16 | section wipes up, callouts draw out; hover a legend item to highlight that zone |
-| `featureGrid` | 17 | |
+| `featureGrid` | 17 | subtle clouds drift across the sky behind the text (`clouds`), still under reduced motion |
 | `split` | 19, 29 | |
 | `keyed` | 20 | hover/focus a key item to highlight its spot (add `spot: [x, y]`) |
 | `amenities` | 30 | each "View more photos" opens a lightbox gallery |
@@ -108,4 +108,4 @@ Where these appear in the deck they are marked with a dashed "Placeholder" label
 Low-resolution in the source PDF, and soft on large screens: elevation (12),
 paseo diagram (19), plaza section (20),
 lobby render (29), test-fit plans (36–39), views (41, 42),
-aerial (11), sustainability background (17) and the Fulton Market photo (9).
+aerial (11) and the Fulton Market photo (9).
