@@ -24,8 +24,11 @@ export function createDeck({ stage, slides, onChange }) {
   const warm = (i) => {
     for (const j of [i, i + 1, i - 1, i + 2]) {
       els[j]?.querySelectorAll('[data-src]').forEach((n) => {
-        n.src = n.dataset.src
+        if (n.tagName === 'VIDEO') { if (j !== i) return; n.src = n.dataset.src }
+        else n.src = n.dataset.src
         n.removeAttribute('data-src')
+        // decode off the main thread now so the slide doesn't stall on entry
+        n.decode?.().catch(() => {})
       })
     }
   }
@@ -51,20 +54,27 @@ export function createDeck({ stage, slides, onChange }) {
       else gsap.to(prev, { opacity: 0, duration: 0.35, ease: 'power1.out', onComplete: done })
     }
 
+    const backwards = i < current
     current = i
     next.classList.add('is-current')
     next.removeAttribute('aria-hidden')
     next.inert = false
     stage.classList.toggle('on-light', slides[i].theme === 'light')
     gsap.fromTo(next, { opacity: 0 }, { opacity: 1, duration: instant || reducedMotion.matches ? 0.01 : 0.4, ease: 'power1.out' })
-    entrance = playEntrance(next, (tl) => slides[i].type?.enter?.(next, tl, slides[i]))
+    entrance = playEntrance(next, (tl) => slides[i].type?.enter?.(next, tl, slides[i], { backwards }))
 
     if (location.hash.slice(1) !== slides[i].id) history.replaceState(null, '', `#${slides[i].id}`)
     onChange?.(i)
   }
 
-  const next = () => go(current + 1)
-  const prev = () => go(current - 1)
+  // A slide type can take over next/prev for in-slide steps (step returns
+  // true when it consumed the press).
+  const step = (dir) => {
+    const s = slides[current]
+    return s?.type?.step?.(s.el, dir, s) === true
+  }
+  const next = () => { if (!step(1)) go(current + 1) }
+  const prev = () => { if (!step(-1)) go(current - 1) }
 
   // ---------- keyboard ----------
   addEventListener('keydown', (e) => {

@@ -61,7 +61,8 @@ export function playEntrance(slideEl, extra) {
 // Snap everything back to its final state (used when leaving a slide).
 export function settle(slideEl, tl) {
   tl?.kill()
-  gsap.set(slideEl.querySelectorAll('[data-in]'), { clearProps: 'transform,opacity,visibility,--bar,--line' })
+  const animated = slideEl.querySelectorAll('[data-in]')
+  if (animated.length) gsap.set(animated, { clearProps: 'transform,opacity,visibility,--bar,--line' })
   settleCounts(slideEl)
 }
 

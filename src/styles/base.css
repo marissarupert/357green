@@ -110,3 +110,38 @@ b, strong { font-weight: var(--w-demi); }
 .placeholder-val { opacity: .9; }
 
 .count { display: inline-block; }
+
+/* ---------- repeating N band ---------- */
+.n-band { position: absolute; background-color: var(--midnight); overflow: hidden; z-index: 2; }
+.n-band::before {
+  content: ""; position: absolute; inset: 0;
+  background-image: var(--band);
+  background-size: 1942px 430px; background-position: var(--bx, 0) var(--by, -237px);
+  opacity: .1;
+}
+.n-band.v::before { background-size: 430px 1944px; }
+
+/* ---------- angled label tag on renders ---------- */
+.img-tag {
+  position: absolute; left: 0; top: 0; z-index: 3;
+  height: 78px; padding: 0 92px 0 42px;
+  display: flex; align-items: center;
+  background: var(--midnight); color: var(--white);
+  clip-path: polygon(0 0, 100% 0, calc(100% - 42px) 100%, 0 100%);
+  font-size: 20px; font-weight: var(--w-medium); letter-spacing: .1em; text-transform: uppercase; white-space: nowrap;
+}
+
+/* ---------- giant 357 watermark (dividers, thank you) ---------- */
+.watermark { position: absolute; left: -302px; top: -219px; width: 2828px; color: var(--watermark); pointer-events: none; }
+.watermark svg { width: 100%; height: auto; display: block; }
+
+/* ---------- carousel bars (slides 6, 7) ---------- */
+.carousel { position: absolute; overflow: hidden; }
+.carousel .frame { position: absolute; inset: 0; opacity: 0; transition: opacity .6s var(--ease); }
+.carousel .frame.on { opacity: 1; }
+.carousel .frame.ph { background: #2e2f3b; display: grid; place-items: center; color: var(--powder); }
+.carousel .frame.ph .ph-tag { font-size: 16px; }
+.bars { position: absolute; display: flex; gap: 28px; z-index: 3; }
+.bars button { width: 153px; height: 24px; position: relative; }
+.bars button::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 7px; margin-top: -3.5px; background: #8d8d8d; transition: background .3s; }
+.bars button.on::after, .bars button:hover::after { background: var(--copper); }

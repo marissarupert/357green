@@ -21,4 +21,16 @@ export function countable(html) {
 }
 
 export const img = (src, alt = '', cls = '') =>
-  `<img class="${cls}" data-src="${esc(src)}" alt="${esc(alt)}" draggable="false">`
+  `<img class="${cls}" data-src="${esc(src)}" alt="${esc(alt)}" decoding="async" draggable="false">`
+
+// The repeating "N" band. `box` = [left, top, width, height] in stage px.
+// `origin` = where the PDF places the pattern image, relative to the box, so
+// the N's line up with the static deck. `vertical` uses the rotated texture.
+export const nBand = (box, { vertical = false, origin = [0, 0], cls = '' } = {}) => {
+  const [l, t, w, h] = box
+  const src = vertical ? 'assets/textures/n-band-v.jpg' : 'assets/textures/n-band.jpg'
+  return `<div class="n-band${vertical ? ' v' : ''} ${cls}" aria-hidden="true" style="left:${l}px;top:${t}px;width:${w}px;height:${h}px;--band:url('${src}');--bx:${origin[0]}px;--by:${origin[1]}px"></div>`
+}
+
+// Dark angled label tag used on full-bleed renders and views.
+export const tag = (label, cls = '') => `<p class="img-tag ${cls}" data-in="tag"><span>${esc(label)}</span></p>`
