@@ -147,8 +147,7 @@ export const slides = [
     // of a landscape photo shows in the tall frame (object-position).
     photos: [
       { src: 'assets/photos/onni-200-north-lasalle.jpg', caption: '200 North LaSalle', focus: '66% 50%' },
-      // Name to confirm: an Onni commercial building (Citibank sign, Goode Avenue).
-      { src: 'assets/photos/onni-commercial-glendale.jpg', alt: 'Onni commercial office building', focus: '50% 50%' },
+      { src: 'assets/photos/onni-700-w-chicago.jpg', caption: '700 W Chicago', focus: '50% 50%' },
       { src: 'assets/photos/onni-550-west-van-buren.jpg', caption: '550 West Van Buren', focus: '50% 50%' },
       { src: 'assets/photos/onni-225-randolph.jpg', caption: '225 Randolph', focus: '51% 50%' },
     ],
