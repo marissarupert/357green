@@ -71,7 +71,9 @@ b, strong { font-weight: var(--w-demi); }
 .cover-img { width: 100%; height: 100%; object-fit: cover; }
 
 /* ---------- shared type ---------- */
-/* One size for every eyebrow in the deck; slides only position and colour them. */
+/* One size and colour for every eyebrow in the deck (powder on dark slides,
+   slate on light ones). Each sits 32px above its title's capitals and lines
+   up with the title's first letter; slides only position them. */
 .eyebrow {
   font-size: 17px;
   letter-spacing: .14em;
@@ -80,6 +82,7 @@ b, strong { font-weight: var(--w-demi); }
   line-height: 1;
   white-space: nowrap;
 }
+.dark .eyebrow { color: var(--powder); }
 .eyebrow .accent { color: var(--copper); }
 
 /* copper bar plus hairline rule. --bw/--bh size the bar, --rule the line colour */
