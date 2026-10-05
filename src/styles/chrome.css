@@ -1,12 +1,13 @@
-/* ---------- up/down arrows, bottom right of every slide (as in the deck) ---------- */
+/* ---------- up/down arrows, bottom right of every slide (as in the deck) ----------
+   Always white on a translucent midnight disc, so they read on the dark bands,
+   photos and the white corners of light slides alike. */
 .deck-arrows {
   position: absolute; left: 1844px; top: 976px; z-index: 20;
   display: grid; gap: 3px;
   color: var(--white);
   transition: color .3s;
 }
-#stage.on-light .deck-arrows { color: var(--midnight); }
-.deck-arrows button { width: 45px; height: 44px; display: block; transition: transform .25s var(--ease), color .25s, opacity .25s; }
+.deck-arrows button { width: 45px; height: 44px; display: block; border-radius: 50%; background: rgba(28, 29, 43, .62); transition: transform .25s var(--ease), color .25s, opacity .25s; }
 .deck-arrows button svg { width: 100%; height: 100%; display: block; }
 .deck-arrows button:hover { color: var(--copper); transform: scale(1.08); }
 .deck-arrows button:disabled { opacity: .3; pointer-events: none; }
