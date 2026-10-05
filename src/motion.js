@@ -11,6 +11,7 @@ import { gsap } from 'gsap'
 //   tag       label tag slides in from the left
 //   draw      callout leader line draws out from its dot
 //   pop       callout dot scales up from nothing
+//   wipe      revealed from the bottom up (a section building floor by floor)
 //   count     (automatic) figures inside count up
 
 export const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)')
@@ -28,6 +29,7 @@ const FROM = {
   tag: (el, tl, at) => tl.from(el, { xPercent: -100, autoAlpha: 0, duration: 0.6, ease: 'power3.out' }, at),
   // These two hand transform back to CSS afterwards so hover states still apply.
   draw: (el, tl, at) => tl.from(el, { scaleX: 0, duration: 0.7, ease: 'power2.inOut', clearProps: 'transform' }, at),
+  wipe: (el, tl, at) => tl.fromTo(el, { clipPath: 'inset(100% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.6, ease: 'power2.inOut', clearProps: 'clipPath' }, at),
   pop: (el, tl, at) => tl.from(el, { scale: 0, autoAlpha: 0, duration: 0.45, ease: 'back.out(2.4)', clearProps: 'transform,opacity,visibility' }, at),
 }
 
@@ -67,7 +69,7 @@ export function playEntrance(slideEl, extra) {
 export function settle(slideEl, tl) {
   tl?.kill()
   const animated = slideEl.querySelectorAll('[data-in]')
-  if (animated.length) gsap.set(animated, { clearProps: 'transform,opacity,visibility,--bar,--line' })
+  if (animated.length) gsap.set(animated, { clearProps: 'transform,opacity,visibility,clipPath,--bar,--line' })
   settleCounts(slideEl)
 }
 

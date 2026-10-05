@@ -278,9 +278,22 @@ export const slides = [
     theme: 'light',
     eyebrow: 'Architecture',
     title: 'Building Section',
-    image: { src: 'assets/diagrams/building-section.jpg', alt: 'Building section drawing' },
-    // Zone highlighting needs a layered or higher-resolution section.
-    legendNote: 'Placeholder · interactive zone legend needs a higher-resolution section',
+    // Positions in stage px, scaled from the source drawings (section at 0.514).
+    section: { src: 'assets/diagrams/building-section.jpg', alt: 'Building section through the tower', box: [444, 345, 996, 715] },
+    detail: { src: 'assets/diagrams/section-detail.jpg', alt: 'Typical office floor section, 13’3” to bottom of slab', box: [50, 428, 394, 484] },
+    ring: [753, 606, 42, 44],
+    zones: [
+      { key: 'office', label: 'Office', swatch: '#78b2ce', src: 'assets/diagrams/section-zone-office.png', box: [701,  345,  252,  715] },
+      { key: 'amenity', label: 'Amenity', swatch: '#f8c2a2', src: 'assets/diagrams/section-zone-amenity.png', box: [701,  345,  252,  715] },
+      { key: 'parking', label: 'Parking', swatch: '#aabaab', src: 'assets/diagrams/section-zone-parking.png', box: [701,  345,  252,  715] },
+      { key: 'mech', label: 'Mech', swatch: '#d2daca', src: 'assets/diagrams/section-zone-mech.png', box: [701,  345,  252,  715] },
+    ],
+    callouts: [
+      { text: 'Rooftop Lounge and Roof Deck', y: 434, x1: 945, x2: 1221, x: 1229 },
+      { text: 'Full Amenity Floor with Tenant Lounge, Terrace and State of the Art “Spa Inspired” Wellness Center', y: 709, x1: 945, x2: 1221, x: 1229 },
+      { text: 'Alternative Amenity Floor Location', y: 849, x1: 945, x2: 1221, x: 1229 },
+      { text: '2nd Floor Conference Center', y: 963, x1: 945, x2: 1221, x: 1229 },
+    ],
   },
 
   {

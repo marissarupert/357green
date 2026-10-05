@@ -205,8 +205,25 @@
 .s-section .eyebrow { left: 68px; top: 64px; font-size: 30px; letter-spacing: .1em; }
 .s-section .title { left: 60px; top: 159px; font-size: 119px; line-height: 1; white-space: nowrap; }
 .s-section .rule-bar { left: 62px; top: 331px; width: 771px; }
-.s-section .drawing { left: 58px; top: 348px; width: 1270px; height: 684px; }
-.s-section .note { left: 70px; top: 1036px; color: var(--slate); }
+.s-section .drawing img, .s-section .detail img, .s-section .zone img { width: 100%; height: 100%; display: block; }
+/* right edge of the ground fades out rather than stopping at the band */
+.s-section .drawing { -webkit-mask-image: linear-gradient(90deg, #000 88%, transparent); mask-image: linear-gradient(90deg, #000 88%, transparent); }
+.s-section .zone-dim { background: rgba(255, 255, 255, .7); opacity: 0; transition: opacity .3s; pointer-events: none; }
+.s-section .zone { opacity: 0; transition: opacity .3s; pointer-events: none; }
+.s-section.zoning .zone-dim, .s-section .zone.on { opacity: 1; }
+.s-section .zone.on img { filter: saturate(1.25) drop-shadow(0 0 6px rgba(165, 85, 47, .35)); }
+/* zoom box on the tower: pulses once to tie it to the detail */
+.s-section .ring { border: 2.5px solid var(--copper); border-radius: 9px; opacity: 0; pointer-events: none; }
+.s-section.is-current .ring { animation: ring-pulse 1.6s ease-out 2.1s 1 both; }
+@keyframes ring-pulse { 0% { opacity: 0; transform: scale(1); } 20% { opacity: 1; } 100% { opacity: 0; transform: scale(1.9); } }
+.s-section .leader { height: 3px; margin-top: -1.5px; background: #222; transform-origin: left center; }
+.s-section .callout { width: 245px; font-size: 15.5px; font-weight: var(--w-demi); line-height: 20px; letter-spacing: .02em; text-transform: uppercase; color: #222; }
+.s-section .legend { left: 72px; top: 938px; width: 380px; list-style: none; display: grid; grid-template-columns: 1fr 1fr; row-gap: 18px; }
+.s-section .legend button { display: flex; align-items: center; gap: 16px; font-size: 19px; font-weight: var(--w-medium); letter-spacing: .06em; text-transform: uppercase; color: var(--midnight); transition: color .25s; }
+.s-section .legend i { width: 38px; height: 30px; flex: none; transition: box-shadow .25s; }
+.s-section .legend button.on { color: var(--copper); }
+.s-section .legend button.on i { box-shadow: 0 0 0 3px var(--white), 0 0 0 5px var(--copper); }
+.s-section .legend button:focus-visible { outline: none; }
 
 /* ---------- feature grid over photo (slide 17) ---------- */
 .s-featureGrid .eyebrow { left: 768px; top: 135px; font-size: 30px; letter-spacing: .1em; color: var(--powder); }

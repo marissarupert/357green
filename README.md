@@ -66,7 +66,7 @@ image paths. Layout code never needs to change.
 | `diagram` | 12 | |
 | `callouts` | 13 | callouts play in; hover a label or dot for a zoom lens, click to spotlight (Esc to clear) |
 | `render` | 14–15, 21–28, 31–33 | slow push-in, label tag slides in (`zoom`/`focus` crop the image) |
-| `section` | 16 | zone legend waits on a layered/higher-res section |
+| `section` | 16 | section wipes up, callouts draw out; hover a legend item to highlight that zone |
 | `featureGrid` | 17 | |
 | `split` | 19, 29 | |
 | `keyed` | 20 | hover/focus a key item to highlight its spot (add `spot: [x, y]`) |
@@ -102,11 +102,10 @@ Where these appear in the deck they are marked with a dashed "Placeholder" label
 - **Futura 100** web fonts (Jost stands in)
 - **Slide 2** video file
 - **Slide 9** the two "##" hotel figures
-- **Slide 16** layered or higher-resolution building section, for the zone legend
 - **Slide 20** source diagram with the 01–11 spot positions
 - **Views** original wide panoramas (the deck's are 863 px wide)
 
 Low-resolution in the source PDF, and soft on large screens: elevation (12),
-building section (16), paseo diagram (19), plaza section (20),
+paseo diagram (19), plaza section (20),
 lobby render (29), test-fit plans (36–39), views (41, 42),
 aerial (11), sustainability background (17) and the Fulton Market photo (9).
