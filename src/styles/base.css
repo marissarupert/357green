@@ -141,6 +141,7 @@ b, strong { font-weight: var(--w-demi); }
 .carousel .frame.on { opacity: 1; }
 .carousel .frame.ph { background: #2e2f3b; display: grid; place-items: center; color: var(--powder); }
 .carousel .frame.ph .ph-tag { font-size: 16px; }
+.carousel .frame-tag { top: 0; left: 0; }
 .bars { position: absolute; display: flex; gap: 28px; z-index: 3; }
 .bars button { width: 153px; height: 24px; position: relative; }
 .bars button::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 7px; margin-top: -3.5px; background: #8d8d8d; transition: background .3s; }

@@ -143,12 +143,14 @@ export const slides = [
       { icon: 'assets/icons/crane.svg', value: '28 + M SF', label: 'In current development<br>pipeline' },
       { icon: 'assets/icons/globe.svg', value: '3 Countries and 7 States', label: 'Onni’s development<br>footprint' },
     ],
-    // The static deck shows four carousel bars but only one photo.
+    // Carousel: Onni's Chicago office case studies (from onni.com). Swap a
+    // placeholder for { src: 'assets/photos/<file>.jpg', caption } once the
+    // photo is in public/assets/photos/.
     photos: [
       { src: 'assets/photos/onni-building.jpg', alt: 'Onni Group office tower' },
-      { placeholder: 'Onni project photo 2' },
-      { placeholder: 'Onni project photo 3' },
-      { placeholder: 'Onni project photo 4' },
+      { placeholder: 'photo from onni.com', caption: '225 Randolph' },
+      { placeholder: 'photo from onni.com', caption: '550 West Van Buren' },
+      { placeholder: 'photo from onni.com', caption: '700 W Chicago' },
     ],
   },
 
