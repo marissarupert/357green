@@ -169,9 +169,11 @@ export const slides = [
     ],
     photos: [
       { src: 'assets/photos/scb-chicago.jpg', alt: 'Chicago’s Tribune Tower and Michigan Avenue at dusk' },
-      { placeholder: 'SCB project photo 2' },
-      { placeholder: 'SCB project photo 3' },
-      { placeholder: 'SCB project photo 4' },
+      // SCB's Chicago case studies (from scb.com). Swap each placeholder for
+      // { src: 'assets/photos/<file>.jpg', caption, focus } once supplied.
+      { placeholder: 'photo from scb.com', caption: '135 South LaSalle' },
+      { placeholder: 'photo from scb.com', caption: '210 N Carpenter' },
+      { placeholder: 'photo from scb.com', caption: 'Canal Station' },
     ],
   },
 
