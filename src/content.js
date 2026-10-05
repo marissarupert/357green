@@ -283,10 +283,10 @@ export const slides = [
     detail: { src: 'assets/diagrams/section-detail.jpg', alt: 'Typical office floor section, 13’3” to bottom of slab', box: [50, 428, 394, 484] },
     ring: [753, 606, 42, 44],
     zones: [
-      { key: 'office', label: 'Office', swatch: '#78b2ce', src: 'assets/diagrams/section-zone-office.png', box: [701,  345,  252,  715] },
-      { key: 'amenity', label: 'Amenity', swatch: '#f8c2a2', src: 'assets/diagrams/section-zone-amenity.png', box: [701,  345,  252,  715] },
-      { key: 'parking', label: 'Parking', swatch: '#aabaab', src: 'assets/diagrams/section-zone-parking.png', box: [701,  345,  252,  715] },
-      { key: 'mech', label: 'Mech', swatch: '#d2daca', src: 'assets/diagrams/section-zone-mech.png', box: [701,  345,  252,  715] },
+      { key: 'office', label: 'Office', swatch: '#becad5', src: 'assets/diagrams/section-zone-office.png', box: [701,  345,  252,  715] },
+      { key: 'amenity', label: 'Amenity', swatch: '#b77859', src: 'assets/diagrams/section-zone-amenity.png', box: [701,  345,  252,  715] },
+      { key: 'parking', label: 'Parking', swatch: '#8d9899', src: 'assets/diagrams/section-zone-parking.png', box: [701,  345,  252,  715] },
+      { key: 'mech', label: 'Mech', swatch: '#c4bab4', src: 'assets/diagrams/section-zone-mech.png', box: [701,  345,  252,  715] },
     ],
     callouts: [
       { text: 'Rooftop Lounge and Roof Deck', y: 434, x1: 945, x2: 1221, x: 1229 },
