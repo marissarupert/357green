@@ -143,12 +143,13 @@ export const slides = [
       { icon: 'assets/icons/crane.svg', value: '28 + M SF', label: 'In current development<br>pipeline' },
       { icon: 'assets/icons/globe.svg', value: '3 Countries and 7 States', label: 'Onni’s development<br>footprint' },
     ],
-    // Carousel: Onni's Chicago office case studies. `focus` picks which part
+    // Carousel: Onni office case studies. `focus` picks which part
     // of a landscape photo shows in the tall frame (object-position).
     photos: [
-      { src: 'assets/photos/onni-building.jpg', alt: 'Onni Group office tower' },
-      { src: 'assets/photos/onni-550-west-van-buren.jpg', caption: '550 West Van Buren', focus: '50% 50%' },
       { src: 'assets/photos/onni-200-north-lasalle.jpg', caption: '200 North LaSalle', focus: '66% 50%' },
+      // Name to confirm: an Onni commercial building (Citibank sign, Goode Avenue).
+      { src: 'assets/photos/onni-commercial-glendale.jpg', alt: 'Onni commercial office building', focus: '50% 50%' },
+      { src: 'assets/photos/onni-550-west-van-buren.jpg', caption: '550 West Van Buren', focus: '50% 50%' },
       { src: 'assets/photos/onni-225-randolph.jpg', caption: '225 Randolph', focus: '51% 50%' },
     ],
   },
