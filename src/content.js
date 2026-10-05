@@ -143,14 +143,13 @@ export const slides = [
       { icon: 'assets/icons/crane.svg', value: '28 + M SF', label: 'In current development<br>pipeline' },
       { icon: 'assets/icons/globe.svg', value: '3 Countries and 7 States', label: 'Onni’s development<br>footprint' },
     ],
-    // Carousel: Onni's Chicago office case studies (from onni.com). Swap a
-    // placeholder for { src: 'assets/photos/<file>.jpg', caption } once the
-    // photo is in public/assets/photos/.
+    // Carousel: Onni's Chicago office case studies. `focus` picks which part
+    // of a landscape photo shows in the tall frame (object-position).
     photos: [
       { src: 'assets/photos/onni-building.jpg', alt: 'Onni Group office tower' },
-      { placeholder: 'photo from onni.com', caption: '225 Randolph' },
-      { placeholder: 'photo from onni.com', caption: '550 West Van Buren' },
-      { placeholder: 'photo from onni.com', caption: '700 W Chicago' },
+      { src: 'assets/photos/onni-550-west-van-buren.jpg', caption: '550 West Van Buren', focus: '50% 50%' },
+      { src: 'assets/photos/onni-200-north-lasalle.jpg', caption: '200 North LaSalle', focus: '66% 50%' },
+      { src: 'assets/photos/onni-225-randolph.jpg', caption: '225 Randolph', focus: '51% 50%' },
     ],
   },
 

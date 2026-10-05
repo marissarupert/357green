@@ -103,7 +103,6 @@ Where these appear in the deck they are marked with a dashed "Placeholder" label
 - **Futura 100** web fonts (Jost stands in)
 - **Slide 2** video file
 - **Slide 9** map embed URL and the two "##" hotel figures
-- **Slide 6** photos of the Chicago case studies (225 Randolph, 550 West Van Buren, 700 W Chicago) from onni.com
 - **Slide 7** carousel photos 2–4 (the static deck shows four bars, one photo)
 - **Slide 16** layered or higher-resolution building section, for the zone legend
 - **Slide 20** source diagram with the 01–11 spot positions
