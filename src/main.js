@@ -13,14 +13,21 @@ const app = document.getElementById('app')
 app.innerHTML = '<main id="stage" aria-roledescription="presentation" aria-label="357 Green"></main>'
 const stage = document.getElementById('stage')
 
+// A page can show a single slide on its own (e.g. location.html, a link for
+// brokers): <div id="app" data-only="slide-id">. It gets no menu or arrows,
+// and with one slide there is nowhere to move to.
+const only = app.dataset.only
+const shown = only ? content.filter((s) => s.id === only) : content
+if (only) document.documentElement.classList.add('single-slide')
+
 // Build every slide from content.js.
-const slides = content.map((s, i) => {
+const slides = shown.map((s, i) => {
   const type = types[s.type]
   const el = document.createElement('section')
   el.className = `slide s-${s.type} ${s.theme === 'light' ? 'light' : 'dark'}`
   el.id = `slide-${s.id}`
   el.setAttribute('aria-roledescription', 'slide')
-  el.setAttribute('aria-label', `${i + 1} of ${content.length}`)
+  el.setAttribute('aria-label', `${i + 1} of ${shown.length}`)
   el.setAttribute('aria-hidden', 'true')
   el.inert = true
   el.innerHTML = type
@@ -30,10 +37,10 @@ const slides = content.map((s, i) => {
   return { ...s, el, type }
 })
 
-const deck = createDeck({ stage, slides, onChange: (i) => { chrome.update(i); menu.update(i) } })
+const deck = createDeck({ stage, slides, onChange: (i) => { chrome.update(i); menu?.update(i) } })
 deck.lightbox = createLightbox(stage, deck)
 const chrome = createChrome(stage, deck, { slides })
-const menu = createMenu(app, deck, { sections, slides, chrome })
+const menu = only ? null : createMenu(app, deck, { sections, slides, chrome })
 
 slides.forEach((s) => s.type?.mount?.(s.el, s, deck))
 

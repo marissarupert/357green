@@ -1,3 +1,6 @@
+/* a single-slide page (data-only) has nowhere to go */
+.single-slide .deck-arrows { display: none; }
+
 /* ---------- up/down arrows, bottom right of every slide (as in the deck) ----------
    Always white on a translucent midnight disc, so they read on the dark bands,
    photos and the white corners of light slides alike. */

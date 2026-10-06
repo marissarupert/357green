@@ -39,6 +39,13 @@ shows the slide number. Every slide
 has its own link (for example `…/#project-overview`), so you can open the deck
 straight to a slide.
 
+## Share a single slide
+
+`location.html` (hosted at `…/location`) shows only the Fulton Market slide,
+with its live map: no menu, no arrows, nothing to page through. It is the link
+to send brokers. To make another one, copy `public/location.html` and change
+`data-only` to that slide's `id`.
+
 ## Change content
 
 Everything a slide shows lives in **`src/content.js`**: order, copy, stats and
