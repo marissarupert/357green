@@ -93,7 +93,7 @@ export const slides = [
     type: 'video',
     theme: 'dark',
     // Drop the film in public/assets/video/ and set src, e.g. 'assets/video/357-green.mp4'
-    video: { src: '', poster: 'assets/renders/halsted-looking-west.jpg', zoom: 1.042, focus: '44% 67.7%', label: 'Video Animation' },
+    video: { src: '', poster: 'assets/renders/halsted-looking-west.jpg', zoom: 1.042, focus: '44% 67.7%' },
   },
 
   {

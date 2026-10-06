@@ -119,9 +119,6 @@
 
 /* ---------- video (slide 2) ---------- */
 .s-video video { object-fit: cover; }
-.s-video .vbox { left: 450px; top: 336px; width: 1074px; height: 408px; background: #3071d6; display: grid; place-items: center; }
-.s-video .vbox p { font-size: 60px; font-weight: var(--w-demi); }
-.s-video .vbox .ph-tag { position: absolute; left: 20px; bottom: 20px; font-size: 15px; }
 
 /* ---------- intro (slide 3) ---------- */
 .s-intro .media { left: 1123px; top: 0; width: 797px; height: 1080px; overflow: hidden; }
