@@ -106,7 +106,6 @@ Where these appear in the deck they are marked with a dashed "Placeholder" label
 
 - **Futura 100** web fonts (Jost stands in)
 - **Slide 2** video file
-- **Slide 9** the two "##" hotel figures
 - **Slide 20** keyed site plan with the 01–11 positions (the section is redrawn as `src/assets/svg/plaza-ascent.svg`)
 - **Views** original wide panoramas (the deck's are 863 px wide)
 
