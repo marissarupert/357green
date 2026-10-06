@@ -490,6 +490,12 @@
 .s-floorplan .has-sub .rule-bar { top: 438px; }
 .s-floorplan .has-sub .legend-head { top: 503px; }
 .s-floorplan .has-sub .legend { top: 560px; }
+.s-floorplan .plan-labels { position: absolute; inset: 0; pointer-events: none; }
+.s-floorplan .pl { position: absolute; transform: translate(-50%, -50%) rotate(var(--r, 0deg)); white-space: nowrap; line-height: 1;
+  font-weight: var(--w-medium); letter-spacing: .04em; text-transform: uppercase; color: #26252e; }
+.s-floorplan .pl.street { font-weight: var(--w-demi); letter-spacing: .01em; text-transform: none; }
+.s-floorplan .pl.tag { display: flex; align-items: center; gap: .35em; font-weight: var(--w-medium); letter-spacing: .02em; color: #4a4c55; }
+.s-floorplan .pl.tag svg { width: 1em; height: 1em; }
 
 /* ---------- thank you (slide 46) ---------- */
 .s-contact .title { left: 59px; top: 178px; font-size: 110px; line-height: 1; white-space: nowrap; }
