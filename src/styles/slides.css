@@ -2,13 +2,27 @@
    Text tops are set so baselines land where the PDF puts them. */
 
 /* ---------- cover (slide 1) ---------- */
-.s-cover .logo { left: 1609px; top: 58px; width: 212px; color: var(--white); }
-.s-cover .logo img { width: 100%; height: auto; }
-.s-cover .tagline { left: 68px; top: 791px; font-size: 50px; line-height: 1; white-space: nowrap; }
-.s-cover .rule-bar { left: 68px; top: 908px; width: 1756px; --bw: 294px; --bh: 18px; --rule: var(--white); }
-.s-cover .partners { left: 1480px; top: 953px; display: flex; align-items: center; gap: 32px; }
-.s-cover .partners img { width: 155px; margin-top: 7px; }
-.s-cover .partners img + img { width: 165px; margin-top: 0; }
+.s-cover .bg { left: 0; top: 0; width: 1920px; height: 1080px; overflow: hidden; }
+.s-cover .bg .push { position: absolute; inset: 0; transform-origin: 62% 45%; }
+.s-cover .bg .cover-img { object-position: 60% 50%; }
+.s-cover .scrim { left: 0; top: 0; width: 1920px; height: 1080px; pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(28, 29, 43, .84) 0%, rgba(28, 29, 43, .55) 30%, rgba(28, 29, 43, .12) 50%, rgba(28, 29, 43, 0) 60%),
+    linear-gradient(0deg, rgba(28, 29, 43, .82) 0%, rgba(28, 29, 43, .3) 30%, rgba(28, 29, 43, 0) 48%); }
+.s-cover .logo { left: 120px; top: 108px; width: 340px; color: var(--white); }
+.s-cover .logo img { width: 100%; height: auto; display: block; }
+.s-cover .eyebrow { left: 122px; top: 512px; font-size: 15px; letter-spacing: .32em; color: var(--powder); }
+.s-cover .tagline { left: 112px; top: 548px; white-space: nowrap; line-height: 1; }
+.s-cover .tagline .ln { display: block; overflow: hidden; padding-bottom: .08em; }
+.s-cover .tagline .ln > span { display: block; }
+.s-cover .tagline .ln1 { margin-left: 6px; font-size: 46px; font-weight: var(--w-light); letter-spacing: .01em; color: var(--powder); }
+.s-cover .tagline .ln2 { margin-top: 4px; font-size: 138px; font-weight: 200; letter-spacing: -.035em; line-height: .92; }
+.s-cover .tagline .ln3 { font-size: 138px; font-weight: 560; letter-spacing: -.04em; line-height: .92; }
+.s-cover .tagline .stop { color: var(--copper); }
+.s-cover .rule-bar { left: 122px; top: 920px; width: 520px; --bw: 44px; --bh: 5px; --rule: rgba(255, 255, 255, .3); }
+.s-cover .partners { left: 122px; top: 958px; display: flex; align-items: center; gap: 30px; opacity: .9; }
+.s-cover .partners img { width: 108px; margin-top: 5px; }
+.s-cover .partners img + img { width: 118px; margin-top: 0; padding-left: 30px; border-left: 1px solid rgba(255, 255, 255, .35); }
 
 /* ---------- overview: stats grid + full-height image (slide 4) ---------- */
 .s-overview .title { left: 38px; top: 91px; font-size: 110px; line-height: 1; white-space: nowrap; }
