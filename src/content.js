@@ -507,7 +507,7 @@ export const slides = [
       { swatch: '#bccad5', label: 'Lobby' },
       { swatch: '#8d9899', label: 'Loading Dock / Service Entry' },
     ],
-    image: { src: 'assets/plans/lobby.jpg', alt: 'Ground floor plan', box: [746, 0, 1174, 954] },
+    image: { src: 'assets/plans/lobby.jpg', alt: 'Ground floor plan', box: [796, 70, 1038, 844] },
   },
 
   {
@@ -524,7 +524,7 @@ export const slides = [
       { swatch: '#bccad5', label: 'Paseo + Terrace' },
       { swatch: '#8d9899', label: 'Parking Entry' },
     ],
-    image: { src: 'assets/plans/second-floor.jpg', alt: 'Second floor amenity plan', box: [719, 0, 1201, 954] },
+    image: { src: 'assets/plans/second-floor.jpg', alt: 'Second floor amenity plan', box: [784, 70, 1062, 844] },
   },
 
   // ---------- closing ----------

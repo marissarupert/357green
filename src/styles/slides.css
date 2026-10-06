@@ -490,6 +490,8 @@
 .s-floorplan .has-sub .rule-bar { top: 438px; }
 .s-floorplan .has-sub .legend-head { top: 503px; }
 .s-floorplan .has-sub .legend { top: 560px; }
+.s-floorplan .plan { box-shadow: 0 0 0 1px rgba(28, 29, 43, .14), 0 10px 30px rgba(28, 29, 43, .08); }
+.s-floorplan .plan img { width: 100%; height: 100%; display: block; }
 .s-floorplan .plan-labels { position: absolute; inset: 0; pointer-events: none; }
 .s-floorplan .pl { position: absolute; transform: translate(-50%, -50%) rotate(var(--r, 0deg)); white-space: nowrap; line-height: 1;
   font-weight: var(--w-medium); letter-spacing: .04em; text-transform: uppercase; color: #26252e; }
