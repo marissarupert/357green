@@ -1,0 +1,154 @@
+/* Jost stands in for Futura 100 until the licensed web fonts are supplied.
+   To switch: drop the Futura .woff2 files in src/assets/fonts/ and point the
+   @font-face rules below at them (one rule per weight). */
+@font-face {
+  font-family: "Deck Sans";
+  src: url("../assets/fonts/jost-variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: block;
+}
+
+:root {
+  /* sampled from the static deck and the brand sheet */
+  --charcoal: #242530;
+  --midnight: #1c1d2b;
+  --watermark: #292a35;
+  --copper: #a5552f;
+  --slate: #717f80;
+  --powder: #abbdcc;
+  --espresso: #513b2d;
+  --grey: #9499a1;
+  --white: #ffffff;
+
+  /* Futura 100 weights mapped onto Jost's variable axis */
+  --w-light: 300;
+  --w-book: 340;
+  --w-regular: 420;
+  --w-medium: 470;
+  --w-demi: 600;
+
+  --font: "Deck Sans", "Futura", "Century Gothic", sans-serif;
+  --ease: cubic-bezier(.2, .7, .1, 1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+  background: #0d0d12; /* letterbox */
+  color: var(--white);
+  font-family: var(--font);
+  font-weight: var(--w-regular);
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+  user-select: none;
+}
+h1, h2, h3, h4, p { font-size: inherit; font-weight: inherit; }
+img { display: block; -webkit-user-drag: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+a { color: inherit; }
+b, strong { font-weight: var(--w-demi); }
+:focus-visible { outline: 3px solid var(--copper); outline-offset: 4px; }
+
+/* ---------- stage: everything is laid out at 1920×1080 and scaled ---------- */
+#stage {
+  position: absolute; left: 50%; top: 50%;
+  width: 1920px; height: 1080px;
+  transform-origin: 50% 50%;
+  overflow: hidden;
+  background: var(--charcoal);
+}
+
+.slide {
+  position: absolute; inset: 0;
+  overflow: hidden;
+  visibility: hidden;
+  background: var(--charcoal);
+}
+.slide.is-current, .slide.is-leaving { visibility: visible; }
+.slide.light { background: var(--white); color: var(--midnight); }
+
+.abs { position: absolute; }
+.cover-img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ---------- shared type ---------- */
+/* One size and colour for every eyebrow in the deck (powder on dark slides,
+   slate on light ones). Each sits 32px above its title's capitals and lines
+   up with the title's first letter; slides only position them. */
+.eyebrow {
+  font-size: 17px;
+  letter-spacing: .14em;
+  font-weight: var(--w-medium);
+  text-transform: uppercase;
+  line-height: 1;
+  white-space: nowrap;
+}
+.dark .eyebrow { color: var(--powder); }
+.eyebrow .accent { color: var(--copper); }
+
+/* copper bar plus hairline rule. --bw/--bh size the bar, --rule the line colour */
+.rule-bar {
+  position: absolute;
+  height: var(--bh, 12px);
+  --o: calc(var(--bh, 12px) * 1.05);
+}
+.rule-bar::before, .rule-bar::after { content: ""; position: absolute; }
+.rule-bar::before {
+  left: 0; top: 0; bottom: 0; width: var(--bw, 106px);
+  background: var(--copper);
+  clip-path: polygon(var(--o) 0, 100% 0, calc(100% - var(--o)) 100%, 0 100%);
+  transform: scaleX(var(--bar, 1)); transform-origin: left;
+}
+.rule-bar::after {
+  left: calc(var(--bw, 106px) + 1px); right: 0; top: 50%; height: 1px; margin-top: -.5px;
+  background: var(--rule, var(--slate));
+  transform: scaleX(var(--line, 1)); transform-origin: left;
+}
+
+.hairline { position: absolute; height: 1px; background: var(--rule, var(--slate)); transform-origin: left; }
+
+/* dashed tag for anything still waiting on real content */
+.ph-tag {
+  display: inline-block;
+  font-size: 13px; font-weight: var(--w-medium); letter-spacing: .14em; text-transform: uppercase; line-height: 1;
+  padding: 6px 9px 5px; border: 1px dashed currentColor; opacity: .75;
+  white-space: nowrap; vertical-align: middle;
+}
+.placeholder-val { opacity: .9; }
+
+.count { display: inline-block; }
+
+/* ---------- repeating N band ---------- */
+.n-band { position: absolute; background-color: var(--midnight); overflow: hidden; z-index: 2; }
+.n-band::before {
+  content: ""; position: absolute; inset: 0;
+  background-image: var(--band);
+  background-size: 1942px 430px; background-position: var(--bx, 0) var(--by, -237px);
+  opacity: .1;
+}
+.n-band.v::before { background-size: 430px 1944px; }
+
+/* ---------- angled label tag on renders ---------- */
+.img-tag {
+  position: absolute; left: 0; top: 0; z-index: 3;
+  height: 78px; padding: 0 92px 0 42px;
+  display: flex; align-items: center;
+  background: var(--midnight); color: var(--white);
+  clip-path: polygon(0 0, 100% 0, calc(100% - 42px) 100%, 0 100%);
+  font-size: 20px; font-weight: var(--w-medium); letter-spacing: .1em; text-transform: uppercase; white-space: nowrap;
+}
+
+/* ---------- giant 357 watermark (dividers, thank you) ---------- */
+.watermark { position: absolute; left: -302px; top: -219px; width: 2828px; color: var(--watermark); pointer-events: none; }
+.watermark svg { width: 100%; height: auto; display: block; }
+
+/* ---------- carousel bars (slides 6, 7) ---------- */
+.carousel { position: absolute; overflow: hidden; }
+.carousel .frame { position: absolute; inset: 0; opacity: 0; transition: opacity .6s var(--ease); }
+.carousel .frame.on { opacity: 1; }
+.carousel .frame.ph { background: #2e2f3b; display: grid; place-items: center; color: var(--powder); }
+.carousel .frame.ph .ph-tag { font-size: 16px; }
+.carousel .frame-tag { top: 0; left: 0; }
+.bars { position: absolute; display: flex; gap: 28px; z-index: 3; }
+.bars button { width: 153px; height: 24px; position: relative; }
+.bars button::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 7px; margin-top: -3.5px; background: #8d8d8d; transition: background .3s; }
+.bars button.on::after, .bars button:hover::after { background: var(--copper); }

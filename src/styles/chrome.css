@@ -1,0 +1,134 @@
+/* a single-slide page (data-only) has nowhere to go */
+.single-slide .deck-arrows { display: none; }
+
+/* ---------- up/down arrows, bottom right of every slide (as in the deck) ----------
+   Always white on a translucent midnight disc, so they read on the dark bands,
+   photos and the white corners of light slides alike. */
+.deck-arrows {
+  position: absolute; left: 1844px; top: 976px; z-index: 20;
+  display: grid; gap: 3px;
+  color: var(--white);
+  transition: color .3s;
+}
+.deck-arrows button { width: 45px; height: 44px; display: block; border-radius: 50%; background: rgba(28, 29, 43, .62); transition: transform .25s var(--ease), color .25s, opacity .25s; }
+.deck-arrows button svg { width: 100%; height: 100%; display: block; }
+.deck-arrows button:hover { color: var(--copper); transform: scale(1.08); }
+.deck-arrows button:disabled { opacity: .3; pointer-events: none; }
+
+/* ---------- lightbox ---------- */
+.lightbox {
+  position: absolute; inset: 0; z-index: 60;
+  background: rgba(20, 21, 31, .97);
+  opacity: 0; visibility: hidden;
+  transition: opacity .35s, visibility 0s .35s;
+}
+.lightbox.open { opacity: 1; visibility: visible; transition: opacity .35s, visibility 0s; }
+.lb-frame { position: absolute; left: 160px; top: 70px; width: 1600px; height: 900px; }
+.lb-frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+.lb-tag {
+  position: absolute; left: 160px; top: 1000px;
+  display: flex; align-items: center; gap: 24px;
+  font-size: 22px; font-weight: var(--w-medium); letter-spacing: .12em; text-transform: uppercase;
+}
+.lb-tag .of { color: var(--grey); letter-spacing: .08em; }
+.lb-nav { position: absolute; top: 490px; width: 64px; height: 64px; border: 2px solid rgba(255,255,255,.8); }
+.lb-nav.prev { left: 60px; }
+.lb-nav.next { right: 60px; }
+.lb-nav svg { width: 26px; height: 26px; }
+.lb-close { position: absolute; right: 48px; top: 40px; width: 56px; height: 56px; }
+.lb-close svg { width: 26px; height: 26px; }
+.lightbox.single .lb-nav, .lightbox.single .of { display: none; }
+/* gallery buttons: white icons on a dark backing so they read over any photo */
+.lightbox .ctl { display: grid; place-items: center; color: var(--white); background: rgba(28, 29, 43, .55); transition: background .25s, border-color .25s, transform .25s var(--ease); }
+.lightbox .ctl svg { stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.lightbox .ctl:hover { background: var(--copper); border-color: var(--copper); }
+.lb-close { border: 2px solid rgba(255, 255, 255, .8); }
+/* the floating menu button steps aside while a gallery is open */
+body:has(.lightbox.open) .deck-nav { opacity: 0; pointer-events: none; }
+.deck-nav { transition: opacity .3s; }
+
+/* ---------- menu: a floating ☰ top right; the menu drops down over the slide ---------- */
+.deck-nav { position: fixed; inset: 0 0 auto 0; z-index: 100; height: 0; color: var(--white); font-size: 13px; font-weight: var(--w-medium); letter-spacing: .12em; text-transform: uppercase; user-select: none; }
+.deck-nav button:focus-visible { outline: 2px solid var(--copper); outline-offset: 2px; }
+
+/* ☰ that turns into ✕, on the same translucent disc as the slide arrows */
+.mn-burger {
+  position: absolute; right: 18px; top: 16px; z-index: 2; width: 46px; height: 46px; border-radius: 50%;
+  background: rgba(28, 29, 43, .62); transition: background .25s, transform .25s var(--ease);
+}
+.mn-burger:hover { background: var(--copper); transform: scale(1.06); }
+.deck-nav.open .mn-burger { background: transparent; }
+.deck-nav.open .mn-burger:hover { background: rgba(255, 255, 255, .08); }
+.mn-burger i { position: absolute; left: 13px; width: 20px; height: 2px; background: currentColor; border-radius: 1px; transition: transform .35s var(--ease), opacity .2s; }
+.mn-burger i:nth-child(1) { top: 16px; }
+.mn-burger i:nth-child(2) { top: 22px; }
+.mn-burger i:nth-child(3) { top: 28px; }
+.deck-nav.open .mn-burger i:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.deck-nav.open .mn-burger i:nth-child(2) { opacity: 0; }
+.deck-nav.open .mn-burger i:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+.mn-panel {
+  position: absolute; left: 0; right: 0; top: 0; max-height: 100vh; overflow: auto;
+  display: grid; grid-template-columns: minmax(300px, 420px) 1fr; grid-template-rows: auto auto auto;
+  column-gap: 56px; padding: 22px 48px 28px;
+  background: var(--midnight); box-shadow: 0 24px 48px rgba(0, 0, 0, .45);
+  clip-path: inset(0 0 100% 0); visibility: hidden;
+  transition: clip-path .45s var(--ease), visibility 0s .45s;
+}
+.deck-nav.open .mn-panel { clip-path: inset(0 0 -60px 0); visibility: visible; transition: clip-path .45s var(--ease), visibility 0s; }
+.mn-logo { grid-column: 1 / -1; justify-self: start; height: 40px; margin-bottom: 22px; color: var(--white); transition: color .25s; }
+.mn-logo svg { height: 100%; width: auto; display: block; }
+.mn-logo:hover { color: var(--powder); }
+.mn-secs, .mn-list { list-style: none; }
+.mn-sec {
+  display: flex; align-items: baseline; gap: 22px; width: 100%; padding: 11px 0 12px; text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, .1);
+  font-size: 26px; font-weight: var(--w-regular); letter-spacing: .02em; text-transform: none; color: rgba(255, 255, 255, .6);
+  transition: color .2s;
+}
+.mn-sec .n { width: 30px; font-size: 13px; font-weight: var(--w-medium); letter-spacing: .06em; color: var(--copper); font-variant-numeric: tabular-nums; }
+.mn-sec .t { position: relative; }
+.mn-sec .t::after {
+  content: ""; position: absolute; left: 0; bottom: -5px; width: 54px; height: 3px; background: var(--copper);
+  transform: scaleX(0); transform-origin: left; transition: transform .35s var(--ease);
+}
+.mn-sec.shown, .mn-sec.here { color: var(--white); }
+.mn-sec.shown .t::after { transform: scaleX(1); }
+.mn-sec:disabled { opacity: .35; cursor: default; }
+
+.mn-slides { position: relative; min-height: 100%; }
+.mn-list { display: none; columns: 2; column-gap: 40px; padding-top: 6px; }
+.mn-list.on { display: block; animation: mn-in .3s var(--ease); }
+@keyframes mn-in { from { opacity: 0; transform: translateX(10px); } }
+.mn-list li { break-inside: avoid; }
+.mn-item {
+  display: flex; align-items: baseline; gap: 14px; width: 100%; padding: 9px 14px; text-align: left;
+  border-left: 3px solid transparent;
+  font-size: 16px; font-weight: var(--w-regular); letter-spacing: .02em; text-transform: none; color: rgba(255, 255, 255, .72);
+  transition: color .2s, background .2s, border-color .2s;
+}
+.mn-item .n { width: 22px; font-size: 12px; letter-spacing: .04em; color: var(--grey); font-variant-numeric: tabular-nums; }
+.mn-item:hover, .mn-item:focus-visible { color: var(--white); background: rgba(255, 255, 255, .06); }
+.mn-item.here { color: var(--white); border-left-color: var(--copper); }
+.mn-item.here .n { color: var(--copper); }
+
+.mn-foot { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; margin-top: 28px; padding-top: 18px; border-top: 1px solid rgba(255, 255, 255, .1); }
+.mn-count { color: rgba(255, 255, 255, .5); font-variant-numeric: tabular-nums; letter-spacing: .08em; }
+.mn-count b { color: var(--white); font-weight: var(--w-medium); }
+.mn-fs { display: flex; align-items: center; gap: 10px; padding: 8px 14px; border: 1px solid rgba(255, 255, 255, .25); color: var(--white); transition: background .25s, border-color .25s; }
+.mn-fs:hover { background: var(--copper); border-color: var(--copper); }
+.mn-fs svg { width: 17px; height: 17px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+/* phones: sections only (tap one to jump) */
+@media (max-width: 760px) {
+  .mn-panel { grid-template-columns: 1fr; padding: 16px 20px 20px; }
+  .mn-slides { display: none; }
+  .mn-sec { font-size: 21px; }
+  .mn-logo { height: 32px; margin-bottom: 12px; }
+  .mn-burger { right: 10px; top: 10px; width: 42px; height: 42px; }
+  .mn-burger i { left: 11px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mn-panel, .mn-burger i { transition: none; }
+  .mn-list.on { animation: none; }
+}
