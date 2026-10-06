@@ -11,8 +11,14 @@
     linear-gradient(0deg, rgba(28, 29, 43, .82) 0%, rgba(28, 29, 43, .3) 30%, rgba(28, 29, 43, 0) 48%); }
 .s-cover .logo { left: 120px; top: 108px; width: 340px; color: var(--white); }
 .s-cover .logo img { width: 100%; height: auto; display: block; }
-.s-cover .eyebrow { left: 122px; top: 676px; font-size: 15px; letter-spacing: .32em; color: var(--powder); }
-.s-cover .tagline { left: 116px; top: 712px; width: 1000px; font-size: 84px; font-weight: var(--w-light); letter-spacing: -.01em; line-height: 1.04; white-space: normal; }
+.s-cover .eyebrow { left: 122px; top: 512px; font-size: 15px; letter-spacing: .32em; color: var(--powder); }
+.s-cover .tagline { left: 112px; top: 548px; white-space: nowrap; line-height: 1; }
+.s-cover .tagline .ln { display: block; overflow: hidden; padding-bottom: .08em; }
+.s-cover .tagline .ln > span { display: block; }
+.s-cover .tagline .ln1 { margin-left: 6px; font-size: 46px; font-weight: var(--w-light); letter-spacing: .01em; color: var(--powder); }
+.s-cover .tagline .ln2 { margin-top: 4px; font-size: 138px; font-weight: 200; letter-spacing: -.035em; line-height: .92; }
+.s-cover .tagline .ln3 { font-size: 138px; font-weight: 560; letter-spacing: -.04em; line-height: .92; }
+.s-cover .tagline .stop { color: var(--copper); }
 .s-cover .rule-bar { left: 122px; top: 920px; width: 520px; --bw: 44px; --bh: 5px; --rule: rgba(255, 255, 255, .3); }
 .s-cover .partners { left: 122px; top: 958px; display: flex; align-items: center; gap: 30px; opacity: .9; }
 .s-cover .partners img { width: 108px; margin-top: 5px; }
