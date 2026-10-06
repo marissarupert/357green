@@ -533,7 +533,7 @@ export const slides = [
     ref: 46,
     type: 'contact',
     theme: 'dark',
-    title: 'Thank you',
+    title: 'Join the New Standard',
     firm: 'Leasing • Stream Realty Partners, Chicago',
     logos: [
       { src: 'assets/logos/onni.png', alt: 'Onni Group' },

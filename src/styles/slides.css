@@ -503,9 +503,9 @@
 .s-contact .title { left: 59px; top: 178px; font-size: 110px; line-height: 1; white-space: nowrap; }
 .s-contact .rule-bar { left: 69px; top: 366px; width: 1757px; --bw: 294px; --bh: 18px; --rule: rgba(255, 255, 255, .8); }
 .s-contact .firm { left: 69px; top: 672px; font-size: 27px; font-weight: var(--w-medium); letter-spacing: .14em; text-transform: uppercase; color: var(--powder); line-height: 1; white-space: nowrap; }
-.s-contact .logos { left: 1490px; top: 649px; height: 47px; display: flex; align-items: center; gap: 31px; }
-.s-contact .logos img:first-child { width: 137px; margin-top: 7px; }
-.s-contact .logos img + img { width: 143px; }
+.s-contact .logos { right: 94px; top: 468px; height: 110px; display: flex; align-items: center; gap: 72px; }
+.s-contact .logos img:first-child { width: 300px; margin-top: 14px; }
+.s-contact .logos img + img { width: 320px; }
 .s-contact .person { top: 745px; width: 493px; }
 .s-contact .person.p2 { left: 691px; }
 .s-contact .person.p1 { left: 69px; }
