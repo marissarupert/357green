@@ -507,22 +507,7 @@ export const slides = [
       { swatch: '#bccad5', label: 'Lobby' },
       { swatch: '#8d9899', label: 'Loading Dock / Service Entry' },
     ],
-    // Vector redraw of the plan (tools/vectorize-plans.py); labels are live text
-    // placed in the plan's own pixels (image.size).
-    image: { src: 'assets/plans/lobby.svg', alt: 'Ground floor plan', box: [746, 0, 1174, 954], size: [1223, 994] },
-    labels: [
-      { text: 'Kinzie Street', at: [678, 99], size: 25, kind: 'street' },
-      { text: 'Halsted Street Above', at: [1135, 273], size: 26, rotate: 90, kind: 'street' },
-      { text: 'Green Street', at: [200, 570], size: 24, rotate: 90, kind: 'street' },
-      { text: 'Retail', at: [419, 321], size: 15 },
-      { text: '5,900 SF', at: [418, 347], size: 15 },
-      { text: 'Lobby', at: [420, 564], size: 14 },
-      { text: 'RTL', at: [545, 729], size: 15 },
-      { text: '1,400 SF', at: [542, 752], size: 15 },
-      { text: 'Trash', at: [836, 681], size: 15 },
-      { text: 'Loading', at: [867, 759], size: 15 },
-      { text: 'BOH', at: [729, 781], size: 14 },
-    ],
+    image: { src: 'assets/plans/lobby.jpg', alt: 'Ground floor plan', box: [746, 0, 1174, 954] },
   },
 
   {
@@ -539,21 +524,7 @@ export const slides = [
       { swatch: '#bccad5', label: 'Paseo + Terrace' },
       { swatch: '#8d9899', label: 'Parking Entry' },
     ],
-    image: { src: 'assets/plans/second-floor.svg', alt: 'Second floor amenity plan', box: [719, 0, 1201, 954], size: [1251, 994] },
-    labels: [
-      { text: 'Patio 860 SF', at: [350, 45], size: 19 },
-      { text: 'Amenity', at: [417, 139], size: 20 },
-      { text: '10,700 SF', at: [417, 168], size: 20 },
-      { text: 'Open to Below', at: [421, 450], size: 13 },
-      { text: 'Green Street', at: [137, 440], size: 30, rotate: 90, kind: 'street' },
-      { text: 'Halsted Street', at: [1262, 402], size: 30, rotate: 90, kind: 'street' },
-      { text: '+0′0″', at: [295, 520], size: 11, kind: 'tag' },
-      { text: '+25′', at: [1094, 578], size: 11, kind: 'tag' },
-      { text: '+22′6″', at: [854, 618], size: 11, kind: 'tag' },
-      { text: '+16′6″', at: [739, 668], size: 11, kind: 'tag' },
-      { text: '+10′6″', at: [644, 750], size: 11, kind: 'tag' },
-      { text: '+3′6″', at: [514, 760], size: 11, kind: 'tag' },
-    ],
+    image: { src: 'assets/plans/second-floor.jpg', alt: 'Second floor amenity plan', box: [719, 0, 1201, 954] },
   },
 
   // ---------- closing ----------
