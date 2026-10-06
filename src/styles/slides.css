@@ -394,8 +394,6 @@
 .s-keyed:has(.drawing.svg) .key .l { font-size: 24px; line-height: 34px; }
 .s-keyed:has(.drawing.svg) .key button { line-height: 34px; }
 .s-keyed:has(.drawing.svg) .key .n { width: 54px; font-size: 26px; }
-.s-keyed .key-note { left: 60px; top: 918px; }
-.s-keyed .key-note .ph-tag { color: var(--slate); font-size: 12px; }
 
 .pa-svg text { font-family: var(--font); }
 .pa-mass { fill: color-mix(in srgb, var(--slate) 16%, var(--white)); stroke: var(--slate); stroke-width: 1.5; }

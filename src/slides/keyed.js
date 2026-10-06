@@ -2,8 +2,8 @@
 // item highlights its spot on the drawing, and the reverse.
 // Fields: eyebrow, title, image{src, alt} | drawing (name of an SVG below),
 //         items[{n, label, spot?:[x,y]}]
-//   spot is in stage px; items without one get no marker, and the key shows
-//   a placeholder note until positions are supplied.
+//   spot is in stage px; items without one get no marker (an image drawing
+//   also shows a placeholder note until positions are supplied).
 //   A drawing is laid out full width with the key underneath; it plays in
 //   from the ground up (see the .s-keyed.wide rules in slides.css).
 import { esc, img, nBand, placeholderTag, rich } from '../lib/html.js'
@@ -25,7 +25,6 @@ export default {
     <ol class="abs key">
       ${s.items.map((it, i) => `<li data-in="up"${s.drawing ? ` data-at="${(2.4 + i * 0.06).toFixed(2)}"` : ''}><button data-spot="${esc(it.n)}"><span class="n">${esc(it.n)}</span><span class="l">${rich(it.label)}</span></button></li>`).join('')}
     </ol>
-    ${s.drawing && missing ? `<p class="abs key-note" data-in="fade" data-at="3.1">${placeholderTag('Placeholder · 01–11 positions needed from the keyed site plan')}</p>` : ''}
     ${nBand([0, 963, 1920, 117], { origin: [-21, 726 - 963] })}`
   },
   // A drawing builds from the ground up: ground line, building, the ascent,
