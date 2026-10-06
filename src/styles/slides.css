@@ -184,6 +184,7 @@
 .s-elevation .level .t, .s-elevation .level .v { position: absolute; white-space: nowrap; }
 .s-elevation .level .t { bottom: 26px; }
 .s-elevation .level .v { top: 26px; }
+.s-elevation .level .note { position: absolute; top: 44px; right: 8px; padding: 3px 6px; background: var(--white); white-space: nowrap; color: var(--copper); font-weight: var(--w-demi); }
 .s-elevation .level.west .t, .s-elevation .level.west .v { left: 2px; }
 .s-elevation .level.east .t, .s-elevation .level.east .v { right: 14px; }
 .s-elevation .level .rule, .s-elevation .level .tick { transition: background-color .25s; }

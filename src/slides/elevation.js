@@ -9,7 +9,7 @@
 //   and, all in source-drawing px:
 //   drawings[{src, alt, box:[l,t,w,h]}] (west, east), ground:[x1, x2, y],
 //   dims{x:[west, east], top}, levelLines:[[x1, x2], [x1, x2]],
-//   levels[{label, value, y}], labelX, callouts[{text, y, dots:[x, x], anchor?}] (text may use <br>)
+//   levels[{label, value, y, note?}] (note: a copper floor tag under the east marker), labelX, callouts[{text, y, dots:[x, x], anchor?}] (text may use <br>)
 //   anchor: 'last' hangs a multi-line label above its leader (default centred)
 import { esc, img, nBand, rich } from '../lib/html.js'
 
@@ -39,7 +39,7 @@ export default {
       const at = (WIPE[i] + reach((t + h - lv.y) / h)).toFixed(2)
       return `<button class="abs level ${i ? 'east' : 'west'}" data-level="${j}" data-in="fade" data-at="${at}" style="left:${X(x1)}px;top:${Y(lv.y)}px;width:${L(x2 - x1)}px">
         <span class="rule"></span><span class="tick" style="left:${L(s.dims.x[i] - x1)}px"></span>
-        <span class="t">${esc(lv.label)}</span><span class="v">${esc(lv.value)}</span>
+        <span class="t">${esc(lv.label)}</span><span class="v">${esc(lv.value)}</span>${lv.note && i ? `<span class="note">${esc(lv.note)}</span>` : ''}
       </button>`
     }).join('')).join('')}
     ${s.callouts.map((c, i) => {

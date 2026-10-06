@@ -258,18 +258,14 @@ export const slides = [
     levelLines: [[50, 255], [1772, 1960]],
     levels: [
       { label: 'T/ Screen Wall', value: '484\' - 6"', y: 48 },
-      { label: 'Building Height', value: '439\' - 6"', y: 169 },
-      { label: 'Amenity', value: '213\' - 6"', y: 586 },
+      { label: 'Building Height', value: '439\' - 6"', y: 169, note: '29 – Penthouse Restaurant' },
+      { label: 'Amenity', value: '213\' - 6"', y: 586, note: 'Amenity Floor – 15' },
       { label: 'T/ Parking', value: '108\' - 6"', y: 798 },
     ],
     labelX: 770,
     callouts: [
       { text: 'Architectural glass and<br>warm metal panel system<br>at mechanical enclosure', y: 110, dots: [464, 1038], anchor: 'last' },
-      { text: 'Glass guardrail', y: 156, dots: [411, 1250] },
-      { text: 'Architectural glass and warm<br>metal panel curtain wall system', y: 448, dots: [496, 1034] },
       { text: 'Warm metal panel cladding', y: 764, dots: [463, 1037] },
-      { text: 'Architectural glass and warm<br>metal panel curtain wall system<br>with extruded metal mullion', y: 830, dots: [545, 1014] },
-      { text: 'Architectural glass<br>curtain wall system', y: 954, dots: [272, 1062] },
     ],
   },
 
