@@ -63,7 +63,7 @@ image paths. Layout code never needs to change.
 | `type` | Used for | Interaction |
 |---|---|---|
 | `cover` | 1 | logo, copper rule, then tagline animate in |
-| `video` | 2 | muted looping video; poster + placeholder until `video.src` is set |
+| `video` | 2 | muted looping video; until `video.src` is set the poster render shows full bleed with a slow push-in |
 | `intro` | 3 | `bleed: true`: full-bleed render with a slow push-in, text in a left column over a midnight gradient |
 | `overview` | 4 | numbers count up, rows stagger in |
 | `divider` | 5, 8, 10, 18, 34, 40, 43 | numeral and title animate in, watermark drifts |
@@ -112,7 +112,7 @@ work offline.
 Where these appear in the deck they are marked with a dashed "Placeholder" label:
 
 - **Futura 100** web fonts (Jost stands in)
-- **Slide 2** video file
+- **Slide 2** video file (optional; the render shows until then)
 - **Slide 20** keyed site plan with the 01–11 positions (the section is redrawn as `src/assets/svg/plaza-ascent.svg`)
 - **Views** original wide panoramas (the deck's are 863 px wide)
 
