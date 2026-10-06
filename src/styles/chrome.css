@@ -35,6 +35,14 @@
 .lb-close { position: absolute; right: 48px; top: 40px; width: 56px; height: 56px; }
 .lb-close svg { width: 26px; height: 26px; }
 .lightbox.single .lb-nav, .lightbox.single .of { display: none; }
+/* gallery buttons: white icons on a dark backing so they read over any photo */
+.lightbox .ctl { display: grid; place-items: center; color: var(--white); background: rgba(28, 29, 43, .55); transition: background .25s, border-color .25s, transform .25s var(--ease); }
+.lightbox .ctl svg { stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.lightbox .ctl:hover { background: var(--copper); border-color: var(--copper); }
+.lb-close { border: 2px solid rgba(255, 255, 255, .8); }
+/* the floating menu button steps aside while a gallery is open */
+body:has(.lightbox.open) .deck-nav { opacity: 0; pointer-events: none; }
+.deck-nav { transition: opacity .3s; }
 
 /* ---------- menu: a floating ☰ top right; the menu drops down over the slide ---------- */
 .deck-nav { position: fixed; inset: 0 0 auto 0; z-index: 100; height: 0; color: var(--white); font-size: 13px; font-weight: var(--w-medium); letter-spacing: .12em; text-transform: uppercase; user-select: none; }
