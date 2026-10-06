@@ -196,6 +196,15 @@ export const slides = [
       // The source deck repeats "## Hotels in the district" here; add the real
       // second stat back once it's known.
     ],
+    // Walk times from Green & Kinzie (Chicago YIMBY on 360 N Green, across the
+    // street); Metra range is for Fulton Market. Colours are the lines' own.
+    transitLabel: 'Transit',
+    transit: [
+      { lines: ['#00a1de'], name: 'Blue Line · Grand', detail: '4 min walk' },
+      { lines: ['#009b3a', '#e27ea6'], name: 'Green & Pink Lines · Morgan', detail: '7 min walk' },
+      { lines: ['#4f7bbf'], name: 'Metra · Ogilvie & Union Station', detail: '15–20 min walk' },
+      { lines: [], name: 'Kennedy Expressway (I-90/94)', detail: 'Alongside the site' },
+    ],
     neighborsLabel: 'HQ Neighbors',
     neighbors: [
       { src: 'assets/logos/mcdonalds.png', alt: 'McDonald’s', height: 52 },

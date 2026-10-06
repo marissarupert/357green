@@ -62,7 +62,7 @@ image paths. Layout code never needs to change.
 | `divider` | 5, 8, 10, 18, 34, 40, 43 | numeral and title animate in, watermark drifts |
 | `iconStats` | 6 | numbers count up; carousel bars switch photos |
 | `bullets` | 7 | carousel bars switch photos |
-| `location` | 9 | numbers count up; embedded interactive map (`map.url`) |
+| `location` | 9 | numbers count up; nearby transit list (`transit`); embedded interactive map (`map.url`) |
 | `features` | 11 | features come in one after another, automatically |
 | `elevation` | 12 | elevations rise from the ground as level markers tick on, callouts reach out to both towers; hover a level for a guide line across both, hover a callout to pick out its points |
 | `callouts` | 13 | callouts play in; hover a label or dot for a zoom lens, click to spotlight (Esc to clear) |

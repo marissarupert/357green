@@ -1,6 +1,8 @@
 // Location: stats over a photo on the left, interactive map on the right.
 // Fields: eyebrow, title, background, stats[{value, label, placeholder?}],
-//         neighborsLabel, neighbors[{src, alt, height?}], map{url, title, label?}
+//         transitLabel?, transit?[{lines:[css colour…], name, detail}] (no colours
+//         draws a road marker), neighborsLabel, neighbors[{src, alt, height?}],
+//         map{url, title, label?}
 //   Logos sit at a common height (default 44px); set height to balance one
 //   that looks too big or small, and whiten: true to turn a grey logo white.
 import { countable, esc, hairline, img, placeholderTag, rich, ruleBar } from '../lib/html.js'
@@ -18,6 +20,14 @@ export default {
           <p class="l">${rich(st.label)}</p>
         </div>`).join('')}
     </div>
+    ${s.transit ? `
+    <p class="abs eyebrow transit-label" data-in="up" data-at="0.9">${esc(s.transitLabel || 'Transit')}</p>
+    <ul class="abs transit">
+      ${s.transit.map((t, i) => `<li data-in="up" data-at="${(1 + i * 0.1).toFixed(2)}">
+        <span class="marks">${t.lines.length ? t.lines.map((c) => `<i style="background:${esc(c)}"></i>`).join('') : '<i class="road"></i>'}</span>
+        <span class="t"><b>${esc(t.name)}</b><span>${esc(t.detail)}</span></span>
+      </li>`).join('')}
+    </ul>` : ''}
     ${hairline('hq-rule')}
     <p class="abs eyebrow hq-label" data-in="up">${esc(s.neighborsLabel)}</p>
     <div class="abs logos">
