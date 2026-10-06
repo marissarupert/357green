@@ -82,7 +82,7 @@ image paths. Layout code never needs to change.
 | `programming` | 35 | each "View plan" jumps to its test fit |
 | `testfit` | 36–39 | Low/High Rise and Open/Perimeter toggles swap plan and stats |
 | `views` | 41, 42 | drag/arrow keys/trackpad to pan; Both/East/West and height toggles |
-| `floorplan` | 44, 45 | static (plans are flat images, not layered SVG) |
+| `floorplan` | 44, 45 | vector plans (`tools/vectorize-plans.py`) with live-text labels (`labels`) |
 | `contact` | 46 | phone and email are live links |
 
 All positions are in 1920×1080 stage pixels taken from the static deck, so a

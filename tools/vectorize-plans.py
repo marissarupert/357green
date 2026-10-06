@@ -55,7 +55,7 @@ def erase(img, boxes, whole):
     mask = np.zeros(img.shape[:2], np.uint8)
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     for x0, y0, x1, y1 in boxes:
-        x0, y0, x1, y1 = x0 - 3, y0 - 3, x1 + 4, y1 + 4
+        x0, y0, x1, y1 = x0 - 6, y0 - 4, x1 + 6, y1 + 4
         if whole:
             mask[y0:y1, x0:x1] = 255
         else:
