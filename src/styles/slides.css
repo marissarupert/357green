@@ -93,10 +93,29 @@
 .iso-map .north .head { fill: var(--powder); stroke: none; }
 .iso-map .north text { fill: var(--powder); font-size: 16px; font-weight: var(--w-medium); }
 .iso-map .credit { font-size: 12px; fill: rgba(171, 189, 204, .6); }
+.iso-map .walk { fill: none; stroke: var(--copper); stroke-width: 2; stroke-dasharray: 7 6; opacity: .9; }
+.iso-map .metra { fill: none; stroke: rgba(171, 189, 204, .55); stroke-width: 2; stroke-dasharray: 2 3; }
+.iso-map .cta { fill: none; stroke-width: 3.5; stroke-linecap: round; opacity: .9; }
+.iso-map .cta-pink { stroke-width: 1.6; }
+.iso-map .rest { fill: #e0905f; stroke: var(--midnight); stroke-width: 1; }
+.iso-map .hotel path { stroke: var(--white); stroke-width: 1.5; }
+.iso-map .hotel circle { fill: var(--white); stroke: var(--midnight); stroke-width: 1.5; }
+.iso-map .stn path { stroke: var(--white); stroke-width: 1.5; }
+.iso-map .stn .hole { fill: var(--white); }
+.iso-map .stn rect, .iso-map .legend rect.m { fill: #005596; stroke: var(--white); stroke-width: 2; }
+.iso-map .stn text { fill: var(--white); font-size: 14px; font-weight: var(--w-demi); letter-spacing: .14em; paint-order: stroke; stroke: var(--midnight); stroke-width: 4px; stroke-linejoin: round; }
+.iso-map .walk-lbl { fill: #e0905f; font-size: 13px; font-weight: var(--w-demi); letter-spacing: .16em; paint-order: stroke; stroke: var(--midnight); stroke-width: 4px; }
+.iso-map .legend text { fill: var(--white); font-size: 17px; }
+.iso-map .legend .hotel circle { fill: var(--white); }
 /* buildings rise from the ground, rippling out from 357 Green; 357 Green rises last */
 .iso-map.play .b.in, .iso-map.play .b357 { transform-box: fill-box; transform-origin: 50% 100%; animation: iso-rise .9s cubic-bezier(.2, .7, .2, 1) calc(.3s + var(--d, 0) * 1.3s) both; }
 .iso-map.play .b357 { animation-duration: 1.5s; animation-delay: 1.9s; }
 .iso-map.play .lbl, .iso-map.play .callout { animation: iso-fade .6s 3s both; }
+/* highlights pop in after the model, rippling out from the site */
+.iso-map.play .walk, .iso-map.play .cta, .iso-map.play .metra, .iso-map.play .legend { animation: iso-fade .8s 2.4s both; }
+.iso-map.play .ov .rest, .iso-map.play .ov .hotel, .iso-map.play .ov .stn { transform-box: fill-box; transform-origin: 50% 100%; animation: iso-pop .45s cubic-bezier(.3, 1.6, .5, 1) calc(2.6s + var(--d, .5) * .9s) both; }
+.iso-map.play .ov .walk-lbl { animation: iso-fade .6s 3.2s both; }
+@keyframes iso-pop { from { transform: scale(0); opacity: 0; } }
 @keyframes iso-rise { from { transform: scaleY(0); opacity: 0; } 30% { opacity: 1; } to { transform: none; } }
 @keyframes iso-fade { from { opacity: 0; } }
 
