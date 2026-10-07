@@ -1,0 +1,1031 @@
+{
+"restaurants": [
+{
+"name": "Aba",
+"street": "N Green St",
+"x": 593,
+"y": 439
+},
+{
+"name": "Adalina Prime",
+"street": "N Green St",
+"x": 531,
+"y": 403
+},
+{
+"name": "Alhambra Palace",
+"street": "W Randolph St",
+"x": 371,
+"y": 688
+},
+{
+"name": "Amour & Swift",
+"street": "W Fulton Market",
+"x": 440,
+"y": 509
+},
+{
+"name": "Au Cheval",
+"street": "W Randolph St",
+"x": 729,
+"y": 478
+},
+{
+"name": "Bar La Rue",
+"street": "W Fulton St",
+"x": 649,
+"y": 408
+},
+{
+"name": "Bar Siena",
+"street": "W Randolph St",
+"x": 693,
+"y": 499
+},
+{
+"name": "Bar Tabu",
+"street": "N Morgan St",
+"x": 384,
+"y": 434
+},
+{
+"name": "Bar Takito",
+"street": "N Morgan St",
+"x": 532,
+"y": 534
+},
+{
+"name": "Beatrix-Chicago",
+"street": "W Fulton Market",
+"x": 594,
+"y": 441
+},
+{
+"name": "Beatrix-Fulton Market",
+"street": "W Fulton Market",
+"x": 594,
+"y": 441
+},
+{
+"name": "Blue Plate Catering",
+"street": "W Fulton St",
+"x": 159,
+"y": 674
+},
+{
+"name": "BLVD Steakhouse",
+"street": "W Lake St",
+"x": 680,
+"y": 468
+},
+{
+"name": "Bodega Taqueria Y Tequila West Loop",
+"street": "W Randolph St",
+"x": 640,
+"y": 531
+},
+{
+"name": "Bombobar",
+"street": "W Randolph St",
+"x": 693,
+"y": 499
+},
+{
+"name": "Bonci",
+"street": "N Sangamon St",
+"x": 620,
+"y": 538
+},
+{
+"name": "Boqueria Fulton Market",
+"street": "W Fulton Market",
+"x": 631,
+"y": 425
+},
+{
+"name": "Bottom Lounge",
+"street": "W Lake St",
+"x": 232,
+"y": 745
+},
+{
+"name": "Butterfly Sushi Bar | Thai Cuisine",
+"street": "W Grand Ave",
+"x": 155,
+"y": 480
+},
+{
+"name": "Butterfly Sushi on Chicago",
+"street": "W Grand Ave",
+"x": 155,
+"y": 480
+},
+{
+"name": "Cabra",
+"street": "N Green St",
+"x": 648,
+"y": 470
+},
+{
+"name": "Carbon",
+"street": "W Lake St",
+"x": 356,
+"y": 648
+},
+{
+"name": "Chicken & Farm Shop",
+"street": "N Green St",
+"x": 752,
+"y": 514
+},
+{
+"name": "Cira",
+"street": "N Green St",
+"x": 648,
+"y": 470
+},
+{
+"name": "City Winery Chicago",
+"street": "W Randolph St",
+"x": 413,
+"y": 663
+},
+{
+"name": "Cornerstone Restaurant Group",
+"street": "N Loomis St",
+"x": 217,
+"y": 770
+},
+{
+"name": "Costera Cocina",
+"street": "W Fulton Market",
+"x": 564,
+"y": 451
+},
+{
+"name": "Counter Culture Coffee",
+"street": "N Ada St",
+"x": 273,
+"y": 724
+},
+{
+"name": "CTRL Kitchen",
+"street": "N Aberdeen St",
+"x": 567,
+"y": 644
+},
+{
+"name": "Dough Daddy's",
+"street": "W Washington Blvd",
+"x": 520,
+"y": 675
+},
+{
+"name": "Doughnate Pizza",
+"street": "N Green St",
+"x": 648,
+"y": 470
+},
+{
+"name": "Duck Duck Goat",
+"street": "W Fulton Market",
+"x": 592,
+"y": 454
+},
+{
+"name": "Dunkin'",
+"street": "W Lake St",
+"x": 524,
+"y": 563
+},
+{
+"name": "Elske",
+"street": "W Randolph St",
+"x": 288,
+"y": 744
+},
+{
+"name": "Ever Restaurant",
+"street": "W Fulton St",
+"x": 197,
+"y": 663
+},
+{
+"name": "Fairgrounds Coffee & Tea",
+"street": "W Fulton St",
+"x": 197,
+"y": 663
+},
+{
+"name": "Federales Tacos & Tequila-Fulton Market, Chicago",
+"street": "N Morgan St",
+"x": 541,
+"y": 553
+},
+{
+"name": "Fioretta",
+"street": "N Sangamon St",
+"x": 488,
+"y": 470
+},
+{
+"name": "Flying Food Group LLC",
+"street": "N Sangamon St",
+"x": 539,
+"y": 509
+},
+{
+"name": "Fora",
+"street": "N Morgan St",
+"x": 475,
+"y": 492
+},
+{
+"name": "Formento's",
+"street": "W Randolph St",
+"x": 653,
+"y": 556
+},
+{
+"name": "Forno Rosso Pizzeria Napoletana",
+"street": "W Randolph St",
+"x": 512,
+"y": 604
+},
+{
+"name": "Four Corners",
+"street": "W Fulton Market",
+"x": 197,
+"y": 663
+},
+{
+"name": "Foxtrot Market",
+"street": "N Green St",
+"x": 691,
+"y": 477
+},
+{
+"name": "Fulton Market Kitchen",
+"street": "N Sangamon St",
+"x": 514,
+"y": 469
+},
+{
+"name": "G-Cue Billiard",
+"street": "N Morgan St",
+"x": 588,
+"y": 555
+},
+{
+"name": "Gaijin",
+"street": "W Lake St",
+"x": 538,
+"y": 527
+},
+{
+"name": "Girl & the Goat",
+"street": "W Randolph St",
+"x": 748,
+"y": 498
+},
+{
+"name": "Good Ambler",
+"street": "N Peoria St",
+"x": 576,
+"y": 485
+},
+{
+"name": "Green Street Smoked Meats",
+"street": "N Green St",
+"x": 735,
+"y": 543
+},
+{
+"name": "Gus's World Famous Fried Chicken",
+"street": "W Fulton Market",
+"x": 595,
+"y": 452
+},
+{
+"name": "Gyu-Kaku Japanese BBQ",
+"street": "W Randolph St",
+"x": 274,
+"y": 752
+},
+{
+"name": "Gyuro Ramen",
+"street": "N Aberdeen St",
+"x": 479,
+"y": 590
+},
+{
+"name": "H Bar",
+"street": "N May St",
+"x": 526,
+"y": 657
+},
+{
+"name": "Haymarket Pub & Brewery",
+"street": "W Randolph St",
+"x": 778,
+"y": 483
+},
+{
+"name": "Hide+Seek",
+"street": "W Randolph St",
+"x": 688,
+"y": 502
+},
+{
+"name": "High Five Ramen",
+"street": "N Green St",
+"x": 735,
+"y": 543
+},
+{
+"name": "Hyatt House Chicago/West Loop-Fulton Market",
+"street": "N May St",
+"x": 526,
+"y": 657
+},
+{
+"name": "It's A Grind Coffee House",
+"street": "N Green St",
+"x": 580,
+"y": 406
+},
+{
+"name": "Jeni's Splendid Ice Creams",
+"street": "W Randolph St",
+"x": 646,
+"y": 528
+},
+{
+"name": "Joe's Imports",
+"street": "W Fulton Market",
+"x": 629,
+"y": 435
+},
+{
+"name": "Jubilee Juice & Grill",
+"street": "N Halsted St",
+"x": 758,
+"y": 492
+},
+{
+"name": "Kaiser Tiger",
+"street": "W Randolph St",
+"x": 250,
+"y": 800
+},
+{
+"name": "Kinton Ramen",
+"street": "N Sangamon St",
+"x": 613,
+"y": 526
+},
+{
+"name": "Kuma's West Loop",
+"street": "W Fulton Market",
+"x": 563,
+"y": 451
+},
+{
+"name": "La Colombe Coffee Roasters",
+"street": "W Randolph St",
+"x": 631,
+"y": 567
+},
+{
+"name": "La Serre",
+"street": "N Green St",
+"x": 595,
+"y": 434
+},
+{
+"name": "Lena Brava",
+"street": "W Randolph St",
+"x": 652,
+"y": 524
+},
+{
+"name": "Little Goat",
+"street": "W Randolph St",
+"x": 707,
+"y": 491
+},
+{
+"name": "Loft on Lake",
+"street": "W Lake St",
+"x": 200,
+"y": 718
+},
+{
+"name": "Lou Malnati's Pizzeria",
+"street": "W Randolph St",
+"x": 412,
+"y": 701
+},
+{
+"name": "Lyra",
+"street": "W Fulton Market",
+"x": 558,
+"y": 481
+},
+{
+"name": "Macello Cucina Di Puglia",
+"street": "W Lake St",
+"x": 345,
+"y": 670
+},
+{
+"name": "Mako",
+"street": "W Lake St",
+"x": 714,
+"y": 437
+},
+{
+"name": "Mart Anthony's Italian Restaurant",
+"street": "W Hubbard St",
+"x": 152,
+"y": 527
+},
+{
+"name": "Matcha Cita",
+"street": "W Lake St",
+"x": 524,
+"y": 563
+},
+{
+"name": "McDonald's",
+"street": "W Lake St",
+"x": 197,
+"y": 729
+},
+{
+"name": "McDonald's",
+"street": "W Randolph St",
+"x": 558,
+"y": 605
+},
+{
+"name": "McDonald's Corporation",
+"street": "N Carpenter St",
+"x": 591,
+"y": 629
+},
+{
+"name": "McDonald's USA, LLC",
+"street": "N Carpenter St",
+"x": 591,
+"y": 629
+},
+{
+"name": "Momotaro",
+"street": "W Lake St",
+"x": 651,
+"y": 459
+},
+{
+"name": "Morgan Manufacturing",
+"street": "N Morgan St",
+"x": 384,
+"y": 434
+},
+{
+"name": "Nancy's Pizza",
+"street": "W Washington Blvd",
+"x": 623,
+"y": 611
+},
+{
+"name": "Nando's PERi-PERi",
+"street": "W Randolph St",
+"x": 631,
+"y": 566
+},
+{
+"name": "Next Restaurant",
+"street": "W Fulton Market",
+"x": 505,
+"y": 512
+},
+{
+"name": "Nia",
+"street": "W Randolph St",
+"x": 758,
+"y": 492
+},
+{
+"name": "Nisos Prime",
+"street": "W Randolph St",
+"x": 729,
+"y": 478
+},
+{
+"name": "Nobu Chicago",
+"street": "N Peoria Street # 11 Thfloot",
+"x": 659,
+"y": 515
+},
+{
+"name": "Nobu Chicago",
+"street": "W Randolph St",
+"x": 663,
+"y": 507
+},
+{
+"name": "Nobu Hotel Chicago",
+"street": "N Peoria St",
+"x": 659,
+"y": 515
+},
+{
+"name": "Nonna's",
+"street": "W Randolph St",
+"x": 653,
+"y": 556
+},
+{
+"name": "Nonna's Sandwiches & Sundries",
+"street": "W Randolph St",
+"x": 653,
+"y": 556
+},
+{
+"name": "Now Open Project",
+"street": "W Randolph St",
+"x": 721,
+"y": 482
+},
+{
+"name": "Occasions Chicago Catering",
+"street": "N Willard Ct",
+"x": 436,
+"y": 709
+},
+{
+"name": "One Off Hospitality Group",
+"street": "W Lake St",
+"x": 668,
+"y": 449
+},
+{
+"name": "One Twelve N Green Street LLC",
+"street": "N Green St",
+"x": 735,
+"y": 543
+},
+{
+"name": "Ora",
+"street": "N Peoria St",
+"x": 430,
+"y": 407
+},
+{
+"name": "Parlor Pizza Bar",
+"street": "N Green St",
+"x": 749,
+"y": 534
+},
+{
+"name": "Pizza Beer & Jukebox",
+"street": "N Peoria St",
+"x": 609,
+"y": 480
+},
+{
+"name": "Praise Iag Franchisor LLC",
+"street": "N Green St",
+"x": 580,
+"y": 406
+},
+{
+"name": "Publican Quality Meats",
+"street": "W Fulton Market",
+"x": 618,
+"y": 443
+},
+{
+"name": "Punch Bowl Social",
+"street": "N Green St",
+"x": 569,
+"y": 436
+},
+{
+"name": "Pure Green",
+"street": "W Fulton Market",
+"x": 502,
+"y": 488
+},
+{
+"name": "Puttery Chicago",
+"street": "W Randolph St",
+"x": 612,
+"y": 548
+},
+{
+"name": "Raising Cane's Chicken Fingers",
+"street": "W Randolph St",
+"x": 707,
+"y": 491
+},
+{
+"name": "RAMEN TAKEYA",
+"street": "W Fulton Market",
+"x": 624,
+"y": 439
+},
+{
+"name": "Recess",
+"street": "W Kinzie St",
+"x": 477,
+"y": 382
+},
+{
+"name": "Retail Food Group USA",
+"street": "N Green St",
+"x": 580,
+"y": 406
+},
+{
+"name": "Riccardo Posteria LLC",
+"street": "W Lake St",
+"x": 516,
+"y": 567
+},
+{
+"name": "Roister",
+"street": "W Fulton Market",
+"x": 506,
+"y": 512
+},
+{
+"name": "Roister Restaurant",
+"street": "N Sangamon St",
+"x": 409,
+"y": 427
+},
+{
+"name": "Roop Chicago Innovative Indian Restaurant & Cocktail Bar",
+"street": "W Randolph St",
+"x": 743,
+"y": 462
+},
+{
+"name": "Rose Mary",
+"street": "W Fulton Market",
+"x": 506,
+"y": 486
+},
+{
+"name": "Roti Modern Mediterranean",
+"street": "W Randolph St",
+"x": 562,
+"y": 578
+},
+{
+"name": "Salerno's Pizza of Chicago",
+"street": "W Grand Ave",
+"x": 110,
+"y": 509
+},
+{
+"name": "Sandwich Kings LLC II",
+"street": "N Aberdeen St",
+"x": 479,
+"y": 590
+},
+{
+"name": "Sawada Coffee",
+"street": "N Green St",
+"x": 735,
+"y": 543
+},
+{
+"name": "Shake Shack",
+"street": "N Morgan St",
+"x": 557,
+"y": 543
+},
+{
+"name": "Soho House Chicago",
+"street": "N Green St",
+"x": 752,
+"y": 514
+},
+{
+"name": "Solazo on Randolph Inc",
+"street": "W Randolph St",
+"x": 738,
+"y": 465
+},
+{
+"name": "Sputnik Coffee Co",
+"street": "W Lake St",
+"x": 462,
+"y": 601
+},
+{
+"name": "Starbucks",
+"street": "W Randolph St",
+"x": 591,
+"y": 561
+},
+{
+"name": "Sushi By Bou-West Loop",
+"street": "N Morgan St",
+"x": 475,
+"y": 492
+},
+{
+"name": "Sushi Dokku",
+"street": "W Randolph St",
+"x": 732,
+"y": 511
+},
+{
+"name": "sweetgreen",
+"street": "W Randolph St",
+"x": 571,
+"y": 573
+},
+{
+"name": "Swift & Sons",
+"street": "W Fulton Market",
+"x": 440,
+"y": 509
+},
+{
+"name": "Taco Bell Cantina",
+"street": "W Randolph St",
+"x": 631,
+"y": 569
+},
+{
+"name": "Tacombi",
+"street": "N Peoria St",
+"x": 684,
+"y": 544
+},
+{
+"name": "Tanoshii",
+"street": "W Randolph St",
+"x": 760,
+"y": 453
+},
+{
+"name": "Tetto",
+"street": "N Sangamon St",
+"x": 394,
+"y": 419
+},
+{
+"name": "Texan Taco Bar",
+"street": "W Randolph St",
+"x": 602,
+"y": 554
+},
+{
+"name": "The Aberdeen Tap",
+"street": "N Aberdeen St",
+"x": 234,
+"y": 474
+},
+{
+"name": "The Allis",
+"street": "N Green St",
+"x": 752,
+"y": 514
+},
+{
+"name": "The Aviary",
+"street": "W Fulton Market",
+"x": 505,
+"y": 512
+},
+{
+"name": "The Corned Beef Factory",
+"street": "W Lake St",
+"x": 503,
+"y": 549
+},
+{
+"name": "The Distillery",
+"street": "N Racine Ave",
+"x": 351,
+"y": 629
+},
+{
+"name": "The Loyalist",
+"street": "N Ada St",
+"x": 277,
+"y": 726
+},
+{
+"name": "The Oakville Grill & Cellar",
+"street": "N Green St",
+"x": 694,
+"y": 489
+},
+{
+"name": "The Original Pancake House",
+"street": "W Washington Blvd",
+"x": 554,
+"y": 664
+},
+{
+"name": "The Press Room",
+"street": "W Washington Blvd",
+"x": 520,
+"y": 675
+},
+{
+"name": "The Publican",
+"street": "W Fulton Market",
+"x": 599,
+"y": 450
+},
+{
+"name": "Third Floor Restaurant LLC",
+"street": "N Green St",
+"x": 593,
+"y": 439
+},
+{
+"name": "TimeOut Market",
+"street": "W Fulton Market",
+"x": 545,
+"y": 461
+},
+{
+"name": "TouchBistro",
+"street": "N Green St",
+"x": 638,
+"y": 468
+},
+{
+"name": "Uncooked",
+"street": "N Carpenter St",
+"x": 466,
+"y": 553
+},
+{
+"name": "Velvet Taco",
+"street": "W Randolph St",
+"x": 643,
+"y": 529
+},
+{
+"name": "Yokocho",
+"street": "N Green St Back Aly",
+"x": 701,
+"y": 469
+},
+{
+"name": "Zayna Grill",
+"street": "W Grand Ave",
+"x": 150,
+"y": 486
+}
+],
+"hotels": [
+{
+"name": "105 N May, LLC",
+"street": "N May St",
+"x": 526,
+"y": 627
+},
+{
+"name": "Creative Hospitality Associates LLC",
+"street": "N Aberdeen St",
+"x": 286,
+"y": 449
+},
+{
+"name": "Dana Hotel & Spa",
+"street": "N Peoria St",
+"x": 689,
+"y": 517
+},
+{
+"name": "Hyatt House Chicago/West Loop-Fulton Market",
+"street": "N May St",
+"x": 526,
+"y": 627
+},
+{
+"name": "McCaffery",
+"street": "N Racine Ave",
+"x": 378,
+"y": 605
+},
+{
+"name": "Nobu Hotel Chicago",
+"street": "N Peoria St",
+"x": 659,
+"y": 485
+},
+{
+"name": "Primrose Hospitality",
+"street": "W Randolph St",
+"x": 679,
+"y": 510
+},
+{
+"name": "Sancerre Hospitality",
+"street": "W Lake St",
+"x": 680,
+"y": 438
+},
+{
+"name": "Soho House Chicago",
+"street": "N Green St",
+"x": 752,
+"y": 484
+},
+{
+"name": "The Emily Hotel",
+"street": "N Morgan St",
+"x": 475,
+"y": 462
+},
+{
+"name": "The Hoxton, Chicago",
+"street": "N Green St",
+"x": 648,
+"y": 440
+},
+{
+"name": "The Publishing House",
+"street": "N May St",
+"x": 508,
+"y": 632
+}
+],
+"cta": [
+{
+"name": "Grand station",
+"street": "Blue Line",
+"x": 437,
+"y": 259
+},
+{
+"name": "Morgan station",
+"street": "Green & Pink Lines",
+"x": 539,
+"y": 497
+},
+{
+"k": "cta-blue",
+"name": "Blue Line",
+"colour": "#00a1de"
+},
+{
+"k": "cta-green",
+"name": "Green Line",
+"colour": "#009b3a"
+},
+{
+"k": "cta-pink",
+"name": "Pink Line",
+"colour": "#e27ea6"
+}
+],
+"metra": [
+{
+"k": "metra-MDN",
+"name": "Milwaukee District North"
+},
+{
+"k": "metra-MDW",
+"name": "Milwaukee District West"
+},
+{
+"k": "metra-NCS",
+"name": "North Central Service"
+},
+{
+"k": "metra-UPN",
+"name": "Union Pacific North"
+},
+{
+"k": "metra-UPNW",
+"name": "Union Pacific Northwest"
+},
+{
+"k": "metra-UPW",
+"name": "Union Pacific West"
+}
+],
+"walk": [
+{
+"k": "walk-5",
+"name": "5 min walk"
+},
+{
+"k": "walk-10",
+"name": "10 min walk"
+}
+]
+}
