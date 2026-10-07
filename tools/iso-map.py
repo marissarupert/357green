@@ -268,6 +268,7 @@ def lines_d(geom):
             out.append('M' + 'L'.join(f'{a} {b}' for a, b in pts))
     return ''.join(out)
 labels_after = []
+KEY = {'restaurants': [], 'hotels': [], 'cta': [], 'metra': [], 'walk': []}   # lists for the slide's map key
 if GIS:
     walk = gis('walk')
     rings = {}
@@ -276,18 +277,27 @@ if GIS:
         geoms = u.geoms if hasattr(u, 'geoms') else [u]
         big = max(geoms, key=lambda g: g.area)
         pts = [gm(x, y) for x, y in big.exterior.coords]
-        svg.append(f'<path class="walk" d="{path(pts)}"/>')
+        svg.append(f'<path class="walk" data-k="walk-{limit}" d="{path(pts)}"/>')
+        KEY['walk'].append({'k': f'walk-{limit}', 'name': f'{limit} min walk'})
         # 10 min: label at the ring's top; 5 min: at its west (left) edge, clear of the callout
         rings[limit] = min(pts, key=lambda p: p[1]) if limit == 10 else min(pts, key=lambda p: p[0])
+    METRA = {'UPN': 'Union Pacific North', 'UPNW': 'Union Pacific Northwest', 'UPW': 'Union Pacific West',
+             'MDN': 'Milwaukee District North', 'MDW': 'Milwaukee District West', 'NCS': 'North Central Service',
+             'BNSF': 'BNSF', 'HC': 'Heritage Corridor', 'ME': 'Metra Electric', 'RID': 'Rock Island', 'SWS': 'SouthWest Service'}
     for f in gis('mlines'):
+        code = f['properties']['NAME']
         d = lines_d(f['geometry'])
-        if d: svg.append(f'<path class="metra" d="{d}"/>')
+        if d and code in METRA:
+            svg.append(f'<path class="metra" data-k="metra-{code}" d="{d}"/>')
+            KEY['metra'].append({'k': f'metra-{code}', 'name': METRA[code]})
     CTA = {'Blue': '#00a1de', 'Green': '#009b3a', 'Pink': '#e27ea6'}
     for colour in ('Blue', 'Green', 'Pink'):
         for f in gis('llines'):
             if f['properties']['COLOR'] == colour:
                 d = lines_d(f['geometry'])
-                if d: svg.append(f'<path class="cta cta-{colour.lower()}" stroke="{CTA[colour]}" d="{d}"/>')
+                if d:
+                    svg.append(f'<path class="cta cta-{colour.lower()}" data-k="cta-{colour.lower()}" stroke="{CTA[colour]}" d="{d}"/>')
+                    KEY['cta'].append({'k': f'cta-{colour.lower()}', 'name': f'{colour} Line', 'colour': CTA[colour]})
 
 placed = False
 gx, gy = site_pt.x, site_pt.y
@@ -316,12 +326,17 @@ if GIS:
     ov = ['<g class="ov">']
     gx0, gy0 = gm(*gis('site')[0]['geometry']['coordinates']) if gis('site') else S(gx, gy)
     def delay(a, b): return min(1, math.hypot(a - gx0, b - gy0) / 520)
-    for f in gis('restaurants'):
-        a, b = gm(*f['geometry']['coordinates'][:2])
-        ov.append(f'<circle class="rest" cx="{a}" cy="{b}" r="3.4" style="--d:{delay(a, b):.2f}"/>')
-    for f in gis('hotels'):
-        a, b = gm(*f['geometry']['coordinates'][:2])
-        ov.append(f'<g class="hotel" style="--d:{delay(a, b):.2f}"><path d="M{a} {b}V{b - 30}"/><circle cx="{a}" cy="{b - 30}" r="6.5"/></g>')
+    def places(layer):
+        fs = sorted(gis(layer), key=lambda f: (f['properties']['CONAME'].lower(), f['properties']['STREET'] or ''))
+        return [(f, *gm(*f['geometry']['coordinates'][:2])) for f in fs]
+    for i, (f, a, b) in enumerate(places('restaurants')):
+        p = f['properties']
+        ov.append(f'<circle class="rest" data-i="{i}" cx="{a}" cy="{b}" r="3.4" style="--d:{delay(a, b):.2f}"/>')
+        KEY['restaurants'].append({'name': p['CONAME'], 'street': p['STREET'], 'x': a, 'y': b})
+    for i, (f, a, b) in enumerate(places('hotels')):
+        p = f['properties']
+        ov.append(f'<g class="hotel" data-i="{i}" style="--d:{delay(a, b):.2f}"><path d="M{a} {b}V{b - 30}"/><circle cx="{a}" cy="{b - 30}" r="6.5"/></g>')
+        KEY['hotels'].append({'name': p['CONAME'], 'street': p['STREET'], 'x': a, 'y': b - 30})
     LEG = {'BL': ['#00a1de'], 'GR': ['#009b3a', '#e27ea6'], 'PK': ['#e27ea6']}
     def station(a, b, name, cols, cls='l'):
         ring = ''.join(f'<circle cx="{a}" cy="{b - 44}" r="{11 - i * 4}" fill="{c}"/>' for i, c in enumerate(cols))
@@ -337,6 +352,8 @@ if GIS:
         if near(x, y) and 30 < a < W - 30 and 80 < b < H - 30 and f['properties']['LEGEND'] in LEG:
             name = f['properties']['LONGNAME'].split('/')[0].split('-')[0].upper()
             ov.append(station(a, b, name, LEG[f['properties']['LEGEND']]))
+            lines_at = {'BL': 'Blue Line', 'GR': 'Green & Pink Lines', 'PK': 'Pink Line'}[f['properties']['LEGEND']]
+            KEY['cta'].insert(0, {'name': f"{name.title()} station", 'street': lines_at, 'x': a, 'y': b - 44})
     for f in gis('mstations'):
         c = f['geometry']['coordinates']; x, y = (c[0] if isinstance(c[0], list) else c)[:2]
         a, b = gm(x, y)
@@ -350,8 +367,9 @@ if GIS:
         ov.append(f'<text class="walk-lbl" x="{a + (0 if limit == 10 else 8)}" y="{b - 10}" text-anchor="{anchor}">{limit} MIN WALK</text>')
     ov.append('</g>')
     svg.extend(ov)
-    # legend, bottom left
+    # legend, bottom left (only when the SVG is used on its own; the slide has a map key)
     lx, ly = 32, H - 230
+    rows_off = True
     rows = [('<circle class="rest" cx="9" cy="0" r="4.5"/>', 'Restaurants (148)'),
             ('<g class="hotel"><circle cx="9" cy="0" r="6.5"/></g>', 'Hotels (12)'),
             ('<circle cx="9" cy="0" r="8" fill="#009b3a"/><circle cx="9" cy="0" r="4" fill="#e27ea6"/><circle class="hole" cx="9" cy="0" r="2"/>', 'CTA \u2018L\u2019 station'),
@@ -362,7 +380,7 @@ if GIS:
     for i, (mark, text) in enumerate(rows):
         leg.append(f'<g transform="translate(0 {i * 30})">{mark}<text x="30" y="0" dominant-baseline="middle">{text}</text></g>')
     leg.append('</g>')
-    svg.extend(leg)
+    if not rows_off: svg.extend(leg)
 
 # street labels along the boundary, set at the iso angle of the edge they name
 ac = area.centroid
@@ -399,9 +417,9 @@ cx0, cy0 = (W - 180, H - 60) if GIS else (70, H - 100)   # clear of the legend a
 svg.append(f'<g class="north"><path d="M{cx0 - ux * 22:.0f} {cy0 - uy * 22:.0f}L{cx0 + ux * 22:.0f} {cy0 + uy * 22:.0f}"/>'
            f'<path class="head" d="M{cx0 + ux * 26:.0f} {cy0 + uy * 26:.0f}L{cx0 + ux * 12 - uy * 7:.0f} {cy0 + uy * 12 + ux * 7:.0f}L{cx0 + ux * 12 + uy * 7:.0f} {cy0 + uy * 12 - ux * 7:.0f}Z"/>'
            f'<text x="{cx0 + ux * 44:.0f}" y="{cy0 + uy * 44:.0f}" text-anchor="middle" dominant-baseline="middle">N</text></g>')
-svg.append(f'<text class="credit" x="24" y="{H - 22}">Map data © OpenStreetMap contributors · City of Chicago</text>')
+svg.append(f'<text class="credit" x="{W / 2:.0f}" y="{H - 22}" text-anchor="middle">Map data © OpenStreetMap contributors · City of Chicago</text>')
 svg.append('</svg>')
 open(OUT, 'w').write('\n'.join(svg))
-json.dump(anchors, open(OUT.replace('.svg', '.json'), 'w'), indent=1)
+if GIS: json.dump(KEY, open(OUT.replace('.svg', '-key.json'), 'w'), indent=0, ensure_ascii=False)
 print(len(items), 'buildings drawn,', sum(t[2] for t in items), 'inside;', fallback, 'without any height (2 storeys)')
 print(anchors)

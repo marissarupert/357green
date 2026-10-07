@@ -69,7 +69,7 @@ image paths. Layout code never needs to change.
 | `divider` | 5, 8, 10, 18, 34, 40, 43 | numeral and title animate in, watermark drifts |
 | `iconStats` | 6 | numbers count up; photos rotate on their own (the copper bar fills, then the next photo fades in; hover pauses, bars or a click switch by hand) |
 | `bullets` | 7 | photos rotate on their own, as on slide 6 |
-| `location` | 9 | numbers count up; nearby transit list (`transit`); isometric massing map of Grand / Kennedy Expressway / Washington / Ogden (`map.drawing: 'iso-map'`): buildings rise outward from 357 Green, which rises last in copper. Remove `drawing` to show the interactive map (`map.url`) instead |
+| `location` | 9 | numbers count up; nearby transit list (`transit`); isometric massing map of Grand / Kennedy Expressway / Washington / Ogden (`map.drawing: 'iso-map'`): buildings rise outward from 357 Green, which rises last in copper. A **Map key** dropdown lists everything on it (restaurants, hotels, CTA, Metra, walk times); point at an entry, or at a place on the map, to mark it. Remove `drawing` to show the interactive map (`map.url`) instead |
 | `features` | 11 | features come in one after another, automatically |
 | `elevation` | 12 | elevations rise from the ground as level markers tick on, callouts reach out to both towers; hover a level for a guide line across both, hover a callout to pick out its points |
 | `callouts` | 13 | callouts play in; hover a label or dot for a zoom lens, click to spotlight (Esc to clear) |
