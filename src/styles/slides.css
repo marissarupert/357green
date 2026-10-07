@@ -12,12 +12,13 @@
 .s-cover .logo { left: 120px; top: 108px; width: 340px; color: var(--white); }
 .s-cover .logo img { width: 100%; height: auto; display: block; }
 .s-cover .eyebrow { left: 122px; top: 512px; font-size: 15px; letter-spacing: .32em; color: var(--powder); }
-.s-cover .tagline { left: 112px; top: 548px; white-space: nowrap; line-height: 1; }
-.s-cover .tagline .ln { display: block; overflow: hidden; padding-bottom: .08em; }
+.s-cover .tagline { left: 112px; top: 606px; white-space: nowrap; line-height: 1; }
+.s-cover .tagline .ln { display: block; overflow: hidden; padding-bottom: .24em; margin-bottom: -.16em; }
 .s-cover .tagline .ln > span { display: block; }
-.s-cover .tagline .ln1 { margin-left: 6px; font-size: 46px; font-weight: var(--w-light); letter-spacing: .01em; color: var(--powder); }
-.s-cover .tagline .ln2 { margin-top: 4px; font-size: 138px; font-weight: 200; letter-spacing: -.035em; line-height: .92; }
-.s-cover .tagline .ln3 { font-size: 138px; font-weight: 560; letter-spacing: -.04em; line-height: .92; }
+.s-cover .tagline .lead + .hair { margin-top: 4px; }
+.s-cover .tagline .lead { margin-left: 6px; font-size: 46px; font-weight: var(--w-light); letter-spacing: .01em; color: var(--powder); }
+.s-cover .tagline .hair { font-size: 138px; font-weight: 200; letter-spacing: -.035em; line-height: .92; }
+.s-cover .tagline .heavy { font-size: 138px; font-weight: 560; letter-spacing: -.04em; line-height: .92; }
 .s-cover .tagline .stop { color: var(--copper); }
 .s-cover .rule-bar { left: 122px; top: 920px; width: 520px; --bw: 44px; --bh: 5px; --rule: rgba(255, 255, 255, .3); }
 .s-cover .partners { left: 122px; top: 958px; display: flex; align-items: center; gap: 30px; opacity: .9; }
