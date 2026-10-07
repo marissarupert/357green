@@ -153,6 +153,7 @@
 /* ---------- icon stats + carousel (slide 6) ---------- */
 .s-iconStats .eyebrow { left: 45px; top: 130px; }
 .s-iconStats .title { left: 42px; top: 160px; font-size: 110px; line-height: 1; white-space: nowrap; }
+.s-iconStats .title-logo { display: block; margin: 12px 0 0 4px; width: 470px; aspect-ratio: 531 / 167; background: currentColor; -webkit-mask: no-repeat center / contain; mask: no-repeat center / contain; }
 .s-iconStats .rule-bar { left: 47px; top: 355px; width: 771px; }
 .s-iconStats .headline { left: 47px; top: 427px; font-size: 40px; font-weight: var(--w-medium); text-transform: uppercase; letter-spacing: .02em; line-height: 1; white-space: nowrap; }
 .s-iconStats .icons { left: 3px; top: 613px; width: 1030px; display: grid; grid-template-columns: 250px 214px 286px 280px; text-align: center; }
