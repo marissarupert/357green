@@ -12,9 +12,14 @@ Sources (fetch these, then run with the three paths):
             the number of stories where OSM has no height:
             https://data.cityofchicago.org/resource/syp8-uezg.geojson?$where=within_box(the_geom,41.8935,-87.6700,41.8820,-87.6400)&$limit=20000
 
-  python3 tools/iso-map.py osm.xml[,more.xml...] city.json src/assets/svg/iso-map.svg
+  python3 tools/iso-map.py osm.xml[,more.xml...] city.json src/assets/svg/iso-map.svg [gis-dir]
   (The OSM API caps one download, so fetch the wider surroundings as tiles and
   pass them comma-separated.)
+
+  gis-dir   (optional) the Stream GIS map's layers as GeoJSON, for the highlights:
+            restaurants, hotels, site, walk, lstations, llines, mstations, mlines
+            Web map 13ec007148e2465e9c4c01feffdbdde9 (app 3d12fababd414716a631c254206783e6);
+            each layer: <FeatureServer layer>/query?where=1%3D1&outFields=*&outSR=4326&f=geojson
 
 357 Green massing (approximate, from the deck):
   podium     ground-floor outline (public/assets/plans/lobby.jpg) to the top of
@@ -31,6 +36,7 @@ from shapely.ops import unary_union, polygonize, transform
 from shapely.strtree import STRtree
 
 OSM, CITY, OUT = sys.argv[1:4]
+GIS = sys.argv[4] if len(sys.argv) > 4 else None
 
 LAT0, LON0 = 41.8875, -87.6550
 MX = 111320 * math.cos(math.radians(LAT0))
@@ -247,6 +253,42 @@ svg.append(f'<path class="xway" d="{"".join(xway)}"/>')
 edge = [S(x, y) for x, y in area.exterior.coords]
 svg.append(f'<path class="edge" d="M{"L".join(f"{a} {b}" for a, b in edge)}"/>')
 
+# ---------- highlights from the Stream GIS map ----------
+from shapely.geometry import shape
+def gis(name):
+    return json.load(open(f'{GIS}/{name}.geojson'))['features'] if GIS else []
+def gm(lon, lat, z=0.0): return S(*m(lon, lat), z)
+def lines_d(geom):
+    g = shape(geom)
+    parts = g.geoms if hasattr(g, 'geoms') else [g]
+    out = []
+    for ln in parts:
+        pts = [gm(x, y) for x, y in ln.coords]
+        if any(-50 < a < W + 50 and -50 < b < H + 50 for a, b in pts):
+            out.append('M' + 'L'.join(f'{a} {b}' for a, b in pts))
+    return ''.join(out)
+labels_after = []
+if GIS:
+    walk = gis('walk')
+    rings = {}
+    for limit in (5, 10):
+        u = unary_union([shape(f['geometry']) for f in walk if f['properties']['ToBreak'] <= limit]).buffer(0)
+        geoms = u.geoms if hasattr(u, 'geoms') else [u]
+        big = max(geoms, key=lambda g: g.area)
+        pts = [gm(x, y) for x, y in big.exterior.coords]
+        svg.append(f'<path class="walk" d="{path(pts)}"/>')
+        # 10 min: label at the ring's top; 5 min: at its west (left) edge, clear of the callout
+        rings[limit] = min(pts, key=lambda p: p[1]) if limit == 10 else min(pts, key=lambda p: p[0])
+    for f in gis('mlines'):
+        d = lines_d(f['geometry'])
+        if d: svg.append(f'<path class="metra" d="{d}"/>')
+    CTA = {'Blue': '#00a1de', 'Green': '#009b3a', 'Pink': '#e27ea6'}
+    for colour in ('Blue', 'Green', 'Pink'):
+        for f in gis('llines'):
+            if f['properties']['COLOR'] == colour:
+                d = lines_d(f['geometry'])
+                if d: svg.append(f'<path class="cta cta-{colour.lower()}" stroke="{CTA[colour]}" d="{d}"/>')
+
 placed = False
 gx, gy = site_pt.x, site_pt.y
 for depth, base, inside, parts_svg, (cx, cy) in items:
@@ -268,6 +310,59 @@ def mid(ls):
 anchors = {n: mid(ls) for n, ls in B.items()}
 top = high.representative_point()
 anchors['357 Green'] = S(top.x, top.y, high_top)
+
+# point highlights sit on top of the model
+if GIS:
+    ov = ['<g class="ov">']
+    gx0, gy0 = gm(*gis('site')[0]['geometry']['coordinates']) if gis('site') else S(gx, gy)
+    def delay(a, b): return min(1, math.hypot(a - gx0, b - gy0) / 520)
+    for f in gis('restaurants'):
+        a, b = gm(*f['geometry']['coordinates'][:2])
+        ov.append(f'<circle class="rest" cx="{a}" cy="{b}" r="3.4" style="--d:{delay(a, b):.2f}"/>')
+    for f in gis('hotels'):
+        a, b = gm(*f['geometry']['coordinates'][:2])
+        ov.append(f'<g class="hotel" style="--d:{delay(a, b):.2f}"><path d="M{a} {b}V{b - 30}"/><circle cx="{a}" cy="{b - 30}" r="6.5"/></g>')
+    LEG = {'BL': ['#00a1de'], 'GR': ['#009b3a', '#e27ea6'], 'PK': ['#e27ea6']}
+    def station(a, b, name, cols, cls='l'):
+        ring = ''.join(f'<circle cx="{a}" cy="{b - 44}" r="{11 - i * 4}" fill="{c}"/>' for i, c in enumerate(cols))
+        return (f'<g class="stn {cls}"><path d="M{a} {b}V{b - 44}"/>{ring}<circle class="hole" cx="{a}" cy="{b - 44}" r="{max(2, 11 - len(cols) * 4)}"/>'
+                f'<text x="{a}" y="{b - 64}" text-anchor="middle">{name}</text></g>')
+    metra_drawn = False
+    NEAR = 1000   # metres from 357 Green
+    site_m = m(*gis('site')[0]['geometry']['coordinates'][:2])
+    near = lambda x, y: math.dist(m(x, y), site_m) < NEAR
+    for f in gis('lstations'):
+        x, y = f['geometry']['coordinates'][:2]
+        a, b = gm(x, y)
+        if near(x, y) and 30 < a < W - 30 and 80 < b < H - 30 and f['properties']['LEGEND'] in LEG:
+            name = f['properties']['LONGNAME'].split('/')[0].split('-')[0].upper()
+            ov.append(station(a, b, name, LEG[f['properties']['LEGEND']]))
+    for f in gis('mstations'):
+        c = f['geometry']['coordinates']; x, y = (c[0] if isinstance(c[0], list) else c)[:2]
+        a, b = gm(x, y)
+        if near(x, y) and 30 < a < W - 30 and 80 < b < H - 30:
+            name = f['properties']['LONGNAME'].replace(' Transportation Center', '').upper()
+            metra_drawn = True
+            ov.append(f'<g class="stn m"><path d="M{a} {b}V{b - 44}"/><rect x="{a - 9}" y="{b - 53}" width="18" height="18" rx="2"/>'
+                      f'<text x="{a}" y="{b - 64}" text-anchor="middle">{name}</text></g>')
+    for limit, (a, b) in rings.items():
+        anchor = 'middle' if limit == 10 else 'start'
+        ov.append(f'<text class="walk-lbl" x="{a + (0 if limit == 10 else 8)}" y="{b - 10}" text-anchor="{anchor}">{limit} MIN WALK</text>')
+    ov.append('</g>')
+    svg.extend(ov)
+    # legend, bottom left
+    lx, ly = 32, H - 230
+    rows = [('<circle class="rest" cx="9" cy="0" r="4.5"/>', 'Restaurants (148)'),
+            ('<g class="hotel"><circle cx="9" cy="0" r="6.5"/></g>', 'Hotels (12)'),
+            ('<circle cx="9" cy="0" r="8" fill="#009b3a"/><circle cx="9" cy="0" r="4" fill="#e27ea6"/><circle class="hole" cx="9" cy="0" r="2"/>', 'CTA \u2018L\u2019 station'),
+            ('<rect class="m" x="1" y="-8" width="16" height="16" rx="2"/>', 'Metra station') if metra_drawn
+            else ('<path class="metra" d="M0 0H18"/>', 'Metra lines'),
+            ('<path class="walk" d="M0 0H18"/>', '5 and 10 min walk')]
+    leg = [f'<g class="legend" transform="translate({lx} {ly})">']
+    for i, (mark, text) in enumerate(rows):
+        leg.append(f'<g transform="translate(0 {i * 30})">{mark}<text x="30" y="0" dominant-baseline="middle">{text}</text></g>')
+    leg.append('</g>')
+    svg.extend(leg)
 
 # street labels along the boundary, set at the iso angle of the edge they name
 ac = area.centroid
@@ -295,11 +390,12 @@ for name, text in LABEL.items():
 
 # 357 Green callout
 tx, ty = S(*high.representative_point().coords[0], high_top)
-svg.append(f'<g class="callout"><circle cx="{tx}" cy="{ty}" r="5"/><path d="M{tx} {ty}V{ty - 78}"/>'
-           f'<text x="{tx}" y="{ty - 92}" text-anchor="middle">357 GREEN</text></g>')
+CALL = 150 if GIS else 78   # clears the station pins near the site
+svg.append(f'<g class="callout"><circle cx="{tx}" cy="{ty}" r="5"/><path d="M{tx} {ty}V{ty - CALL}"/>'
+           f'<text x="{tx}" y="{ty - CALL - 14}" text-anchor="middle">357 GREEN</text></g>')
 # north arrow and credit
 nx_, ny_ = P(0, 1); nl = math.hypot(nx_, ny_); ux, uy = nx_ / nl, ny_ / nl
-cx0, cy0 = 70, H - 100   # bottom left: the deck's arrows sit bottom right
+cx0, cy0 = (W - 180, H - 60) if GIS else (70, H - 100)   # clear of the legend and the deck's arrows
 svg.append(f'<g class="north"><path d="M{cx0 - ux * 22:.0f} {cy0 - uy * 22:.0f}L{cx0 + ux * 22:.0f} {cy0 + uy * 22:.0f}"/>'
            f'<path class="head" d="M{cx0 + ux * 26:.0f} {cy0 + uy * 26:.0f}L{cx0 + ux * 12 - uy * 7:.0f} {cy0 + uy * 12 + ux * 7:.0f}L{cx0 + ux * 12 + uy * 7:.0f} {cy0 + uy * 12 - ux * 7:.0f}Z"/>'
            f'<text x="{cx0 + ux * 44:.0f}" y="{cy0 + uy * 44:.0f}" text-anchor="middle" dominant-baseline="middle">N</text></g>')
