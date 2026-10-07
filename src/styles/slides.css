@@ -77,6 +77,28 @@
 .s-location .map .map-tag { left: 4px; top: 0; z-index: 3; pointer-events: none; }
 .s-location .map .word { position: absolute; inset: 0; display: grid; place-items: center; font-size: 160px; font-weight: var(--w-demi); line-height: 1; padding-top: 30px; }
 .s-location .map .ph-tag { position: absolute; left: 40px; bottom: 40px; font-size: 16px; }
+/* isometric massing map (map.drawing: 'iso-map') */
+.s-location .map:has(.iso-map) { background: var(--midnight); }
+.s-location .iso-map { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.iso-map .area { fill: #262839; }
+.iso-map .streets { fill: none; stroke: rgba(171, 189, 204, .14); stroke-width: 1; }
+.iso-map .xway { fill: none; stroke: rgba(171, 189, 204, .2); stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; }
+.iso-map .edge { fill: none; stroke: rgba(171, 189, 204, .75); stroke-width: 1.5; stroke-dasharray: 6 5; }
+.iso-map .b.out { opacity: .6; }
+.iso-map .lbl { font-size: 15px; font-weight: var(--w-medium); letter-spacing: .2em; fill: var(--powder); }
+.iso-map .callout circle { fill: var(--copper); stroke: var(--white); stroke-width: 2; }
+.iso-map .callout path { stroke: var(--white); stroke-width: 1.5; }
+.iso-map .callout text { fill: var(--white); font-size: 20px; font-weight: var(--w-demi); letter-spacing: .18em; }
+.iso-map .north path { stroke: var(--powder); stroke-width: 2; }
+.iso-map .north .head { fill: var(--powder); stroke: none; }
+.iso-map .north text { fill: var(--powder); font-size: 16px; font-weight: var(--w-medium); }
+.iso-map .credit { font-size: 12px; fill: rgba(171, 189, 204, .6); }
+/* buildings rise from the ground, rippling out from 357 Green; 357 Green rises last */
+.iso-map.play .b.in, .iso-map.play .b357 { transform-box: fill-box; transform-origin: 50% 100%; animation: iso-rise .9s cubic-bezier(.2, .7, .2, 1) calc(.3s + var(--d, 0) * 1.3s) both; }
+.iso-map.play .b357 { animation-duration: 1.5s; animation-delay: 1.9s; }
+.iso-map.play .lbl, .iso-map.play .callout { animation: iso-fade .6s 3s both; }
+@keyframes iso-rise { from { transform: scaleY(0); opacity: 0; } 30% { opacity: 1; } to { transform: none; } }
+@keyframes iso-fade { from { opacity: 0; } }
 
 /* ---------- amenities: cards with lightbox galleries (slide 30) ---------- */
 .s-amenities .eyebrow { left: 59px; top: 148px; }

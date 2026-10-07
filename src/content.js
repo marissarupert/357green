@@ -217,9 +217,11 @@ export const slides = [
       { src: 'assets/logos/john-deere.png', alt: 'John Deere', height: 64 },
       { src: 'assets/logos/sidley.png', alt: 'Sidley', height: 30 },
     ],
-    // Embedded interactive map (Stream GIS, ArcGIS Instant App). Swap the URL
-    // to change it; left empty, the slot shows the static deck's "MAP" box.
+    // Map panel: drawing 'iso-map' is the isometric massing map
+    // (src/assets/svg/iso-map.svg, made by tools/iso-map.py). To show the
+    // interactive Stream GIS map instead, remove `drawing`; the url stays here.
     map: {
+      drawing: 'iso-map',
       url: 'https://streamgis.maps.arcgis.com/apps/instant/basic/index.html?appid=3d12fababd414716a631c254206783e6',
       title: 'Fulton Market neighborhood map',
     },

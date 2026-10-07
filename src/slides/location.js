@@ -2,10 +2,17 @@
 // Fields: eyebrow, title, background, stats[{value, label, placeholder?}],
 //         transitLabel?, transit?[{lines:[css colour…], name, detail}] (no colours
 //         draws a road marker), neighborsLabel, neighbors[{src, alt, height?}],
-//         map{url, title, label?}
+//         map{drawing?, url, title, label?}
+//   map.drawing 'iso-map' shows the isometric massing map in the panel (its
+//   buildings rise into place as the slide opens); otherwise url embeds an
+//   interactive map.
 //   Logos sit at a common height (default 44px); set height to balance one
 //   that looks too big or small, and whiten: true to turn a grey logo white.
 import { countable, esc, hairline, img, placeholderTag, rich, ruleBar } from '../lib/html.js'
+import { reducedMotion } from '../motion.js'
+import isoMap from '../assets/svg/iso-map.svg?raw'
+
+const DRAWINGS = { 'iso-map': isoMap }
 
 export default {
   render: (s) => `
@@ -34,10 +41,21 @@ export default {
       ${s.neighbors.map((n, i) => `<span data-in="up" data-at="${(1 + i * 0.12).toFixed(2)}" style="height:${Number(n.height) || 44}px"${n.whiten ? ' class="whiten"' : ''}>${img(n.src, n.alt)}</span>`).join('')}
     </div>
     <div class="abs map" data-interactive>
-      ${s.map?.url
+      ${DRAWINGS[s.map?.drawing]
+        ? `${DRAWINGS[s.map.drawing]}
+           <p class="img-tag map-tag" data-in="tag" data-at="0.6"><span>${esc(s.map.label || s.title)}</span></p>`
+        : s.map?.url
         ? `<p class="loading">Loading map…<span>Interactive map needs an internet connection</span></p>
            <iframe data-src="${esc(s.map.url)}" title="${esc(s.map.title || 'Map')}" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
            <p class="img-tag map-tag" data-in="tag" data-at="0.6"><span>${esc(s.map.label || s.title)}</span></p>`
         : `<div class="word">MAP</div>${placeholderTag('Placeholder · add map URL in content.js')}`}
     </div>`,
+
+  // Replay the iso map's rise each time the slide opens.
+  enter(el) {
+    const m = el.querySelector('.iso-map')
+    if (!m || reducedMotion.matches) return
+    m.classList.remove('play'); void m.getBoundingClientRect(); m.classList.add('play')
+  },
+  leave(el) { el.querySelector('.iso-map')?.classList.remove('play') },
 }
