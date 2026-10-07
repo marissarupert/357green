@@ -144,6 +144,7 @@ export const slides = [
     stats: [
       { icon: 'assets/icons/apartments.svg', value: '11,200', label: 'Apartment units' },
       { icon: 'assets/icons/homes.svg', value: '15,000', label: 'Homes' },
+      { icon: 'assets/icons/commercial.svg', value: '20+ M SF', label: 'Commercial<br>(Office, Retail,<br>and Industrial)' },
       { icon: 'assets/icons/crane.svg', value: '28 + M SF', label: 'In current development<br>pipeline' },
       { icon: 'assets/icons/globe.svg', value: '3 Countries and 7 States', label: 'Onni’s development<br>footprint' },
     ],
