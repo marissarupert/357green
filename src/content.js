@@ -139,6 +139,7 @@ export const slides = [
     theme: 'light',
     eyebrow: 'Developer',
     title: 'Onni Group',
+    titleLogo: 'assets/logos/onni.png',
     headline: '19 Million SF Developed',
     stats: [
       { icon: 'assets/icons/apartments.svg', value: '11,200', label: 'Apartment units' },
