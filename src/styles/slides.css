@@ -26,18 +26,20 @@
 .s-cover .partners img + img { width: 118px; margin-top: 0; padding-left: 30px; border-left: 1px solid rgba(255, 255, 255, .35); }
 
 /* ---------- overview: stats grid + full-height image (slide 4) ---------- */
-.s-overview .title { left: 38px; top: 91px; font-size: 110px; line-height: 1; white-space: nowrap; }
-.s-overview .subtitle { left: 45px; top: 255px; font-size: 50px; font-weight: var(--w-medium); line-height: 1; white-space: nowrap; }
-.s-overview .rule-bar { left: 45px; top: 357px; width: 1046px; --bh: 13px; }
+.s-overview .title { left: 38px; top: 61px; font-size: 110px; line-height: 1; white-space: nowrap; }
+.s-overview .subtitle { left: 45px; top: 225px; font-size: 50px; font-weight: var(--w-medium); line-height: 1; white-space: nowrap; }
+.s-overview .rule-bar { left: 45px; top: 327px; width: 1046px; --bh: 13px; }
 .s-overview .stats {
-  left: 45px; top: 440px; width: 1047px; height: 575px;
+  left: 45px; top: 405px; width: 1047px; height: 635px;
   display: grid; grid-template-columns: 502px 504px; column-gap: 41px;
   align-content: stretch;
 }
-.s-overview .stat { position: relative; padding: 19px 0 20px; }
+.s-overview .stat { position: relative; padding: 15px 0 15px; }
 .s-overview .stat .hairline { left: 0; right: 0; top: 0; }
 .s-overview .stat .v { font-size: 40px; font-weight: var(--w-medium); line-height: 50px; }
 .s-overview .stat .d { margin-top: 8px; font-size: 18px; line-height: 28px; }
+.s-overview .stat.wide { grid-column: 1 / -1; display: flex; align-items: baseline; gap: 28px; }
+.s-overview .stat.wide .d { margin-top: 0; }
 .s-overview .media { left: 1180px; top: 0; width: 740px; height: 1080px; overflow: hidden; }
 
 /* ---------- location: stats over photo + map slot (slide 9) ---------- */

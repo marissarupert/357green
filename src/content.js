@@ -125,6 +125,7 @@ export const slides = [
       { value: 'Dialtone Bodega<br>& Coffee House' },
       { value: '300 SF Private Terraces', detail: 'On every office floor' },
       { value: '450 Parking Stalls', detail: 'Levels 3-7' },
+      { value: 'Timeline', detail: 'Base building turnover 24 months following lease execution', wide: true },
     ],
   },
   // ---------- 01 Development ----------
