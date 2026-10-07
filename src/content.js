@@ -117,9 +117,9 @@ export const slides = [
     image: { src: 'assets/renders/tower-street.jpg', alt: '357 Green tower seen from the street at the Halsted Street bridge' },
     // Two columns, read row by row: left, right, left, right…
     stats: [
-      { value: '34,600 SF', detail: 'Typical <b>low-rise</b> floor plate' },
+      { value: '34,600 SF', detail: 'Typical <b>low-rise</b> floor plate<br>Floors 8-15' },
       { value: '43,000 SF Amenities', detail: '10,000 SF on Floor 2<br>33,000 SF on Floor 29' },
-      { value: '29,500 SF', detail: 'Typical <b>high-rise</b> floor plate' },
+      { value: '29,500 SF', detail: 'Typical <b>high-rise</b> floor plate<br>Floors 16-28' },
       { value: 'Penthouse Restaurant', detail: 'Floor 29' },
       { value: '13’3” slab-to-slab heights', detail: 'Office Floors' },
       { value: 'Dialtone Bodega<br>& Coffee House' },
