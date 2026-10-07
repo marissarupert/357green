@@ -67,8 +67,8 @@ image paths. Layout code never needs to change.
 | `intro` | 3 | `bleed: true`: full-bleed render with a slow push-in, text in a left column over a midnight gradient |
 | `overview` | 4 | numbers count up, rows stagger in |
 | `divider` | 5, 8, 10, 18, 34, 40, 43 | numeral and title animate in, watermark drifts |
-| `iconStats` | 6 | numbers count up; carousel bars switch photos |
-| `bullets` | 7 | carousel bars switch photos |
+| `iconStats` | 6 | numbers count up; photos rotate on their own (the copper bar fills, then the next photo fades in; hover pauses, bars or a click switch by hand) |
+| `bullets` | 7 | photos rotate on their own, as on slide 6 |
 | `location` | 9 | numbers count up; nearby transit list (`transit`); embedded interactive map (`map.url`) |
 | `features` | 11 | features come in one after another, automatically |
 | `elevation` | 12 | elevations rise from the ground as level markers tick on, callouts reach out to both towers; hover a level for a guide line across both, hover a callout to pick out its points |
@@ -78,7 +78,7 @@ image paths. Layout code never needs to change.
 | `featureGrid` | 17 | subtle clouds drift across the sky behind the text (`clouds`), still under reduced motion |
 | `split` | 19, 29 | 19 (`axo: true`): podium pieces drop in and the paseo route draws down from Halsted; hover a piece or key entry to pick it out, click to lift it (Esc sets it back), Paseo route toggle |
 | `keyed` | 20 | section drawing builds up from the ground (ascent fills, levels tick up, sightlines and connections draw out); hover/focus a key item to highlight its spot (add `spot: [x, y]`) |
-| `amenities` | 30 | each "View more photos" opens a lightbox gallery |
+| `amenities` | 30 | each card thumbnail cross-fades through its photos (hover pauses); "View more photos" opens a lightbox gallery at the photo showing |
 | `programming` | 35 | each "View plan" jumps to its test fit |
 | `testfit` | 36–39 | Low/High Rise and Open/Perimeter toggles swap plan and stats |
 | `views` | 41, 42 | drag/arrow keys/trackpad to pan; Both/East/West and height toggles |

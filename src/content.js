@@ -80,8 +80,7 @@ export const slides = [
     theme: 'dark',
     logo: 'assets/logos/357-green.svg',
     background: 'assets/renders/aerial-view.jpg',
-    eyebrow: 'Fulton Market · Chicago',
-    tagline: ['The next', 'Fulton Market', 'landmark.'],
+    tagline: ['Chicago’s next', 'landmark.'],
     partners: [
       { src: 'assets/logos/onni.png', alt: 'Onni Group' },
       { src: 'assets/logos/stream.svg', alt: 'Stream Realty Partners' },

@@ -152,3 +152,7 @@ b, strong { font-weight: var(--w-demi); }
 .bars button { width: 153px; height: 24px; position: relative; }
 .bars button::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 7px; margin-top: -3.5px; background: #8d8d8d; transition: background .3s; }
 .bars button.on::after, .bars button:hover::after { background: var(--copper); }
+/* autoplay: the current bar fills with copper; the carousel moves on when it is full */
+.bars.auto button.on::after { background: rgba(165, 85, 47, .4) linear-gradient(var(--copper), var(--copper)) no-repeat 0 0 / 0 100%; animation: bar-fill 6s linear forwards; }
+.bars.auto.paused button.on::after { animation-play-state: paused; }
+@keyframes bar-fill { to { background-size: 100% 100%; } }
