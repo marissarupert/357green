@@ -174,14 +174,17 @@ export const slides = [
       'SCB (Solomon Cordwell Buenz) is a globally recognized architecture, planning, interior, and urban design firm founded in 1931, headquartered in Chicago with offices in San Francisco, Boston, Seattle, Los Angeles, and Abu Dhabi.',
       'SCB is globally recognized for creative innovative workplaces, dense urban living, sustainable learning environments, adaptive reuse, and hospitality design. The firm integrates architecture, interior design, and urban planning to create people\u2011centered, performance\u2011driven spaces.',
     ],
-    // Notable local projects, shown as a grid. `focus` picks which part of
-    // each photo stays in frame (object-position).
-    grid: true,
+    // Notable local projects (SCB case studies), shown as a 3 x 2 grid: a
+    // shorter top row and a taller bottom row, as in the source grid. Add a
+    // caption to a photo to tag it with the project's name.
+    grid: { cols: 3, rows: '37fr 63fr' },
     photos: [
-      { src: 'assets/photos/scb-10-120-south-riverside.jpg', caption: '10 & 120 South Riverside', focus: '62% 50%' },
-      { src: 'assets/photos/scb-tribune-tower.jpg', caption: 'Tribune Tower', focus: '50% 40%' },
-      { src: 'assets/photos/scb-harrison-street.jpg', caption: 'Harrison Street', focus: '68% 50%' },
-      { src: 'assets/photos/scb-the-bell.jpg', caption: 'The Bell', focus: '50% 12%' },
+      { src: 'assets/photos/scb-case-1.jpg', alt: 'SCB project: brick loft building with a glass rooftop addition' },
+      { src: 'assets/photos/scb-case-2.jpg', alt: 'SCB project: brick and glass office building' },
+      { src: 'assets/photos/scb-case-3.jpg', alt: 'SCB project: office interior with a tiered wood stair' },
+      { src: 'assets/photos/scb-case-4.jpg', focus: '62% 50%', alt: 'SCB project: glass office tower with a crown cut-out' },
+      { src: 'assets/photos/scb-case-5.jpg', focus: '42% 50%', alt: 'SCB project: slender glass tower with an angled crown' },
+      { src: 'assets/photos/scb-case-6.jpg', alt: 'SCB project: lobby with a sculpted wood stair' },
     ],
   },
 
