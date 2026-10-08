@@ -76,7 +76,7 @@ image paths. Layout code never needs to change.
 | `render` | 13–14, 18–19, 21–26, 28–30 | slow push-in, label tag slides in (`zoom`/`focus` crop the image) |
 | `section` | 15 | section wipes up, callouts draw out; hover a legend item to highlight that zone |
 | `featureGrid` | 42 | subtle clouds drift across the sky behind the text (`clouds`), still under reduced motion |
-| `split` | 31 | text beside a photo; `axo: true` puts the interactive podium axo in its place |
+| `split` | 31 | text beside a photo; `feature` adds a tenant block under the text (logo, label, photos that open full screen: Dialtone); `axo: true` puts the interactive podium axo in place of the photo |
 | `paseo` | 17 | two views, switched on the band (or with →): the podium axo (pieces drop in, the paseo route draws down from Halsted; hover a piece or key entry to pick it out, click to lift it) and the plaza section (builds up from the ground; hover/focus a numbered item to light its marker, `spot: [x, y]`) |
 | `keyed` | (not in the deck) | a drawing with a numbered key, as the plaza view above |
 | `amenities` | 20 | each card thumbnail cross-fades through its photos (hover pauses); "View more photos" opens a lightbox gallery at the photo showing |
@@ -122,9 +122,9 @@ Where these appear in the deck they are marked with a dashed "Placeholder" label
 - **Futura 100** web fonts (Jost stands in)
 - **Slide 2** video file (optional; the render shows until then)
 - **The Paseo (17)** positions for items 06, 07 and 09, which don't show in the section (a keyed site plan would place them)
-- **Onni (6)** 225 W. Randolph amenity images, 161 Clark renovation renders, 354 N. Union photo, 200 N. LaSalle hero shot
+- **Onni (6)** 161 Clark renovation renders, 200 N. LaSalle hero shot
 - **SCB (7)** logo (set `titleLogo` once the file is in `public/assets/logos/`)
-- **Lobby & Retail (31)** Dialtone logo and photos
+- **Lobby & Retail (31)** more Dialtone photos (add to `feature.photos`)
 - **Views** original wide panoramas (the deck's are 863 px wide)
 
 Low-resolution in the source PDF, and soft on large screens: plaza section (17),
