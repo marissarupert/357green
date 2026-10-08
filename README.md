@@ -123,7 +123,6 @@ Where these appear in the deck they are marked with a dashed "Placeholder" label
 - **Slide 2** video file (optional; the render shows until then)
 - **The Paseo (17)** positions for items 06, 07 and 09, which don't show in the section (a keyed site plan would place them)
 - **Onni (6)** 161 Clark renovation renders, 200 N. LaSalle hero shot
-- **SCB (7)** logo (set `titleLogo` once the file is in `public/assets/logos/`)
 - **Lobby & Retail (31)** more Dialtone photos (add to `feature.photos`)
 - **Views** original wide panoramas (the deck's are 863 px wide)
 
