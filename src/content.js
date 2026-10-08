@@ -426,6 +426,8 @@ export const slides = [
       label: 'Dialtone Bodega & Coffee House',
       photos: [
         { src: 'assets/photos/dialtone-cafe.jpg', caption: 'Dialtone' },
+        { src: 'assets/photos/dialtone-counter.jpg', caption: 'Dialtone · Coffee & Bakery' },
+        { src: 'assets/photos/dialtone-wine.jpg', caption: 'Dialtone · Wine Bar' },
       ],
     },
   },
