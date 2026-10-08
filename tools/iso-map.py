@@ -186,6 +186,10 @@ pts = [P(x, y) for x, y in area.exterior.coords] + [P(x, y, 150) for x, y in are
 minx = min(p[0] for p in pts); maxx = max(p[0] for p in pts); miny = min(p[1] for p in pts); maxy = max(p[1] for p in pts)
 W, H = 914, 1080                 # the Location slide's map panel
 box = (30, 300, 884, 860)        # where the boundary area sits in it (the city fills the rest)
+ZOOM = 1.35                      # zoom in on the boundary area; its far corners may run off the panel
+cxb, cyb = (box[0] + box[2]) / 2, (box[1] + box[3]) / 2 + 20
+box = (cxb - (box[2] - box[0]) * ZOOM / 2, cyb - (box[3] - box[1]) * ZOOM / 2,
+       cxb + (box[2] - box[0]) * ZOOM / 2, cyb + (box[3] - box[1]) * ZOOM / 2)
 k = min((box[2] - box[0]) / (maxx - minx), (box[3] - box[1]) / (maxy - miny))
 ox = box[0] + ((box[2] - box[0]) - (maxx - minx) * k) / 2 - minx * k
 oy = box[1] + ((box[3] - box[1]) - (maxy - miny) * k) / 2 - miny * k
@@ -395,7 +399,9 @@ if GIS:
                       f'<text x="{a}" y="{b - 64}" text-anchor="middle">{name}</text></g>')
     for limit, (a, b) in rings.items():
         anchor = 'middle' if limit == 10 else 'start'
-        ov.append(f'<text class="walk-lbl" x="{a + (0 if limit == 10 else 8)}" y="{b - 10}" text-anchor="{anchor}">{limit} MIN WALK</text>')
+        tx_, ty_ = a + (0 if limit == 10 else 8), b - 10
+        tx_, ty_ = min(max(tx_, 80), W - 160), max(ty_, 120)    # clear of the edges and the menu button
+        ov.append(f'<text class="walk-lbl" x="{tx_}" y="{ty_}" text-anchor="{anchor}">{limit} MIN WALK</text>')
     ov.append('</g>')
     svg.extend(ov)
     # legend, bottom left (only when the SVG is used on its own; the slide has a map key)
@@ -435,6 +441,26 @@ for name, text in LABEL.items():
     mx, my = (sx1 + sx2) / 2, (sy1 + sy2) / 2
     nx, ny = mx - acs[0], my - acs[1]; nl = math.hypot(nx, ny) or 1
     lx, ly = mx + nx / nl * 22, my + ny / nl * 22
+    # keep the label on the panel: if this stretch runs off it, slide the label
+    # along the edge to where it is visible
+    if not (70 < lx < W - 70 and 100 < ly < H - 110):
+        # this stretch is off the panel: use the most central visible point on any
+        # stretch of the same street, set at that stretch's angle
+        best = None
+        for _, e1, e2 in es:
+            (ex1, ey1), (ex2, ey2) = S(*e1), S(*e2)
+            if math.dist((ex1, ey1), (ex2, ey2)) < 20: continue
+            ea = math.degrees(math.atan2(ey2 - ey1, ex2 - ex1))
+            if ea > 90: ea -= 180
+            if ea < -90: ea += 180
+            for t in [i / 40 for i in range(41)]:
+                px, py = ex1 + (ex2 - ex1) * t, ey1 + (ey2 - ey1) * t
+                vx, vy = px - acs[0], py - acs[1]; vl = math.hypot(vx, vy) or 1
+                qx, qy = px + vx / vl * 22, py + vy / vl * 22
+                if 110 < qx < W - 110 and 120 < qy < H - 130:
+                    score = math.dist((qx, qy), (W / 2, H / 2))
+                    if best is None or score < best[0]: best = (score, qx, qy, ea)
+        if best: _, lx, ly, ang = best
     svg.append(f'<text class="lbl" x="{lx:.0f}" y="{ly:.0f}" transform="rotate({ang:.1f} {lx:.0f} {ly:.0f})" text-anchor="middle" dominant-baseline="middle">{text}</text>')
 
 # 357 Green callout
