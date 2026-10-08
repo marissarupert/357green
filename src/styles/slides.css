@@ -116,28 +116,32 @@
 .iso-map.play .ov .rest, .iso-map.play .ov .hotel, .iso-map.play .ov .stn, .iso-map.play .ov .nbr { transform-box: fill-box; transform-origin: 50% 100%; animation: iso-pop .45s cubic-bezier(.3, 1.6, .5, 1) calc(2.6s + var(--d, .5) * .9s) both; }
 .iso-map.play .ov .walk-lbl { animation: iso-fade .6s 3.2s both; }
 @keyframes iso-pop { from { transform: scale(0); opacity: 0; } }
-/* map key: a dropdown that lists everything on the map; pointing at an entry marks it */
-.s-location .map-key { position: absolute; left: 28px; bottom: 28px; z-index: 4; width: 300px; color: var(--white); }
-.s-location .mk-toggle { display: inline-flex; align-items: center; gap: 10px; height: 42px; padding: 0 18px; border-radius: 21px; background: rgba(28, 29, 43, .85); box-shadow: inset 0 0 0 1px rgba(171, 189, 204, .4); font-size: 13px; font-weight: var(--w-medium); letter-spacing: .16em; text-transform: uppercase; transition: background .25s; }
-.s-location .mk-toggle:hover, .s-location .map-key.open .mk-toggle { background: var(--copper); }
-.s-location .map-key .caret { width: 12px; height: 12px; flex: none; transition: transform .3s var(--ease); }
-.s-location .mk-toggle .caret { transform: rotate(-90deg); }
-.s-location .map-key.open .mk-toggle .caret { transform: rotate(90deg); }
-.s-location .mk-panel { position: absolute; left: 0; bottom: 54px; width: 300px; max-height: 470px; overflow: auto; padding: 4px 0; border-radius: 12px; background: rgba(28, 29, 43, .9); box-shadow: inset 0 0 0 1px rgba(171, 189, 204, .25), 0 18px 50px rgba(0, 0, 0, .35); opacity: 0; transform: translateY(10px); visibility: hidden; transition: opacity .25s, transform .3s var(--ease), visibility 0s .3s; }
-.s-location .map-key.open .mk-panel { opacity: 1; transform: none; visibility: visible; transition: opacity .25s, transform .3s var(--ease); }
-.s-location .mk-head { width: 100%; display: flex; align-items: center; gap: 12px; padding: 9px 16px; font-size: 15px; text-align: left; }
-.s-location .mk-head:hover { background: rgba(255, 255, 255, .06); }
-.s-location .mk-head .caret { margin-left: auto; color: var(--powder); }
-.s-location .mk-sec.open .mk-head .caret { transform: rotate(90deg); }
-.s-location .mk-sec + .mk-sec { border-top: 1px solid rgba(171, 189, 204, .14); }
-.s-location .mk-list { display: none; list-style: none; max-height: 220px; overflow: auto; padding: 0 0 6px; }
-.s-location .mk-sec.open .mk-list { display: block; }
-.s-location .mk-list button { width: 100%; display: grid; grid-template-columns: auto 1fr; column-gap: 8px; padding: 5px 16px 5px 46px; text-align: left; }
-.s-location .mk-list button b { grid-column: 2; font-size: 14px; font-weight: var(--w-regular); line-height: 19px; }
-.s-location .mk-list button span { grid-column: 2; font-size: 12px; line-height: 16px; color: var(--powder); }
-.s-location .mk-list button .sw { grid-row: 1 / span 2; align-self: center; width: 18px; height: 4px; border-radius: 2px; margin-left: -28px; }
-.s-location .mk-list button:hover, .s-location .mk-list button:focus-visible, .s-location .mk-list button.on { background: rgba(165, 85, 47, .32); outline: none; }
-.s-location .map-key i[class^="k-"] { flex: none; width: 18px; height: 18px; display: grid; place-items: center; }
+/* map key: a slim row of buttons along the bottom of the map; a button lights its group */
+.s-location .map-chips { position: absolute; left: 20px; right: 96px; bottom: 44px; z-index: 4; display: flex; flex-wrap: wrap; gap: 6px; }
+.s-location .map-chips button { display: inline-flex; align-items: center; gap: 7px; height: 32px; padding: 0 11px 0 9px; border-radius: 16px; background: rgba(28, 29, 43, .82); box-shadow: inset 0 0 0 1px rgba(171, 189, 204, .35); color: var(--white); font-size: 11.5px; font-weight: var(--w-medium); letter-spacing: .09em; text-transform: uppercase; white-space: nowrap; transition: background .2s, box-shadow .2s; }
+.s-location .map-chips button:hover { background: rgba(60, 62, 82, .92); }
+.s-location .map-chips button[aria-pressed="true"] { background: var(--copper); box-shadow: none; }
+.s-location .map-chips button:focus-visible { outline: 2px solid var(--white); outline-offset: 2px; }
+.s-location .map-chips .ct { font-size: 11px; letter-spacing: .04em; color: var(--powder); }
+.s-location .map-chips button[aria-pressed="true"] .ct { color: var(--white); }
+.s-location .map-chips i { flex: none; width: 14px; height: 14px; display: grid; place-items: center; }
+/* the chosen group stands out; everything else on the map fades back */
+.s-location .map[data-show]:not([data-show=""]) .iso-map .ov > *, .s-location .map[data-show]:not([data-show=""]) .iso-map .b.in { transition: opacity .3s; }
+.s-location .map[data-show="neighbors"] .iso-map .ov > :not(.nbr),
+.s-location .map[data-show="restaurants"] .iso-map .ov > :not(.rest),
+.s-location .map[data-show="hotels"] .iso-map .ov > :not(.hotel),
+.s-location .map[data-show="cta"] .iso-map .ov > :not(.stn.l),
+.s-location .map[data-show="metra"] .iso-map .ov > :not(.stn.m),
+.s-location .map[data-show="walk"] .iso-map .ov > :not(.walk-lbl) { opacity: .12; }
+.s-location .map[data-show]:not([data-show=""]) .iso-map .b.in { opacity: .55; }
+.s-location .map[data-show="restaurants"] .iso-map .rest { r: 5; }
+.s-location .map[data-show="hotels"] .iso-map .hotel circle { r: 8; }
+.s-location .map-tags { position: absolute; inset: 0; pointer-events: none; z-index: 4; }
+.s-location .map-tag-pin { position: absolute; transform: translate(-50%, calc(-100% - 14px - var(--lift, 0px))); padding: 5px 10px; border-radius: 5px; background: var(--white); color: var(--charcoal); text-align: center; white-space: nowrap; box-shadow: 0 6px 18px rgba(0, 0, 0, .3); opacity: 0; transition: opacity .25s; }
+.s-location .map-tag-pin b { display: block; font-size: 13px; font-weight: var(--w-medium); line-height: 17px; }
+.s-location .map-tag-pin span { display: block; font-size: 11px; line-height: 14px; color: var(--slate); }
+.s-location .map[data-show="neighbors"] .map-tag-pin[data-sec="neighbors"],
+.s-location .map[data-show="walk"] .map-tag-pin[data-sec="walk"] { opacity: 1; }
 .s-location .k-rest::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: #e0905f; }
 .s-location .k-hotel::before { content: ""; width: 13px; height: 13px; border-radius: 50%; background: var(--white); }
 .s-location .k-cta::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--white); box-shadow: 0 0 0 3px #e27ea6, 0 0 0 6px #009b3a; }

@@ -470,7 +470,7 @@ svg.append(f'<g class="callout"><circle cx="{tx}" cy="{ty}" r="5"/><path d="M{tx
            f'<text x="{tx}" y="{ty - CALL - 14}" text-anchor="middle">357 GREEN</text></g>')
 # north arrow and credit
 nx_, ny_ = P(0, 1); nl = math.hypot(nx_, ny_); ux, uy = nx_ / nl, ny_ / nl
-cx0, cy0 = (W - 180, H - 60) if GIS else (70, H - 100)   # clear of the legend and the deck's arrows
+cx0, cy0 = (W - 64, H - 200) if GIS else (70, H - 100)   # right edge, above the deck's arrows and clear of the key buttons
 svg.append(f'<g class="north"><path d="M{cx0 - ux * 22:.0f} {cy0 - uy * 22:.0f}L{cx0 + ux * 22:.0f} {cy0 + uy * 22:.0f}"/>'
            f'<path class="head" d="M{cx0 + ux * 26:.0f} {cy0 + uy * 26:.0f}L{cx0 + ux * 12 - uy * 7:.0f} {cy0 + uy * 12 + ux * 7:.0f}L{cx0 + ux * 12 + uy * 7:.0f} {cy0 + uy * 12 - ux * 7:.0f}Z"/>'
            f'<text x="{cx0 + ux * 44:.0f}" y="{cy0 + uy * 44:.0f}" text-anchor="middle" dominant-baseline="middle">N</text></g>')
