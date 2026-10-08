@@ -6,20 +6,13 @@ const icon = {
   exit: '<svg viewBox="0 0 24 24"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5"/></svg>',
 }
 
-const strip = (t) => String(t || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim()
-const humanize = (id) => id.split('-').map((w) => w[0].toUpperCase() + w.slice(1)).join(' ')
 const pad = (n) => String(n).padStart(2, '0')
 
-// What a slide is called in the menu: its title, else its image label, else
-// its eyebrow (when that says more than the section name), else its id.
-const nameOf = (s, sectionLabel) =>
-  strip(s.title) || strip(s.label) || (strip(s.eyebrow) !== sectionLabel && strip(s.eyebrow)) || humanize(s.id)
-
-// A floating ☰ in the top-right corner, over the slide. It drops the menu
-// down from the top: the 357 mark (back to the start), the seven sections on
-// the left, the slides of the one you point at on the right, slide counter
-// and full screen underneath. ☰ or M opens and closes it; Esc, a click
-// outside or picking a slide closes it.
+// A floating ☰ in the top-right corner, over the slide. It drops a slim strip
+// down from the top: the 357 mark (back to the start), the sections in one row
+// (each jumps to the start of its section), then the slide counter and full
+// screen. ☰ or M opens and closes it; Esc, a click outside or picking a
+// section closes it.
 export function createMenu(app, deck, { sections, slides, chrome }) {
   const groups = sections.map((sec) => ({
     ...sec,
@@ -37,12 +30,6 @@ export function createMenu(app, deck, { sections, slides, chrome }) {
               <span class="n">${pad(n + 1)}</span><span class="t">${esc(g.label)}</span>
             </button></li>`).join('')}
         </ol>
-        <div class="mn-slides">
-          ${groups.map((g) => `
-            <ol class="mn-list" data-section="${esc(g.id)}">
-              ${g.items.map(({ s, i }) => `<li><button class="mn-item" data-go="${i}" tabindex="-1"><span class="n">${pad(i + 1)}</span><span class="t">${esc(nameOf(s, g.label))}</span></button></li>`).join('')}
-            </ol>`).join('')}
-        </div>
         <div class="mn-foot">
           <p class="mn-count"><b></b> / ${pad(slides.length)}</p>
           <button class="mn-fs">${icon.full}<span>Full screen</span></button>
@@ -54,35 +41,19 @@ export function createMenu(app, deck, { sections, slides, chrome }) {
   const $ = (sel) => bar.querySelector(sel)
   const burger = $('.mn-burger')
   const secBtns = [...bar.querySelectorAll('.mn-sec')]
-  const lists = [...bar.querySelectorAll('.mn-list')]
   let current = 0
-
-  // ---------- which section's slides the right-hand pane shows ----------
-  const preview = (id) => {
-    secBtns.forEach((b) => b.classList.toggle('shown', b.dataset.section === id))
-    lists.forEach((l) => {
-      const on = l.dataset.section === id
-      l.classList.toggle('on', on)
-      l.querySelectorAll('button').forEach((b) => { b.tabIndex = on ? 0 : -1 })
-    })
-  }
-  secBtns.forEach((b) => {
-    b.addEventListener('pointerenter', () => preview(b.dataset.section))
-    b.addEventListener('focus', () => preview(b.dataset.section))
-  })
 
   // ---------- open / close ----------
   const keys = {
     onKey(e) {
       if (e.key === 'Escape' || e.key === 'm' || e.key === 'M') { close(); return true }
-      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
-        const col = document.activeElement?.closest('.mn-list') ? [...bar.querySelectorAll('.mn-list.on button')] : secBtns.filter((b) => !b.disabled)
-        const at = col.indexOf(document.activeElement)
-        col[(at + (e.key === 'ArrowDown' ? 1 : -1) + col.length) % col.length]?.focus()
+      if (['ArrowDown', 'ArrowUp', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
+        const row = secBtns.filter((b) => !b.disabled)
+        const at = row.indexOf(document.activeElement)
+        const step = e.key === 'ArrowRight' || e.key === 'ArrowDown' ? 1 : -1
+        row[(at + step + row.length) % row.length]?.focus()
         return true
       }
-      if (e.key === 'ArrowRight') { bar.querySelector('.mn-list.on button')?.focus(); return true }
-      if (e.key === 'ArrowLeft') { bar.querySelector('.mn-sec.shown')?.focus(); return true }
       return e.key !== 'Tab' && e.key !== 'Enter' && e.key !== ' '
     },
   }
@@ -90,7 +61,6 @@ export function createMenu(app, deck, { sections, slides, chrome }) {
   function open() {
     if (isOpen()) return
     const sec = slides[current]?.section
-    preview(sec || groups[0].id)
     bar.classList.add('open')
     burger.setAttribute('aria-expanded', 'true')
     burger.setAttribute('aria-label', 'Close menu (M)')
@@ -137,7 +107,6 @@ export function createMenu(app, deck, { sections, slides, chrome }) {
       current = i
       const sec = slides[i]?.section
       secBtns.forEach((b) => b.classList.toggle('here', b.dataset.section === sec))
-      bar.querySelectorAll('.mn-item').forEach((b) => b.classList.toggle('here', Number(b.dataset.go) === i))
       $('.mn-count b').textContent = pad(i + 1)
     },
   }
