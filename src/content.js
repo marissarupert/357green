@@ -169,7 +169,7 @@ export const slides = [
     eyebrow: 'Architect',
     title: 'SCB Architects',
     subtitle: 'A Chicago Legacy Since 1931',
-    // titleLogo: 'assets/logos/scb.svg', // shows the logo in place of the title once supplied
+    titleLogo: 'assets/logos/scb.png', // the SCB mark, shown in white in place of the title
     body: [
       'SCB (Solomon Cordwell Buenz) is a globally recognized architecture, planning, interior, and urban design firm founded in 1931, headquartered in Chicago with offices in San Francisco, Boston, Seattle, Los Angeles, and Abu Dhabi.',
       'SCB is globally recognized for creative innovative workplaces, dense urban living, sustainable learning environments, adaptive reuse, and hospitality design. The firm integrates architecture, interior design, and urban planning to create people\u2011centered, performance\u2011driven spaces.',
