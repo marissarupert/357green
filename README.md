@@ -73,7 +73,7 @@ image paths. Layout code never needs to change.
 | `features` | 11 | features come in one after another, automatically |
 | `elevation` | (not in the deck) | elevations rise from the ground as level markers tick on, callouts reach out to both towers; hover a level for a guide line across both, hover a callout to pick out its points |
 | `callouts` | 12 | callouts play in; hover a label or dot for a zoom lens, click to spotlight (Esc to clear) |
-| `render` | 13–14, 18–19, 21–26, 28–30 | slow push-in, label tag slides in (`zoom`/`focus` crop the image; `video` plays a muted loop over the still) |
+| `render` | 16–18, 20–25, 27–29 | slow push-in, label tag slides in (`zoom`/`focus` crop the image; `video` plays a muted loop over the still) |
 | `section` | 15 | section wipes up, callouts draw out; hover a legend item to highlight that zone |
 | `featureGrid` | 42 | subtle clouds drift across the sky behind the text (`clouds`), still under reduced motion |
 | `split` | 31 | text beside a photo; `feature` adds a tenant block under the text (logo, label, photos that open full screen: Dialtone); `axo: true` puts the interactive podium axo in place of the photo |
