@@ -1826,6 +1826,6 @@
 <text class="lbl" x="133" y="941" transform="rotate(78.7 133 941)" text-anchor="middle" dominant-baseline="middle">OGDEN AVE</text>
 <text class="lbl" x="340" y="300" transform="rotate(-2.0 340 300)" text-anchor="middle" dominant-baseline="middle">KENNEDY EXPY</text>
 <g class="callout"><circle cx="570" cy="258" r="5"/><path d="M570 258V108"/><text x="570" y="94" text-anchor="middle">357 GREEN</text></g>
-<g class="north"><path d="M753 1031L715 1009"/><path class="head" d="M711 1007L727 1008L720 1020Z"/><text x="696" y="998" text-anchor="middle" dominant-baseline="middle">N</text></g>
+<g class="north"><path d="M869 891L831 869"/><path class="head" d="M827 867L843 868L836 880Z"/><text x="812" y="858" text-anchor="middle" dominant-baseline="middle">N</text></g>
 <text class="credit" x="457" y="1058" text-anchor="middle">Map data © OpenStreetMap contributors · City of Chicago</text>
 </svg>

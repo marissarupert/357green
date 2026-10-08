@@ -14,113 +14,96 @@ import isoMap from '../assets/svg/iso-map.svg?raw'
 import isoKey from '../assets/svg/iso-map-key.json'
 
 const DRAWINGS = { 'iso-map': isoMap }
-// Map key for the drawing: each section opens a list; pointing at an entry
-// marks it on the map (places get a name tag, lines and rings light up).
+// Map key for the drawing: a slim row of buttons along the bottom of the map.
+// A button lights up its group on the map (the rest fades back); again clears
+// it. Pointing at a place on the map shows its name. Neighbors and the walking
+// routes, being few, also get name tags on the map while their group is on.
 const KEYS = { 'iso-map': isoKey }
 const SECTIONS = [
   ['neighbors', 'Neighbors', 'k-nbr'],
   ['restaurants', 'Restaurants', 'k-rest'],
   ['hotels', 'Hotels', 'k-hotel'],
-  ['cta', 'CTA \u2018L\u2019', 'k-cta'],
+  ['cta', 'CTA ‘L’', 'k-cta'],
   ['metra', 'Metra', 'k-metra'],
   ['walk', 'Walk times', 'k-walk'],
 ]
-const caret = `<svg class="caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>`
+const TAGGED = ['neighbors', 'walk']   // groups whose places get name tags when on
 const mapKey = (key) => `
-  <div class="map-key">
-    <button class="mk-toggle" aria-expanded="false">Map key ${caret}</button>
-    <div class="mk-panel" role="region" aria-label="Map key">
-      ${SECTIONS.filter(([id]) => key[id]?.length).map(([id, label, icon]) => `
-        <div class="mk-sec" data-sec="${id}">
-          <button class="mk-head" aria-expanded="false"><i class="${icon}"></i><span>${esc(label)}${['restaurants', 'hotels'].includes(id) ? ` (${key[id].length})` : ''}</span>${caret}</button>
-          <ul class="mk-list">${key[id].map((it, i) => `
-            <li><button data-sec="${id}" data-i="${i}">${it.colour ? `<i class="sw" style="background:${esc(it.colour)}"></i>` : ''}<b>${esc(it.name)}</b>${it.street ? `<span>${esc(it.street)}</span>` : ''}</button></li>`).join('')}
-          </ul>
-        </div>`).join('')}
-    </div>
+  <div class="map-chips" role="toolbar" aria-label="Map key">
+    ${SECTIONS.filter(([id]) => key[id]?.length).map(([id, label, icon]) => `
+      <button type="button" data-sec="${id}" aria-pressed="false"><i class="${icon}"></i>${esc(label)}${['restaurants', 'hotels'].includes(id) ? ` <span class="ct">${key[id].length}</span>` : ''}</button>`).join('')}
+  </div>
+  <div class="map-tags">
+    ${TAGGED.flatMap((sec) => (key[sec] || []).map((it) => (it.x == null ? '' : `
+      <p class="map-tag-pin" data-sec="${sec}" style="left:${it.x}px;top:${it.y}px"><b>${esc(it.name)}</b>${it.street ? `<span>${esc(it.street)}</span>` : ''}</p>`))).join('')}
   </div>
   <div class="map-ring" hidden></div>
   <p class="map-tip" hidden><b></b><span></span></p>`
 
 function mountKey(el, key) {
-  const box = el.querySelector('.map-key')
-  if (!box) return
+  const bar = el.querySelector('.map-chips')
+  if (!bar) return
   const svg = el.querySelector('.iso-map')
   const tip = el.querySelector('.map-tip')
   const ring = el.querySelector('.map-ring')
-  const toggle = box.querySelector('.mk-toggle')
-  let pinned = null
+  const chips = [...bar.querySelectorAll('button')]
+  const map = el.querySelector('.map')
 
-  const clear = () => {
-    tip.hidden = ring.hidden = true
-    svg.classList.remove('has-hl')
+  const place = (it) => {
+    tip.querySelector('b').textContent = it.name
+    tip.querySelector('span').textContent = it.street || ''
+    for (const n of [tip, ring]) { n.style.left = it.x + 'px'; n.style.top = it.y + 'px'; n.hidden = false }
+    const half = tip.offsetWidth / 2, w = tip.offsetParent?.clientWidth || 914
+    tip.style.left = Math.min(Math.max(it.x, half + 12), w - half - 12) + 'px'
+  }
+  const hideTip = () => { tip.hidden = ring.hidden = true }
+  const select = (sec) => {
+    map.dataset.show = sec || ''
+    chips.forEach((c) => c.setAttribute('aria-pressed', String(c.dataset.sec === sec)))
+    svg.classList.toggle('has-hl', !!sec)
     svg.querySelectorAll('.hl').forEach((n) => n.classList.remove('hl'))
-    box.querySelectorAll('.mk-list .on').forEach((b) => b.classList.remove('on'))
+    // lines and rings carry their key id; light the group's ones
+    for (const it of key[sec] || []) if (it.k) svg.querySelectorAll(`[data-k="${it.k}"]`).forEach((n) => n.classList.add('hl'))
   }
-  const show = (sec, i) => {
-    clear()
-    const it = key[sec]?.[i]
-    if (!it) return
-    box.querySelector(`.mk-list [data-sec="${sec}"][data-i="${i}"]`)?.classList.add('on')
-    if (it.k) {
-      svg.classList.add('has-hl')
-      svg.querySelectorAll(`[data-k="${it.k}"]`).forEach((n) => n.classList.add('hl'))
-    }
-    if (it.x != null) {
-      tip.querySelector('b').textContent = it.name
-      tip.querySelector('span').textContent = it.street || ''
-      for (const n of [tip, ring]) { n.style.left = it.x + 'px'; n.style.top = it.y + 'px'; n.hidden = false }
-      // keep the name tag inside the panel near its edges
-      const half = tip.offsetWidth / 2, w = tip.offsetParent?.clientWidth || 914
-      tip.style.left = Math.min(Math.max(it.x, half + 12), w - half - 12) + 'px'
-    }
-  }
-  const restore = () => (pinned ? show(...pinned) : clear())
-  const close = () => {
-    box.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false')
-    pinned = null; clear()
-  }
-
-  toggle.addEventListener('click', () => {
-    const open = !box.classList.contains('open')
-    if (!open) return close()
-    box.classList.add('open'); toggle.setAttribute('aria-expanded', 'true')
-  })
-  box.querySelectorAll('.mk-head').forEach((h) => h.addEventListener('click', () => {
-    const sec = h.closest('.mk-sec')
-    const open = !sec.classList.contains('open')
-    box.querySelectorAll('.mk-sec').forEach((x) => { x.classList.remove('open'); x.querySelector('.mk-head').setAttribute('aria-expanded', 'false') })
-    if (open) { sec.classList.add('open'); h.setAttribute('aria-expanded', 'true') }
-  }))
-  box.querySelectorAll('.mk-list button').forEach((b) => {
-    const args = [b.dataset.sec, Number(b.dataset.i)]
-    b.addEventListener('pointerenter', () => show(...args))
-    b.addEventListener('focus', () => show(...args))
-    b.addEventListener('pointerleave', restore)
-    b.addEventListener('blur', restore)
-    b.addEventListener('click', () => {
-      pinned = pinned && pinned[0] === args[0] && pinned[1] === args[1] ? null : args
-      restore()
-    })
-  })
-  // Arrow keys move through the key (and don't change slides); Esc closes it.
-  box.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') { e.preventDefault(); close(); toggle.focus(); return }
-    if (!['ArrowDown', 'ArrowUp', 'ArrowLeft', 'ArrowRight', ' ', 'PageDown', 'PageUp'].includes(e.key)) return
-    if (e.key === ' ') return e.stopPropagation()
+  chips.forEach((c) => c.addEventListener('click', () => select(map.dataset.show === c.dataset.sec ? '' : c.dataset.sec)))
+  // arrows move along the row (and don't change slides); Esc clears
+  bar.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') { e.preventDefault(); select('') ; return }
+    if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.key)) return
     e.preventDefault()
-    const all = [...box.querySelectorAll('.mk-toggle, .mk-head, .mk-sec.open .mk-list button')].filter((n) => n.offsetParent)
-    const at = all.indexOf(document.activeElement)
-    const step = ['ArrowDown', 'ArrowRight', 'PageDown'].includes(e.key) ? 1 : -1
-    all[Math.max(0, Math.min(all.length - 1, at + step))]?.focus()
+    const at = chips.indexOf(document.activeElement)
+    chips[(at + (e.key === 'ArrowRight' || e.key === 'ArrowDown' ? 1 : -1) + chips.length) % chips.length].focus()
   })
-  // Pointing at a place on the map shows its name too.
+  // pointing at a place on the map shows its name
   svg.addEventListener('pointerover', (e) => {
     const n = e.target.closest('.rest, .hotel, .nbr')
-    if (n) show(n.classList.contains('rest') ? 'restaurants' : n.classList.contains('hotel') ? 'hotels' : 'neighbors', Number(n.dataset.i))
+    if (!n) return
+    const sec = n.classList.contains('rest') ? 'restaurants' : n.classList.contains('hotel') ? 'hotels' : 'neighbors'
+    const it = key[sec]?.[Number(n.dataset.i)]
+    if (it) place(it)
   })
-  svg.addEventListener('pointerout', (e) => { if (e.target.closest('.rest, .hotel, .nbr')) restore() })
-  el._closeKey = close
+  svg.addEventListener('pointerout', (e) => { if (e.target.closest('.rest, .hotel, .nbr')) hideTip() })
+  // keep the on-map name tags inside the panel near its edges
+  // and lift any tag that would sit on top of another (neighbors cluster on Green St)
+  requestAnimationFrame(() => {
+    const placed = []
+    const tags = [...el.querySelectorAll('.map-tag-pin')].sort((a, b) => parseFloat(b.style.top) - parseFloat(a.style.top))
+    for (const t of tags) {
+      const w = map.clientWidth || 914, half = t.offsetWidth / 2, h = t.offsetHeight
+      const x = Math.min(Math.max(parseFloat(t.style.left), half + 12), w - half - 12)
+      t.style.left = x + 'px'
+      let lift = 0
+      const box = () => ({ l: x - half, r: x + half, b: parseFloat(t.style.top) - 14 - lift, t: parseFloat(t.style.top) - 14 - lift - h })
+      for (let tries = 0; tries < 6; tries++) {
+        const me = box(), hit = placed.find((o) => o.sec === t.dataset.sec && me.l < o.r && me.r > o.l && me.t < o.b && me.b > o.t)
+        if (!hit) break
+        lift += me.b - hit.t + 4
+      }
+      if (lift) t.style.setProperty('--lift', lift + 'px')
+      placed.push({ ...box(), sec: t.dataset.sec })
+    }
+  })
+  el._closeKey = () => { select(''); hideTip() }
 }
 
 export default {
