@@ -356,10 +356,13 @@ if GIS:
     def places(layer):
         fs = sorted(gis(layer), key=lambda f: (f['properties']['CONAME'].lower(), f['properties']['STREET'] or ''))
         return [(f, *gm(*f['geometry']['coordinates'][:2])) for f in fs]
+    # restaurants are pins like the hotels' (shorter, copper), drawn back to front
+    rest_pins = []
     for i, (f, a, b) in enumerate(places('restaurants')):
         p = f['properties']
-        ov.append(f'<circle class="rest" data-i="{i}" cx="{a}" cy="{b}" r="3.4" style="--d:{delay(a, b):.2f}"/>')
-        KEY['restaurants'].append({'name': p['CONAME'], 'street': p['STREET'], 'x': a, 'y': b})
+        rest_pins.append((b, f'<g class="rest" data-i="{i}" style="--d:{delay(a, b):.2f}"><path d="M{a} {b}V{b - 18}"/><circle cx="{a}" cy="{b - 18}" r="4.6"/></g>'))
+        KEY['restaurants'].append({'name': p['CONAME'], 'street': p['STREET'], 'x': a, 'y': b - 18})
+    ov.extend(pin for _, pin in sorted(rest_pins, key=lambda t: t[0]))
     roofs = STRtree([b['poly'] for b in blds])
     for i, (name, addr, lon, lat) in enumerate(NEIGHBORS):
         pt = Point(m(lon, lat))

@@ -97,7 +97,8 @@
 .iso-map .metra { fill: none; stroke: rgba(171, 189, 204, .55); stroke-width: 2; stroke-dasharray: 2 3; }
 .iso-map .cta { fill: none; stroke-width: 3.5; stroke-linecap: round; opacity: .9; }
 .iso-map .cta-pink { stroke-width: 1.6; }
-.iso-map .rest { fill: #e0905f; stroke: var(--midnight); stroke-width: 1; }
+.iso-map .rest path { stroke: #e0905f; stroke-width: 1.3; }
+.iso-map .rest circle { fill: #e0905f; stroke: var(--midnight); stroke-width: 1.3; }
 .iso-map .hotel path { stroke: var(--white); stroke-width: 1.5; }
 .iso-map .hotel circle { fill: var(--white); stroke: var(--midnight); stroke-width: 1.5; }
 .iso-map .stn path { stroke: var(--white); stroke-width: 1.5; }
@@ -134,7 +135,7 @@
 .s-location .map[data-show="metra"] .iso-map .ov > :not(.stn.m),
 .s-location .map[data-show="walk"] .iso-map .ov > :not(.walk-lbl) { opacity: .12; }
 .s-location .map[data-show]:not([data-show=""]) .iso-map .b.in { opacity: .55; }
-.s-location .map[data-show="restaurants"] .iso-map .rest { r: 5; }
+.s-location .map[data-show="restaurants"] .iso-map .rest circle { r: 6; }
 .s-location .map[data-show="hotels"] .iso-map .hotel circle { r: 8; }
 .s-location .map-tags { position: absolute; inset: 0; pointer-events: none; z-index: 4; }
 .s-location .map-tag-pin { position: absolute; transform: translate(-50%, calc(-100% - 14px - var(--lift, 0px))); padding: 5px 10px; border-radius: 5px; background: var(--white); color: var(--charcoal); text-align: center; white-space: nowrap; box-shadow: 0 6px 18px rgba(0, 0, 0, .3); opacity: 0; transition: opacity .25s; }
