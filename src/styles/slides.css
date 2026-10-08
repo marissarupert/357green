@@ -112,8 +112,8 @@
 .iso-map.play .b357 { animation-duration: 1.5s; animation-delay: 1.9s; }
 .iso-map.play .lbl, .iso-map.play .callout { animation: iso-fade .6s 3s both; }
 /* highlights pop in after the model, rippling out from the site */
-.iso-map.play .walk, .iso-map.play .cta, .iso-map.play .metra, .iso-map.play .legend { animation: iso-fade .8s 2.4s both; }
-.iso-map.play .ov .rest, .iso-map.play .ov .hotel, .iso-map.play .ov .stn { transform-box: fill-box; transform-origin: 50% 100%; animation: iso-pop .45s cubic-bezier(.3, 1.6, .5, 1) calc(2.6s + var(--d, .5) * .9s) both; }
+.iso-map.play .walk, .iso-map.play .cta, .iso-map.play .metra, .iso-map.play .route, .iso-map.play .legend { animation: iso-fade .8s 2.4s both; }
+.iso-map.play .ov .rest, .iso-map.play .ov .hotel, .iso-map.play .ov .stn, .iso-map.play .ov .nbr { transform-box: fill-box; transform-origin: 50% 100%; animation: iso-pop .45s cubic-bezier(.3, 1.6, .5, 1) calc(2.6s + var(--d, .5) * .9s) both; }
 .iso-map.play .ov .walk-lbl { animation: iso-fade .6s 3.2s both; }
 @keyframes iso-pop { from { transform: scale(0); opacity: 0; } }
 /* map key: a dropdown that lists everything on the map; pointing at an entry marks it */
@@ -149,8 +149,13 @@
 .s-location .map-tip span:empty { display: none; }
 .s-location .map-ring { position: absolute; z-index: 5; width: 22px; height: 22px; margin: -11px 0 0 -11px; border-radius: 50%; border: 2px solid var(--white); box-shadow: 0 0 0 5px rgba(165, 85, 47, .55); pointer-events: none; animation: mk-pulse 1.4s ease-in-out infinite; }
 @keyframes mk-pulse { 50% { box-shadow: 0 0 0 10px rgba(165, 85, 47, .15); } }
-.iso-map .rest, .iso-map .hotel { cursor: pointer; }
-.iso-map.has-hl .walk:not(.hl), .iso-map.has-hl .cta:not(.hl), .iso-map.has-hl .metra:not(.hl) { opacity: .2; }
+.iso-map .rest, .iso-map .hotel, .iso-map .nbr { cursor: pointer; }
+.iso-map .nbr path { stroke: var(--white); stroke-width: 1.5; }
+.iso-map .nbr rect { fill: var(--powder); stroke: var(--midnight); stroke-width: 1.5; }
+.iso-map .route { fill: none; stroke: var(--white); stroke-width: 2.5; stroke-dasharray: 1 6; stroke-linecap: round; opacity: .85; }
+.iso-map .route.hl { stroke: #e0905f; stroke-width: 4; stroke-dasharray: 2 7; opacity: 1; }
+.s-location .k-nbr::before { content: ""; width: 11px; height: 11px; transform: rotate(45deg); background: var(--powder); }
+.iso-map.has-hl .walk:not(.hl), .iso-map.has-hl .cta:not(.hl), .iso-map.has-hl .metra:not(.hl), .iso-map.has-hl .route:not(.hl) { opacity: .2; }
 .iso-map .walk.hl { stroke-width: 4; stroke-dasharray: none; }
 .iso-map .cta.hl { stroke-width: 8; }
 .iso-map .metra.hl { stroke: var(--white); stroke-width: 4; stroke-dasharray: none; }
@@ -240,7 +245,8 @@
 .s-iconStats .v { margin-top: 32px; font-size: 22px; font-weight: var(--w-demi); color: var(--grey); line-height: 1; white-space: nowrap; }
 .s-iconStats .l { margin-top: 9px; font-size: 22px; line-height: 36px; white-space: nowrap; }
 .s-iconStats .photo { left: 1122px; top: 0; width: 798px; height: 1080px; }
-.s-iconStats .photo-bars { left: 1148px; top: 996px; }
+.s-iconStats .photo-bars { left: 1148px; top: 996px; gap: 22px; }
+.s-iconStats .photo-bars button { width: 118px; }
 
 /* ---------- bullets + carousel (slide 7) ---------- */
 .s-bullets .photo { left: 0; top: 0; width: 939px; height: 1080px; }
@@ -254,16 +260,24 @@
 .s-bullets .list li { position: relative; padding-left: 52px; }
 .s-bullets .list li + li { margin-top: 63px; }
 .s-bullets .mark { position: absolute; left: 0; color: var(--copper); }
+.s-bullets .photo-grid { left: 0; top: 0; width: 939px; height: 1080px; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 4px; background: var(--midnight); }
+.s-bullets .photo-grid figure { position: relative; overflow: hidden; margin: 0; }
+.s-bullets .photo-grid .cover-img { transition: transform 1.2s var(--ease); }
+.s-bullets .photo-grid figure:hover .cover-img { transform: scale(1.04); }
+.s-bullets .photo-grid .img-tag { position: absolute; left: 0; top: 0; }
+.s-bullets .title.has-logo img { height: 110px; width: auto; display: block; filter: brightness(0) invert(1); }
+.s-bullets .prose { left: 1021px; top: 500px; width: 820px; font-size: 26px; font-weight: var(--w-book); line-height: 40px; }
+.s-bullets .prose p + p { margin-top: 30px; }
 
 /* ---------- features, staggered in (slide 11) ---------- */
 .s-features .media { left: 1100px; top: 0; width: 820px; height: 1080px; overflow: hidden; }
 .s-features .eyebrow { left: 63px; top: 128px; }
-.s-features .title { left: 59px; top: 158px; font-size: 110px; line-height: 1; white-space: nowrap; }
+.s-features .title { left: 59px; top: 176px; font-size: 80px; line-height: 1; white-space: nowrap; }
 .s-features .rule-bar { left: 58px; top: 353px; width: 941px; }
-.s-features .list { left: 59px; top: 436px; width: 1020px; }
+.s-features .list { left: 59px; top: 410px; width: 990px; }
 .s-features .feature h3 { font-size: 30px; font-weight: var(--w-medium); line-height: 1; }
-.s-features .feature p { margin-top: 9px; font-size: 26px; font-weight: var(--w-book); line-height: 38px; }
-.s-features .feature + .feature { margin-top: 51px; }
+.s-features .feature p { margin-top: 8px; font-size: 24px; font-weight: var(--w-book); line-height: 34px; }
+.s-features .feature + .feature { margin-top: 30px; }
 
 /* ---------- single drawing (slide 12) ---------- */
 /* ---------- elevation (slide 12) ---------- */
@@ -522,6 +536,33 @@
 .pa-tag { font-size: 15px; font-weight: var(--w-demi); letter-spacing: .02em; fill: var(--copper); }
 .pa-tag.on-copper { fill: var(--white); }
 @media (prefers-reduced-motion: reduce) { .s-keyed.is-current .pa-conn { animation: none; } }
+
+/* ---------- the paseo: podium axo and plaza section, one slide, two views ---------- */
+.s-paseo .eyebrow { left: 63px; top: 117px; }
+.s-paseo .title { left: 56px; top: 150px; font-size: 96px; line-height: 1; white-space: nowrap; }
+.s-paseo .pv { position: absolute; inset: 0; transition: opacity .45s var(--ease), visibility 0s; }
+.s-paseo[data-view="route"] .pv-plaza, .s-paseo[data-view="plaza"] .pv-route { opacity: 0; visibility: hidden; pointer-events: none; transition: opacity .3s var(--ease), visibility 0s .3s; }
+.s-paseo .rule-bar { left: 59px; top: 292px; width: 788px; }
+.s-paseo .body { left: 59px; top: 356px; width: 800px; font-size: 32px; font-weight: var(--w-book); line-height: 47px; color: var(--midnight); }
+.s-paseo .axo { left: 920px; top: 96px; width: 1000px; height: 867px; }
+.s-paseo.is-current .axo .show-route .route-flow { animation: axo-flow 1.2s linear infinite; }
+.s-paseo .drawing.svg { left: 40px; top: 40px; width: 1840px; height: 490px; }
+.s-paseo .drawing.svg svg { width: 100%; height: 100%; display: block; overflow: visible; }
+.s-paseo .key { left: 60px; top: 600px; list-style: none; display: grid; grid-template-columns: repeat(4, 452px); row-gap: 30px; }
+.s-paseo .key button { display: flex; text-align: left; color: var(--midnight); line-height: 34px; }
+.s-paseo .key .n { width: 54px; flex: none; font-size: 26px; font-weight: var(--w-medium); color: var(--copper); }
+.s-paseo .key .l { font-size: 24px; line-height: 34px; transition: color .25s; }
+.s-paseo .key .active .l { color: var(--copper); }
+.s-paseo .key .no-spot { cursor: default; }
+.s-paseo .key button:focus-visible { outline: none; }
+.s-paseo .spot { width: 38px; height: 38px; margin: -19px 0 0 -19px; border-radius: 50%; background: var(--white); border: 2px solid var(--copper); color: var(--copper); font-size: 16px; font-weight: var(--w-medium); box-shadow: 0 2px 8px rgba(28, 29, 43, .18); transition: transform .25s var(--ease), background .25s, color .25s; }
+.s-paseo .spot.active { background: var(--copper); color: var(--white); transform: scale(1.2); }
+.s-paseo.is-current .pa-conn { animation: pa-flow 1.6s linear 3.6s infinite; }
+.s-paseo .pv-tabs { z-index: 3; left: 60px; top: 998px; display: flex; padding: 4px; border-radius: 26px; box-shadow: inset 0 0 0 1px rgba(171, 189, 204, .45); }
+.s-paseo .pv-tabs button { height: 40px; padding: 0 22px; border-radius: 20px; color: var(--white); font-size: 14px; font-weight: var(--w-medium); letter-spacing: .14em; text-transform: uppercase; transition: background .25s, color .25s; }
+.s-paseo .pv-tabs button:hover { background: rgba(255, 255, 255, .1); }
+.s-paseo .pv-tabs button[aria-pressed="true"] { background: var(--copper); }
+@media (prefers-reduced-motion: reduce) { .s-paseo.is-current .pa-conn, .s-paseo.is-current .axo .show-route .route-flow { animation: none; } }
 
 /* ---------- programming (slide 35) ---------- */
 .s-programming .eyebrow { left: 66px; top: 148px; }

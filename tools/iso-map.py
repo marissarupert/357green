@@ -268,7 +268,17 @@ def lines_d(geom):
             out.append('M' + 'L'.join(f'{a} {b}' for a, b in pts))
     return ''.join(out)
 labels_after = []
-KEY = {'restaurants': [], 'hotels': [], 'cta': [], 'metra': [], 'walk': []}   # lists for the slide's map key
+KEY = {'neighbors': [], 'restaurants': [], 'hotels': [], 'cta': [], 'metra': [], 'walk': []}   # lists for the slide's map key
+
+# Corporate neighbors (addresses from public lease announcements; positions are the
+# buildings' OSM outlines, and the ArcGIS geocoder for 725 W. Randolph, not yet built).
+NEIGHBORS = [
+    ('McDonald\u2019s HQ', '110 N. Carpenter St.', -87.653994, 41.883710),
+    ('WPP', '333 N. Green St.', -87.648034, 41.887695),
+    ('BCG', '360 N. Green St.', -87.649379, 41.888696),
+    ('John Deere', '800 W. Fulton Market', -87.648153, 41.887118),
+    ('Sidley', '725 W. Randolph St. (planned, late 2030)', -87.646692, 41.884185),
+]
 if GIS:
     walk = gis('walk')
     rings = {}
@@ -278,9 +288,22 @@ if GIS:
         big = max(geoms, key=lambda g: g.area)
         pts = [gm(x, y) for x, y in big.exterior.coords]
         svg.append(f'<path class="walk" data-k="walk-{limit}" d="{path(pts)}"/>')
-        KEY['walk'].append({'k': f'walk-{limit}', 'name': f'{limit} min walk'})
+        KEY['walk'].append({'k': f'walk-{limit}', 'name': f'{limit} min walk', 'street': 'from 357 Green'})
         # 10 min: label at the ring's top; 5 min: at its west (left) edge, clear of the callout
         rings[limit] = min(pts, key=lambda p: p[1]) if limit == 10 else min(pts, key=lambda p: p[0])
+    # walking routes from the Metra stations (routes.json: shortest paths on OSM's
+    # walkable network, timed at 80 m a minute)
+    import os
+    routes = json.load(open(f'{GIS}/routes.json')) if os.path.exists(f'{GIS}/routes.json') else {}
+    for name, rt in routes.items():
+        rk = 'route-' + name.split()[0].lower()
+        pts = [gm(x, y) for x, y in rt['path']]
+        svg.append(f'<path class="route" data-k="{rk}" d="M{"L".join(f"{a} {b}" for a, b in pts)}"/>')
+        # tag at the station, or where the route leaves the map if the station is off it
+        inside = [p for p in pts if 40 < p[0] < W - 40 and 90 < p[1] < H - 120]
+        ax, ay = inside[0] if inside else pts[-1]
+        mins = round(rt['m'] / 80)
+        KEY['walk'].append({'k': rk, 'name': f'From {name}', 'street': f'{mins} min walk \u00b7 {rt["m"] / 1000:.1f} km', 'x': ax, 'y': ay})
     METRA = {'UPN': 'Union Pacific North', 'UPNW': 'Union Pacific Northwest', 'UPW': 'Union Pacific West',
              'MDN': 'Milwaukee District North', 'MDW': 'Milwaukee District West', 'NCS': 'North Central Service',
              'BNSF': 'BNSF', 'HC': 'Heritage Corridor', 'ME': 'Metra Electric', 'RID': 'Rock Island', 'SWS': 'SouthWest Service'}
@@ -333,6 +356,14 @@ if GIS:
         p = f['properties']
         ov.append(f'<circle class="rest" data-i="{i}" cx="{a}" cy="{b}" r="3.4" style="--d:{delay(a, b):.2f}"/>')
         KEY['restaurants'].append({'name': p['CONAME'], 'street': p['STREET'], 'x': a, 'y': b})
+    roofs = STRtree([b['poly'] for b in blds])
+    for i, (name, addr, lon, lat) in enumerate(NEIGHBORS):
+        pt = Point(m(lon, lat))
+        hit = [blds[j] for j in roofs.query(pt, predicate='within')]
+        top = max([b['h'] for b in hit], default=0)
+        a, b = gm(lon, lat, top)
+        ov.append(f'<g class="nbr" data-i="{i}" style="--d:{delay(a, b):.2f}"><path d="M{a} {b}V{b - 34}"/><rect x="{a - 7}" y="{b - 41}" width="14" height="14" transform="rotate(45 {a} {b - 34})"/></g>')
+        KEY['neighbors'].append({'name': name, 'street': addr, 'x': a, 'y': b - 34})
     for i, (f, a, b) in enumerate(places('hotels')):
         p = f['properties']
         ov.append(f'<g class="hotel" data-i="{i}" style="--d:{delay(a, b):.2f}"><path d="M{a} {b}V{b - 30}"/><circle cx="{a}" cy="{b - 30}" r="6.5"/></g>')
