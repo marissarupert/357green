@@ -16,6 +16,12 @@ Sources (fetch these, then run with the three paths):
   (The OSM API caps one download, so fetch the wider surroundings as tiles and
   pass them comma-separated.)
 
+  ms.geojson (optional, 5th argument) Microsoft Global ML Building Footprints for the
+            area (heights measured from aerial imagery), used where OSM and the City
+            have no height: quadkey 030222231 of
+            https://minedbuildings.z5.web.core.windows.net/global-buildings/dataset-links.csv
+            Checked against 264 low-rise buildings with known heights: median error
+            3.2 m, reading 2.7 m low on average, so 2.7 m is added back.
   gis-dir   (optional) the Stream GIS map's layers as GeoJSON, for the highlights:
             restaurants, hotels, site, walk, lstations, llines, mstations, mlines
             Web map 13ec007148e2465e9c4c01feffdbdde9 (app 3d12fababd414716a631c254206783e6);
@@ -37,6 +43,7 @@ from shapely.strtree import STRtree
 
 OSM, CITY, OUT = sys.argv[1:4]
 GIS = sys.argv[4] if len(sys.argv) > 4 else None
+MSB = sys.argv[5] if len(sys.argv) > 5 else None
 
 LAT0, LON0 = 41.8875, -87.6550
 MX = 111320 * math.cos(math.radians(LAT0))
@@ -108,11 +115,27 @@ for f in city:
         cp = Polygon([m(*c[:2]) for c in ring])
         if cp.is_valid and cp.area > 5: cpolys.append(cp); cstories.append(st)
 ctree = STRtree(cpolys)
-fallback = 0
+mpolys, mheights = [], []
+if MSB:
+    for f in json.load(open(MSB))['features']:
+        h = f['properties'].get('height')
+        if not h or h <= 0: continue
+        g = Polygon([m(*c[:2]) for c in f['geometry']['coordinates'][0]])
+        if g.is_valid and g.area > 10: mpolys.append(g); mheights.append(h + 2.7)
+mtree = STRtree(mpolys) if mpolys else None
+def ms_height(poly):
+    if not mtree: return None
+    best = None
+    for i in mtree.query(poly):
+        inter = poly.intersection(mpolys[i]).area
+        if inter > 0.5 * min(poly.area, mpolys[i].area) and (best is None or inter > best[0]): best = (inter, mheights[i])
+    return best[1] if best else None
+fallback = msfill = 0
 for b in blds:
     if b['h'] is None:
         hits = ctree.query(b['poly'].representative_point(), predicate='within')
         if len(hits): b['h'] = max(cstories[i] for i in hits) * LEVEL
+        elif (mh := ms_height(b['poly'])): b['h'] = mh; msfill += 1
         else: b['h'] = 2 * LEVEL; fallback += 1
     b['h'] = max(b['h'], b['base'] + 3)
 
@@ -163,12 +186,18 @@ def plate(pts, sf):
     return Polygon([(ox + (x - pts[0][0]) * k, oy - (y - pts[0][1]) * k) for x, y in pts])
 high = plate([(10, 10), (300, 10), (345, 22), (390, 55), (820, 655), (705, 868), (440, 868), (400, 845), (380, 815), (130, 318), (10, 318)], 29500)
 low = plate([(10, 10), (300, 10), (345, 22), (390, 55), (820, 655), (905, 975), (600, 975), (520, 950), (440, 900), (10, 330)], 34600)
-FL = 13.25 * 0.3048
-podium_top = 7 * 4.0
-low_top = podium_top + 8 * FL
-high_top = low_top + 15 * FL
-green = [(podium, 0, podium_top), (low, podium_top, low_top), (high, low_top, high_top)]
-print('357 height', round(high_top), 'm')
+# Heights from the deck's building section (feet above Green St grade, +0'-0"):
+# top of parking 108'-6" (floor 7), office floors 8-28 at 13'3", rooftop 421'-0",
+# screen wall 484'-6".
+FT = 0.3048
+FL = 13.25 * FT
+podium_top = 108.5 * FT
+low_top = podium_top + 8 * FL              # floors 8-15
+high_top = 421.0 * FT                      # floors 16-29 to the rooftop
+screen_top = 484.5 * FT                    # rooftop screen wall
+screen = high.buffer(-6, join_style=2)
+green = [(podium, 0, podium_top), (low, podium_top, low_top), (high, low_top, high_top), (screen, high_top, screen_top)]
+print('357 height', round(high_top / FT), 'ft roof,', round(screen_top / FT), 'ft screen wall')
 area = orient(unary_union([area, podium.buffer(4, join_style=2)]).buffer(0))
 # Drop anything OSM has on the site (surface parking today).
 blds = [b for b in blds if not podium.contains(b['poly'].representative_point())]
@@ -467,7 +496,7 @@ for name, text in LABEL.items():
     svg.append(f'<text class="lbl" x="{lx:.0f}" y="{ly:.0f}" transform="rotate({ang:.1f} {lx:.0f} {ly:.0f})" text-anchor="middle" dominant-baseline="middle">{text}</text>')
 
 # 357 Green callout
-tx, ty = S(*high.representative_point().coords[0], high_top)
+tx, ty = S(*high.representative_point().coords[0], screen_top)
 CALL = 150 if GIS else 78   # clears the station pins near the site
 svg.append(f'<g class="callout"><circle cx="{tx}" cy="{ty}" r="5"/><path d="M{tx} {ty}V{ty - CALL}"/>'
            f'<text x="{tx}" y="{ty - CALL - 14}" text-anchor="middle">357 GREEN</text></g>')
@@ -481,5 +510,5 @@ svg.append(f'<text class="credit" x="{W / 2:.0f}" y="{H - 22}" text-anchor="midd
 svg.append('</svg>')
 open(OUT, 'w').write('\n'.join(svg))
 if GIS: json.dump(KEY, open(OUT.replace('.svg', '-key.json'), 'w'), indent=0, ensure_ascii=False)
-print(len(items), 'buildings drawn,', sum(t[2] for t in items), 'inside;', fallback, 'without any height (2 storeys)')
+print(len(items), 'buildings drawn,', sum(t[2] for t in items), 'inside;', msfill, 'heights from Microsoft;', fallback, 'without any height (2 storeys)')
 print(anchors)
