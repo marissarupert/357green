@@ -149,14 +149,13 @@ export const slides = [
     ],
     // Carousel: Onni office case studies. `focus` picks which part
     // of a landscape photo shows in the tall frame (object-position).
-    // Still to come: 161 Clark renovation renders (from Onni, placeholder below)
-    // and a hero shot of 200 N. LaSalle to replace the ground-floor photo.
+    // Still to come: 161 Clark renovation renders (from Onni, placeholder below).
     photos: [
       { src: 'assets/photos/onni-225-randolph.jpg', caption: '225 W. Randolph', focus: '51% 50%' },
       { src: 'assets/photos/onni-225-randolph-amenity.jpg', caption: '225 W. Randolph', focus: '62% 50%' },
       { placeholder: 'renovation renders to come from Onni', caption: '161 Clark' },
       { src: 'assets/photos/onni-354-n-union.jpg', caption: '354 N. Union', focus: '56% 50%' },
-      { src: 'assets/photos/onni-200-north-lasalle.jpg', caption: '200 N. LaSalle', focus: '66% 50%' },
+      { src: 'assets/photos/onni-200-north-lasalle-hero.jpg', caption: '200 N. LaSalle', focus: '50% 40%' },
     ],
   },
 
