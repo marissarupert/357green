@@ -66,24 +66,25 @@ image paths. Layout code never needs to change.
 | `video` | 2 | muted looping video; until `video.src` is set the poster render shows full bleed with a slow push-in |
 | `intro` | 3 | `bleed: true`: full-bleed render with a slow push-in, text in a left column over a midnight gradient |
 | `overview` | 4 | numbers count up, rows stagger in |
-| `divider` | 5, 8, 10, 18, 34, 40, 43 | numeral and title animate in, watermark drifts |
+| `divider` | 5, 8, 10, 16, 33, 39 | numeral and title animate in, watermark drifts |
 | `iconStats` | 6 | numbers count up; photos rotate on their own (the copper bar fills, then the next photo fades in; hover pauses, bars or a click switch by hand) |
-| `bullets` | 7 | photos rotate on their own, as on slide 6 |
-| `location` | 9 | numbers count up; nearby transit list (`transit`); isometric massing map of Grand / Kennedy Expressway / Washington / Ogden (`map.drawing: 'iso-map'`): buildings rise outward from 357 Green, which rises last in copper. A **Map key** dropdown lists everything on it (restaurants, hotels, CTA, Metra, walk times); point at an entry, or at a place on the map, to mark it. Remove `drawing` to show the interactive map (`map.url`) instead |
+| `bullets` | 7 | photos rotate on their own, as on slide 6; `grid: true` shows them as a captioned photo grid instead (SCB), `body` paragraphs replace the bullets, `titleLogo` puts a logo in place of the title |
+| `location` | 9 | numbers count up; nearby transit list (`transit`); isometric massing map of Grand / Kennedy Expressway / Washington / Ogden (`map.drawing: 'iso-map'`): buildings rise outward from 357 Green, which rises last in copper. A **Map key** dropdown lists everything on it (neighbors, restaurants, hotels, CTA, Metra, walk times and the walking routes from Ogilvie and Union Station); point at an entry, or at a place on the map, to mark it. Remove `drawing` to show the interactive map (`map.url`) instead |
 | `features` | 11 | features come in one after another, automatically |
-| `elevation` | 12 | elevations rise from the ground as level markers tick on, callouts reach out to both towers; hover a level for a guide line across both, hover a callout to pick out its points |
-| `callouts` | 13 | callouts play in; hover a label or dot for a zoom lens, click to spotlight (Esc to clear) |
-| `render` | 14–15, 21–28, 31–33 | slow push-in, label tag slides in (`zoom`/`focus` crop the image) |
-| `section` | 16 | section wipes up, callouts draw out; hover a legend item to highlight that zone |
-| `featureGrid` | 17 | subtle clouds drift across the sky behind the text (`clouds`), still under reduced motion |
-| `split` | 19, 29 | 19 (`axo: true`): podium pieces drop in and the paseo route draws down from Halsted; hover a piece or key entry to pick it out, click to lift it (Esc sets it back), Paseo route toggle |
-| `keyed` | 20 | section drawing builds up from the ground (ascent fills, levels tick up, sightlines and connections draw out); hover/focus a key item to highlight its spot (add `spot: [x, y]`) |
-| `amenities` | 30 | each card thumbnail cross-fades through its photos (hover pauses); "View more photos" opens a lightbox gallery at the photo showing |
-| `programming` | 35 | each "View plan" jumps to its test fit |
-| `testfit` | 36–39 | Low/High Rise and Open/Perimeter toggles swap plan and stats |
-| `views` | 41, 42 | drag/arrow keys/trackpad to pan; Both/East/West and height toggles |
-| `floorplan` | 44, 45 | static (plans are flat images, not layered SVG) |
-| `contact` | 46 | phone and email are live links |
+| `elevation` | (not in the deck) | elevations rise from the ground as level markers tick on, callouts reach out to both towers; hover a level for a guide line across both, hover a callout to pick out its points |
+| `callouts` | 12 | callouts play in; hover a label or dot for a zoom lens, click to spotlight (Esc to clear) |
+| `render` | 13–14, 18–19, 21–26, 28–30 | slow push-in, label tag slides in (`zoom`/`focus` crop the image) |
+| `section` | 15 | section wipes up, callouts draw out; hover a legend item to highlight that zone |
+| `featureGrid` | 42 | subtle clouds drift across the sky behind the text (`clouds`), still under reduced motion |
+| `split` | 31 | text beside a photo; `axo: true` puts the interactive podium axo in its place |
+| `paseo` | 17 | two views, switched on the band (or with →): the podium axo (pieces drop in, the paseo route draws down from Halsted; hover a piece or key entry to pick it out, click to lift it) and the plaza section (builds up from the ground; hover/focus a numbered item to light its marker, `spot: [x, y]`) |
+| `keyed` | (not in the deck) | a drawing with a numbered key, as the plaza view above |
+| `amenities` | 20 | each card thumbnail cross-fades through its photos (hover pauses); "View more photos" opens a lightbox gallery at the photo showing |
+| `programming` | 34 | each "View plan" jumps to its test fit |
+| `testfit` | 35–38 | Low/High Rise and Open/Perimeter toggles swap plan and stats |
+| `views` | 40, 41 | drag/arrow keys/trackpad to pan; Both/East/West and height toggles |
+| `floorplan` | 27, 32 | static (plans are flat images, not layered SVG) |
+| `contact` | 43 | phone and email are live links |
 
 All positions are in 1920×1080 stage pixels taken from the static deck, so a
 new slide of an existing type lines up automatically.
@@ -120,9 +121,11 @@ Where these appear in the deck they are marked with a dashed "Placeholder" label
 
 - **Futura 100** web fonts (Jost stands in)
 - **Slide 2** video file (optional; the render shows until then)
-- **Slide 20** keyed site plan with the 01–11 positions (the section is redrawn as `src/assets/svg/plaza-ascent.svg`)
+- **The Paseo (17)** positions for items 06, 07 and 09, which don't show in the section (a keyed site plan would place them)
+- **Onni (6)** 225 W. Randolph amenity images, 161 Clark renovation renders, 354 N. Union photo, 200 N. LaSalle hero shot
+- **SCB (7)** logo (set `titleLogo` once the file is in `public/assets/logos/`)
+- **Lobby & Retail (31)** Dialtone logo and photos
 - **Views** original wide panoramas (the deck's are 863 px wide)
 
-Low-resolution in the source PDF, and soft on large screens: plaza section (20),
-views (41, 42),
-aerial (11) and the Fulton Market photo (9).
+Low-resolution in the source PDF, and soft on large screens: plaza section (17),
+views (40, 41), aerial (11) and the Fulton Market photo (9).

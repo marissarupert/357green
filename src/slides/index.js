@@ -15,6 +15,7 @@ import section from './section.js'
 import featureGrid from './featureGrid.js'
 import split from './split.js'
 import keyed from './keyed.js'
+import paseo from './paseo.js'
 import amenities from './amenities.js'
 import programming from './programming.js'
 import testfit from './testfit.js'
@@ -24,6 +25,6 @@ import contact from './contact.js'
 
 export const types = {
   cover, video, intro, overview, divider, iconStats, bullets, location, features, elevation,
-  callouts, render, section, featureGrid, split, keyed, amenities, programming, testfit,
+  callouts, render, section, featureGrid, split, keyed, paseo, amenities, programming, testfit,
   views, floorplan, contact,
 }

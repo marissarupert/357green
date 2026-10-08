@@ -18,11 +18,12 @@ const DRAWINGS = { 'iso-map': isoMap }
 // marks it on the map (places get a name tag, lines and rings light up).
 const KEYS = { 'iso-map': isoKey }
 const SECTIONS = [
+  ['neighbors', 'Neighbors', 'k-nbr'],
   ['restaurants', 'Restaurants', 'k-rest'],
   ['hotels', 'Hotels', 'k-hotel'],
   ['cta', 'CTA \u2018L\u2019', 'k-cta'],
   ['metra', 'Metra', 'k-metra'],
-  ['walk', 'Walk times from 357 Green', 'k-walk'],
+  ['walk', 'Walk times', 'k-walk'],
 ]
 const caret = `<svg class="caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>`
 const mapKey = (key) => `
@@ -69,6 +70,9 @@ function mountKey(el, key) {
       tip.querySelector('b').textContent = it.name
       tip.querySelector('span').textContent = it.street || ''
       for (const n of [tip, ring]) { n.style.left = it.x + 'px'; n.style.top = it.y + 'px'; n.hidden = false }
+      // keep the name tag inside the panel near its edges
+      const half = tip.offsetWidth / 2, w = tip.offsetParent?.clientWidth || 914
+      tip.style.left = Math.min(Math.max(it.x, half + 12), w - half - 12) + 'px'
     }
   }
   const restore = () => (pinned ? show(...pinned) : clear())
@@ -112,10 +116,10 @@ function mountKey(el, key) {
   })
   // Pointing at a place on the map shows its name too.
   svg.addEventListener('pointerover', (e) => {
-    const n = e.target.closest('.rest, .hotel')
-    if (n) show(n.classList.contains('rest') ? 'restaurants' : 'hotels', Number(n.dataset.i))
+    const n = e.target.closest('.rest, .hotel, .nbr')
+    if (n) show(n.classList.contains('rest') ? 'restaurants' : n.classList.contains('hotel') ? 'hotels' : 'neighbors', Number(n.dataset.i))
   })
-  svg.addEventListener('pointerout', (e) => { if (e.target.closest('.rest, .hotel')) restore() })
+  svg.addEventListener('pointerout', (e) => { if (e.target.closest('.rest, .hotel, .nbr')) restore() })
   el._closeKey = close
 }
 
