@@ -141,6 +141,11 @@
 .s-location .map-tag-pin { position: absolute; transform: translate(-50%, calc(-100% - 14px - var(--lift, 0px))); padding: 5px 10px; border-radius: 5px; background: var(--white); color: var(--charcoal); text-align: center; white-space: nowrap; box-shadow: 0 6px 18px rgba(0, 0, 0, .3); opacity: 0; transition: opacity .25s; }
 .s-location .map-tag-pin b { display: block; font-size: 13px; font-weight: var(--w-medium); line-height: 17px; }
 .s-location .map-tag-pin span { display: block; font-size: 11px; line-height: 14px; color: var(--slate); }
+/* neighbors show their logos (white, on a dark tag) */
+.s-location .map-tag-pin.logo { padding: 8px 12px 6px; background: rgba(28, 29, 43, .94); box-shadow: inset 0 0 0 1px rgba(171, 189, 204, .45), 0 6px 18px rgba(0, 0, 0, .4); }
+.s-location .map-tag-pin.logo img { display: block; height: var(--h, 26px); width: auto; margin: 0 auto; }
+.s-location .map-tag-pin.logo img.whiten { filter: brightness(0) invert(1); }
+.s-location .map-tag-pin.logo span { margin-top: 4px; color: var(--powder); font-size: 10.5px; }
 .s-location .map[data-show="neighbors"] .map-tag-pin[data-sec="neighbors"],
 .s-location .map[data-show="walk"] .map-tag-pin[data-sec="walk"] { opacity: 1; }
 .s-location .k-rest::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: #e0905f; }

@@ -28,14 +28,21 @@ const SECTIONS = [
   ['walk', 'Walk times', 'k-walk'],
 ]
 const TAGGED = ['neighbors', 'walk']   // groups whose places get name tags when on
-const mapKey = (key) => `
+// a neighbor's logo, matched by name from the slide's neighbors list
+const logoFor = (name, neighbors = []) => neighbors.find((n) => name.toLowerCase().startsWith(n.alt.toLowerCase().replace('\u2019', '\u2019')))
+const mapKey = (key, neighbors) => `
   <div class="map-chips" role="toolbar" aria-label="Map key">
     ${SECTIONS.filter(([id]) => key[id]?.length).map(([id, label, icon]) => `
       <button type="button" data-sec="${id}" aria-pressed="false"><i class="${icon}"></i>${esc(label)}${['restaurants', 'hotels'].includes(id) ? ` <span class="ct">${key[id].length}</span>` : ''}</button>`).join('')}
   </div>
   <div class="map-tags">
-    ${TAGGED.flatMap((sec) => (key[sec] || []).map((it) => (it.x == null ? '' : `
-      <p class="map-tag-pin" data-sec="${sec}" style="left:${it.x}px;top:${it.y}px"><b>${esc(it.name)}</b>${it.street ? `<span>${esc(it.street)}</span>` : ''}</p>`))).join('')}
+    ${TAGGED.flatMap((sec) => (key[sec] || []).map((it) => {
+      if (it.x == null) return ''
+      const logo = sec === 'neighbors' && logoFor(it.name, neighbors)
+      return logo
+        ? `<p class="map-tag-pin logo" data-sec="${sec}" style="left:${it.x}px;top:${it.y}px;--h:${Math.round((Number(logo.height) || 44) * 0.6)}px"><img src="${esc(logo.src)}" alt="${esc(it.name)}"${logo.whiten ? ' class="whiten"' : ''}><span>${esc(it.street || '')}</span></p>`
+        : `<p class="map-tag-pin" data-sec="${sec}" style="left:${it.x}px;top:${it.y}px"><b>${esc(it.name)}</b>${it.street ? `<span>${esc(it.street)}</span>` : ''}</p>`
+    })).join('')}
   </div>
   <div class="map-ring" hidden></div>
   <p class="map-tip" hidden><b></b><span></span></p>`
@@ -134,7 +141,7 @@ export default {
     </div>
     <div class="abs map" data-interactive>
       ${DRAWINGS[s.map?.drawing]
-        ? `${DRAWINGS[s.map.drawing]}${KEYS[s.map.drawing] ? mapKey(KEYS[s.map.drawing]) : ''}
+        ? `${DRAWINGS[s.map.drawing]}${KEYS[s.map.drawing] ? mapKey(KEYS[s.map.drawing], s.neighbors) : ''}
            <p class="img-tag map-tag" data-in="tag" data-at="0.6"><span>${esc(s.map.label || s.title)}</span></p>`
         : s.map?.url
         ? `<p class="loading">Loading map…<span>Interactive map needs an internet connection</span></p>
