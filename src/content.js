@@ -90,8 +90,8 @@ export const slides = [
     ref: 2,
     type: 'video',
     theme: 'dark',
-    // Drop the film in public/assets/video/ and set src, e.g. 'assets/video/357-green.mp4'
-    video: { src: '', poster: 'assets/renders/halsted-looking-west.jpg', zoom: 1.042, focus: '44% 67.7%' },
+    // The entrance on Halsted at dusk (video render, loops seamlessly)
+    video: { src: 'assets/video/entrance-night.mp4', poster: 'assets/video/entrance-night.jpg', position: '50% 88%' },
   },
 
   {
@@ -339,6 +339,8 @@ export const slides = [
       { n: '11', label: 'Flush parkway planter', spot: [400, 348] },
     ],
   },
+  render('paseo-arrival', null, 'tenant-experience', 'Arriving on the Paseo', 'assets/video/paseo-arrival.jpg', { video: 'assets/video/paseo-arrival.mp4' }),
+  render('paseo-life', null, 'tenant-experience', 'Life on the Paseo', 'assets/video/paseo-life.jpg', { video: 'assets/video/paseo-life.mp4' }),
 
   render('halsted-looking-west', 21, 'tenant-experience', 'View From Halsted Looking West', 'assets/renders/halsted-looking-west.jpg'),
   render('green-street', 22, 'tenant-experience', 'View From Green Street Looking North East', 'assets/renders/green-street.jpg'),
@@ -382,7 +384,7 @@ export const slides = [
     ],
   },
   render('level-2-terrace', 23, 'tenant-experience', 'Level 29: Lounge & Terrace', 'assets/renders/l2-terrace.jpg', { zoom: 1.372, focus: '50% 60%' }),
-  render('level-15-coffee-bar', 24, 'tenant-experience', 'Level 15: Coffee Bar & Co-Work Lounge', 'assets/renders/l15-coffee-bar.jpg'),
+  render('level-15-coffee-bar', 24, 'tenant-experience', 'Level 15: Coffee Bar & Co-Work Lounge', 'assets/renders/l15-coffee-bar.jpg', { video: 'assets/video/l15-coffee-bar.mp4' }),
   render('level-15-game-lounge', 25, 'tenant-experience', 'Level 15: Game Lounge', 'assets/renders/l15-game-lounge.jpg'),
   render('level-15-fitness-studio', 26, 'tenant-experience', 'Level 15: Fitness Studio', 'assets/renders/l15-fitness-studio.jpg'),
   render('level-15-yoga-studio', 27, 'tenant-experience', 'Level 15: Yoga Studio', 'assets/renders/l15-yoga-studio.jpg'),
@@ -405,7 +407,7 @@ export const slides = [
     image: { src: 'assets/plans/second-floor.jpg', alt: 'Second floor amenity plan', box: [784, 70, 1062, 844] },
   },
   render('level-2-paseo-lounge', 31, 'tenant-experience', 'Level 2: Paseo Lounge', 'assets/renders/l2-paseo-lounge.jpg', { zoom: 1.032, focus: '50.3% 49.2%' }),
-  render('level-2-conferencing', 33, 'tenant-experience', 'Level 2: Conferencing', 'assets/renders/l2-conferencing.jpg'),
+  render('level-2-conferencing', 33, 'tenant-experience', 'Level 2: Conferencing', 'assets/renders/l2-conferencing.jpg', { video: 'assets/video/l2-conferencing.mp4' }),
   render('green-street-looking-east', 28, 'tenant-experience', 'Evening View of Plaza from Green Street', 'assets/renders/green-street-looking-east.jpg'),
 
   {

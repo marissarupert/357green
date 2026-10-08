@@ -63,7 +63,7 @@ image paths. Layout code never needs to change.
 | `type` | Used for | Interaction |
 |---|---|---|
 | `cover` | 1 | logo, copper rule, then tagline animate in |
-| `video` | 2 | muted looping video; until `video.src` is set the poster render shows full bleed with a slow push-in |
+| `video` | 2 | muted looping video (`video.position` sets the crop); until `video.src` is set the poster render shows full bleed with a slow push-in |
 | `intro` | 3 | `bleed: true`: full-bleed render with a slow push-in, text in a left column over a midnight gradient |
 | `overview` | 4 | numbers count up, rows stagger in |
 | `divider` | 5, 8, 10, 16, 33, 39 | numeral and title animate in, watermark drifts |
@@ -73,7 +73,7 @@ image paths. Layout code never needs to change.
 | `features` | 11 | features come in one after another, automatically |
 | `elevation` | (not in the deck) | elevations rise from the ground as level markers tick on, callouts reach out to both towers; hover a level for a guide line across both, hover a callout to pick out its points |
 | `callouts` | 12 | callouts play in; hover a label or dot for a zoom lens, click to spotlight (Esc to clear) |
-| `render` | 13–14, 18–19, 21–26, 28–30 | slow push-in, label tag slides in (`zoom`/`focus` crop the image) |
+| `render` | 13–14, 18–19, 21–26, 28–30 | slow push-in, label tag slides in (`zoom`/`focus` crop the image; `video` plays a muted loop over the still) |
 | `section` | 15 | section wipes up, callouts draw out; hover a legend item to highlight that zone |
 | `featureGrid` | 42 | subtle clouds drift across the sky behind the text (`clouds`), still under reduced motion |
 | `split` | 31 | text beside a photo; `feature` adds a tenant block under the text (logo, label, photos that open full screen: Dialtone); `axo: true` puts the interactive podium axo in place of the photo |
@@ -123,10 +123,20 @@ work offline.
 Where these appear in the deck they are marked with a dashed "Placeholder" label:
 
 - **Futura 100** web fonts (Jost stands in)
-- **Slide 2** video file (optional; the render shows until then)
 - **The Paseo (17)** positions for items 06, 07 and 09, which don't show in the section (a keyed site plan would place them)
 - **Onni (6)** 161 Clark renovation renders
 - **Views** original wide panoramas (the deck's are 863 px wide)
 
 Low-resolution in the source PDF, and soft on large screens: plaza section (17),
 views (40, 41), aerial (11) and the Fulton Market photo (9).
+
+## Videos
+
+`public/assets/video/` holds each render video as an H.264 `.mp4`, a VP9 `.webm`
+beside it and a `.jpg` poster. The deck loads a video only while its slide is on
+screen and falls back to the WebM where the browser can't play H.264. Each loop
+is made seamless by crossfading its last second into its first:
+
+```sh
+ffmpeg -i in.mp4 -filter_complex "[0:v]trim=start=1,setpts=PTS-STARTPTS[a];[0:v]trim=0:1,setpts=PTS-STARTPTS[b];[a][b]xfade=transition=fade:duration=1:offset=<len-2>" -an -c:v libx264 -crf 24 -preset slow -pix_fmt yuv420p -movflags +faststart out.mp4
+```
