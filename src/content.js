@@ -280,9 +280,6 @@ export const slides = [
     ],
   },
 
-  render('aerial-view', 14, 'architecture', 'Aerial View', 'assets/renders/aerial-view.jpg'),
-  render('view-from-expressway', 15, 'architecture', 'View From Expressway', 'assets/renders/view-from-expressway.jpg'),
-
   {
     id: 'building-section',
     ref: 16,
@@ -341,8 +338,6 @@ export const slides = [
   },
   render('paseo-arrival', null, 'tenant-experience', 'Arriving on the Paseo', 'assets/video/paseo-arrival.jpg', { video: 'assets/video/paseo-arrival.mp4' }),
   render('paseo-life', null, 'tenant-experience', 'Life on the Paseo', 'assets/video/paseo-life.jpg', { video: 'assets/video/paseo-life.mp4' }),
-
-  render('halsted-looking-west', 21, 'tenant-experience', 'View From Halsted Looking West', 'assets/renders/halsted-looking-west.jpg'),
   render('green-street', 22, 'tenant-experience', 'View From Green Street Looking North East', 'assets/renders/green-street.jpg'),
 
   {
