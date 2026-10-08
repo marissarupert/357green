@@ -1,4 +1,5 @@
-// Amenity cards; each "View more photos" opens a lightbox gallery.
+// Amenity cards; each "View more photos" opens a lightbox gallery. The text and
+// the cards share one column, so the cards always sit below however long the text runs.
 // Fields: eyebrow, eyebrowAccent, title, stat{value, label}, body,
 //         cards[{title, link, photos[{src, caption}]}] (first photo is the thumbnail)
 // While the slide is on screen each thumbnail cross-fades through its card's
@@ -19,8 +20,9 @@ export default {
       <p class="l">${esc(s.stat.label)}</p>
     </div>
     ${ruleBar()}
-    <p class="abs body" data-in="up">${rich(s.body)}</p>
-    <div class="abs cards">
+    <div class="abs flow">
+    <p class="body" data-in="up">${rich(s.body)}</p>
+    <div class="cards">
       ${s.cards.map((c, i) => `
         <div class="card" data-in="up">
           <button class="thumb" data-gallery="${i}" aria-label="${esc(c.title)}: open photos">${c.photos.map((p, j) => img(p.src, '', j ? '' : 'on')).join('')}</button>
@@ -28,6 +30,7 @@ export default {
           <h3>${esc(c.title)}</h3>
           <button class="more" data-gallery="${i}">${esc(c.link || 'View more photos')} ${chevron}</button>
         </div>`).join('')}
+    </div>
     </div>`,
 
   mount(el, s, deck) {
