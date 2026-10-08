@@ -27,7 +27,12 @@ export function createDeck({ stage, slides, onChange }) {
   const warm = (i) => {
     for (const j of [i, i + 1, i - 1, i + 2]) {
       els[j]?.querySelectorAll('[data-src]').forEach((n) => {
-        if (n.tagName === 'VIDEO') { if (j !== i) return; n.src = n.dataset.src }
+        if (n.tagName === 'VIDEO') {
+          if (j !== i) return
+          // MP4 (H.264) where the browser plays it, else the WebM copy beside it
+          const mp4 = n.canPlayType('video/mp4; codecs="avc1.640028"')
+          n.src = mp4 || !n.dataset.src.endsWith('.mp4') ? n.dataset.src : n.dataset.src.replace(/\.mp4$/, '.webm')
+        }
         else n.src = n.dataset.src
         n.removeAttribute('data-src')
         // decode off the main thread now so the slide doesn't stall on entry
