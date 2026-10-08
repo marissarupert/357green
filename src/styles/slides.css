@@ -411,6 +411,13 @@
 .s-split .media.photo { left: 899px; top: 0; width: 1021px; height: 1080px; }
 .s-split .media.photo ~ .rule-bar { top: 362px; width: 749px; }
 .s-split .media.photo ~ .body { top: 443px; width: 810px; }
+.s-split .feature { left: 59px; top: 700px; width: 800px; }
+.s-split .f-logo { display: block; width: 190px; aspect-ratio: 380 / 143; background: var(--midnight); -webkit-mask: no-repeat left center / contain; mask: no-repeat left center / contain; }
+.s-split .f-label { margin-top: 10px; font-size: 18px; font-weight: var(--w-medium); letter-spacing: .14em; text-transform: uppercase; color: var(--slate); }
+.s-split .f-photos { margin-top: 22px; display: flex; gap: 16px; }
+.s-split .f-photo { position: relative; width: 256px; height: 170px; overflow: hidden; display: block; }
+.s-split .f-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease); }
+.s-split .f-photo:hover img { transform: scale(1.05); }
 
 /* ---------- podium axo (slide 19, src/lib/podium.js) ---------- */
 .s-split .axo { left: 920px; top: 96px; width: 1000px; height: 867px; }

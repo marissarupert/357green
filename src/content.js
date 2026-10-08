@@ -149,14 +149,13 @@ export const slides = [
     ],
     // Carousel: Onni office case studies. `focus` picks which part
     // of a landscape photo shows in the tall frame (object-position).
-    // Placeholders mark photos still to come: 225 W. Randolph amenity images,
-    // 161 Clark renovation renders (from Onni), 354 N. Union, and a hero shot
-    // of 200 N. LaSalle to replace the ground-floor photo.
+    // Still to come: 161 Clark renovation renders (from Onni, placeholder below)
+    // and a hero shot of 200 N. LaSalle to replace the ground-floor photo.
     photos: [
       { src: 'assets/photos/onni-225-randolph.jpg', caption: '225 W. Randolph', focus: '51% 50%' },
-      { placeholder: '225 W. Randolph amenity images to come', caption: '225 W. Randolph' },
+      { src: 'assets/photos/onni-225-randolph-amenity.jpg', caption: '225 W. Randolph · Amenities', focus: '62% 50%' },
       { placeholder: 'renovation renders to come from Onni', caption: '161 Clark' },
-      { placeholder: 'photo to come', caption: '354 N. Union' },
+      { src: 'assets/photos/onni-354-n-union.jpg', caption: '354 N. Union', focus: '56% 50%' },
       { src: 'assets/photos/onni-200-north-lasalle.jpg', caption: '200 N. LaSalle', focus: '66% 50%' },
     ],
   },
@@ -418,6 +417,14 @@ export const slides = [
     title: 'Lobby & Retail',
     body: 'A warm, daylit arrival sequence wraps ~7,300 SF of street-activating retail beneath the tower, animating the corner of Green, Kinzie and Halsted.',
     image: { src: 'assets/renders/lobby-retail.jpg', alt: 'Lobby and retail at the base of the tower', focus: '24% 50%' },
+    // Dialtone: logo and photos under the text; each photo opens full screen.
+    feature: {
+      logo: 'assets/logos/dialtone.png',
+      label: 'Dialtone Bodega & Coffee House',
+      photos: [
+        { src: 'assets/photos/dialtone-cafe.jpg', caption: 'Dialtone' },
+      ],
+    },
   },
 
   {
