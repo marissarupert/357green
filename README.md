@@ -83,7 +83,7 @@ image paths. Layout code never needs to change.
 | `programming` | 37 | each "View plan" jumps to its test fit |
 | `testfit` | 35–38 | Low/High Rise and Open/Perimeter toggles swap plan and stats |
 | `views` | 34, 35 | drag/arrow keys/trackpad to pan; Both/East/West and height toggles |
-| `gallery` | 33 | full-bleed photo carousel (aerial views) that turns by itself, copper bars along the bottom |
+| `gallery` | 33 | full-bleed photo carousel (aerial views, in order around the compass) that turns by itself, copper bars along the bottom |
 | `floorplan` | 27, 32 | static (plans are flat images, not layered SVG) |
 | `contact` | 43 | phone and email are live links |
 
