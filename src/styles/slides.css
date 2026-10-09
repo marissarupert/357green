@@ -619,21 +619,6 @@
 .s-gallery .gallery-bars { left: 60px; top: 994px; }
 .s-gallery .img-tag { z-index: 2; }
 
-/* ---------- views (panoramas) ---------- */
-.s-views .strip { position: absolute; left: 0; width: 1920px; overflow: hidden; cursor: grab; touch-action: pan-y; background: #e9edf1; transition: top .5s var(--ease), height .5s var(--ease); }
-.s-views .strip { top: var(--t); height: var(--h); }
-.s-views .strip.solo { top: 0; height: 1080px; }
-.s-views .strip.hidden { display: none; }
-.s-views .strip.dragging { cursor: grabbing; }
-.s-views .strip:focus-visible { outline-offset: -6px; }
-.s-views .pan { position: absolute; left: 0; top: 0; height: 100%; }
-.s-views .pan img { position: absolute; left: 0; max-width: none; }
-.s-views .missing { display: none; position: absolute; inset: 0; place-items: center; color: var(--slate); }
-.s-views .strip.none .missing { display: grid; }
-.s-views .strip.none .pan { display: none; }
-.s-views .view-tag { top: 40px; height: 65px; width: 375px; padding: 0 0 0 42px; clip-path: polygon(0 0, 100% 0, calc(100% - 34px) 100%, 0 100%); }
-.s-views .toggles { right: 130px; top: 24px; z-index: 5; } /* clear of the ☰ menu button */
-
 /* ---------- floor plans (slides 44, 45) ---------- */
 .s-floorplan .eyebrow { left: 61px; top: 148px; }
 .s-floorplan .title { left: 53px; top: 178px; font-size: 110px; line-height: 1; white-space: nowrap; }

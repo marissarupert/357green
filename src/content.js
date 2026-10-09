@@ -48,16 +48,6 @@ const testFits = {
   },
 }
 
-// Panoramas shared by the two Views slides. The static deck tags slide 42's
-// east view "HIGH-RISE", but the photo itself is captioned "View East |
-// Mid-Rise", so it is labelled Mid-Rise here.
-const views = [
-  { id: 'east-high', direction: 'east', height: 'high-rise', label: 'View East | High-Rise', src: 'assets/views/east-high-rise.jpg' },
-  { id: 'west-high', direction: 'west', height: 'high-rise', label: 'View West | High-Rise', src: 'assets/views/west-high-rise.jpg' },
-  { id: 'east-mid', direction: 'east', height: 'mid-rise', label: 'View East | Mid-Rise', src: 'assets/views/east-mid-rise.jpg' },
-  { id: 'west-mid', direction: 'west', height: 'mid-rise', label: 'View West | Mid-Rise', src: 'assets/views/west-mid-rise.jpg' },
-]
-
 export const sections = [
   { id: 'development', label: 'Development' },
   { id: 'location', label: 'Location' },
@@ -454,8 +444,6 @@ export const slides = [
     label: 'Views',
     photos: [1, 2, 3, 4, 5, 6, 7, 8].map((n) => ({ src: `assets/views/aerial-${n}.jpg`, alt: 'Aerial view over Chicago' })),
   },
-  { id: 'views-high-rise', ref: 41, type: 'views', section: 'views', theme: 'light', views, show: ['east-high', 'west-high'], strips: [[0, 526], [552, 528]] },
-  { id: 'views-mid-rise', ref: 42, type: 'views', section: 'views', theme: 'light', views, show: ['east-mid', 'west-mid'], strips: [[0, 493], [557, 523]] },
 
   // ---------- 06 Tenant Programming ----------
   { id: 'programming', ref: 34, type: 'divider', section: 'programming', theme: 'dark', number: '06', title: 'Tenant Programming' },
