@@ -452,7 +452,7 @@ export const slides = [
     section: 'views',
     theme: 'dark',
     label: 'Views',
-    photos: [1, 2, 3, 4, 5].map((n) => ({ src: `assets/views/aerial-${n}.jpg`, alt: 'Aerial view over Chicago' })),
+    photos: [1, 2, 3, 4, 5, 6, 7, 8].map((n) => ({ src: `assets/views/aerial-${n}.jpg`, alt: 'Aerial view over Chicago' })),
   },
   { id: 'views-high-rise', ref: 41, type: 'views', section: 'views', theme: 'light', views, show: ['east-high', 'west-high'], strips: [[0, 526], [552, 528]] },
   { id: 'views-mid-rise', ref: 42, type: 'views', section: 'views', theme: 'light', views, show: ['east-mid', 'west-mid'], strips: [[0, 493], [557, 523]] },
