@@ -80,9 +80,10 @@ image paths. Layout code never needs to change.
 | `paseo` | 17 | two views, switched on the band (or with →): the podium axo (pieces drop in, the paseo route draws down from Halsted; hover a piece or key entry to pick it out, click to lift it) and the plaza section (builds up from the ground; hover/focus a numbered item to light its marker, `spot: [x, y]`) |
 | `keyed` | (not in the deck) | a drawing with a numbered key, as the plaza view above |
 | `amenities` | 20 | each card thumbnail cross-fades through its photos (hover pauses); "View more photos" opens a lightbox gallery at the photo showing |
-| `programming` | 36 | each "View plan" jumps to its test fit |
+| `programming` | 37 | each "View plan" jumps to its test fit |
 | `testfit` | 35–38 | Low/High Rise and Open/Perimeter toggles swap plan and stats |
-| `views` | 33, 34 | drag/arrow keys/trackpad to pan; Both/East/West and height toggles |
+| `views` | 34, 35 | drag/arrow keys/trackpad to pan; Both/East/West and height toggles |
+| `gallery` | 33 | full-bleed photo carousel (aerial views) that turns by itself, copper bars along the bottom |
 | `floorplan` | 27, 32 | static (plans are flat images, not layered SVG) |
 | `contact` | 43 | phone and email are live links |
 
@@ -128,7 +129,7 @@ Where these appear in the deck they are marked with a dashed "Placeholder" label
 - **Views** original wide panoramas (the deck's are 863 px wide)
 
 Low-resolution in the source PDF, and soft on large screens: plaza section (17),
-views (33, 34), aerial (11) and the Fulton Market photo (9).
+views (34, 35), aerial (11) and the Fulton Market photo (9).
 
 ## Videos
 

@@ -22,9 +22,10 @@ import testfit from './testfit.js'
 import views from './views.js'
 import floorplan from './floorplan.js'
 import contact from './contact.js'
+import gallery from './gallery.js'
 
 export const types = {
   cover, video, intro, overview, divider, iconStats, bullets, location, features, elevation,
   callouts, render, section, featureGrid, split, keyed, paseo, amenities, programming, testfit,
-  views, floorplan, contact,
+  views, floorplan, contact, gallery,
 }
