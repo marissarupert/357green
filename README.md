@@ -31,9 +31,6 @@ npm run build    # writes the finished deck to dist/
 | Menu | ☰ top right, or M: a slim strip drops down with the 357 mark (back to the start), the six sections (each jumps to its first slide), the slide number and full screen. Esc or a click outside closes it |
 | Full screen | F, or Full screen in the menu |
 
-On the **Views** slides, ←/→ pan the focused panorama instead of
-changing slides; click a panorama or Tab to it first.
-
 The ☰ button floats in the top-right corner of every slide; the menu also
 shows the slide number. Every slide
 has its own link (for example `…/#project-overview`), so you can open the deck
@@ -80,9 +77,8 @@ image paths. Layout code never needs to change.
 | `paseo` | 17 | two views, switched on the band (or with →): the podium axo (pieces drop in, the paseo route draws down from Halsted; hover a piece or key entry to pick it out, click to lift it) and the plaza section (builds up from the ground; hover/focus a numbered item to light its marker, `spot: [x, y]`) |
 | `keyed` | (not in the deck) | a drawing with a numbered key, as the plaza view above |
 | `amenities` | 20 | each card thumbnail cross-fades through its photos (hover pauses); "View more photos" opens a lightbox gallery at the photo showing |
-| `programming` | 37 | each "View plan" jumps to its test fit |
+| `programming` | 35 | each "View plan" jumps to its test fit |
 | `testfit` | 35–38 | Low/High Rise and Open/Perimeter toggles swap plan and stats |
-| `views` | 34, 35 | drag/arrow keys/trackpad to pan; Both/East/West and height toggles |
 | `gallery` | 33 | full-bleed photo carousel (aerial views, in order around the compass) that turns by itself, copper bars along the bottom |
 | `floorplan` | 27, 32 | static (plans are flat images, not layered SVG) |
 | `contact` | 43 | phone and email are live links |
@@ -126,10 +122,9 @@ Where these appear in the deck they are marked with a dashed "Placeholder" label
 - **Futura 100** web fonts (Jost stands in)
 - **The Paseo (17)** positions for items 06, 07 and 09, which don't show in the section (a keyed site plan would place them)
 - **Onni (6)** 161 Clark renovation renders
-- **Views** original wide panoramas (the deck's are 863 px wide)
 
 Low-resolution in the source PDF, and soft on large screens: plaza section (17),
-views (34, 35), aerial (11) and the Fulton Market photo (9).
+aerial (11) and the Fulton Market photo (9).
 
 ## Videos
 
