@@ -614,7 +614,12 @@
 .s-testfit .pimg { position: absolute; }
 .s-testfit .toggles { right: 130px; top: 44px; z-index: 5; } /* clear of the ☰ menu button */
 
-/* ---------- views (slides 41, 42) ---------- */
+/* ---------- gallery (full-bleed photo carousel; aerial views) ---------- */
+.s-gallery .gallery-scrim { left: 0; top: 820px; width: 1920px; height: 260px; pointer-events: none; background: linear-gradient(transparent, rgba(16, 22, 38, .55)); }
+.s-gallery .gallery-bars { left: 60px; top: 994px; }
+.s-gallery .img-tag { z-index: 2; }
+
+/* ---------- views (panoramas) ---------- */
 .s-views .strip { position: absolute; left: 0; width: 1920px; overflow: hidden; cursor: grab; touch-action: pan-y; background: #e9edf1; transition: top .5s var(--ease), height .5s var(--ease); }
 .s-views .strip { top: var(--t); height: var(--h); }
 .s-views .strip.solo { top: 0; height: 1080px; }
