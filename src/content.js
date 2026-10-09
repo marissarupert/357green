@@ -63,8 +63,8 @@ export const sections = [
   { id: 'location', label: 'Location' },
   { id: 'architecture', label: 'Architecture' },
   { id: 'tenant-experience', label: 'Tenant Experience' },
-  { id: 'programming', label: 'Tenant Programming' },
   { id: 'views', label: 'Views' },
+  { id: 'programming', label: 'Tenant Programming' },
 ]
 
 const render = (id, ref, section, label, src, extra = {}) =>
@@ -102,7 +102,7 @@ export const slides = [
     title: 'The New<br>Standard',
     body: 'The office market has entered a new phase. Progressive, employee-centric organizations now prioritize quality as the most important workplace criterion, for the benefit of people, culture, and, simply put, the joy of work. Fulton Market has entered a new phase, too. It’s now a mature submarket with a single premier office development site remaining, 357 Green.',
     kicker: 'Take the opportunity to make a forever mark on Chicago’s skyline.',
-    image: { src: 'assets/renders/new-standard.jpg', alt: '357 Green tower at sunset against the Chicago skyline', focus: '50% 30%' },
+    image: { src: 'assets/video/expressway.jpg', video: 'assets/video/expressway.mp4', alt: '357 Green tower at sunset against the Chicago skyline', focus: '50% 30%' },
     bleed: true,
   },
 
@@ -338,7 +338,7 @@ export const slides = [
   },
   render('paseo-arrival', null, 'tenant-experience', 'Arriving on the Paseo', 'assets/video/paseo-arrival.jpg', { video: 'assets/video/paseo-arrival.mp4' }),
   render('paseo-life', null, 'tenant-experience', 'Life on the Paseo', 'assets/video/paseo-life.jpg', { video: 'assets/video/paseo-life.mp4' }),
-  render('green-street', 22, 'tenant-experience', 'View From Green Street Looking North East', 'assets/renders/green-street.jpg'),
+  render('green-street', 22, 'tenant-experience', 'View From Green Street Looking North East', 'assets/video/plaza-day.jpg', { video: 'assets/video/plaza-day.mp4' }),
 
   {
     id: 'amenities-wellness',
@@ -401,9 +401,9 @@ export const slides = [
     ],
     image: { src: 'assets/plans/second-floor.jpg', alt: 'Second floor amenity plan', box: [784, 70, 1062, 844] },
   },
-  render('level-2-paseo-lounge', 31, 'tenant-experience', 'Level 2: Paseo Lounge', 'assets/renders/l2-paseo-lounge.jpg', { zoom: 1.032, focus: '50.3% 49.2%' }),
+  render('level-2-paseo-lounge', 31, 'tenant-experience', 'Level 2: Paseo Lounge', 'assets/video/l2-paseo-lounge.jpg', { video: 'assets/video/l2-paseo-lounge.mp4' }),
   render('level-2-conferencing', 33, 'tenant-experience', 'Level 2: Conferencing', 'assets/renders/l2-conferencing.jpg', { video: 'assets/video/l2-conferencing.mp4' }),
-  render('green-street-looking-east', 28, 'tenant-experience', 'Evening View of Plaza from Green Street', 'assets/renders/green-street-looking-east.jpg'),
+  render('green-street-looking-east', 28, 'tenant-experience', 'Evening View of Plaza from Green Street', 'assets/video/plaza-night.jpg', { video: 'assets/video/plaza-night.mp4' }),
 
   {
     id: 'lobby-retail',
@@ -444,8 +444,13 @@ export const slides = [
     image: { src: 'assets/plans/lobby.jpg', alt: 'Ground floor plan', box: [796, 70, 1038, 844] },
   },
 
-  // ---------- 05 Tenant Programming ----------
-  { id: 'programming', ref: 34, type: 'divider', section: 'programming', theme: 'dark', number: '05', title: 'Tenant Programming' },
+  // ---------- 05 Views ----------
+  { id: 'views', ref: 40, type: 'divider', section: 'views', theme: 'dark', number: '05', title: 'Views' },
+  { id: 'views-high-rise', ref: 41, type: 'views', section: 'views', theme: 'light', views, show: ['east-high', 'west-high'], strips: [[0, 526], [552, 528]] },
+  { id: 'views-mid-rise', ref: 42, type: 'views', section: 'views', theme: 'light', views, show: ['east-mid', 'west-mid'], strips: [[0, 493], [557, 523]] },
+
+  // ---------- 06 Tenant Programming ----------
+  { id: 'programming', ref: 34, type: 'divider', section: 'programming', theme: 'dark', number: '06', title: 'Tenant Programming' },
 
   {
     id: 'how-it-fits',
@@ -477,11 +482,6 @@ export const slides = [
   { id: 'low-rise-perimeter-office', ref: 37, type: 'testfit', section: 'programming', theme: 'light', eyebrow: 'Programming', fits: testFits, show: 'low-perimeter' },
   { id: 'high-rise-open-office', ref: 38, type: 'testfit', section: 'programming', theme: 'light', eyebrow: 'Programming', fits: testFits, show: 'high-open' },
   { id: 'high-rise-perimeter-office', ref: 39, type: 'testfit', section: 'programming', theme: 'light', eyebrow: 'Programming', fits: testFits, show: 'high-perimeter' },
-
-  // ---------- 06 Views ----------
-  { id: 'views', ref: 40, type: 'divider', section: 'views', theme: 'dark', number: '06', title: 'Views' },
-  { id: 'views-high-rise', ref: 41, type: 'views', section: 'views', theme: 'light', views, show: ['east-high', 'west-high'], strips: [[0, 526], [552, 528]] },
-  { id: 'views-mid-rise', ref: 42, type: 'views', section: 'views', theme: 'light', views, show: ['east-mid', 'west-mid'], strips: [[0, 493], [557, 523]] },
 
   // Sustainability closes the deck, just before the contact slide.
   {

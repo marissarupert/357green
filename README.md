@@ -64,7 +64,7 @@ image paths. Layout code never needs to change.
 |---|---|---|
 | `cover` | 1 | logo, copper rule, then tagline animate in |
 | `video` | 2 | muted looping video (`video.position` sets the crop); until `video.src` is set the poster render shows full bleed with a slow push-in |
-| `intro` | 3 | `bleed: true`: full-bleed render with a slow push-in, text in a left column over a midnight gradient |
+| `intro` | 3 | `bleed: true`: full-bleed render (or `image.video` loop) with a slow push-in, text in a left column over a midnight gradient |
 | `overview` | 4 | numbers count up, rows stagger in |
 | `divider` | 5, 8, 10, 16, 33, 39 | numeral and title animate in, watermark drifts |
 | `iconStats` | 6 | numbers count up; photos rotate on their own (the copper bar fills, then the next photo fades in; hover pauses, bars or a click switch by hand) |
@@ -80,9 +80,9 @@ image paths. Layout code never needs to change.
 | `paseo` | 17 | two views, switched on the band (or with →): the podium axo (pieces drop in, the paseo route draws down from Halsted; hover a piece or key entry to pick it out, click to lift it) and the plaza section (builds up from the ground; hover/focus a numbered item to light its marker, `spot: [x, y]`) |
 | `keyed` | (not in the deck) | a drawing with a numbered key, as the plaza view above |
 | `amenities` | 20 | each card thumbnail cross-fades through its photos (hover pauses); "View more photos" opens a lightbox gallery at the photo showing |
-| `programming` | 34 | each "View plan" jumps to its test fit |
+| `programming` | 36 | each "View plan" jumps to its test fit |
 | `testfit` | 35–38 | Low/High Rise and Open/Perimeter toggles swap plan and stats |
-| `views` | 40, 41 | drag/arrow keys/trackpad to pan; Both/East/West and height toggles |
+| `views` | 33, 34 | drag/arrow keys/trackpad to pan; Both/East/West and height toggles |
 | `floorplan` | 27, 32 | static (plans are flat images, not layered SVG) |
 | `contact` | 43 | phone and email are live links |
 
@@ -128,7 +128,7 @@ Where these appear in the deck they are marked with a dashed "Placeholder" label
 - **Views** original wide panoramas (the deck's are 863 px wide)
 
 Low-resolution in the source PDF, and soft on large screens: plaza section (17),
-views (40, 41), aerial (11) and the Fulton Market photo (9).
+views (33, 34), aerial (11) and the Fulton Market photo (9).
 
 ## Videos
 
