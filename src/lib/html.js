@@ -23,6 +23,13 @@ export function countable(html) {
 export const img = (src, alt = '', cls = '') =>
   `<img class="${cls}" data-src="${esc(src)}" alt="${esc(alt)}" decoding="async" draggable="false">`
 
+// A muted looping video with its still as the poster (the deck loads it only
+// while its slide is on screen); playLoop/pauseLoop start and stop it.
+export const loopVideo = (src, poster, alt = '', cls = '') =>
+  `<video class="${cls}" data-src="${esc(src)}" poster="${esc(poster)}" aria-label="${esc(alt)}" muted loop playsinline preload="none"></video>`
+export const playLoop = (el) => { const v = el.querySelector('video'); if (v) { v.currentTime = 0; v.play().catch(() => {}) } }
+export const pauseLoop = (el) => el.querySelector('video')?.pause()
+
 // The repeating "N" band. `box` = [left, top, width, height] in stage px.
 // `origin` = where the PDF places the pattern image, relative to the box, so
 // the N's line up with the static deck. `vertical` uses the rotated texture.
