@@ -441,8 +441,9 @@ export const slides = [
     type: 'gallery',
     section: 'views',
     theme: 'dark',
-    label: 'Views',
-    photos: [1, 2, 3, 4, 5, 6, 7, 8].map((n) => ({ src: `assets/views/aerial-${n}.jpg`, alt: 'Aerial view over Chicago' })),
+    // aerial-1…8 run once around the compass
+    photos: ['East', 'Northeast', 'North', 'Northwest', 'West', 'Southwest', 'South', 'Southeast']
+      .map((dir, i) => ({ src: `assets/views/aerial-${i + 1}.jpg`, caption: `View ${dir}` })),
   },
 
   // ---------- 06 Tenant Programming ----------
