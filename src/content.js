@@ -368,7 +368,7 @@ export const slides = [
       },
     ],
   },
-  render('level-2-terrace', 23, 'tenant-experience', 'Level 29: Lounge & Terrace', 'assets/renders/l2-terrace.jpg', { zoom: 1.372, focus: '50% 60%' }),
+  render('level-2-terrace', 23, 'tenant-experience', 'Level 29: Lounge & Terrace', 'assets/video/l29-lounge-terrace.jpg', { video: 'assets/video/l29-lounge-terrace.mp4' }),
   render('level-15-coffee-bar', 24, 'tenant-experience', 'Level 15: Coffee Bar & Co-Work Lounge', 'assets/renders/l15-coffee-bar.jpg', { video: 'assets/video/l15-coffee-bar.mp4' }),
   render('level-15-game-lounge', 25, 'tenant-experience', 'Level 15: Game Lounge', 'assets/renders/l15-game-lounge.jpg'),
   render('level-15-fitness-studio', 26, 'tenant-experience', 'Level 15: Fitness Studio', 'assets/renders/l15-fitness-studio.jpg'),
