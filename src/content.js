@@ -342,10 +342,8 @@ export const slides = [
     eyebrow: 'Tenant Experience',
     title: 'The Paseo',
     body: 'A key feature of 357 Green is the paseo: a public pedestrian path that descends from Halsted Street to Green Street, threading through the podium and opening onto an activated plaza. It’s a placemaking front door for both the building and the block.',
-    // Plaza & Ascent key. spot: [x, y] in stage px on the section drawing.
-    // Numbered left to right as the markers sit on the drawing; the last three
-    // are plan features that don't show in the section, so they carry a bullet
-    // and no marker until a keyed site plan places them.
+    // Plaza & Ascent key. spot: [x, y] in stage px on the section drawing,
+    // numbered left to right as the markers sit on the drawing.
     items: [
       { n: '01', label: 'Trees match neighboring<br>developments', spot: [150, 345] },
       { n: '02', label: 'Flush parkway planter', spot: [400, 348] },
@@ -355,9 +353,6 @@ export const slides = [
       { n: '06', label: 'Tiered bench seating', spot: [838, 392] },
       { n: '07', label: '25-foot ascent from<br>Green to Halsted', spot: [1010, 352] },
       { n: '08', label: 'Balcony overlooking deck', spot: [1100, 270] },
-      { n: '•', label: 'Metra buffer planting<br>and wall' },
-      { n: '•', label: 'Public elevator entry' },
-      { n: '•', label: 'Built-in bench seating' },
     ],
   },
   render('paseo-arrival', null, 'tenant-experience', 'Arriving on the Paseo', 'assets/video/paseo-arrival.jpg', { video: 'assets/video/paseo-arrival.mp4' }),
