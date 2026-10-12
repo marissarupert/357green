@@ -67,6 +67,18 @@
 .s-location .logos span { display: block; }
 .s-location .logos img { height: 100%; width: auto; }
 .s-location .logos .whiten img { filter: brightness(0) invert(1); }
+/* without the neighbors' logo row (they're on the map), the left column
+   spreads over the full height: title, stats, then transit under a hairline */
+.s-location:not(:has(.hq-label)) .eyebrow:not(.transit-label) { top: 170px; }
+.s-location:not(:has(.hq-label)) .title { top: 200px; }
+.s-location:not(:has(.hq-label)) .rule-bar { top: 372px; }
+.s-location:not(:has(.hq-label)) .stats { top: 436px; }
+.s-location:not(:has(.hq-label)) .transit-label { top: 708px; }
+.s-location:not(:has(.hq-label)) .transit-label::before { content: ""; position: absolute; left: 0; top: -34px; width: 827px; height: 1px; background: rgba(255, 255, 255, .35); }
+.s-location:not(:has(.hq-label)) .transit { top: 752px; row-gap: 34px; }
+.s-location:not(:has(.hq-label)) .transit b { font-size: 24px; line-height: 30px; }
+.s-location:not(:has(.hq-label)) .transit .t span { font-size: 19px; line-height: 26px; }
+.s-location:not(:has(.hq-label)) .transit .marks { padding-top: 8px; }
 .s-location .map { left: 1006px; top: 0; width: 914px; height: 1080px; background: #3071d6; overflow: hidden; }
 .s-location .map:has(iframe) { background: var(--midnight); }
 .s-location .map iframe { position: relative; width: 100%; height: 100%; border: 0; display: block; }
