@@ -9,6 +9,8 @@ export function createDeck({ stage, slides, onChange }) {
   const els = slides.map((s) => s.el)
   let current = -1
   let entrance = null
+  let finishLeaving = null          // tidies the slide we just left once it's covered
+  const FADE = 0.55                 // crossfade, seconds
   let scale = 1
   const blockers = new Set() // overlays (menu, lightbox) that take over the keys
 
@@ -28,7 +30,9 @@ export function createDeck({ stage, slides, onChange }) {
     for (const j of [i, i + 1, i - 1, i + 2]) {
       els[j]?.querySelectorAll('[data-src]').forEach((n) => {
         if (n.tagName === 'VIDEO') {
-          if (j !== i) return
+          // videos load for this slide and the next, so the next one is ready to play
+          if (j !== i && j !== i + 1) return
+          n.preload = 'auto'
           // MP4 (H.264) where the browser plays it, else the WebM copy beside it
           const mp4 = n.canPlayType('video/mp4; codecs="avc1.640028"')
           n.src = mp4 || !n.dataset.src.endsWith('.mp4') ? n.dataset.src : n.dataset.src.replace(/\.mp4$/, '.webm')
@@ -50,25 +54,36 @@ export function createDeck({ stage, slides, onChange }) {
     const next = els[i]
     warm(i)
 
+    // Crossfade: the new slide fades in on top while the old one stays put
+    // underneath (no dip to the background halfway), then the old one is
+    // tidied away once it's covered, so its animations never visibly snap.
+    finishLeaving?.()
     if (prev) {
-      settle(prev, entrance)
+      entrance?.pause()
+      const was = current, old = entrance
       prev.classList.remove('is-current')
       prev.classList.add('is-leaving')
       prev.setAttribute('aria-hidden', 'true')
       prev.inert = true
-      slides[current].type?.leave?.(prev, slides[current])
-      const done = () => { prev.classList.remove('is-leaving'); gsap.set(prev, { clearProps: 'opacity' }) }
-      if (instant || reducedMotion.matches) done()
-      else gsap.to(prev, { opacity: 0, duration: 0.35, ease: 'power1.out', onComplete: done })
+      slides[was].type?.leave?.(prev, slides[was])
+      let call
+      finishLeaving = () => {
+        call?.kill(); finishLeaving = null
+        settle(prev, old)
+        prev.classList.remove('is-leaving')
+      }
+      if (instant || reducedMotion.matches) finishLeaving()
+      else call = gsap.delayedCall(FADE, finishLeaving)
     }
 
     const backwards = i < current
     current = i
+    els.forEach((el, j) => el.classList.toggle('is-near', Math.abs(j - i) === 1))
     next.classList.add('is-current')
     next.removeAttribute('aria-hidden')
     next.inert = false
     stage.classList.toggle('on-light', slides[i].theme === 'light')
-    gsap.fromTo(next, { opacity: 0 }, { opacity: 1, duration: instant || reducedMotion.matches ? 0.01 : 0.4, ease: 'power1.out' })
+    gsap.fromTo(next, { opacity: 0 }, { opacity: 1, duration: instant || reducedMotion.matches ? 0.01 : FADE, ease: 'sine.inOut', clearProps: 'opacity' })
     entrance = playEntrance(next, (tl) => slides[i].type?.enter?.(next, tl, slides[i], { backwards }))
 
     // Sandboxed frames (embedded previews) can refuse history updates.

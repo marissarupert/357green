@@ -9,7 +9,7 @@ import { esc, img, loopVideo, pauseLoop, playLoop, rich, ruleBar } from '../lib/
 export default {
   render: (s) => `
     ${s.bleed
-      ? `<div class="abs media bleed"${s.image.focus ? ` style="--focus:${esc(s.image.focus)}"` : ''}><div class="push" data-in="push">${s.image.video ? loopVideo(s.image.video, s.image.src, s.image.alt, 'cover-img') : img(s.image.src, s.image.alt, 'cover-img')}</div></div>
+      ? `<div class="abs media bleed"${s.image.focus ? ` style="--focus:${esc(s.image.focus)}"` : ''}><div class="push"${s.image.video ? '' : ' data-in="push"'}>${s.image.video ? loopVideo(s.image.video, s.image.src, s.image.alt, 'cover-img') : img(s.image.src, s.image.alt, 'cover-img')}</div></div>
     <div class="abs scrim" aria-hidden="true"></div>`
       : `<div class="abs media">${img(s.image.src, s.image.alt, 'cover-img')}</div>
     <div class="abs panel"></div>`}
