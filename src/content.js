@@ -150,7 +150,7 @@ export const slides = [
         ] },
       ] },
       { caption: '225 W. Randolph', stack: [
-        { placeholder: '225 W. Randolph exterior to come' },
+        { src: 'assets/photos/onni-225-randolph-exterior.jpg', alt: '225 W. Randolph exterior', focus: '50% 2%' },
         // amenity photos from 225randolph.com/amenities
         { grid: [
           { src: 'assets/photos/onni-225-lobby.jpg', alt: '225 W. Randolph lobby' },
