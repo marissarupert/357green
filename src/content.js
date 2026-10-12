@@ -401,7 +401,7 @@ export const slides = [
   render('level-2-terrace', 23, 'tenant-experience', 'Level 29: Lounge & Terrace', 'assets/video/l29-lounge-terrace.jpg', { video: 'assets/video/l29-lounge-terrace.mp4' }),
   render('level-15-coffee-bar', 24, 'tenant-experience', 'Level 15: Coffee Bar & Co-Work Lounge', 'assets/renders/l15-coffee-bar.jpg', { video: 'assets/video/l15-coffee-bar.mp4' }),
   render('level-15-club-room', 25, 'tenant-experience', 'Level 15: Club Room', 'assets/renders/l15-game-lounge.jpg'),
-  render('level-15-fitness-studio', 26, 'tenant-experience', 'Level 15: Fitness Studio', 'assets/renders/l15-fitness-studio.jpg'),
+  render('level-15-fitness-studio', 26, 'tenant-experience', 'Level 15: Fitness Studio', 'assets/video/l15-fitness-studio.jpg', { video: 'assets/video/l15-fitness-studio.mp4' }),
   render('level-15-yoga-studio', 27, 'tenant-experience', 'Level 15: Yoga Studio', 'assets/renders/l15-yoga-studio.jpg'),
   render('level-15-wellness-spa', 32, 'tenant-experience', 'Level 15: Wellness Spa', 'assets/renders/l15-wellness-spa.jpg', { zoom: 1.026, focus: '12.9% 0%' }),
 
