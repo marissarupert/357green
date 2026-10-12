@@ -71,7 +71,7 @@ image paths. Layout code never needs to change.
 | `elevation` | (not in the deck) | elevations rise from the ground as level markers tick on, callouts reach out to both towers; hover a level for a guide line across both, hover a callout to pick out its points |
 | `callouts` | 12 | callouts play in; hover a label or dot for a zoom lens, click to spotlight (Esc to clear) |
 | `render` | 16–18, 20–25, 27–29 | slow push-in, label tag slides in (`zoom`/`focus` crop the image; `video` plays a muted loop over the still) |
-| `section` | 15 | section wipes up, callouts draw out; hover a legend item to highlight that zone |
+| `section` | 15 | section wipes up, callouts draw out; hover a legend item to highlight that zone; the section itself is a vector redraw (`tools/section-svg.py` → `src/assets/svg/building-section.svg`, traced from the PDF's raster so the labels stay sharp) |
 | `featureGrid` | 42 | subtle clouds drift across the sky behind the text (`clouds`), still under reduced motion |
 | `split` | 31 | text beside a photo; `feature` adds a tenant block under the text (logo, label, photos that open full screen: Dialtone); `axo: true` puts the interactive podium axo in place of the photo |
 | `paseo` | 17 | two views, switched on the band (or with →): the podium axo (pieces drop in, the paseo route draws down from Halsted; hover a piece or key entry to pick it out, click to lift it) and the plaza section (builds up from the ground; hover/focus a numbered item to light its marker, `spot: [x, y]`) |

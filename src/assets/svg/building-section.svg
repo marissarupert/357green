@@ -1,0 +1,201 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1938 1391" class="section-svg" role="img" aria-label="Building section through the tower">
+<defs><linearGradient id="sg-ground" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7d8287"/><stop offset="1" stop-color="#b9bcbf"/></linearGradient></defs>
+<g font-family="Jost, Futura, sans-serif" letter-spacing="1.5" stroke-linejoin="round">
+<g class="ctx">
+<rect x="50" y="270" width="246" height="853" fill="#e1e3e5" stroke="#8e9398" stroke-width="2"/>
+<rect x="50" y="395" width="165" height="728" fill="#e1e3e5" stroke="#8e9398" stroke-width="2"/>
+<rect x="50" y="360" width="73" height="35" fill="#e1e3e5" stroke="#8e9398" stroke-width="2"/>
+<rect x="50" y="1123" width="167" height="74" fill="#e1e3e5" stroke="#8e9398" stroke-width="2"/>
+<rect x="50" y="1197" width="259" height="53" fill="#e1e3e5" stroke="#8e9398" stroke-width="2"/>
+<rect x="50" y="1250" width="192" height="53" fill="#e1e3e5" stroke="#8e9398" stroke-width="2"/>
+<text x="296" y="216" font-size="28" font-weight="600" text-anchor="end" fill="#2a2b33">390′</text>
+<text x="296" y="251" font-size="28" font-weight="600" text-anchor="end" fill="#2a2b33">T/ 360 N GREEN</text>
+<text x="146" y="1294" font-size="24" font-weight="600" text-anchor="middle" fill="#2a2b33">360 N GREEN</text>
+<rect x="1215" y="1246" width="127" height="57" fill="#e1e3e5" stroke="#8e9398" stroke-width="2"/>
+<rect x="1342" y="1246" width="194" height="57" fill="#e1e3e5" stroke="#8e9398" stroke-width="2"/>
+<rect x="1536" y="1237" width="399" height="66" fill="#e1e3e5" stroke="#8e9398" stroke-width="2"/>
+<path d="M1188 1237H1535V1246H1188Z" fill="#cfd3d6" stroke="#8e9398" stroke-width="2"/>
+<rect x="50" y="1303" width="1885" height="80" fill="url(#sg-ground)" stroke="none" stroke-width="0"/>
+<rect x="993" y="1318" width="287" height="52" fill="#ffffff" stroke="#2a2b33" stroke-width="3"/>
+<text x="1136" y="1348" font-size="26" font-weight="600" text-anchor="middle" fill="#2a2b33">I-90/94</text>
+<rect x="1041" y="1352" width="18" height="16" rx="5" fill="none" stroke="#2a2b33" stroke-width="3"/>
+<rect x="1083" y="1352" width="18" height="16" rx="5" fill="none" stroke="#2a2b33" stroke-width="3"/>
+<rect x="1174" y="1352" width="18" height="16" rx="5" fill="none" stroke="#2a2b33" stroke-width="3"/>
+<rect x="1226" y="1352" width="18" height="16" rx="5" fill="none" stroke="#2a2b33" stroke-width="3"/>
+<text transform="translate(350 1296) rotate(-90)" font-size="22" font-weight="600" fill="#2a2b33">N GREEN</text>
+<text x="362" y="1300" font-size="22" font-weight="600" text-anchor="start" fill="#2a2b33">+0′-0″</text>
+<text x="1196" y="1231" font-size="20" font-weight="600" text-anchor="start" fill="#2a2b33">N HALSTED  +25′-0″</text>
+</g>
+<g data-zone="parking">
+<rect x="595" y="1017" width="133" height="55" fill="#8d9899" stroke="#2a2b33" stroke-width="2"/>
+<rect x="848" y="1017" width="120" height="55" fill="#8d9899" stroke="#2a2b33" stroke-width="2"/>
+<rect x="595" y="1076" width="133" height="24" fill="#8d9899" stroke="#2a2b33" stroke-width="2"/>
+<rect x="848" y="1076" width="120" height="24" fill="#8d9899" stroke="#2a2b33" stroke-width="2"/>
+<rect x="528" y="1100" width="200" height="25" fill="#8d9899" stroke="#2a2b33" stroke-width="2"/>
+<rect x="848" y="1100" width="120" height="25" fill="#8d9899" stroke="#2a2b33" stroke-width="2"/>
+<rect x="528" y="1129" width="200" height="24" fill="#8d9899" stroke="#2a2b33" stroke-width="2"/>
+<rect x="848" y="1129" width="120" height="24" fill="#8d9899" stroke="#2a2b33" stroke-width="2"/>
+<rect x="528" y="1153" width="200" height="25" fill="#8d9899" stroke="#2a2b33" stroke-width="2"/>
+<rect x="848" y="1153" width="120" height="25" fill="#8d9899" stroke="#2a2b33" stroke-width="2"/>
+<rect x="595" y="1072" width="373" height="4" fill="#6f7a80" stroke="none" stroke-width="0"/>
+<rect x="528" y="1125" width="440" height="4" fill="#6f7a80" stroke="none" stroke-width="0"/>
+</g>
+<g data-zone="office">
+<rect x="633" y="645" width="147" height="37" fill="#becad5" stroke="#2a2b33" stroke-width="2"/>
+<rect x="848" y="645" width="120" height="37" fill="#becad5" stroke="#2a2b33" stroke-width="2"/>
+<rect x="633" y="608" width="147" height="37" fill="#becad5" stroke="#2a2b33" stroke-width="2"/>
+<rect x="848" y="608" width="120" height="37" fill="#becad5" stroke="#2a2b33" stroke-width="2"/>
+<rect x="633" y="572" width="147" height="36" fill="#becad5" stroke="#2a2b33" stroke-width="2"/>
+<rect x="848" y="572" width="120" height="36" fill="#becad5" stroke="#2a2b33" stroke-width="2"/>
+<rect x="633" y="535" width="147" height="37" fill="#becad5" stroke="#2a2b33" stroke-width="2"/>
+<rect x="848" y="535" width="120" height="37" fill="#becad5" stroke="#2a2b33" stroke-width="2"/>
+<rect x="633" y="498" width="147" height="37" fill="#becad5" stroke="#2a2b33" stroke-width="2"/>
+<rect x="848" y="498" width="120" height="37" fill="#becad5" stroke="#2a2b33" stroke-width="2"/>
+<rect x="633" y="461" width="147" height="37" fill="#becad5" stroke="#2a2b33" stroke-width="2"/>
+<rect x="848" y="461" width="120" height="37" fill="#becad5" stroke="#2a2b33" stroke-width="2"/>
+<rect x="633" y="423" width="147" height="38" fill="#becad5" stroke="#2a2b33" stroke-width="2"/>
+<rect x="848" y="423" width="120" height="38" fill="#becad5" stroke="#2a2b33" stroke-width="2"/>
+<rect x="633" y="386" width="147" height="37" fill="#becad5" stroke="#2a2b33" stroke-width="2"/>
+<rect x="848" y="386" width="120" height="37" fill="#becad5" stroke="#2a2b33" stroke-width="2"/>
+<rect x="633" y="348" width="147" height="38" fill="#becad5" stroke="#2a2b33" stroke-width="2"/>
+<rect x="848" y="348" width="120" height="38" fill="#becad5" stroke="#2a2b33" stroke-width="2"/>
+<rect x="633" y="313" width="147" height="35" fill="#becad5" stroke="#2a2b33" stroke-width="2"/>
+<rect x="848" y="313" width="120" height="35" fill="#becad5" stroke="#2a2b33" stroke-width="2"/>
+<rect x="633" y="276" width="147" height="37" fill="#becad5" stroke="#2a2b33" stroke-width="2"/>
+<rect x="848" y="276" width="120" height="37" fill="#becad5" stroke="#2a2b33" stroke-width="2"/>
+<rect x="633" y="239" width="147" height="37" fill="#becad5" stroke="#2a2b33" stroke-width="2"/>
+<rect x="848" y="239" width="120" height="37" fill="#becad5" stroke="#2a2b33" stroke-width="2"/>
+<rect x="633" y="200" width="147" height="39" fill="#becad5" stroke="#2a2b33" stroke-width="2"/>
+<rect x="848" y="200" width="120" height="39" fill="#becad5" stroke="#2a2b33" stroke-width="2"/>
+<rect x="633" y="966" width="122" height="43" fill="#becad5" stroke="#2a2b33" stroke-width="2"/>
+<rect x="848" y="966" width="120" height="43" fill="#becad5" stroke="#2a2b33" stroke-width="2"/>
+<rect x="633" y="924" width="122" height="34" fill="#becad5" stroke="#2a2b33" stroke-width="2"/>
+<rect x="848" y="924" width="120" height="34" fill="#becad5" stroke="#2a2b33" stroke-width="2"/>
+<rect x="633" y="886" width="122" height="38" fill="#becad5" stroke="#2a2b33" stroke-width="2"/>
+<rect x="848" y="886" width="120" height="38" fill="#becad5" stroke="#2a2b33" stroke-width="2"/>
+<rect x="633" y="849" width="122" height="37" fill="#becad5" stroke="#2a2b33" stroke-width="2"/>
+<rect x="848" y="849" width="120" height="37" fill="#becad5" stroke="#2a2b33" stroke-width="2"/>
+<rect x="633" y="812" width="122" height="37" fill="#becad5" stroke="#2a2b33" stroke-width="2"/>
+<rect x="848" y="812" width="120" height="37" fill="#becad5" stroke="#2a2b33" stroke-width="2"/>
+<rect x="633" y="775" width="122" height="37" fill="#becad5" stroke="#2a2b33" stroke-width="2"/>
+<rect x="848" y="775" width="120" height="37" fill="#becad5" stroke="#2a2b33" stroke-width="2"/>
+<rect x="633" y="736" width="122" height="39" fill="#becad5" stroke="#2a2b33" stroke-width="2"/>
+<rect x="848" y="736" width="120" height="39" fill="#becad5" stroke="#2a2b33" stroke-width="2"/>
+</g>
+<g data-zone="amenity">
+<rect x="633" y="689" width="122" height="40" fill="#b77859" stroke="#2a2b33" stroke-width="2"/>
+<rect x="848" y="689" width="120" height="40" fill="#b77859" stroke="#2a2b33" stroke-width="2"/>
+<rect x="848" y="157" width="120" height="43" fill="#b77859" stroke="#2a2b33" stroke-width="2"/>
+</g>
+<g data-zone="mech">
+<rect x="848" y="70" width="120" height="80" fill="#c4bab4" stroke="#2a2b33" stroke-width="2"/>
+</g>
+<g class="ctx">
+<rect x="848" y="150" width="120" height="7" fill="#6f7a80" stroke="none" stroke-width="0"/>
+<rect x="633" y="682" width="335" height="7" fill="#6f7a80" stroke="none" stroke-width="0"/>
+<rect x="633" y="729" width="335" height="7" fill="#6f7a80" stroke="none" stroke-width="0"/>
+<rect x="633" y="958" width="335" height="8" fill="#6f7a80" stroke="none" stroke-width="0"/>
+<rect x="595" y="1009" width="373" height="8" fill="#6f7a80" stroke="none" stroke-width="0"/>
+<rect x="528" y="1178" width="440" height="11" fill="#6f7a80" stroke="none" stroke-width="0"/>
+<rect x="633" y="188" width="147" height="12" fill="#ffffff" stroke="#2a2b33" stroke-width="2"/>
+<rect x="780" y="35" width="188" height="35" fill="#ffffff" stroke="#2a2b33" stroke-width="2.5"/>
+<rect x="780" y="50" width="68" height="1128" fill="#ffffff" stroke="#2a2b33" stroke-width="2.5"/>
+<path d="M809 50V1178" stroke="#2a2b33" stroke-width="2"/>
+<rect x="755" y="682" width="25" height="327" fill="#ffffff" stroke="#2a2b33" stroke-width="2"/>
+<rect x="728" y="1017" width="28" height="161" fill="#ffffff" stroke="#2a2b33" stroke-width="2"/>
+<rect x="756" y="1017" width="24" height="161" fill="#ffffff" stroke="#2a2b33" stroke-width="2"/>
+<rect x="595" y="999" width="38" height="10" fill="#ffffff" stroke="#2a2b33" stroke-width="2"/>
+<circle cx="795" cy="664" r="7" fill="#2a2b33"/>
+<circle cx="795" cy="626" r="7" fill="#2a2b33"/>
+<circle cx="795" cy="590" r="7" fill="#2a2b33"/>
+<circle cx="795" cy="554" r="7" fill="#2a2b33"/>
+<circle cx="795" cy="516" r="7" fill="#2a2b33"/>
+<circle cx="795" cy="480" r="7" fill="#2a2b33"/>
+<circle cx="795" cy="442" r="7" fill="#2a2b33"/>
+<circle cx="795" cy="404" r="7" fill="#2a2b33"/>
+<circle cx="795" cy="367" r="7" fill="#2a2b33"/>
+<circle cx="795" cy="330" r="7" fill="#2a2b33"/>
+<circle cx="795" cy="294" r="7" fill="#2a2b33"/>
+<circle cx="795" cy="258" r="7" fill="#2a2b33"/>
+<circle cx="795" cy="220" r="7" fill="#2a2b33"/>
+<circle cx="795" cy="178" r="7" fill="#2a2b33"/>
+<circle cx="768" cy="988" r="7" fill="#2a2b33"/>
+<circle cx="768" cy="941" r="7" fill="#2a2b33"/>
+<circle cx="768" cy="905" r="7" fill="#2a2b33"/>
+<circle cx="768" cy="868" r="7" fill="#2a2b33"/>
+<circle cx="768" cy="830" r="7" fill="#2a2b33"/>
+<circle cx="768" cy="794" r="7" fill="#2a2b33"/>
+<circle cx="768" cy="756" r="7" fill="#2a2b33"/>
+<circle cx="768" cy="709" r="7" fill="#2a2b33"/>
+<circle cx="795" cy="709" r="7" fill="#2a2b33"/>
+<circle cx="742" cy="1044" r="7" fill="#2a2b33"/>
+<circle cx="742" cy="1088" r="7" fill="#2a2b33"/>
+<circle cx="742" cy="1112" r="7" fill="#2a2b33"/>
+<circle cx="742" cy="1141" r="7" fill="#2a2b33"/>
+<circle cx="742" cy="1166" r="7" fill="#2a2b33"/>
+<path d="M681 1068h40v-9q-3-6-11-7l-6-4h-12q-6 0-9 5l-2 6z" fill="#2a2b33"/>
+<path d="M681 1096h40v-9q-3-6-11-7l-6-4h-12q-6 0-9 5l-2 6z" fill="#2a2b33"/>
+<path d="M681 1149h40v-9q-3-6-11-7l-6-4h-12q-6 0-9 5l-2 6z" fill="#2a2b33"/>
+<path d="M681 1174h40v-9q-3-6-11-7l-6-4h-12q-6 0-9 5l-2 6z" fill="#2a2b33"/>
+<rect x="528" y="1189" width="440" height="61" fill="#ffffff" stroke="#2a2b33" stroke-width="2"/>
+<path d="M528 1303V1250H968V1303Z" fill="#ffffff" stroke="#2a2b33" stroke-width="2"/>
+<path d="M625 1303L663 1271H712L755 1250H968V1303Z" fill="#c4bab4" stroke="none"/>
+<path d="M487 1301H571L612 1291H625L663 1271H712L755 1250L1188 1237H1535" fill="none" stroke="#2a2b33" stroke-width="5" stroke-linejoin="round"/>
+</g>
+<g class="labels">
+<text x="908" y="120" font-size="26" font-weight="600" text-anchor="middle" fill="#2a2b33">MECH</text>
+<text x="706" y="454" font-size="25" font-weight="600" text-anchor="middle" fill="#2a2b33">OFFICE</text>
+<text x="694" y="717" font-size="19" font-weight="600" text-anchor="middle" fill="#ffffff">AMENITY</text>
+<text x="694" y="841" font-size="22" font-weight="600" text-anchor="middle" fill="#2a2b33">OFFICE</text>
+<text x="908" y="1041" font-size="20" font-weight="600" text-anchor="middle" fill="#ffffff">PARKING /</text>
+<text x="908" y="1064" font-size="20" font-weight="600" text-anchor="middle" fill="#ffffff">MECH</text>
+<text x="908" y="1121" font-size="22" font-weight="600" text-anchor="middle" fill="#ffffff">PARKING</text>
+<text x="748" y="1231" font-size="30" font-weight="600" text-anchor="middle" fill="#2a2b33">PASEO</text>
+<text x="852" y="1292" font-size="20" font-weight="600" text-anchor="middle" fill="#2a2b33">BACK OF HOUSE</text>
+<text x="1001" y="187.5" font-size="24" font-weight="600" text-anchor="middle" fill="#2a2b33">29</text>
+<text x="1001" y="228.5" font-size="24" font-weight="600" text-anchor="middle" fill="#2a2b33">28</text>
+<text x="1001" y="266.5" font-size="24" font-weight="600" text-anchor="middle" fill="#2a2b33">27</text>
+<text x="1001" y="303.5" font-size="24" font-weight="600" text-anchor="middle" fill="#2a2b33">26</text>
+<text x="1001" y="339.5" font-size="24" font-weight="600" text-anchor="middle" fill="#2a2b33">25</text>
+<text x="1001" y="376.0" font-size="24" font-weight="600" text-anchor="middle" fill="#2a2b33">24</text>
+<text x="1001" y="413.5" font-size="24" font-weight="600" text-anchor="middle" fill="#2a2b33">23</text>
+<text x="1001" y="451.0" font-size="24" font-weight="600" text-anchor="middle" fill="#2a2b33">22</text>
+<text x="1001" y="488.5" font-size="24" font-weight="600" text-anchor="middle" fill="#2a2b33">21</text>
+<text x="1001" y="525.5" font-size="24" font-weight="600" text-anchor="middle" fill="#2a2b33">20</text>
+<text x="1001" y="562.5" font-size="24" font-weight="600" text-anchor="middle" fill="#2a2b33">19</text>
+<text x="1001" y="599.0" font-size="24" font-weight="600" text-anchor="middle" fill="#2a2b33">18</text>
+<text x="1001" y="635.5" font-size="24" font-weight="600" text-anchor="middle" fill="#2a2b33">17</text>
+<text x="1001" y="672.5" font-size="24" font-weight="600" text-anchor="middle" fill="#2a2b33">16</text>
+<text x="1001" y="718.0" font-size="24" font-weight="600" text-anchor="middle" fill="#2a2b33">15</text>
+<text x="1001" y="764.5" font-size="24" font-weight="600" text-anchor="middle" fill="#2a2b33">14</text>
+<text x="1001" y="802.5" font-size="24" font-weight="600" text-anchor="middle" fill="#2a2b33">13</text>
+<text x="1001" y="839.5" font-size="24" font-weight="600" text-anchor="middle" fill="#2a2b33">12</text>
+<text x="1001" y="876.5" font-size="24" font-weight="600" text-anchor="middle" fill="#2a2b33">11</text>
+<text x="1001" y="914.0" font-size="24" font-weight="600" text-anchor="middle" fill="#2a2b33">10</text>
+<text x="1001" y="950.0" font-size="24" font-weight="600" text-anchor="middle" fill="#2a2b33">9</text>
+<text x="1001" y="996.5" font-size="24" font-weight="600" text-anchor="middle" fill="#2a2b33">8</text>
+<text x="1001" y="1053.5" font-size="24" font-weight="600" text-anchor="middle" fill="#2a2b33">7</text>
+<text x="1001" y="1097.0" font-size="24" font-weight="600" text-anchor="middle" fill="#2a2b33">6</text>
+<text x="1001" y="1121.5" font-size="24" font-weight="600" text-anchor="middle" fill="#2a2b33">5</text>
+<text x="1001" y="1150.0" font-size="24" font-weight="600" text-anchor="middle" fill="#2a2b33">4</text>
+<text x="1001" y="1174.5" font-size="24" font-weight="600" text-anchor="middle" fill="#2a2b33">3</text>
+<text x="1001" y="1228.5" font-size="24" font-weight="600" text-anchor="middle" fill="#2a2b33">2</text>
+<text x="1001" y="1285.5" font-size="24" font-weight="600" text-anchor="middle" fill="#2a2b33">1</text>
+<path d="M1040 36H1288" stroke="#2a2b33" stroke-width="2.5"/>
+<text x="1288" y="26" font-size="28" font-weight="600" text-anchor="end" fill="#2a2b33">T/ SCREEN WALL</text>
+<text x="1288" y="68" font-size="26" font-weight="500" text-anchor="end" fill="#2a2b33">484′-6″</text>
+<path d="M1040 200H1288" stroke="#2a2b33" stroke-width="2.5"/>
+<text x="1288" y="232" font-size="26" font-weight="600" text-anchor="end" fill="#2a2b33">ROOFTOP 421′-0″</text>
+<path d="M1040 1009H1288" stroke="#2a2b33" stroke-width="2.5"/>
+<text x="1288" y="999" font-size="28" font-weight="600" text-anchor="end" fill="#2a2b33">T/ PARKING</text>
+<text x="1288" y="1041" font-size="26" font-weight="500" text-anchor="end" fill="#2a2b33">108′-6″</text>
+<path d="M1040 150H1288" stroke="#2a2b33" stroke-width="2"/>
+</g>
+<g class="marks">
+<circle cx="874" cy="173" r="9" fill="#2a2b33"/><path d="M874 173H975" stroke="#2a2b33" stroke-width="4"/>
+<circle cx="871" cy="709" r="9" fill="#2a2b33"/><path d="M871 709H975" stroke="#2a2b33" stroke-width="4"/>
+<circle cx="871" cy="1203" r="9" fill="#2a2b33"/><path d="M871 1203H975" stroke="#2a2b33" stroke-width="4"/>
+<path d="M0 550H601" stroke="#2a2b33" stroke-width="6"/>
+<rect x="601" y="508" width="82" height="86" rx="12" fill="none" stroke="#2a2b33" stroke-width="4"/>
+</g>
+</g></svg>
