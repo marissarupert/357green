@@ -146,7 +146,13 @@ export const slides = [
       ] },
       { caption: '225 W. Randolph', stack: [
         { placeholder: '225 W. Randolph exterior to come' },
-        { src: 'assets/photos/onni-225-randolph-amenity.jpg', alt: '225 W. Randolph amenity', focus: '50% 50%' },
+        // amenity photos from 225randolph.com/amenities
+        { grid: [
+          { src: 'assets/photos/onni-225-lobby.jpg', alt: '225 W. Randolph lobby' },
+          { src: 'assets/photos/onni-225-fitness.jpg', alt: '225 W. Randolph fitness center' },
+          { src: 'assets/photos/onni-225-lounge.jpg', alt: '225 W. Randolph amenity lounge' },
+          { src: 'assets/photos/onni-225-rooftop.jpg', alt: '225 W. Randolph rooftop terrace' },
+        ] },
       ] },
       { src: 'assets/photos/onni-354-n-union.jpg', caption: '354 N. Union', focus: '56% 50%' },
       { src: 'assets/photos/onni-200-north-lasalle-hero.jpg', caption: '200 N. LaSalle', focus: '50% 40%' },
@@ -211,10 +217,29 @@ export const slides = [
     // Neighbors' logos tag their buildings on the map (no row under the stats).
     neighbors: [
       { src: 'assets/logos/mcdonalds.png', alt: 'McDonald’s', height: 52 },
-      { src: 'assets/logos/wpp.png', alt: 'WPP', height: 38, whiten: true },
-      { src: 'assets/logos/bcg.svg', alt: 'BCG', height: 40, whiten: true },
+      { src: 'assets/logos/wpp.png', alt: 'WPP', height: 38, tone: 'whiten' },
+      { src: 'assets/logos/adyen.svg', alt: 'Adyen', height: 34, tone: 'whiten' },
+      { src: 'assets/logos/ey.svg', alt: 'EY', height: 48, tone: 'whiten' },
+      { src: 'assets/logos/bcg.svg', alt: 'BCG', height: 40, tone: 'whiten' },
+      { src: 'assets/logos/greenberg-traurig.svg', alt: 'Greenberg Traurig', height: 30, tone: 'invert' },
       { src: 'assets/logos/john-deere.png', alt: 'John Deere', height: 64 },
+      { src: 'assets/logos/aspen-group.svg', alt: 'The Aspen Group', height: 34 },
       { src: 'assets/logos/sidley.png', alt: 'Sidley', height: 30 },
+      { src: 'assets/logos/havi.png', alt: 'HAVI', height: 40, tone: 'whiten' },
+      { src: 'assets/logos/valor.png', alt: 'Valor', height: 56, tone: 'whiten' },
+      { src: 'assets/logos/mondelez.png', alt: 'Mondelēz', height: 52 },
+      { src: 'assets/logos/harrison-street.svg', alt: 'Harrison Street', height: 40, tone: 'whiten' },
+      { src: 'assets/logos/google.svg', alt: 'Google', height: 40 },
+    ],
+    // Hotels tagged on the map while Hotels is on, logos from each hotel's own
+    // website (no src: the site had no usable logo, so the name shows instead).
+    hotels: [
+      { alt: 'Hyatt House' },
+      { src: 'assets/logos/nobu-hotel.png', alt: 'Nobu Hotel', height: 40 },
+      { alt: 'Soho House' },
+      { src: 'assets/logos/emily-hotel.svg', alt: 'The Emily Hotel', height: 30 },
+      { src: 'assets/logos/hoxton.svg', alt: 'The Hoxton', height: 34, tone: 'whiten' },
+      { src: 'assets/logos/publishing-house.png', alt: 'The Publishing House', height: 30, tone: 'whiten' },
     ],
     // Map panel: drawing 'iso-map' is the isometric massing map
     // (src/assets/svg/iso-map.svg, made by tools/iso-map.py). To show the

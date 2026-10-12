@@ -303,14 +303,21 @@ def lines_d(geom):
 labels_after = []
 KEY = {'neighbors': [], 'restaurants': [], 'hotels': [], 'cta': [], 'metra': [], 'walk': []}   # lists for the slide's map key
 
-# Corporate neighbors (addresses from public lease announcements; positions are the
-# buildings' OSM outlines, and the ArcGIS geocoder for 725 W. Randolph, not yet built).
+# Corporate neighbors, one entry per building (addresses from public lease
+# announcements and company filings; positions are the buildings' OSM outlines,
+# OSM's address points where a building has no outline, and the ArcGIS geocoder
+# for 725 W. Randolph, not yet built).
 NEIGHBORS = [
-    ('McDonald\u2019s HQ', '110 N. Carpenter St.', -87.653994, 41.883710),
-    ('WPP', '333 N. Green St.', -87.648034, 41.887695),
-    ('BCG', '360 N. Green St.', -87.649379, 41.888696),
-    ('John Deere', '800 W. Fulton Market', -87.648153, 41.887118),
-    ('Sidley', '725 W. Randolph St. (planned, late 2030)', -87.646692, 41.884185),
+    (['McDonald\u2019s HQ'], '110 N. Carpenter St.', -87.653994, 41.883710),
+    (['WPP', 'Adyen', 'EY'], '333 N. Green St.', -87.648034, 41.887695),
+    (['BCG', 'Greenberg Traurig'], '360 N. Green St.', -87.649379, 41.888696),
+    (['John Deere', 'The Aspen Group'], '800 W. Fulton Market', -87.648153, 41.887118),
+    (['Sidley'], '725 W. Randolph St. (planned, late 2030)', -87.646692, 41.884185),
+    (['HAVI'], '345 N. Morgan St.', -87.651901, 41.888094),
+    (['Valor Equity Partners'], '320 N. Sangamon St.', -87.651343, 41.887439),
+    (['Mondel\u0113z International'], '905 W. Fulton Market', -87.650213, 41.886417),
+    (['Harrison Street'], '919 W. Fulton Market', -87.650522, 41.886151),
+    (['Google'], '1000 W. Fulton Market', -87.652681, 41.887263),
 ]
 if GIS:
     # Walk times as concentric circles around 357 Green: 5, 10 and 15 minutes at
@@ -395,13 +402,13 @@ if GIS:
         KEY['restaurants'].append({'name': p['CONAME'], 'street': p['STREET'], 'x': a, 'y': b - 18})
     ov.extend(pin for _, pin in sorted(rest_pins, key=lambda t: t[0]))
     roofs = STRtree([b['poly'] for b in blds])
-    for i, (name, addr, lon, lat) in enumerate(NEIGHBORS):
+    for i, (names, addr, lon, lat) in enumerate(NEIGHBORS):
         pt = Point(m(lon, lat))
         hit = [blds[j] for j in roofs.query(pt, predicate='within')]
         top = max([b['h'] for b in hit], default=0)
         a, b = gm(lon, lat, top)
         ov.append(f'<g class="nbr" data-i="{i}" style="--d:{delay(a, b):.2f}"><path d="M{a} {b}V{b - 34}"/><rect x="{a - 7}" y="{b - 41}" width="14" height="14" transform="rotate(45 {a} {b - 34})"/></g>')
-        KEY['neighbors'].append({'name': name, 'street': addr, 'x': a, 'y': b - 34})
+        KEY['neighbors'].append({'name': ', '.join(names), 'names': names, 'street': addr, 'x': a, 'y': b - 34})
     for i, (f, a, b) in enumerate(places('hotels')):
         p = f['properties']
         ov.append(f'<g class="hotel" data-i="{i}" style="--d:{delay(a, b):.2f}"><path d="M{a} {b}V{b - 30}"/><circle cx="{a}" cy="{b - 30}" r="6.5"/></g>')
