@@ -1820,19 +1820,13 @@
 <g class="nbr" data-i="8" style="--d:0.23"><path d="M606 458V424"/><rect x="599" y="417" width="14" height="14" transform="rotate(45 606 424)"/></g>
 <g class="nbr" data-i="9" style="--d:0.33"><path d="M438 479V445"/><rect x="431" y="438" width="14" height="14" transform="rotate(45 438 445)"/></g>
 <g class="hotel" data-i="0" style="--d:0.68"><path d="M551 703V673"/><circle cx="551" cy="673" r="6.5"/></g>
-<g class="hotel" data-i="1" style="--d:0.66"><path d="M227 463V433"/><circle cx="227" cy="433" r="6.5"/></g>
-<g class="hotel" data-i="2" style="--d:0.57"><path d="M770 555V525"/><circle cx="770" cy="525" r="6.5"/></g>
-<g class="hotel" data-i="3" style="--d:0.68"><path d="M551 703V673"/><circle cx="551" cy="673" r="6.5"/></g>
-<g class="hotel" data-i="4" style="--d:0.73"><path d="M351 675V645"/><circle cx="351" cy="645" r="6.5"/></g>
-<g class="hotel" data-i="5" style="--d:0.46"><path d="M729 512V482"/><circle cx="729" cy="482" r="6.5"/></g>
-<g class="hotel" data-i="6" style="--d:0.54"><path d="M756 546V516"/><circle cx="756" cy="516" r="6.5"/></g>
-<g class="hotel" data-i="7" style="--d:0.43"><path d="M757 449V419"/><circle cx="757" cy="419" r="6.5"/></g>
-<g class="hotel" data-i="8" style="--d:0.65"><path d="M855 511V481"/><circle cx="855" cy="481" r="6.5"/></g>
-<g class="hotel" data-i="9" style="--d:0.29"><path d="M481 481V451"/><circle cx="481" cy="451" r="6.5"/></g>
-<g class="hotel" data-i="10" style="--d:0.36"><path d="M715 452V422"/><circle cx="715" cy="422" r="6.5"/></g>
-<g class="hotel" data-i="11" style="--d:0.69"><path d="M525 711V681"/><circle cx="525" cy="681" r="6.5"/></g>
-<g class="hotel" data-i="12" style="--d:0.25"><path d="M670 288V258"/><circle cx="670" cy="258" r="6.5"/></g>
-<g class="hotel off" data-i="13" style="--d:0.63"><path d="M884 358V328"/><circle cx="884" cy="328" r="6.5"/><path class="to" d="M892.3 323.6L899.0 329.1L891.6 333.6"/></g>
+<g class="hotel" data-i="1" style="--d:0.46"><path d="M729 512V482"/><circle cx="729" cy="482" r="6.5"/></g>
+<g class="hotel" data-i="2" style="--d:0.65"><path d="M855 511V481"/><circle cx="855" cy="481" r="6.5"/></g>
+<g class="hotel" data-i="3" style="--d:0.29"><path d="M481 481V451"/><circle cx="481" cy="451" r="6.5"/></g>
+<g class="hotel" data-i="4" style="--d:0.36"><path d="M715 452V422"/><circle cx="715" cy="422" r="6.5"/></g>
+<g class="hotel" data-i="5" style="--d:0.69"><path d="M525 711V681"/><circle cx="525" cy="681" r="6.5"/></g>
+<g class="hotel" data-i="6" style="--d:0.25"><path d="M670 288V258"/><circle cx="670" cy="258" r="6.5"/></g>
+<g class="hotel off" data-i="7" style="--d:0.63"><path d="M884 358V328"/><circle cx="884" cy="328" r="6.5"/><path class="to" d="M892.3 323.6L899.0 329.1L891.6 333.6"/></g>
 <g class="stn l"><path d="M544 548V504"/><circle cx="544" cy="504" r="11" fill="#009b3a"/><circle cx="544" cy="504" r="7" fill="#e27ea6"/><circle class="hole" cx="544" cy="504" r="3"/><text x="544" y="484" text-anchor="middle">MORGAN</text></g>
 <g class="stn l"><path d="M419 256V212"/><circle cx="419" cy="212" r="11" fill="#00a1de"/><circle class="hole" cx="419" cy="212" r="7"/><text x="419" y="192" text-anchor="middle">GRAND</text></g>
 <text class="walk-lbl" x="554" y="524" text-anchor="middle">5 MIN WALK</text>

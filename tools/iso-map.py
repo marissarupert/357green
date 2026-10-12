@@ -414,7 +414,12 @@ if GIS:
     # Hampton Inn at 116 N. Jefferson (OSM's hotel node)
     EXTRA_HOTELS = [('Level Chicago \u2013 Fulton Market', '354 N. Union Ave.', -87.646153, 41.888375),
                     ('Hampton Inn Chicago West Loop Fulton Market Area', '116 N. Jefferson St.', -87.643003, 41.883629)]
-    hotels = [(f['properties']['CONAME'], f['properties']['STREET'], a, b) for f, a, b in places('hotels')]
+    # the GIS layer also lists hotel licensees and operators that aren't hotels you
+    # can name on the map (and a Dana Hotel entry; the hotel is in River North): left off
+    NOT_HOTELS = {'105 N May, LLC', 'Creative Hospitality Associates LLC', 'Dana Hotel & Spa',
+                  'McCaffery', 'Primrose Hospitality', 'Sancerre Hospitality'}
+    hotels = [(f['properties']['CONAME'], f['properties']['STREET'], a, b) for f, a, b in places('hotels')
+              if f['properties']['CONAME'] not in NOT_HOTELS]
     hotels += [(name, street, *gm(lon, lat)) for name, street, lon, lat in EXTRA_HOTELS]
     gx, gy = S(*high.representative_point().coords[0])   # 357 Green on the ground
     for i, (name, street, a, b) in enumerate(hotels):

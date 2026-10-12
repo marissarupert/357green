@@ -987,52 +987,16 @@
 ],
 "hotels": [
 {
-"name": "105 N May, LLC",
-"street": "N May St",
-"x": 551,
-"y": 673
-},
-{
-"name": "Creative Hospitality Associates LLC",
-"street": "N Aberdeen St",
-"x": 227,
-"y": 433
-},
-{
-"name": "Dana Hotel & Spa",
-"street": "N Peoria St",
-"x": 770,
-"y": 525
-},
-{
 "name": "Hyatt House Chicago/West Loop-Fulton Market",
 "street": "N May St",
 "x": 551,
 "y": 673
 },
 {
-"name": "McCaffery",
-"street": "N Racine Ave",
-"x": 351,
-"y": 645
-},
-{
 "name": "Nobu Hotel Chicago",
 "street": "N Peoria St",
 "x": 729,
 "y": 482
-},
-{
-"name": "Primrose Hospitality",
-"street": "W Randolph St",
-"x": 756,
-"y": 516
-},
-{
-"name": "Sancerre Hospitality",
-"street": "W Lake St",
-"x": 757,
-"y": 419
 },
 {
 "name": "Soho House Chicago",
