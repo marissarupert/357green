@@ -171,10 +171,16 @@ export default {
 
   mount(el, s) { if (KEYS[s.map?.drawing]) mountKey(el, KEYS[s.map.drawing]) },
   // Replay the iso map's rise each time the slide opens.
+  // (the reset waits until the slide has faded out, so nothing on the map
+  // jumps while it's still visible, and re-entering needs no forced layout)
   enter(el) {
     const m = el.querySelector('.iso-map')
+    clearTimeout(el._resetMap)
     if (!m || reducedMotion.matches) return
-    m.classList.remove('play'); void m.getBoundingClientRect(); m.classList.add('play')
+    if (m.classList.contains('play')) { m.classList.remove('play'); void m.getBoundingClientRect() }
+    m.classList.add('play')
   },
-  leave(el) { el.querySelector('.iso-map')?.classList.remove('play'); el._closeKey?.() },
+  leave(el) {
+    el._resetMap = setTimeout(() => { el.querySelector('.iso-map')?.classList.remove('play'); el._closeKey?.() }, 700)
+  },
 }

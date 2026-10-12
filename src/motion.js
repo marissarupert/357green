@@ -1,5 +1,9 @@
 import { gsap } from 'gsap'
 
+// Animate transforms on the GPU so moving type and images stay steady
+// (no sub-pixel jitter as the stage is scaled to the window).
+gsap.config({ force3D: true })
+
 // Entrance animations. Slide markup opts in with data-in="…"; elements play
 // in document order with a short stagger unless they set data-at="seconds".
 //

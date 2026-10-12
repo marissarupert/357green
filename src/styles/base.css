@@ -65,6 +65,13 @@ b, strong { font-weight: var(--w-demi); }
   background: var(--charcoal);
 }
 .slide.is-current, .slide.is-leaving { visibility: visible; }
+/* the slide coming in sits on top of the one going out; the neighbours are
+   kept drawn (but invisible) so changing slides is only a fade, never a stall */
+.slide.is-current { z-index: 2; }
+.slide.is-leaving { z-index: 1; }
+.slide.is-near:not(.is-current):not(.is-leaving) { visibility: visible; opacity: 0; pointer-events: none; }
+.slide.is-current, .slide.is-leaving { will-change: opacity; }
+[data-in="push"] { will-change: transform; backface-visibility: hidden; }
 .slide.light { background: var(--white); color: var(--midnight); }
 
 .abs { position: absolute; }
