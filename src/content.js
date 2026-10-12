@@ -245,6 +245,7 @@ export const slides = [
       { src: 'assets/logos/emily-hotel.svg', alt: 'The Emily Hotel', height: 30 },
       { src: 'assets/logos/hoxton.svg', alt: 'The Hoxton', height: 34, tone: 'whiten' },
       { src: 'assets/logos/publishing-house.png', alt: 'The Publishing House', height: 30, tone: 'whiten' },
+      { src: 'assets/logos/level-hotels.png', alt: 'Level Chicago', height: 40 },
     ],
     // Map panel: drawing 'iso-map' is the isometric massing map
     // (src/assets/svg/iso-map.svg, made by tools/iso-map.py). To show the
