@@ -206,7 +206,7 @@ export const slides = [
     background: 'assets/photos/fulton-market-aerial.jpg',
     stats: [
       { value: '120 +', label: 'Restaurants, bars &<br>cafés in the district' },
-      { value: '12', label: 'Hotels in the district' },
+      { count: 'hotels', label: 'Hotels in the district' },   // as many as the map pins
       // The source deck repeats "## Hotels in the district" here; add the real
       // second stat back once it's known.
     ],
