@@ -21,11 +21,12 @@ import isoKey from '../assets/svg/iso-map-key.json'
 const DRAWINGS = { 'iso-map': isoMap }
 // Map key for the drawing: a slim row of buttons along the bottom of the map.
 // A button lights up its group on the map (the rest fades back); again clears
-// it. Pointing at a place on the map shows its name. Neighbors have no button:
-// their logo tags stay on the map until another group is picked. The walk
-// times' station tags show while Walk times is on.
+// it. Pointing at a place on the map shows its name. Neighbors' logo tags show
+// whenever no other group is picked (Neighbors lights up their buildings);
+// Hotels tags its hotels and Walk times its stations.
 const KEYS = { 'iso-map': isoKey }
 const SECTIONS = [
+  ['neighbors', 'Neighbors', 'k-nbr'],
   ['restaurants', 'Restaurants', 'k-rest'],
   ['hotels', 'Hotels', 'k-hotel'],
   ['cta', 'CTA ‘L’', 'k-cta'],
@@ -38,10 +39,12 @@ const logoFor = (name, list = []) => list.find((n) => name.toLowerCase().startsW
 const logoTag = (sec, it, logos) => `<p class="map-tag-pin logo" data-sec="${sec}" style="left:${it.x}px;top:${it.y}px"><span class="lg">${logos.map((l) => l.src
   ? `<img src="${esc(l.src)}" alt="${esc(l.alt)}" style="height:${Math.round((Number(l.height) || 44) * 0.5)}px"${l.tone ? ` class="${esc(l.tone)}"` : ''}>`
   : `<b>${esc(l.alt)}</b>`).join('')}</span><span>${esc(it.street || '')}</span></p>`
+// places in a group; a neighbors entry is a building, so count its tenants
+const count = (items) => items.reduce((n, it) => n + (it.names?.length || 1), 0)
 const mapKey = (key, { neighbors = [], hotels = [] }) => `
   <div class="map-chips" role="toolbar" aria-label="Map key">
     ${SECTIONS.filter(([id]) => key[id]?.length).map(([id, label, icon]) => `
-      <button type="button" data-sec="${id}" aria-pressed="false"><i class="${icon}"></i>${esc(label)}${['restaurants', 'hotels'].includes(id) ? ` <span class="ct">${key[id].length}</span>` : ''}</button>`).join('')}
+      <button type="button" data-sec="${id}" aria-pressed="false"><i class="${icon}"></i>${esc(label)}${['neighbors', 'restaurants', 'hotels'].includes(id) ? ` <span class="ct">${count(key[id])}</span>` : ''}</button>`).join('')}
   </div>
   <div class="map-tags">
     ${TAGGED.flatMap((sec) => (key[sec] || []).map((it) => {

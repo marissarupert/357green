@@ -152,6 +152,7 @@
 .s-location .map-tag-pin.logo span { margin-top: 4px; color: var(--powder); font-size: 10.5px; }
 .s-location .map:not([data-show]) .map-tag-pin[data-sec="neighbors"],
 .s-location .map[data-show=""] .map-tag-pin[data-sec="neighbors"],
+.s-location .map[data-show="neighbors"] .map-tag-pin[data-sec="neighbors"],
 .s-location .map[data-show="walk"] .map-tag-pin[data-sec="walk"],
 .s-location .map[data-show="hotels"] .map-tag-pin[data-sec="hotels"] { opacity: 1; }
 /* neighbors' tags arrive once the map has built */
