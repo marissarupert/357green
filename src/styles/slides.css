@@ -406,6 +406,11 @@
 .s-section .drawing img, .s-section .detail img, .s-section .zone img { width: 100%; height: 100%; display: block; }
 /* right edge of the ground fades out rather than stopping at the band */
 .s-section .drawing { -webkit-mask-image: linear-gradient(90deg, #000 88%, transparent); mask-image: linear-gradient(90deg, #000 88%, transparent); }
+.s-section .drawing.svg svg { display: block; width: 100%; height: 100%; }
+.s-section .drawing.svg svg text { font-family: var(--font); }
+.s-section .drawing.svg svg [data-zone], .s-section .drawing.svg svg .ctx, .s-section .drawing.svg svg .labels { transition: opacity .3s; }
+.s-section.zoning .drawing.svg svg [data-zone]:not(.on), .s-section.zoning .drawing.svg svg .ctx, .s-section.zoning .drawing.svg svg .labels { opacity: .22; }
+.s-section.zoning .drawing.svg svg [data-zone].on { filter: saturate(1.25) drop-shadow(0 0 6px rgba(165, 85, 47, .35)); }
 .s-section .zone-dim { background: rgba(255, 255, 255, .7); opacity: 0; transition: opacity .3s; pointer-events: none; }
 .s-section .zone { opacity: 0; transition: opacity .3s; pointer-events: none; }
 .s-section.zoning .zone-dim, .s-section .zone.on { opacity: 1; }

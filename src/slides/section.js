@@ -3,9 +3,15 @@
 // box on the tower pulses once, and the callouts draw out top to bottom.
 // Hovering or focusing a legend item fades the section back except that zone.
 // Fields: eyebrow, title,
-//         drawing{src, alt, box:[l,t,w,h]}, detail{src, alt, box}, ring:[l,t,w,h],
-//         zones[{key, label, swatch, src, box}], callouts[{text, y, x1, x2, x}]
+//         drawing{src, alt, box:[l,t,w,h]} or drawing{svg, alt, box},
+//         detail{src, alt, box}, ring:[l,t,w,h],
+//         zones[{key, label, swatch, src?, box?}], callouts[{text, y, x1, x2, x}]
+//   drawing.svg names a vector redraw (tools/section-svg.py) shown inline; its
+//   zones are groups marked data-zone, so the raster zone overlays aren't needed.
 import { esc, img, nBand, ruleBar } from '../lib/html.js'
+import buildingSection from '../assets/svg/building-section.svg?raw'
+
+const SVGS = { 'building-section': buildingSection }
 
 const box = ([l, t, w, h]) => `left:${l}px;top:${t}px;width:${w}px;height:${h}px`
 
@@ -14,11 +20,11 @@ export default {
     <p class="abs eyebrow" data-in="up">${esc(s.eyebrow)}</p>
     <h1 class="abs title" data-in="up">${esc(s.title)}</h1>
     ${ruleBar()}
-    <div class="abs drawing" data-in="wipe" data-at="0.35" style="${box(s.drawing.box)}">
-      ${img(s.drawing.src, s.drawing.alt)}
+    <div class="abs drawing${s.drawing.svg ? ' svg' : ''}" data-in="wipe" data-at="0.35" style="${box(s.drawing.box)}">
+      ${s.drawing.svg ? SVGS[s.drawing.svg] : img(s.drawing.src, s.drawing.alt)}
     </div>
-    <div class="abs zone-dim" style="${box(s.drawing.box)}"></div>
-    ${s.zones.map((z) => `<div class="abs zone" data-zone="${esc(z.key)}" style="${box(z.box)}">${img(z.src, '')}</div>`).join('')}
+    ${s.drawing.svg ? '' : `<div class="abs zone-dim" style="${box(s.drawing.box)}"></div>
+    ${s.zones.map((z) => `<div class="abs zone" data-zone="${esc(z.key)}" style="${box(z.box)}">${img(z.src, '')}</div>`).join('')}`}
     <span class="abs ring" style="${box(s.ring)}"></span>
     <div class="abs detail" data-in="up" data-at="1.1" style="${box(s.detail.box)}">${img(s.detail.src, s.detail.alt)}</div>
     ${s.callouts.map((c, i) => `

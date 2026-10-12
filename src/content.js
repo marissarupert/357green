@@ -313,20 +313,21 @@ export const slides = [
     eyebrow: 'Architecture',
     title: 'Building Section',
     // Positions in stage px, scaled from the source drawings (section at 0.514).
-    drawing: { src: 'assets/diagrams/building-section.jpg', alt: 'Building section through the tower', box: [444, 345, 996, 715] },
+    drawing: { svg: 'building-section', alt: 'Building section through the tower', box: [444, 345, 996, 715] }, // vector redraw: tools/section-svg.py
     detail: { src: 'assets/diagrams/section-detail.jpg', alt: 'Typical office floor section, 13’3” to bottom of slab', box: [50, 428, 394, 484] },
     ring: [753, 606, 42, 44],
     zones: [
-      { key: 'office', label: 'Office', swatch: '#becad5', src: 'assets/diagrams/section-zone-office.png', box: [701,  345,  252,  715] },
-      { key: 'amenity', label: 'Amenity', swatch: '#b77859', src: 'assets/diagrams/section-zone-amenity.png', box: [701,  345,  252,  715] },
-      { key: 'parking', label: 'Parking', swatch: '#8d9899', src: 'assets/diagrams/section-zone-parking.png', box: [701,  345,  252,  715] },
-      { key: 'mech', label: 'Mech', swatch: '#c4bab4', src: 'assets/diagrams/section-zone-mech.png', box: [701,  345,  252,  715] },
+      { key: 'office', label: 'Office', swatch: '#becad5' },
+      { key: 'amenity', label: 'Amenity', swatch: '#b77859' },
+      { key: 'parking', label: 'Parking', swatch: '#8d9899' },
+      { key: 'mech', label: 'Mech', swatch: '#c4bab4' },
     ],
+    // leaders start just past the floor-number column
     callouts: [
-      { text: 'Rooftop Restaurant', y: 434, x1: 945, x2: 1221, x: 1229 },
-      { text: '13’3” Slab-to-Slab Heights on Office Floors', y: 575, x1: 945, x2: 1221, x: 1229 },
-      { text: 'Full Amenity Floor with Tenant Lounge, Terrace and State of the Art “Spa Inspired” Wellness Center', y: 709, x1: 945, x2: 1221, x: 1229 },
-      { text: '2nd Floor Conference Center and Bar', y: 963, x1: 945, x2: 1221, x: 1229 },
+      { text: 'Rooftop Restaurant', y: 434, x1: 975, x2: 1221, x: 1229 },
+      { text: '13’3” Slab-to-Slab Heights on Office Floors', y: 575, x1: 975, x2: 1221, x: 1229 },
+      { text: 'Full Amenity Floor with Tenant Lounge, Terrace and State of the Art “Spa Inspired” Wellness Center', y: 709, x1: 975, x2: 1221, x: 1229 },
+      { text: '2nd Floor Conference Center and Bar', y: 963, x1: 975, x2: 1221, x: 1229 },
     ],
   },
 
