@@ -3,7 +3,8 @@
 // photo still to come. caption shows as the deck's angled label tag.
 // {stack: [photo, photo], caption?} shows two photos one above the other in
 // one frame (e.g. a building's exterior with an amenity beside it); a stack
-// item {grid: [photo…]} fills its half with a two-column grid of photos.
+// item {grid: [photo…]} fills its half with a two-column grid of photos (with
+// three, the first spans the top row).
 // While its slide is on screen the carousel turns by itself: the current bar
 // fills with copper and the next photo fades in when it is full. Pointing at
 // the photo or the bars pauses it; clicking still steps through by hand.

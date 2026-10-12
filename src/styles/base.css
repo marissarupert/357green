@@ -153,6 +153,7 @@ b, strong { font-weight: var(--w-demi); }
 .carousel .frame.stack .cell.ph { background: #2e2f3b; display: grid; place-items: center; color: var(--powder); }
 .carousel .frame.stack .cell.ph .ph-tag { font-size: 16px; }
 .carousel .frame.stack .cell.grid { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 6px; overflow: visible; }
+.carousel .frame.stack .cell.grid > :first-child:nth-last-child(3) { grid-column: 1 / -1; } /* three photos: the first spans the top */
 .bars { position: absolute; display: flex; gap: 28px; z-index: 3; }
 .bars button { width: 153px; height: 24px; position: relative; }
 .bars button::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 7px; margin-top: -3.5px; background: #8d8d8d; transition: background .3s; }
