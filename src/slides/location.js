@@ -1,5 +1,6 @@
 // Location: stats over a photo on the left, interactive map on the right.
-// Fields: eyebrow, title, background, stats[{value, label, placeholder?}],
+// Fields: eyebrow, title, background, stats[{value | count, label, placeholder?}]
+//         (count names a map group, e.g. 'hotels': the value is how many the map shows),
 //         transitLabel?, transit?[{lines:[css colour…], name, detail}] (no colours
 //         draws a road marker), neighbors[{src, alt, height?}], neighborsLabel?
 //   neighbors' logos tag their buildings on the map (always shown); with
@@ -139,7 +140,7 @@ export default {
     <h1 class="abs title" data-in="up">${esc(s.title)}</h1>
     ${ruleBar()}
     <div class="abs stats">
-      ${s.stats.map((st) => `
+      ${s.stats.map((st) => ({ ...st, value: st.count ? String(count(isoKey[st.count] || [])) : st.value })).map((st) => `
         <div class="stat" data-in="up">
           <p class="v">${st.placeholder ? `<span class="placeholder-val">${esc(st.value)}</span>${placeholderTag()}` : countable(rich(st.value))}</p>
           <p class="l">${rich(st.label)}</p>
