@@ -107,7 +107,7 @@ export const slides = [
     // Two columns, read row by row: left, right, left, right…
     stats: [
       { value: '34,600 SF', detail: 'Typical <b>low-rise</b> floor plate<br>Floors 8-15' },
-      { value: '43,000 SF Amenities', detail: '10,000 SF on Floor 2<br>33,000 SF on Floor 29' },
+      { value: '38,000 SF Amenities', detail: '9,000 SF on Floor 2<br>29,000 SF on Floor 15' },
       { value: '29,500 SF', detail: 'Typical <b>high-rise</b> floor plate<br>Floors 16-28' },
       { value: 'Penthouse Restaurant', detail: 'Floor 29' },
       { value: '13’3” slab-to-slab heights', detail: 'Office Floors' },
