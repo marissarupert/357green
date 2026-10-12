@@ -120,7 +120,6 @@ work offline.
 Where these appear in the deck they are marked with a dashed "Placeholder" label:
 
 - **Futura 100** web fonts (Jost stands in)
-- **The Paseo (17)** positions for the three bulleted items (Metra buffer, public elevator entry, built-in benches), which don't show in the section (a keyed site plan would place them)
 
 Low-resolution in the source PDF, and soft on large screens: plaza section (17),
 aerial (11) and the Fulton Market photo (9).
