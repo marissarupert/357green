@@ -146,7 +146,13 @@ export const slides = [
       ] },
       { caption: '225 W. Randolph', stack: [
         { placeholder: '225 W. Randolph exterior to come' },
-        { src: 'assets/photos/onni-225-randolph-amenity.jpg', alt: '225 W. Randolph amenity', focus: '50% 50%' },
+        // amenity photos from 225randolph.com/amenities
+        { grid: [
+          { src: 'assets/photos/onni-225-lobby.jpg', alt: '225 W. Randolph lobby' },
+          { src: 'assets/photos/onni-225-fitness.jpg', alt: '225 W. Randolph fitness center' },
+          { src: 'assets/photos/onni-225-lounge.jpg', alt: '225 W. Randolph amenity lounge' },
+          { src: 'assets/photos/onni-225-rooftop.jpg', alt: '225 W. Randolph rooftop terrace' },
+        ] },
       ] },
       { src: 'assets/photos/onni-354-n-union.jpg', caption: '354 N. Union', focus: '56% 50%' },
       { src: 'assets/photos/onni-200-north-lasalle-hero.jpg', caption: '200 N. LaSalle', focus: '50% 40%' },

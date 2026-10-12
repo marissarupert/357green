@@ -2,7 +2,8 @@
 // photos: [{src, alt, caption?, focus?}] or {placeholder: "label", caption?} for a
 // photo still to come. caption shows as the deck's angled label tag.
 // {stack: [photo, photo], caption?} shows two photos one above the other in
-// one frame (e.g. a building's exterior with an amenity beside it).
+// one frame (e.g. a building's exterior with an amenity beside it); a stack
+// item {grid: [photo…]} fills its half with a two-column grid of photos.
 // While its slide is on screen the carousel turns by itself: the current bar
 // fills with copper and the next photo fades in when it is full. Pointing at
 // the photo or the bars pauses it; clicking still steps through by hand.
@@ -16,7 +17,9 @@ const caption = (p) => (p.caption ? `<p class="img-tag frame-tag"><span>${esc(p.
 export const carousel = (photos, cls, barsCls) => `
   <div class="carousel ${cls}" data-interactive data-carousel>
     ${photos.map((p, i) => `<div class="frame${i ? '' : ' on'}${p.placeholder ? ' ph' : ''}${p.stack ? ' stack' : ''}">${
-      p.stack ? p.stack.map((q) => `<div class="cell${q.placeholder ? ' ph' : ''}">${picture(q, p.caption)}</div>`).join('') : picture(p, p.caption)}${caption(p)}</div>`).join('')}
+      p.stack ? p.stack.map((q) => q.grid
+        ? `<div class="cell grid">${q.grid.map((g) => `<div class="cell">${picture(g, p.caption)}</div>`).join('')}</div>`
+        : `<div class="cell${q.placeholder ? ' ph' : ''}">${picture(q, p.caption)}</div>`).join('') : picture(p, p.caption)}${caption(p)}</div>`).join('')}
   </div>
   ${photos.length > 1 ? `<div class="bars ${barsCls}" data-interactive>${photos.map((p, i) =>
     `<button class="${i ? '' : 'on'}" aria-label="${esc(p.caption || `Photo ${i + 1}`)} (${i + 1} of ${photos.length})${p.placeholder ? ', placeholder' : ''}"></button>`).join('')}</div>` : ''}`
