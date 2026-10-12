@@ -8,8 +8,11 @@
 //   map.drawing 'iso-map' shows the isometric massing map in the panel (its
 //   buildings rise into place as the slide opens); otherwise url embeds an
 //   interactive map.
+//   hotels?[{alt, src?, height?, tone?}]: hotels tagged on the map while Hotels
+//   is on (alt matches the start of the hotel's name; no src shows the name).
 //   Logos sit at a common height (default 44px); set height to balance one
-//   that looks too big or small, and whiten: true to turn a grey logo white.
+//   that looks too big or small. On the map's dark tags, tone 'whiten' turns a
+//   dark logo white and 'invert' flips one with its own box (e.g. GT).
 import { countable, esc, hairline, img, placeholderTag, rich, ruleBar } from '../lib/html.js'
 import { reducedMotion } from '../motion.js'
 import isoMap from '../assets/svg/iso-map.svg?raw'
@@ -28,10 +31,14 @@ const SECTIONS = [
   ['cta', 'CTA ‘L’', 'k-cta'],
   ['walk', 'Walk times', 'k-walk'],
 ]
-const TAGGED = ['neighbors', 'walk']   // groups whose places get name tags when on
-// a neighbor's logo, matched by name from the slide's neighbors list
-const logoFor = (name, neighbors = []) => neighbors.find((n) => name.toLowerCase().startsWith(n.alt.toLowerCase().replace('\u2019', '\u2019')))
-const mapKey = (key, neighbors) => `
+const TAGGED = ['neighbors', 'hotels', 'walk']   // groups whose places get tags
+// a logo for a place, matched by the start of its name from the slide's list
+const logoFor = (name, list = []) => list.find((n) => name.toLowerCase().startsWith(n.alt.toLowerCase()))
+// one tag per building: every tenant's logo side by side, the address beneath
+const logoTag = (sec, it, logos) => `<p class="map-tag-pin logo" data-sec="${sec}" style="left:${it.x}px;top:${it.y}px"><span class="lg">${logos.map((l) => l.src
+  ? `<img src="${esc(l.src)}" alt="${esc(l.alt)}" style="height:${Math.round((Number(l.height) || 44) * 0.5)}px"${l.tone ? ` class="${esc(l.tone)}"` : ''}>`
+  : `<b>${esc(l.alt)}</b>`).join('')}</span><span>${esc(it.street || '')}</span></p>`
+const mapKey = (key, { neighbors = [], hotels = [] }) => `
   <div class="map-chips" role="toolbar" aria-label="Map key">
     ${SECTIONS.filter(([id]) => key[id]?.length).map(([id, label, icon]) => `
       <button type="button" data-sec="${id}" aria-pressed="false"><i class="${icon}"></i>${esc(label)}${['restaurants', 'hotels'].includes(id) ? ` <span class="ct">${key[id].length}</span>` : ''}</button>`).join('')}
@@ -39,10 +46,10 @@ const mapKey = (key, neighbors) => `
   <div class="map-tags">
     ${TAGGED.flatMap((sec) => (key[sec] || []).map((it) => {
       if (it.x == null) return ''
-      const logo = sec === 'neighbors' && logoFor(it.name, neighbors)
-      return logo
-        ? `<p class="map-tag-pin logo" data-sec="${sec}" style="left:${it.x}px;top:${it.y}px;--h:${Math.round((Number(logo.height) || 44) * 0.6)}px"><img src="${esc(logo.src)}" alt="${esc(it.name)}"${logo.whiten ? ' class="whiten"' : ''}><span>${esc(it.street || '')}</span></p>`
-        : `<p class="map-tag-pin" data-sec="${sec}" style="left:${it.x}px;top:${it.y}px"><b>${esc(it.name)}</b>${it.street ? `<span>${esc(it.street)}</span>` : ''}</p>`
+      if (sec === 'walk') return `<p class="map-tag-pin" data-sec="${sec}" style="left:${it.x}px;top:${it.y}px"><b>${esc(it.name)}</b>${it.street ? `<span>${esc(it.street)}</span>` : ''}</p>`
+      // neighbors and hotels: tagged only where the slide lists them
+      const logos = (it.names || [it.name]).map((n) => logoFor(n, sec === 'hotels' ? hotels : neighbors)).filter(Boolean)
+      return logos.length ? logoTag(sec, it, logos) : ''
     })).join('')}
   </div>
   <div class="map-ring" hidden></div>
@@ -91,24 +98,32 @@ function mountKey(el, key) {
     if (it) place(it)
   })
   svg.addEventListener('pointerout', (e) => { if (e.target.closest('.rest, .hotel, .nbr')) hideTip() })
-  // keep the on-map name tags inside the panel near its edges
-  // and lift any tag that would sit on top of another (neighbors cluster on Green St)
+  // keep the on-map tags inside the panel, lift any that would sit on another
+  // tag of its group (neighbors cluster on Green St), and drop below its pin
+  // any that would run off the top; nothing covers the 357 Green label
   requestAnimationFrame(() => {
+    const w = map.clientWidth || 914, h = map.clientHeight || 1080
+    const site = svg.querySelector('.callout text')?.getBBox()
+    const fixed = site ? [{ l: site.x - 6, r: site.x + site.width + 6, t: site.y - 4, b: site.y + site.height + 4 }] : []
     const placed = []
+    const hits = (me, sec) => [...fixed, ...placed.filter((o) => o.sec === sec)].find((o) => me.l < o.r && me.r > o.l && me.t < o.b && me.b > o.t)
     const tags = [...el.querySelectorAll('.map-tag-pin')].sort((a, b) => parseFloat(b.style.top) - parseFloat(a.style.top))
     for (const t of tags) {
-      const w = map.clientWidth || 914, half = t.offsetWidth / 2, h = t.offsetHeight
+      const half = t.offsetWidth / 2, th = t.offsetHeight, y = parseFloat(t.style.top)
       const x = Math.min(Math.max(parseFloat(t.style.left), half + 12), w - half - 12)
       t.style.left = x + 'px'
-      let lift = 0
-      const box = () => ({ l: x - half, r: x + half, b: parseFloat(t.style.top) - 14 - lift, t: parseFloat(t.style.top) - 14 - lift - h })
-      for (let tries = 0; tries < 6; tries++) {
-        const me = box(), hit = placed.find((o) => o.sec === t.dataset.sec && me.l < o.r && me.r > o.l && me.t < o.b && me.b > o.t)
-        if (!hit) break
-        lift += me.b - hit.t + 4
-      }
-      if (lift) t.style.setProperty('--lift', lift + 'px')
-      placed.push({ ...box(), sec: t.dataset.sec })
+      const above = (lift) => ({ l: x - half, r: x + half, b: y - 14 - lift, t: y - 14 - lift - th })
+      const below = (drop) => ({ l: x - half, r: x + half, t: y + 14 + drop, b: y + 14 + drop + th })
+      let lift = 0, box = above(0), hit
+      for (let n = 0; n < 8 && (hit = hits(box, t.dataset.sec)); n++) { lift += box.b - hit.t + 4; box = above(lift) }
+      if (box.t < 96) {
+        let drop = 0
+        box = below(0)
+        for (let n = 0; n < 8 && (hit = hits(box, t.dataset.sec)); n++) { drop += hit.b - box.t + 4; box = below(drop) }
+        if (box.b < h - 80) { t.classList.add('below'); if (drop) t.style.setProperty('--drop', drop + 'px') }
+        else { box = above(lift); if (lift) t.style.setProperty('--lift', lift + 'px') }
+      } else if (lift) t.style.setProperty('--lift', lift + 'px')
+      placed.push({ ...box, sec: t.dataset.sec })
     }
   })
   el._closeKey = () => { select(''); hideTip() }
@@ -138,11 +153,11 @@ export default {
     ${s.neighborsLabel ? `${hairline('hq-rule')}
     <p class="abs eyebrow hq-label" data-in="up">${esc(s.neighborsLabel)}</p>
     <div class="abs logos">
-      ${s.neighbors.map((n, i) => `<span data-in="up" data-at="${(1 + i * 0.12).toFixed(2)}" style="height:${Number(n.height) || 44}px"${n.whiten ? ' class="whiten"' : ''}>${img(n.src, n.alt)}</span>`).join('')}
+      ${s.neighbors.map((n, i) => `<span data-in="up" data-at="${(1 + i * 0.12).toFixed(2)}" style="height:${Number(n.height) || 44}px"${n.tone === 'whiten' ? ' class="whiten"' : ''}>${img(n.src, n.alt)}</span>`).join('')}
     </div>` : ''}
     <div class="abs map" data-interactive>
       ${DRAWINGS[s.map?.drawing]
-        ? `${DRAWINGS[s.map.drawing]}${KEYS[s.map.drawing] ? mapKey(KEYS[s.map.drawing], s.neighbors) : ''}
+        ? `${DRAWINGS[s.map.drawing]}${KEYS[s.map.drawing] ? mapKey(KEYS[s.map.drawing], s) : ''}
            <p class="img-tag map-tag" data-in="tag" data-at="0.6"><span>${esc(s.map.label || s.title)}</span></p>`
         : s.map?.url
         ? `<p class="loading">Loading map…<span>Interactive map needs an internet connection</span></p>

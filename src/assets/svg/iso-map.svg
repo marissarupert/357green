@@ -1814,6 +1814,11 @@
 <g class="nbr" data-i="2" style="--d:0.16"><path d="M502 284V250"/><rect x="495" y="243" width="14" height="14" transform="rotate(45 502 250)"/></g>
 <g class="nbr" data-i="3" style="--d:0.20"><path d="M656 342V308"/><rect x="649" y="301" width="14" height="14" transform="rotate(45 656 308)"/></g>
 <g class="nbr" data-i="4" style="--d:0.70"><path d="M905 452V418"/><rect x="898" y="411" width="14" height="14" transform="rotate(45 905 418)"/></g>
+<g class="nbr" data-i="5" style="--d:0.28"><path d="M423 417V383"/><rect x="416" y="376" width="14" height="14" transform="rotate(45 423 383)"/></g>
+<g class="nbr" data-i="6" style="--d:0.20"><path d="M489 430V396"/><rect x="482" y="389" width="14" height="14" transform="rotate(45 489 396)"/></g>
+<g class="nbr" data-i="7" style="--d:0.23"><path d="M604 459V425"/><rect x="597" y="418" width="14" height="14" transform="rotate(45 604 425)"/></g>
+<g class="nbr" data-i="8" style="--d:0.23"><path d="M606 458V424"/><rect x="599" y="417" width="14" height="14" transform="rotate(45 606 424)"/></g>
+<g class="nbr" data-i="9" style="--d:0.33"><path d="M438 479V445"/><rect x="431" y="438" width="14" height="14" transform="rotate(45 438 445)"/></g>
 <g class="hotel" data-i="0" style="--d:0.68"><path d="M551 703V673"/><circle cx="551" cy="673" r="6.5"/></g>
 <g class="hotel" data-i="1" style="--d:0.66"><path d="M227 463V433"/><circle cx="227" cy="433" r="6.5"/></g>
 <g class="hotel" data-i="2" style="--d:0.57"><path d="M770 555V525"/><circle cx="770" cy="525" r="6.5"/></g>

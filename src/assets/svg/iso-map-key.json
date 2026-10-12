@@ -2,33 +2,97 @@
 "neighbors": [
 {
 "name": "McDonald’s HQ",
+"names": [
+"McDonald’s HQ"
+],
 "street": "110 N. Carpenter St.",
 "x": 597,
 "y": 611
 },
 {
-"name": "WPP",
+"name": "WPP, Adyen, EY",
+"names": [
+"WPP",
+"Adyen",
+"EY"
+],
 "street": "333 N. Green St.",
 "x": 626,
 "y": 285
 },
 {
-"name": "BCG",
+"name": "BCG, Greenberg Traurig",
+"names": [
+"BCG",
+"Greenberg Traurig"
+],
 "street": "360 N. Green St.",
 "x": 502,
 "y": 250
 },
 {
-"name": "John Deere",
+"name": "John Deere, The Aspen Group",
+"names": [
+"John Deere",
+"The Aspen Group"
+],
 "street": "800 W. Fulton Market",
 "x": 656,
 "y": 308
 },
 {
 "name": "Sidley",
+"names": [
+"Sidley"
+],
 "street": "725 W. Randolph St. (planned, late 2030)",
 "x": 905,
 "y": 418
+},
+{
+"name": "HAVI",
+"names": [
+"HAVI"
+],
+"street": "345 N. Morgan St.",
+"x": 423,
+"y": 383
+},
+{
+"name": "Valor Equity Partners",
+"names": [
+"Valor Equity Partners"
+],
+"street": "320 N. Sangamon St.",
+"x": 489,
+"y": 396
+},
+{
+"name": "Mondelēz International",
+"names": [
+"Mondelēz International"
+],
+"street": "905 W. Fulton Market",
+"x": 604,
+"y": 425
+},
+{
+"name": "Harrison Street",
+"names": [
+"Harrison Street"
+],
+"street": "919 W. Fulton Market",
+"x": 606,
+"y": 424
+},
+{
+"name": "Google",
+"names": [
+"Google"
+],
+"street": "1000 W. Fulton Market",
+"x": 438,
+"y": 445
 }
 ],
 "restaurants": [
