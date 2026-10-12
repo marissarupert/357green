@@ -69,7 +69,7 @@ export const slides = [
     theme: 'dark',
     logo: 'assets/logos/357-green.svg',
     background: 'assets/renders/aerial-view.jpg',
-    tagline: ['Chicago’s next', 'landmark.'],
+    tagline: ['Chicago’s', 'New Standard.'],
     partners: [
       { src: 'assets/logos/onni.png', alt: 'Onni Group' },
       { src: 'assets/logos/stream.svg', alt: 'Stream Realty Partners' },
@@ -129,20 +129,25 @@ export const slides = [
     eyebrow: 'Developer',
     title: 'Onni Group',
     titleLogo: 'assets/logos/onni.png',
-    headline: '19 Million SF Developed',
+    headline: '20+ Million SF Developed',
     stats: [
+      { icon: 'assets/icons/commercial.svg', value: '20+ M SF', label: 'Commercial<br>(Office, Retail,<br>and Industrial)' },
       { icon: 'assets/icons/apartments.svg', value: '11,200', label: 'Apartment units' },
       { icon: 'assets/icons/homes.svg', value: '15,000', label: 'Homes' },
-      { icon: 'assets/icons/commercial.svg', value: '20+ M SF', label: 'Commercial<br>(Office, Retail,<br>and Industrial)' },
       { icon: 'assets/icons/crane.svg', value: '28 + M SF', label: 'In current development<br>pipeline' },
       { icon: 'assets/icons/globe.svg', value: '3 Countries and 7 States', label: 'Onni’s development<br>footprint' },
     ],
     // Carousel: Onni office case studies. `focus` picks which part
     // of a landscape photo shows in the tall frame (object-position).
     photos: [
-      { src: 'assets/photos/onni-225-randolph.jpg', caption: '225 W. Randolph', focus: '51% 50%' },
-      { src: 'assets/photos/onni-225-randolph-amenity.jpg', caption: '225 W. Randolph', focus: '62% 50%' },
-      { src: 'assets/photos/onni-161-clark.jpg', caption: '161 Clark', focus: '50% 50%' },
+      { caption: '161 N. Clark', stack: [
+        { src: 'assets/photos/onni-161-clark-exterior.jpg', alt: '161 N. Clark exterior', focus: '51% 50%' },
+        { src: 'assets/photos/onni-161-clark-amenity.jpg', alt: '161 N. Clark amenity render', focus: '50% 50%' },
+      ] },
+      { caption: '225 W. Randolph', stack: [
+        { placeholder: '225 W. Randolph exterior to come' },
+        { src: 'assets/photos/onni-225-randolph-amenity.jpg', alt: '225 W. Randolph amenity', focus: '50% 50%' },
+      ] },
       { src: 'assets/photos/onni-354-n-union.jpg', caption: '354 N. Union', focus: '56% 50%' },
       { src: 'assets/photos/onni-200-north-lasalle-hero.jpg', caption: '200 N. LaSalle', focus: '50% 40%' },
     ],
@@ -203,7 +208,7 @@ export const slides = [
       { lines: ['#4f7bbf'], name: 'Metra · Ogilvie & Union Station', detail: '15–20 min walk' },
       { lines: [], name: 'Kennedy Expressway (I-90/94)', detail: 'Alongside the site' },
     ],
-    neighborsLabel: 'Neighbors',
+    // Neighbors' logos tag their buildings on the map (no row under the stats).
     neighbors: [
       { src: 'assets/logos/mcdonalds.png', alt: 'McDonald’s', height: 52 },
       { src: 'assets/logos/wpp.png', alt: 'WPP', height: 38, whiten: true },
@@ -238,7 +243,7 @@ export const slides = [
       { title: 'Terraces on every floor', body: 'Setbacks step the tower into varying floor-plate sizes, creating private corner terraces that offer spectacular skyline views.' },
       { title: 'A refined skin', body: 'Warm horizontal metal profiles and glass give the tower a distinct, identifiable texture, differentiating it from its peers and harnessing the warmth and character of the neighborhood.' },
     ],
-    image: { src: 'assets/renders/aerial-top.jpg', alt: 'Aerial render of 357 Green showing its terraces and rooftop' },
+    image: { src: 'assets/renders/view-from-expressway.jpg', alt: '357 Green seen from the Kennedy Expressway', focus: '46% 50%' },
   },
 
   {
@@ -288,11 +293,10 @@ export const slides = [
       { key: 'mech', label: 'Mech', swatch: '#c4bab4', src: 'assets/diagrams/section-zone-mech.png', box: [701,  345,  252,  715] },
     ],
     callouts: [
-      { text: 'Rooftop Lounge and Roof Deck', y: 434, x1: 945, x2: 1221, x: 1229 },
+      { text: 'Rooftop Restaurant', y: 434, x1: 945, x2: 1221, x: 1229 },
       { text: '13’3” Slab-to-Slab Heights on Office Floors', y: 575, x1: 945, x2: 1221, x: 1229 },
       { text: 'Full Amenity Floor with Tenant Lounge, Terrace and State of the Art “Spa Inspired” Wellness Center', y: 709, x1: 945, x2: 1221, x: 1229 },
-      { text: 'Alternative Amenity Floor Location', y: 849, x1: 945, x2: 1221, x: 1229 },
-      { text: '2nd Floor Conference Center', y: 963, x1: 945, x2: 1221, x: 1229 },
+      { text: '2nd Floor Conference Center and Bar', y: 963, x1: 945, x2: 1221, x: 1229 },
     ],
   },
 
@@ -309,20 +313,21 @@ export const slides = [
     title: 'The Paseo',
     body: 'A key feature of 357 Green is the paseo: a public pedestrian path that descends from Halsted Street to Green Street, threading through the podium and opening onto an activated plaza. It’s a placemaking front door for both the building and the block.',
     // Plaza & Ascent key. spot: [x, y] in stage px on the section drawing.
-    // 06, 07 and 09 are plan features that don't show in the section, so they
-    // have no marker until a keyed site plan places them.
+    // Numbered left to right as the markers sit on the drawing; the last three
+    // are plan features that don't show in the section, so they carry a bullet
+    // and no marker until a keyed site plan places them.
     items: [
       { n: '01', label: 'Trees match neighboring<br>developments', spot: [150, 345] },
-      { n: '02', label: 'Herringbone<br>patterned pavers', spot: [660, 436] },
-      { n: '03', label: 'Raised planter with<br>perimeter seating', spot: [535, 422] },
-      { n: '04', label: 'Tiered bench seating', spot: [838, 392] },
-      { n: '05', label: '25-foot ascent from<br>Green to Halsted', spot: [1010, 352] },
-      { n: '06', label: 'Metra buffer planting<br>and wall' },
-      { n: '07', label: 'Public elevator entry' },
+      { n: '02', label: 'Flush parkway planter', spot: [400, 348] },
+      { n: '03', label: 'Broom finish<br>concrete sidewalk', spot: [420, 438] },
+      { n: '04', label: 'Raised planter with<br>perimeter seating', spot: [535, 422] },
+      { n: '05', label: 'Herringbone<br>patterned pavers', spot: [660, 436] },
+      { n: '06', label: 'Tiered bench seating', spot: [838, 392] },
+      { n: '07', label: '25-foot ascent from<br>Green to Halsted', spot: [1010, 352] },
       { n: '08', label: 'Balcony overlooking deck', spot: [1100, 270] },
-      { n: '09', label: 'Built-in bench seating' },
-      { n: '10', label: 'Broom finish<br>concrete sidewalk', spot: [420, 438] },
-      { n: '11', label: 'Flush parkway planter', spot: [400, 348] },
+      { n: '•', label: 'Metra buffer planting<br>and wall' },
+      { n: '•', label: 'Public elevator entry' },
+      { n: '•', label: 'Built-in bench seating' },
     ],
   },
   render('paseo-arrival', null, 'tenant-experience', 'Arriving on the Paseo', 'assets/video/paseo-arrival.jpg', { video: 'assets/video/paseo-arrival.mp4' }),
