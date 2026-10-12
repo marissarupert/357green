@@ -410,12 +410,27 @@ if GIS:
         ov.append(f'<g class="nbr" data-i="{i}" style="--d:{delay(a, b):.2f}"><path d="M{a} {b}V{b - 34}"/><rect x="{a - 7}" y="{b - 41}" width="14" height="14" transform="rotate(45 {a} {b - 34})"/></g>')
         KEY['neighbors'].append({'name': ', '.join(names), 'names': names, 'street': addr, 'x': a, 'y': b - 34})
     # hotels from the GIS layer, plus ones it misses: Level Chicago, the extended-stay
-    # hotel in Onni's 354 N. Union (OSM's outline of "Onni Fulton Market")
-    EXTRA_HOTELS = [('Level Chicago \u2013 Fulton Market', '354 N. Union Ave.', -87.646153, 41.888375)]
+    # hotel in Onni's 354 N. Union (OSM's outline of "Onni Fulton Market"), and the
+    # Hampton Inn at 116 N. Jefferson (OSM's hotel node)
+    EXTRA_HOTELS = [('Level Chicago \u2013 Fulton Market', '354 N. Union Ave.', -87.646153, 41.888375),
+                    ('Hampton Inn Chicago West Loop Fulton Market Area', '116 N. Jefferson St.', -87.643003, 41.883629)]
     hotels = [(f['properties']['CONAME'], f['properties']['STREET'], a, b) for f, a, b in places('hotels')]
     hotels += [(name, street, *gm(lon, lat)) for name, street, lon, lat in EXTRA_HOTELS]
+    gx, gy = S(*high.representative_point().coords[0])   # 357 Green on the ground
     for i, (name, street, a, b) in enumerate(hotels):
-        ov.append(f'<g class="hotel" data-i="{i}" style="--d:{delay(a, b):.2f}"><path d="M{a} {b}V{b - 30}"/><circle cx="{a}" cy="{b - 30}" r="6.5"/></g>')
+        if a <= W - 30:
+            ov.append(f'<g class="hotel" data-i="{i}" style="--d:{delay(a, b):.2f}"><path d="M{a} {b}V{b - 30}"/><circle cx="{a}" cy="{b - 30}" r="6.5"/></g>')
+        else:
+            # off the panel (the Hampton Inn, across the Kennedy): pin it at the edge
+            # on the line from 357 Green, with an arrow pointing on to it
+            ang = math.atan2(b - gy, a - gx)
+            k = (W - 30 - gx) / (a - gx)
+            a, b = round(W - 30), round(gy + k * (b - gy))
+            ca, sa = math.cos(ang), math.sin(ang)
+            tip = (a + 15 * ca, b - 30 + 15 * sa)
+            wing = [(tip[0] - 7 * ca + s * 5 * sa, tip[1] - 7 * sa - s * 5 * ca) for s in (1, -1)]
+            arrow = f'M{wing[0][0]:.1f} {wing[0][1]:.1f}L{tip[0]:.1f} {tip[1]:.1f}L{wing[1][0]:.1f} {wing[1][1]:.1f}'
+            ov.append(f'<g class="hotel off" data-i="{i}" style="--d:{delay(a, b):.2f}"><path d="M{a} {b}V{b - 30}"/><circle cx="{a}" cy="{b - 30}" r="6.5"/><path class="to" d="{arrow}"/></g>')
         KEY['hotels'].append({'name': name, 'street': street, 'x': a, 'y': b - 30})
     LEG = {'BL': ['#00a1de'], 'GR': ['#009b3a', '#e27ea6'], 'PK': ['#e27ea6']}
     def station(a, b, name, cols, cls='l'):

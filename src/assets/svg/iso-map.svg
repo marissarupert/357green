@@ -1832,17 +1832,18 @@
 <g class="hotel" data-i="10" style="--d:0.36"><path d="M715 452V422"/><circle cx="715" cy="422" r="6.5"/></g>
 <g class="hotel" data-i="11" style="--d:0.69"><path d="M525 711V681"/><circle cx="525" cy="681" r="6.5"/></g>
 <g class="hotel" data-i="12" style="--d:0.25"><path d="M670 288V258"/><circle cx="670" cy="258" r="6.5"/></g>
-<g class="stn l"><path d="M567 547V503"/><circle cx="567" cy="503" r="11" fill="#009b3a"/><circle cx="567" cy="503" r="7" fill="#e27ea6"/><circle class="hole" cx="567" cy="503" r="3"/><text x="567" y="483" text-anchor="middle">MORGAN</text></g>
-<g class="stn l"><path d="M430 225V181"/><circle cx="430" cy="181" r="11" fill="#00a1de"/><circle class="hole" cx="430" cy="181" r="7"/><text x="430" y="161" text-anchor="middle">GRAND</text></g>
+<g class="hotel off" data-i="13" style="--d:0.63"><path d="M884 358V328"/><circle cx="884" cy="328" r="6.5"/><path class="to" d="M892.3 323.6L899.0 329.1L891.6 333.6"/></g>
+<g class="stn l"><path d="M544 548V504"/><circle cx="544" cy="504" r="11" fill="#009b3a"/><circle cx="544" cy="504" r="7" fill="#e27ea6"/><circle class="hole" cx="544" cy="504" r="3"/><text x="544" y="484" text-anchor="middle">MORGAN</text></g>
+<g class="stn l"><path d="M419 256V212"/><circle cx="419" cy="212" r="11" fill="#00a1de"/><circle class="hole" cx="419" cy="212" r="7"/><text x="419" y="192" text-anchor="middle">GRAND</text></g>
 <text class="walk-lbl" x="554" y="524" text-anchor="middle">5 MIN WALK</text>
 <text class="walk-lbl" x="554" y="706" text-anchor="middle">10 MIN WALK</text>
 <text class="walk-lbl" x="554" y="888" text-anchor="middle">15 MIN WALK</text>
 </g>
-<text class="lbl" x="105" y="396" transform="rotate(-31.6 105 396)" text-anchor="middle" dominant-baseline="middle">GRAND AVE</text>
-<text class="lbl" x="612" y="727" transform="rotate(-32.1 612 727)" text-anchor="middle" dominant-baseline="middle">WASHINGTON BLVD</text>
-<text class="lbl" x="133" y="941" transform="rotate(78.7 133 941)" text-anchor="middle" dominant-baseline="middle">OGDEN AVE</text>
-<text class="lbl" x="340" y="300" transform="rotate(-2.0 340 300)" text-anchor="middle" dominant-baseline="middle">KENNEDY EXPY</text>
-<g class="callout"><circle cx="570" cy="241" r="5"/><path d="M570 241V91"/><text x="570" y="77" text-anchor="middle">357 GREEN</text></g>
+<text class="lbl" x="123" y="410" transform="rotate(-30.3 123 410)" text-anchor="middle" dominant-baseline="middle">GRAND AVE</text>
+<text class="lbl" x="586" y="712" transform="rotate(-30.5 586 712)" text-anchor="middle" dominant-baseline="middle">WASHINGTON BLVD</text>
+<text class="lbl" x="149" y="906" transform="rotate(77.9 149 906)" text-anchor="middle" dominant-baseline="middle">OGDEN AVE</text>
+<text class="lbl" x="337" y="321" transform="rotate(-1.5 337 321)" text-anchor="middle" dominant-baseline="middle">KENNEDY EXPY</text>
+<g class="callout"><circle cx="546" cy="271" r="5"/><path d="M546 271V121"/><text x="546" y="107" text-anchor="middle">357 GREEN</text></g>
 <g class="north"><path d="M869 891L831 869"/><path class="head" d="M827 867L843 868L836 880Z"/><text x="812" y="858" text-anchor="middle" dominant-baseline="middle">N</text></g>
 <text class="credit" x="457" y="1058" text-anchor="middle">Map data © OpenStreetMap contributors · City of Chicago</text>
 </svg>
