@@ -1063,20 +1063,26 @@
 "street": "354 N. Union Ave.",
 "x": 670,
 "y": 258
+},
+{
+"name": "Hampton Inn Chicago West Loop Fulton Market Area",
+"street": "116 N. Jefferson St.",
+"x": 884,
+"y": 328
 }
 ],
 "cta": [
 {
 "name": "Grand station",
 "street": "Blue Line",
-"x": 430,
-"y": 181
+"x": 419,
+"y": 212
 },
 {
 "name": "Morgan station",
 "street": "Green & Pink Lines",
-"x": 567,
-"y": 503
+"x": 544,
+"y": 504
 },
 {
 "k": "cta-blue",
