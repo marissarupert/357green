@@ -1831,6 +1831,7 @@
 <g class="hotel" data-i="9" style="--d:0.29"><path d="M481 481V451"/><circle cx="481" cy="451" r="6.5"/></g>
 <g class="hotel" data-i="10" style="--d:0.36"><path d="M715 452V422"/><circle cx="715" cy="422" r="6.5"/></g>
 <g class="hotel" data-i="11" style="--d:0.69"><path d="M525 711V681"/><circle cx="525" cy="681" r="6.5"/></g>
+<g class="hotel" data-i="12" style="--d:0.25"><path d="M670 288V258"/><circle cx="670" cy="258" r="6.5"/></g>
 <g class="stn l"><path d="M567 547V503"/><circle cx="567" cy="503" r="11" fill="#009b3a"/><circle cx="567" cy="503" r="7" fill="#e27ea6"/><circle class="hole" cx="567" cy="503" r="3"/><text x="567" y="483" text-anchor="middle">MORGAN</text></g>
 <g class="stn l"><path d="M430 225V181"/><circle cx="430" cy="181" r="11" fill="#00a1de"/><circle class="hole" cx="430" cy="181" r="7"/><text x="430" y="161" text-anchor="middle">GRAND</text></g>
 <text class="walk-lbl" x="554" y="524" text-anchor="middle">5 MIN WALK</text>

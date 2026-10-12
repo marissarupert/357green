@@ -409,10 +409,14 @@ if GIS:
         a, b = gm(lon, lat, top)
         ov.append(f'<g class="nbr" data-i="{i}" style="--d:{delay(a, b):.2f}"><path d="M{a} {b}V{b - 34}"/><rect x="{a - 7}" y="{b - 41}" width="14" height="14" transform="rotate(45 {a} {b - 34})"/></g>')
         KEY['neighbors'].append({'name': ', '.join(names), 'names': names, 'street': addr, 'x': a, 'y': b - 34})
-    for i, (f, a, b) in enumerate(places('hotels')):
-        p = f['properties']
+    # hotels from the GIS layer, plus ones it misses: Level Chicago, the extended-stay
+    # hotel in Onni's 354 N. Union (OSM's outline of "Onni Fulton Market")
+    EXTRA_HOTELS = [('Level Chicago \u2013 Fulton Market', '354 N. Union Ave.', -87.646153, 41.888375)]
+    hotels = [(f['properties']['CONAME'], f['properties']['STREET'], a, b) for f, a, b in places('hotels')]
+    hotels += [(name, street, *gm(lon, lat)) for name, street, lon, lat in EXTRA_HOTELS]
+    for i, (name, street, a, b) in enumerate(hotels):
         ov.append(f'<g class="hotel" data-i="{i}" style="--d:{delay(a, b):.2f}"><path d="M{a} {b}V{b - 30}"/><circle cx="{a}" cy="{b - 30}" r="6.5"/></g>')
-        KEY['hotels'].append({'name': p['CONAME'], 'street': p['STREET'], 'x': a, 'y': b - 30})
+        KEY['hotels'].append({'name': name, 'street': street, 'x': a, 'y': b - 30})
     LEG = {'BL': ['#00a1de'], 'GR': ['#009b3a', '#e27ea6'], 'PK': ['#e27ea6']}
     def station(a, b, name, cols, cls='l'):
         ring = ''.join(f'<circle cx="{a}" cy="{b - 44}" r="{11 - i * 4}" fill="{c}"/>' for i, c in enumerate(cols))
