@@ -142,7 +142,12 @@ export const slides = [
     photos: [
       { caption: '161 N. Clark', stack: [
         { src: 'assets/photos/onni-161-clark-exterior.jpg', alt: '161 N. Clark exterior', focus: '51% 50%' },
-        { src: 'assets/photos/onni-161-clark-amenity.jpg', alt: '161 N. Clark amenity render', focus: '50% 50%' },
+        // amenity renders: lounge across the top, workspace and corridor beneath
+        { grid: [
+          { src: 'assets/photos/onni-161-clark-lounge.jpg', alt: '161 N. Clark lounge render' },
+          { src: 'assets/photos/onni-161-clark-amenity.jpg', alt: '161 N. Clark workspace render' },
+          { src: 'assets/photos/onni-161-clark-corridor.jpg', alt: '161 N. Clark corridor render' },
+        ] },
       ] },
       { caption: '225 W. Randolph', stack: [
         { placeholder: '225 W. Randolph exterior to come' },
