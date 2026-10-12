@@ -284,7 +284,7 @@
 .s-bullets .photo-grid figure { position: relative; overflow: hidden; margin: 0; }
 .s-bullets .photo-grid .cover-img { transition: transform 1.2s var(--ease); }
 .s-bullets .photo-grid figure:hover .cover-img { transform: scale(1.04); }
-.s-bullets .photo-grid .img-tag { position: absolute; left: 0; top: 0; }
+.s-bullets .photo-grid .img-tag { position: absolute; left: 0; top: auto; bottom: 0; height: 34px; padding: 0 30px 0 14px; font-size: 11.5px; letter-spacing: .07em; clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 100%, 0 100%); } /* small project tag along each photo's foot */
 .s-bullets .title.has-logo img { height: 86px; width: auto; display: block; margin: 26px 0 0 4px; filter: brightness(0) invert(1); }
 .s-bullets .prose { left: 1021px; top: 500px; width: 820px; font-size: 26px; font-weight: var(--w-book); line-height: 40px; }
 .s-bullets .prose p + p { margin-top: 30px; }

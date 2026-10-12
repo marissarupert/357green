@@ -150,7 +150,7 @@ export const slides = [
         ] },
       ] },
       { caption: '225 W. Randolph', stack: [
-        { src: 'assets/photos/onni-225-randolph-exterior.jpg', alt: '225 W. Randolph exterior', focus: '50% 2%' },
+        { src: 'assets/photos/onni-225-randolph-exterior.jpg', alt: '225 W. Randolph exterior', focus: '48% 50%' },
         // amenity photos from 225randolph.com/amenities
         { grid: [
           { src: 'assets/photos/onni-225-lobby.jpg', alt: '225 W. Randolph lobby' },
@@ -178,17 +178,17 @@ export const slides = [
       'SCB (Solomon Cordwell Buenz) is a globally recognized architecture, planning, interior, and urban design firm founded in 1931, headquartered in Chicago with offices in San Francisco, Boston, Seattle, Los Angeles, and Abu Dhabi.',
       'SCB is globally recognized for creative innovative workplaces, dense urban living, sustainable learning environments, adaptive reuse, and hospitality design. The firm integrates architecture, interior design, and urban planning to create people\u2011centered, performance\u2011driven spaces.',
     ],
-    // Notable local projects (SCB case studies), shown as a 3 x 2 grid: a
-    // shorter top row and a taller bottom row, as in the source grid. Add a
-    // caption to a photo to tag it with the project's name.
+    // Notable Chicago projects, from SCB's own case studies (scb.com), shown
+    // as a 3 x 2 grid: a shorter top row and a taller bottom row, each photo
+    // tagged with its project's name.
     grid: { cols: 3, rows: '37fr 63fr' },
     photos: [
-      { src: 'assets/photos/scb-case-1.jpg', alt: 'SCB project: brick loft building with a glass rooftop addition' },
-      { src: 'assets/photos/scb-case-2.jpg', alt: 'SCB project: brick and glass office building' },
-      { src: 'assets/photos/scb-case-3.jpg', alt: 'SCB project: office interior with a tiered wood stair' },
-      { src: 'assets/photos/scb-case-4.jpg', focus: '62% 50%', alt: 'SCB project: glass office tower with a crown cut-out' },
-      { src: 'assets/photos/scb-case-5.jpg', focus: '42% 50%', alt: 'SCB project: slender glass tower with an angled crown' },
-      { src: 'assets/photos/scb-case-6.jpg', alt: 'SCB project: lobby with a sculpted wood stair' },
+      { src: 'assets/photos/scb-320-n-sangamon.jpg', caption: '320 North Sangamon', alt: '320 North Sangamon, Fulton Market' },
+      { src: 'assets/photos/scb-tribune-tower.jpg', caption: 'Tribune Tower Conversion', focus: '50% 40%', alt: 'Tribune Tower Conversion' },
+      { src: 'assets/photos/scb-1130-north-state.jpg', caption: '1130 North State', alt: '1130 North State' },
+      { src: 'assets/photos/scb-legacy-millennium-park.jpg', caption: 'The Legacy at Millennium Park', focus: '50% 30%', alt: 'The Legacy at Millennium Park' },
+      { src: 'assets/photos/scb-mondelez-hq.jpg', caption: 'Mondelēz International HQ', alt: 'Mondelēz International Headquarters interior' },
+      { src: 'assets/photos/scb-135-south-lasalle.jpg', caption: '135 South LaSalle', alt: '135 South LaSalle (the Field Building)' },
     ],
   },
 
