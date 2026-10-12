@@ -237,11 +237,11 @@ export const slides = [
       { src: 'assets/logos/google.svg', alt: 'Google', height: 40 },
     ],
     // Hotels tagged on the map while Hotels is on, logos from each hotel's own
-    // website or supplied (no src: no usable logo, so the name shows instead).
+    // website or supplied by the team (no src: the name shows instead).
     hotels: [
       { src: 'assets/logos/hyatt-house.png', alt: 'Hyatt House', height: 64 },
       { src: 'assets/logos/nobu-hotel.png', alt: 'Nobu Hotel', height: 40 },
-      { alt: 'Soho House' },
+      { src: 'assets/logos/soho-house.png', alt: 'Soho House', height: 30 },
       { src: 'assets/logos/emily-hotel.svg', alt: 'The Emily Hotel', height: 30 },
       { src: 'assets/logos/hoxton.svg', alt: 'The Hoxton', height: 34, tone: 'whiten' },
       { src: 'assets/logos/publishing-house.png', alt: 'The Publishing House', height: 30, tone: 'whiten' },
