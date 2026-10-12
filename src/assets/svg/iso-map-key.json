@@ -1062,14 +1062,17 @@
 "street": "from 357 Green"
 },
 {
-"k": "route-ogilvie",
+"k": "walk-15",
+"name": "15 min walk",
+"street": "from 357 Green"
+},
+{
 "name": "From Ogilvie",
 "street": "16 min walk · 1.3 km",
 "x": 870,
 "y": 358
 },
 {
-"k": "route-union",
 "name": "From Union Station",
 "street": "21 min walk · 1.7 km",
 "x": 866,

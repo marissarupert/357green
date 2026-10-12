@@ -66,7 +66,7 @@ image paths. Layout code never needs to change.
 | `divider` | 5, 8, 10, 16, 33, 39 | numeral and title animate in, watermark drifts |
 | `iconStats` | 6 | numbers count up; photos rotate on their own (the copper bar fills, then the next photo fades in; hover pauses, bars or a click switch by hand) |
 | `bullets` | 7 | photos rotate on their own, as on slide 6; `grid: true` shows them as a captioned photo grid instead (SCB), `body` paragraphs replace the bullets, `titleLogo` puts a logo in place of the title |
-| `location` | 9 | numbers count up; nearby transit list (`transit`); isometric massing map of Grand / Kennedy Expressway / Washington / Ogden (`map.drawing: 'iso-map'`): buildings rise outward from 357 Green, which rises last in copper. A row of **map key** buttons along the bottom (Neighbors, Restaurants, Hotels, CTA, Metra, Walk times) lights up each group, with name tags for the neighbors and the walking routes from Ogilvie and Union Station; point at a place on the map for its name. Remove `drawing` to show the interactive map (`map.url`) instead |
+| `location` | 9 | numbers count up; nearby transit list (`transit`); isometric massing map of Grand / Kennedy Expressway / Washington / Ogden (`map.drawing: 'iso-map'`): buildings rise outward from 357 Green, which rises last in copper. Neighbors' logos tag their buildings on the map. A row of **map key** buttons along the bottom (Restaurants, Hotels, CTA, Walk times) lights up each group; Walk times shows 5/10/15-minute circles around the site and tags Ogilvie and Union Station with their walk times. Point at a place on the map for its name. Remove `drawing` to show the interactive map (`map.url`) instead |
 | `features` | 11 | features come in one after another, automatically |
 | `elevation` | (not in the deck) | elevations rise from the ground as level markers tick on, callouts reach out to both towers; hover a level for a guide line across both, hover a callout to pick out its points |
 | `callouts` | 12 | callouts play in; hover a label or dot for a zoom lens, click to spotlight (Esc to clear) |
@@ -93,7 +93,7 @@ the City of Chicago's storey counts, else Microsoft's building heights
 buildings), else two storeys. 357 Green's footprint and floor plates come from
 the deck's plans and its heights from the building section (parking to
 108'-6", rooftop 421'-0", screen wall 484'-6"). The highlights (restaurants, hotels,
-CTA and Metra lines and stations, 5 and 10 minute walks) come from the Stream
+CTA and Metra lines and stations, walking routes) come from the Stream
 GIS map's layers. The script's header lists the source URLs. Keep the "© OpenStreetMap contributors" credit on the map.
 
 The podium axo on slide 19 is a traced SVG (`src/assets/svg/podium-axo.svg`)
@@ -120,7 +120,7 @@ work offline.
 Where these appear in the deck they are marked with a dashed "Placeholder" label:
 
 - **Futura 100** web fonts (Jost stands in)
-- **The Paseo (17)** positions for items 06, 07 and 09, which don't show in the section (a keyed site plan would place them)
+- **The Paseo (17)** positions for the three bulleted items (Metra buffer, public elevator entry, built-in benches), which don't show in the section (a keyed site plan would place them)
 
 Low-resolution in the source PDF, and soft on large screens: plaza section (17),
 aerial (11) and the Fulton Market photo (9).

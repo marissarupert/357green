@@ -313,30 +313,32 @@ NEIGHBORS = [
     ('Sidley', '725 W. Randolph St. (planned, late 2030)', -87.646692, 41.884185),
 ]
 if GIS:
-    walk = gis('walk')
+    # Walk times as concentric circles around 357 Green: 5, 10 and 15 minutes at
+    # 80 m a minute (straight-line radius), drawn on the ground so they read as
+    # ellipses in the iso view. Circles, not the network isochrones, so they
+    # aren't mistaken for routes.
+    site_lon, site_lat = gis('site')[0]['geometry']['coordinates'][:2]
+    sx0, sy0 = m(site_lon, site_lat)
     rings = {}
-    for limit in (5, 10):
-        u = unary_union([shape(f['geometry']) for f in walk if f['properties']['ToBreak'] <= limit]).buffer(0)
-        geoms = u.geoms if hasattr(u, 'geoms') else [u]
-        big = max(geoms, key=lambda g: g.area)
-        pts = [gm(x, y) for x, y in big.exterior.coords]
+    for limit in (5, 10, 15):
+        r = limit * 80
+        pts = [S(sx0 + r * math.cos(t * math.pi / 90), sy0 + r * math.sin(t * math.pi / 90)) for t in range(180)]
         svg.append(f'<path class="walk" data-k="walk-{limit}" d="{path(pts)}"/>')
         KEY['walk'].append({'k': f'walk-{limit}', 'name': f'{limit} min walk', 'street': 'from 357 Green'})
-        # 10 min: label at the ring's top; 5 min: at its west (left) edge, clear of the callout
-        rings[limit] = min(pts, key=lambda p: p[1]) if limit == 10 else min(pts, key=lambda p: p[0])
-    # walking routes from the Metra stations (routes.json: shortest paths on OSM's
-    # walkable network, timed at 80 m a minute)
+        # labels stack along one ray (south-west of the site), where all three
+        # circles cross open map inside the panel
+        rings[limit] = S(sx0 + r * math.cos(math.radians(225)), sy0 + r * math.sin(math.radians(225)))
+    # walk times from the Metra stations (routes.json: shortest paths on OSM's
+    # walkable network, timed at 80 m a minute); tag only, no route line
     import os
     routes = json.load(open(f'{GIS}/routes.json')) if os.path.exists(f'{GIS}/routes.json') else {}
     for name, rt in routes.items():
-        rk = 'route-' + name.split()[0].lower()
         pts = [gm(x, y) for x, y in rt['path']]
-        svg.append(f'<path class="route" data-k="{rk}" d="M{"L".join(f"{a} {b}" for a, b in pts)}"/>')
         # tag at the station, or where the route leaves the map if the station is off it
         inside = [p for p in pts if 40 < p[0] < W - 40 and 90 < p[1] < H - 120]
         ax, ay = inside[0] if inside else pts[-1]
         mins = round(rt['m'] / 80)
-        KEY['walk'].append({'k': rk, 'name': f'From {name}', 'street': f'{mins} min walk \u00b7 {rt["m"] / 1000:.1f} km', 'x': ax, 'y': ay})
+        KEY['walk'].append({'name': f'From {name}', 'street': f'{mins} min walk \u00b7 {rt["m"] / 1000:.1f} km', 'x': ax, 'y': ay})
     METRA = {'UPN': 'Union Pacific North', 'UPNW': 'Union Pacific Northwest', 'UPW': 'Union Pacific West',
              'MDN': 'Milwaukee District North', 'MDW': 'Milwaukee District West', 'NCS': 'North Central Service',
              'BNSF': 'BNSF', 'HC': 'Heritage Corridor', 'ME': 'Metra Electric', 'RID': 'Rock Island', 'SWS': 'SouthWest Service'}
@@ -430,8 +432,8 @@ if GIS:
             ov.append(f'<g class="stn m"><path d="M{a} {b}V{b - 44}"/><rect x="{a - 9}" y="{b - 53}" width="18" height="18" rx="2"/>'
                       f'<text x="{a}" y="{b - 64}" text-anchor="middle">{name}</text></g>')
     for limit, (a, b) in rings.items():
-        anchor = 'middle' if limit == 10 else 'start'
-        tx_, ty_ = a + (0 if limit == 10 else 8), b - 10
+        anchor = 'middle'
+        tx_, ty_ = a, b - 10
         tx_, ty_ = min(max(tx_, 80), W - 160), max(ty_, 120)    # clear of the edges and the menu button
         ov.append(f'<text class="walk-lbl" x="{tx_}" y="{ty_}" text-anchor="{anchor}">{limit} MIN WALK</text>')
     ov.append('</g>')
@@ -444,7 +446,7 @@ if GIS:
             ('<circle cx="9" cy="0" r="8" fill="#009b3a"/><circle cx="9" cy="0" r="4" fill="#e27ea6"/><circle class="hole" cx="9" cy="0" r="2"/>', 'CTA \u2018L\u2019 station'),
             ('<rect class="m" x="1" y="-8" width="16" height="16" rx="2"/>', 'Metra station') if metra_drawn
             else ('<path class="metra" d="M0 0H18"/>', 'Metra lines'),
-            ('<path class="walk" d="M0 0H18"/>', '5 and 10 min walk')]
+            ('<path class="walk" d="M0 0H18"/>', '5, 10 and 15 min walk')]
     leg = [f'<g class="legend" transform="translate({lx} {ly})">']
     for i, (mark, text) in enumerate(rows):
         leg.append(f'<g transform="translate(0 {i * 30})">{mark}<text x="30" y="0" dominant-baseline="middle">{text}</text></g>')
