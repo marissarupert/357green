@@ -15,10 +15,11 @@ export const PIECES = [
   ['paseo', 'Paseo'],
   ['activated_plaza', 'Activated plaza'],
   ['retail', 'Retail'],
+  ['paseo_lounge', 'Paseo lounge'],
   ['residential_lobby', 'Office lobby'],
   ['residential_bike_room', 'Bike room'],
 ]
-const DROP = ['activated_plaza', 'paseo', 'retail', 'residential_lobby', 'residential_bike_room'] // entrance order
+const DROP = ['activated_plaza', 'paseo', 'retail', 'paseo_lounge', 'residential_lobby', 'residential_bike_room'] // entrance order
 const LIFT = 150 // drawing units a selected piece rises
 
 export const render = () => `

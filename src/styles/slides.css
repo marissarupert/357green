@@ -163,13 +163,9 @@
 .s-location .map-tag-pin.logo img.invert { filter: invert(1); }
 .s-location .map-tag-pin.logo .lg b { color: var(--white); font-size: 13px; font-weight: var(--w-medium); letter-spacing: .04em; }
 .s-location .map-tag-pin.logo span { margin-top: 4px; color: var(--powder); font-size: 10.5px; }
-.s-location .map:not([data-show]) .map-tag-pin[data-sec="neighbors"],
-.s-location .map[data-show=""] .map-tag-pin[data-sec="neighbors"],
 .s-location .map[data-show="neighbors"] .map-tag-pin[data-sec="neighbors"],
 .s-location .map[data-show="walk"] .map-tag-pin[data-sec="walk"],
 .s-location .map[data-show="hotels"] .map-tag-pin[data-sec="hotels"] { opacity: 1; }
-/* neighbors' tags arrive once the map has built */
-.s-location.is-current .map-tag-pin[data-sec="neighbors"] { animation: iso-fade .6s 3.4s backwards; }
 .s-location .k-rest::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: #e0905f; }
 .s-location .k-hotel::before { content: ""; width: 13px; height: 13px; border-radius: 50%; background: var(--white); }
 .s-location .k-cta::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--white); box-shadow: 0 0 0 3px #e27ea6, 0 0 0 6px #009b3a; }
@@ -462,10 +458,11 @@
 .s-split .axo { left: 920px; top: 96px; width: 1000px; height: 867px; }
 .axo .axo-svg { position: absolute; left: 0; top: 0; width: 1000px; height: 630px; overflow: visible; }
 .axo { --c-paseo: var(--midnight); --c-activated_plaza: color-mix(in srgb, var(--espresso) 32%, var(--white));
-  --c-retail: var(--espresso); --c-residential_lobby: var(--powder); --c-residential_bike_room: var(--slate); }
+  --c-retail: var(--espresso); --c-paseo_lounge: color-mix(in srgb, var(--espresso) 62%, var(--white)); --c-residential_lobby: var(--powder); --c-residential_bike_room: var(--slate); }
 .axo [data-piece="paseo"] { --fill: var(--c-paseo); --ink: var(--white); }
 .axo [data-piece="activated_plaza"] { --fill: var(--c-activated_plaza); --ink: var(--midnight); }
 .axo [data-piece="retail"] { --fill: var(--c-retail); --ink: var(--white); }
+.axo [data-piece="paseo_lounge"] { --fill: var(--c-paseo_lounge); --ink: var(--white); }
 .axo [data-piece="residential_lobby"] { --fill: var(--c-residential_lobby); --ink: var(--midnight); }
 .axo [data-piece="residential_bike_room"] { --fill: var(--c-residential_bike_room); --ink: var(--white); }
 .axo .piece.is-hot, .axo .piece.is-selected { --fill: var(--copper); --ink: var(--white); }

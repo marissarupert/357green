@@ -46,7 +46,7 @@ a('<g class="ctx">')
 for x, y, w, h in ((50, 270, 246, 853), (50, 395, 165, 728), (50, 360, 73, 35), (50, 1123, 167, 74), (50, 1197, 259, 53), (50, 1250, 192, 53)):
     rect(x, y, w, h, NEIGHBOR, '#8e9398', 2)
 text(296, 216, '390′', 28, 'end', 600)
-text(296, 251, 'T/ 360 N GREEN', 28, 'end', 600)
+text(296, 251, '360 N GREEN', 28, 'end', 600)
 text(146, 1294, '360 N GREEN', 24, 'middle', 600)
 for x, w in ((1215, 127), (1342, 194)):
     rect(x, 1246, w, 57, NEIGHBOR, '#8e9398', 2)
@@ -60,8 +60,6 @@ for cx in (1050, 1092, 1183, 1235):
 # street names, set vertically as in the source
 a(f'<text transform="translate(350 1296) rotate(-90)" font-size="22" font-weight="600" fill="{INK}">N GREEN</text>')
 text(362, 1300, '+0′-0″', 22, 'start', 600)
-# set flat on the Halsted grade, under the slide's 2nd-floor leader (y 1203)
-text(1196, 1231, 'N HALSTED  +25′-0″', 20, 'start', 600)
 a('</g>')
 
 # ---- the tower, zone by zone (data-zone matches the legend)
@@ -136,7 +134,7 @@ for n, (t, b) in f.items():
     text(1001, (t + b) / 2 + 9, str(n), 24, 'middle', 600)
 # elevations, right side
 # (labels sit clear of the slide's callout leaders, which run out at y 173, 447, 709 and 1203)
-for y, s, sub in ((36, 'T/ SCREEN WALL', '484′-6″'), (200, 'ROOFTOP', '421′-0″'), (1009, 'T/ PARKING', '108′-6″')):
+for y, s, sub in ((36, 'SCREEN WALL', '484′-6″'), (200, 'ROOFTOP', '421′-0″')):
     a(f'<path d="M1040 {y}H1288" stroke="{INK}" stroke-width="2.5"/>')
     if y == 200:
         text(1288, y + 32, f'{s} {sub}', 26, 'end', 600)

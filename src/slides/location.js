@@ -3,7 +3,7 @@
 //         (count names a map group, e.g. 'hotels': the value is how many the map shows),
 //         transitLabel?, transit?[{lines:[css colour…], name, detail}] (no colours
 //         draws a road marker), neighbors[{src, alt, height?}], neighborsLabel?
-//   neighbors' logos tag their buildings on the map (always shown); with
+//   neighbors' logos tag their buildings on the map while Neighbors is on; with
 //   neighborsLabel they're also listed in a row under the stats.
 //         map{drawing?, url, title, label?}
 //   map.drawing 'iso-map' shows the isometric massing map in the panel (its
