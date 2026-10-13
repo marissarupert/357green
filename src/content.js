@@ -90,8 +90,8 @@ export const slides = [
     type: 'intro',
     theme: 'dark',
     title: 'The New<br>Standard',
-    body: 'The office market has entered a new phase. Progressive, employee-centric organizations now prioritize quality as the most important workplace criterion, for the benefit of people, culture, and, simply put, the joy of work. Fulton Market has entered a new phase, too. It’s now a mature submarket with a single premier office development site remaining, 357 Green.',
-    kicker: 'Take the opportunity to make a forever mark on Chicago’s skyline.',
+    body: 'The office market has entered a new evolutionary phase. Progressive, employee-centric organizations now prioritize quality as the most important workplace criterion for the benefit of people, culture, and simply put, the joy of work.<br><br>Fulton Market has entered a new phase, too. The once gritty meatpacking district turned culinary hotspot is now a mature 24/7 neighborhood with a single premier office development site remaining—357 Green.',
+    kicker: 'Make a forever mark on Chicago’s skyline.',
     image: { src: 'assets/video/expressway.jpg', video: 'assets/video/expressway.mp4', alt: '357 Green tower at sunset against the Chicago skyline', focus: '50% 30%' },
     bleed: true,
   },
@@ -107,7 +107,7 @@ export const slides = [
     // Two columns, read row by row: left, right, left, right…
     stats: [
       { value: '34,600 SF', detail: 'Typical <b>low-rise</b> floor plate<br>Floors 8-15' },
-      { value: '38,000 SF Amenities', detail: '9,000 SF on Floor 2<br>29,000 SF on Floor 15' },
+      { value: '40,000 SF Amenities', detail: '10,000 SF on Floor 2<br>30,000 SF on Floor 15' },
       { value: '29,500 SF', detail: 'Typical <b>high-rise</b> floor plate<br>Floors 16-28' },
       { value: 'Penthouse Restaurant', detail: 'Floor 29' },
       { value: '13’3” slab-to-slab heights', detail: 'Office Floors' },
@@ -175,8 +175,8 @@ export const slides = [
     subtitle: 'A Chicago Legacy Since 1931',
     titleLogo: 'assets/logos/scb.png', // the SCB mark, shown in white in place of the title
     body: [
-      'SCB (Solomon Cordwell Buenz) is a globally recognized architecture, planning, interior, and urban design firm founded in 1931, headquartered in Chicago with offices in San Francisco, Boston, Seattle, Los Angeles, and Abu Dhabi.',
-      'SCB is globally recognized for creative innovative workplaces, dense urban living, sustainable learning environments, adaptive reuse, and hospitality design. The firm integrates architecture, interior design, and urban planning to create people\u2011centered, performance\u2011driven spaces.',
+      'SCB (Solomon Cordwell Buenz) is a globally recognized architecture, planning, interior, and urban design firm founded in 1931 and headquartered in Chicago with offices in San Francisco, Boston, Seattle, Los Angeles, and Abu Dhabi.',
+      'SCB is renowned for innovative workplaces, dense urban living, sustainable learning environments, adaptive reuse projects, and award-winning hospitality. The firm integrates architecture, interior design and urban planning to create people\u2011centered, performance\u2011driven spaces.',
     ],
     // Notable Chicago projects, from SCB's own case studies (scb.com), shown
     // as a 3 x 2 grid: a shorter top row and a taller bottom row, each photo
@@ -301,7 +301,7 @@ export const slides = [
       { label: 'Vision glass high performance<br>low-e coating', at: [722, 778], line: [251, 706, 801], dot: [251, 801] },
     ],
     notes: [
-      { title: 'Tower Cladding', body: '2 story module provides texture at<br>larger scale for tower', x: 57, y: 921 },
+      { title: 'Tower Cladding', body: '2-story module provides texture at<br>larger scale for tower', x: 57, y: 921 },
       { title: 'Tower Cladding at Terraces', body: 'Glass facade continues along one side so terraces feel carved<br>away from overall mass and offer all-season utility', x: 1056, y: 921 },
     ],
   },
@@ -371,7 +371,7 @@ export const slides = [
     eyebrow: 'Tenant Experience',
     eyebrowAccent: 'Levels 2 & 15',
     title: 'Amenities & Wellness',
-    stat: { value: '38,000 SF', label: 'across three different floors' },
+    stat: { value: '40,000 SF', label: 'across three different floors' },
     body: 'A full amenity floor anchors the tower’s mid-rise: a tenant lounge, outdoor terrace and state-of-the-art, spa-inspired wellness center. An 11,000 SF second-floor lounge and conference center spill onto a spacious patio overlooking the Paseo. And a rooftop restaurant and terrace offering stunning, 360-degree views of the entire city creates a new standard for the trophy office experience.',
     cards: [
       {
