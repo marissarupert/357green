@@ -338,6 +338,9 @@ if GIS:
     # walk times from the Metra stations (routes.json: shortest paths on OSM's
     # walkable network, timed at 80 m a minute); tag only, no route line
     import os
+    # Union Station's Madison Street entrance is across Canal from Ogilvie, so the
+    # team gives it as 18 minutes (the routed walk ends at the main entrance)
+    WALK_FROM = {'Union Station': '18 min walk \u00b7 Madison St. entrance'}
     routes = json.load(open(f'{GIS}/routes.json')) if os.path.exists(f'{GIS}/routes.json') else {}
     for name, rt in routes.items():
         pts = [gm(x, y) for x, y in rt['path']]
@@ -345,7 +348,9 @@ if GIS:
         inside = [p for p in pts if 40 < p[0] < W - 40 and 90 < p[1] < H - 120]
         ax, ay = inside[0] if inside else pts[-1]
         mins = round(rt['m'] / 80)
-        KEY['walk'].append({'name': f'From {name}', 'street': f'{mins} min walk \u00b7 {rt["m"] / 1000:.1f} km', 'x': ax, 'y': ay})
+        street = f'{mins} min walk \u00b7 {rt["m"] / 1000:.1f} km'
+        if name in WALK_FROM: street = WALK_FROM[name]
+        KEY['walk'].append({'name': f'From {name}', 'street': street, 'x': ax, 'y': ay})
     METRA = {'UPN': 'Union Pacific North', 'UPNW': 'Union Pacific Northwest', 'UPW': 'Union Pacific West',
              'MDN': 'Milwaukee District North', 'MDW': 'Milwaukee District West', 'NCS': 'North Central Service',
              'BNSF': 'BNSF', 'HC': 'Heritage Corridor', 'ME': 'Metra Electric', 'RID': 'Rock Island', 'SWS': 'SouthWest Service'}
