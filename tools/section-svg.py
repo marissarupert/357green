@@ -83,6 +83,7 @@ a('</g>')
 a('<g data-zone="amenity">')
 t, b = f[15]; rect(633, t, 122, b - t, AMENITY); rect(848, t, 120, b - t, AMENITY)
 t, b = f[29]; rect(848, t, 120, b - t, AMENITY)
+rect(528, 1189, 440, 61, AMENITY)                       # floor 2: the paseo level (conference center and bar)
 a('</g>')
 
 a('<g data-zone="mech">')
@@ -112,8 +113,7 @@ for n in (7, 6, 5, 4, 3):
 # parked cars on floors 3-7
 for n in (7, 6, 4, 3):
     t, b = f[n]; a(f'<path d="M681 {b - 4}h40v-9q-3-6-11-7l-6-4h-12q-6 0-9 5l-2 6z" fill="{INK}"/>')
-# floors 1-2: the paseo above, back of house below, with the ramp up to Halsted
-rect(528, 1189, 440, 61, '#ffffff', INK, 2)
+# floor 1: back of house (the paseo level above is amenity), with the ramp up to Halsted
 a(f'<path d="M528 1303V1250H968V1303Z" fill="#ffffff" stroke="{INK}" stroke-width="2"/>')
 a(f'<path d="M625 1303L663 1271H712L755 1250H968V1303Z" fill="{MECH}" stroke="none"/>')
 a(f'<path d="M487 1301H571L612 1291H625L663 1271H712L755 1250L1188 1237H1535" fill="none" stroke="{INK}" stroke-width="5" stroke-linejoin="round"/>')
@@ -128,7 +128,7 @@ text(694, 841, 'OFFICE', 22, 'middle', 600)
 text(908, 1041, 'PARKING /', 20, 'middle', 600, '#ffffff')
 text(908, 1064, 'MECH', 20, 'middle', 600, '#ffffff')
 text(908, 1121, 'PARKING', 22, 'middle', 600, '#ffffff')
-text(748, 1231, 'PASEO', 30, 'middle', 600)
+text(748, 1231, 'PASEO', 30, 'middle', 600, '#ffffff')
 text(852, 1292, 'BACK OF HOUSE', 20, 'middle', 600)
 for n, (t, b) in f.items():
     text(1001, (t + b) / 2 + 9, str(n), 24, 'middle', 600)
