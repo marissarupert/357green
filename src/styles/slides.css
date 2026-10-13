@@ -458,7 +458,7 @@
 .s-split .axo { left: 920px; top: 96px; width: 1000px; height: 867px; }
 .axo .axo-svg { position: absolute; left: 0; top: 0; width: 1000px; height: 630px; overflow: visible; }
 .axo { --c-paseo: var(--midnight); --c-activated_plaza: color-mix(in srgb, var(--espresso) 32%, var(--white));
-  --c-retail: var(--espresso); --c-paseo_lounge: color-mix(in srgb, var(--espresso) 62%, var(--white)); --c-residential_lobby: var(--powder); --c-residential_bike_room: var(--slate); }
+  --c-retail: var(--espresso); --c-paseo_lounge: #b77859; /* amenity, as on the building section */ --c-residential_lobby: var(--powder); --c-residential_bike_room: var(--slate); }
 .axo [data-piece="paseo"] { --fill: var(--c-paseo); --ink: var(--white); }
 .axo [data-piece="activated_plaza"] { --fill: var(--c-activated_plaza); --ink: var(--midnight); }
 .axo [data-piece="retail"] { --fill: var(--c-retail); --ink: var(--white); }
