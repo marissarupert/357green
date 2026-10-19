@@ -373,7 +373,7 @@ if GIS:
         if d and code in METRA:
             svg.append(f'<path class="metra" data-k="metra-{code}" d="{d}"/>')
             KEY['metra'].append({'k': f'metra-{code}', 'name': METRA[code]})
-    CTA = {'Blue': '#00a1de', 'Green': '#009b3a', 'Pink': '#e27ea6'}
+    CTA = {'Blue': '#00a1de', 'Green': '#00b43c', 'Pink': '#e27ea6'}
     for colour in ('Blue', 'Green', 'Pink'):
         for f in gis('llines'):
             if f['properties']['COLOR'] == colour:
@@ -455,7 +455,7 @@ if GIS:
             arrow = f'M{wing[0][0]:.1f} {wing[0][1]:.1f}L{tip[0]:.1f} {tip[1]:.1f}L{wing[1][0]:.1f} {wing[1][1]:.1f}'
             ov.append(f'<g class="hotel off" data-i="{i}" style="--d:{delay(a, b):.2f}"><path d="M{a} {b}V{b - 30}"/><circle cx="{a}" cy="{b - 30}" r="6.5"/><path class="to" d="{arrow}"/></g>')
         KEY['hotels'].append({'name': name, 'street': street, 'x': a, 'y': b - 30})
-    LEG = {'BL': ['#00a1de'], 'GR': ['#009b3a', '#e27ea6'], 'PK': ['#e27ea6']}
+    LEG = {'BL': ['#00a1de'], 'GR': ['#00b43c', '#e27ea6'], 'PK': ['#e27ea6']}
     def station(a, b, name, cols, cls='l'):
         ring = ''.join(f'<circle cx="{a}" cy="{b - 44}" r="{11 - i * 4}" fill="{c}"/>' for i, c in enumerate(cols))
         return (f'<g class="stn {cls}"><path d="M{a} {b}V{b - 44}"/>{ring}<circle class="hole" cx="{a}" cy="{b - 44}" r="{max(2, 11 - len(cols) * 4)}"/>'
@@ -492,7 +492,7 @@ if GIS:
     rows_off = True
     rows = [('<circle class="rest" cx="9" cy="0" r="4.5"/>', 'Restaurants (148)'),
             ('<g class="hotel"><circle cx="9" cy="0" r="6.5"/></g>', 'Hotels (12)'),
-            ('<circle cx="9" cy="0" r="8" fill="#009b3a"/><circle cx="9" cy="0" r="4" fill="#e27ea6"/><circle class="hole" cx="9" cy="0" r="2"/>', 'CTA \u2018L\u2019 station'),
+            ('<circle cx="9" cy="0" r="8" fill="#00b43c"/><circle cx="9" cy="0" r="4" fill="#e27ea6"/><circle class="hole" cx="9" cy="0" r="2"/>', 'CTA \u2018L\u2019 station'),
             ('<rect class="m" x="1" y="-8" width="16" height="16" rx="2"/>', 'Metra station') if metra_drawn
             else ('<path class="metra" d="M0 0H18"/>', 'Metra lines'),
             ('<path class="walk" d="M0 0H18"/>', '5, 10 and 15 min walk')]

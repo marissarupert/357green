@@ -216,7 +216,7 @@ export const slides = [
     transitLabel: 'Transit',
     transit: [
       { lines: ['#00a1de'], name: 'Blue Line · Grand', detail: '4 min walk' },
-      { lines: ['#009b3a', '#e27ea6'], name: 'Green & Pink Lines · Morgan', detail: '7 min walk' },
+      { lines: ['#00b43c', '#e27ea6'], name: 'Green & Pink Lines · Morgan', detail: '7 min walk' },
       { lines: ['#4f7bbf'], name: 'Metra · Ogilvie & Union Station', detail: '12–16 min walk' },
       { lines: [], name: 'Kennedy Expressway (I-90/94)', detail: 'Alongside the site' },
     ],
