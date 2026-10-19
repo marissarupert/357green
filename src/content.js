@@ -387,7 +387,7 @@ export const slides = [
     section: 'tenant-experience',
     theme: 'light',
     eyebrow: 'Tenant Experience',
-    eyebrowAccent: 'Levels 2 & 15',
+    eyebrowAccent: 'Levels 2, 15 & 29',
     title: 'Amenities & Wellness',
     stat: { value: '60,000 SF', label: 'across three different floors' },
     body: 'A full amenity floor anchors the tower’s mid-rise: a tenant lounge, outdoor terrace and state-of-the-art, spa-inspired wellness center. A 10,000 SF second-floor lounge and conference center spill onto a spacious patio overlooking the Paseo. And a rooftop restaurant and terrace offering stunning, 360-degree views of the entire city creates a new standard for the trophy office experience.',
