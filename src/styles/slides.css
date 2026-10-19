@@ -22,8 +22,8 @@
 .s-cover .tagline .stop { color: var(--copper); }
 .s-cover .rule-bar { left: 122px; top: 920px; width: 520px; --bw: 44px; --bh: 5px; --rule: rgba(255, 255, 255, .3); }
 .s-cover .partners { left: 122px; top: 958px; display: flex; align-items: center; gap: 30px; opacity: .9; }
-.s-cover .partners img { width: 108px; margin-top: 5px; }
-.s-cover .partners img + img { width: 118px; margin-top: 0; padding-left: 30px; border-left: 1px solid rgba(255, 255, 255, .35); }
+.s-cover .partners img { width: 130px; margin-top: 6px; }
+.s-cover .partners img + img { width: 142px; margin-top: 0; padding-left: 30px; border-left: 1px solid rgba(255, 255, 255, .35); }
 
 /* ---------- overview: stats grid + full-height image (slide 4) ---------- */
 .s-overview .title { left: 38px; top: 61px; font-size: 110px; line-height: 1; white-space: nowrap; }
@@ -140,14 +140,17 @@
 .s-location .map-chips button[aria-pressed="true"] .ct { color: var(--white); }
 .s-location .map-chips i { flex: none; width: 14px; height: 14px; display: grid; place-items: center; }
 /* the chosen group stands out; everything else on the map fades back */
-.s-location .map[data-show]:not([data-show=""]) .iso-map .ov > *, .s-location .map[data-show]:not([data-show=""]) .iso-map .b.in { transition: opacity .3s; }
+.s-location .map[data-show]:not([data-show=""]) .iso-map .ov > *, .s-location .map[data-show]:not([data-show=""]) .iso-map .b.in,
+.s-location .map[data-walk="1"] .iso-map .ov > *, .s-location .map[data-walk="1"] .iso-map .b.in { transition: opacity .3s; }
 .s-location .map[data-show="neighbors"] .iso-map .ov > :not(.nbr),
 .s-location .map[data-show="restaurants"] .iso-map .ov > :not(.rest),
 .s-location .map[data-show="hotels"] .iso-map .ov > :not(.hotel),
 .s-location .map[data-show="cta"] .iso-map .ov > :not(.stn.l),
 .s-location .map[data-show="metra"] .iso-map .ov > :not(.stn.m),
-.s-location .map[data-show="walk"] .iso-map .ov > :not(.walk-lbl) { opacity: .12; }
-.s-location .map[data-show]:not([data-show=""]) .iso-map .b.in { opacity: .55; }
+.s-location .map[data-walk="1"][data-show=""] .iso-map .ov > :not(.walk-lbl) { opacity: .12; }
+/* Walk times can stay on over another group: its ring labels stay lit too */
+.s-location .map[data-walk="1"] .iso-map .ov > .walk-lbl { opacity: 1; }
+.s-location .map[data-show]:not([data-show=""]) .iso-map .b.in, .s-location .map[data-walk="1"] .iso-map .b.in { opacity: .55; }
 .s-location .map[data-show="restaurants"] .iso-map .rest circle { r: 6; }
 .s-location .map[data-show="hotels"] .iso-map .hotel circle { r: 8; }
 .s-location .map-tags { position: absolute; inset: 0; pointer-events: none; z-index: 4; }
@@ -164,8 +167,14 @@
 .s-location .map-tag-pin.logo .lg b { color: var(--white); font-size: 13px; font-weight: var(--w-medium); letter-spacing: .04em; }
 .s-location .map-tag-pin.logo span { margin-top: 4px; color: var(--powder); font-size: 10.5px; }
 .s-location .map[data-show="neighbors"] .map-tag-pin[data-sec="neighbors"],
-.s-location .map[data-show="walk"] .map-tag-pin[data-sec="walk"],
+.s-location .map[data-walk="1"] .map-tag-pin[data-sec="walk"],
 .s-location .map[data-show="hotels"] .map-tag-pin[data-sec="hotels"] { opacity: 1; }
+/* leaders from tags that had to move off their pins (location.js lays them out) */
+.s-location .map-leaders { position: absolute; left: 0; top: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.s-location .map-leaders line { stroke: rgba(171, 189, 204, .75); stroke-width: 1; opacity: 0; transition: opacity .25s; }
+.s-location .map[data-show="neighbors"] .map-leaders [data-sec="neighbors"],
+.s-location .map[data-walk="1"] .map-leaders [data-sec="walk"],
+.s-location .map[data-show="hotels"] .map-leaders [data-sec="hotels"] { opacity: 1; }
 .s-location .k-rest::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: #e0905f; }
 .s-location .k-hotel::before { content: ""; width: 13px; height: 13px; border-radius: 50%; background: var(--white); }
 .s-location .k-cta::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--white); box-shadow: 0 0 0 3px #e27ea6, 0 0 0 6px #009b3a; }
@@ -186,6 +195,8 @@
 .iso-map.has-hl .walk:not(.hl), .iso-map.has-hl .cta:not(.hl), .iso-map.has-hl .metra:not(.hl), .iso-map.has-hl .route:not(.hl) { opacity: .2; }
 .iso-map .walk.hl { stroke-width: 4; stroke-dasharray: none; }
 .iso-map .cta.hl { stroke-width: 8; }
+/* the Pink Line shares the Green Line's track along Lake St; drawn thinner on top so both show */
+.iso-map .cta-pink.hl { stroke-width: 3.5; }
 .iso-map .metra.hl { stroke: var(--white); stroke-width: 4; stroke-dasharray: none; }
 @keyframes iso-rise { from { transform: scaleY(0); opacity: 0; } 30% { opacity: 1; } to { transform: none; } }
 @keyframes iso-fade { from { opacity: 0; } }
@@ -236,6 +247,11 @@
 
 /* ---------- video (slide 2) ---------- */
 .s-video video { object-fit: cover; }
+/* a headline over the video, set where The New Standard's title sits */
+.s-video .shade { inset: 0; background: linear-gradient(90deg, rgba(28, 29, 43, .7) 0%, rgba(28, 29, 43, .35) 45%, rgba(28, 29, 43, 0) 70%); }
+.s-video .overlay { left: 65px; top: 166px; font-size: 130px; line-height: 150px; }
+.s-video .overlay .ln { display: block; overflow: hidden; }
+.s-video .overlay .ln > span { display: block; }
 
 /* ---------- intro (slide 3) ---------- */
 .s-intro .media { left: 1123px; top: 0; width: 797px; height: 1080px; overflow: hidden; }
@@ -390,7 +406,7 @@
 .s-callouts.locked .callouts .dot:not(.chosen) { filter: opacity(.45); }
 .s-callouts .callouts .label, .s-callouts .callouts .leader, .s-callouts .callouts .dot { transition: filter .3s, color .25s, background .25s, height .25s, transform .25s var(--ease), box-shadow .25s; }
 .s-callouts .note h3 { font-size: 28px; font-weight: var(--w-medium); color: var(--copper); text-transform: uppercase; line-height: 1; }
-.s-callouts .note .hairline { position: relative; display: block; margin-top: 18px; width: 589px; height: 2px; background: var(--midnight); }
+.s-callouts .note .hairline { position: relative; display: block; margin-top: 18px; width: 540px; height: 2px; background: var(--midnight); }
 .s-callouts .note p { margin-top: 20px; font-size: 25px; line-height: 30px; color: var(--midnight); }
 
 /* ---------- full-bleed render ---------- */
@@ -668,6 +684,7 @@
 .s-floorplan .pl.street { font-weight: var(--w-demi); letter-spacing: .01em; text-transform: none; }
 .s-floorplan .pl.tag { display: flex; align-items: center; gap: .35em; font-weight: var(--w-medium); letter-spacing: .02em; color: #4a4c55; }
 .s-floorplan .pl.tag svg { width: 1em; height: 1em; }
+.s-floorplan .pl .pl-img { height: 1em; width: auto; }
 
 /* ---------- thank you (slide 46) ---------- */
 .s-contact .title { left: 59px; top: 178px; font-size: 110px; line-height: 1; white-space: nowrap; }

@@ -306,18 +306,30 @@ KEY = {'neighbors': [], 'restaurants': [], 'hotels': [], 'cta': [], 'metra': [],
 # Corporate neighbors, one entry per building (addresses from public lease
 # announcements and company filings; positions are the buildings' OSM outlines,
 # OSM's address points where a building has no outline, and the ArcGIS geocoder
-# for 725 W. Randolph, not yet built).
+# for 725 W. Randolph, not yet built, and 210 N. Peoria, which it places along
+# the street; Steelcase, Kimberly-Clark and Dyson are ArcGIS address points).
+# Tenants and addresses for the second group (Snap ... Mars) are the team's list.
 NEIGHBORS = [
     (['McDonald\u2019s HQ'], '110 N. Carpenter St.', -87.653994, 41.883710),
-    (['WPP', 'Adyen', 'EY'], '333 N. Green St.', -87.648034, 41.887695),
+    (['WPP', 'Adyen', 'EY', 'Chime'], '333 N. Green St.', -87.648034, 41.887695),
     (['BCG', 'Greenberg Traurig'], '360 N. Green St.', -87.649379, 41.888696),
-    (['John Deere', 'The Aspen Group'], '800 W. Fulton Market', -87.648153, 41.887118),
+    (['John Deere', 'The Aspen Group', 'Snap', 'Baker Tilly'], '800 W. Fulton Market', -87.648153, 41.887118),
     (['Sidley'], '725 W. Randolph St. (planned, late 2030)', -87.646692, 41.884185),
     (['HAVI'], '345 N. Morgan St.', -87.651901, 41.888094),
-    (['Valor Equity Partners'], '320 N. Sangamon St.', -87.651343, 41.887439),
+    (['Valor Equity Partners', 'Roku'], '320 N. Sangamon St.', -87.651343, 41.887439),
     (['Mondel\u0113z International'], '905 W. Fulton Market', -87.650213, 41.886417),
     (['Harrison Street'], '919 W. Fulton Market', -87.650522, 41.886151),
     (['Google'], '1000 W. Fulton Market', -87.652681, 41.887263),
+    (['Coca-Cola'], '210 N. Peoria St.', -87.649874, 41.885990),
+    (['Steelcase'], '811 W. Fulton Market', -87.648060, 41.886678),
+    (['MillerKnoll'], '1100 W. Fulton Market', -87.654777, 41.886946),
+    (['Bissell'], '1201 W. Lake St.', -87.657229, 41.885114),
+    (['Kimberly-Clark'], '1133 W. Fulton Market', -87.655978, 41.886442),
+    (['Live Nation'], '1020 W. Randolph St.', -87.652933, 41.884591),
+    (['Dyson'], '1330 W. Fulton Market', -87.660156, 41.887159),
+    (['Norton Rose Fulbright'], '1045 W. Fulton Market', -87.654155, 41.886482),
+    (['CCC Information Services'], '167 N. Green St.', -87.648127, 41.885091),
+    (['Mars'], '400 N. Aberdeen St.', -87.655089, 41.889270),
 ]
 if GIS:
     # Walk times as concentric circles around 357 Green: 5, 10 and 15 minutes at
@@ -338,9 +350,10 @@ if GIS:
     # walk times from the Metra stations (routes.json: shortest paths on OSM's
     # walkable network, timed at 80 m a minute); tag only, no route line
     import os
-    # Union Station's Madison Street entrance is across Canal from Ogilvie, so the
-    # team gives it as 18 minutes (the routed walk ends at the main entrance)
-    WALK_FROM = {'Union Station': '18 min walk \u00b7 Madison St. entrance'}
+    # the team's walk times: Ogilvie 12 minutes, and Union Station 16 by its
+    # Madison Street entrance, across Canal from Ogilvie (the routed walks are
+    # 16 and 21 minutes, to the main entrances)
+    WALK_FROM = {'Ogilvie': '12 min walk', 'Union Station': '16 min walk \u00b7 Madison St. entrance'}
     routes = json.load(open(f'{GIS}/routes.json')) if os.path.exists(f'{GIS}/routes.json') else {}
     for name, rt in routes.items():
         pts = [gm(x, y) for x, y in rt['path']]

@@ -10,11 +10,12 @@
 "y": 611
 },
 {
-"name": "WPP, Adyen, EY",
+"name": "WPP, Adyen, EY, Chime",
 "names": [
 "WPP",
 "Adyen",
-"EY"
+"EY",
+"Chime"
 ],
 "street": "333 N. Green St.",
 "x": 626,
@@ -31,10 +32,12 @@
 "y": 250
 },
 {
-"name": "John Deere, The Aspen Group",
+"name": "John Deere, The Aspen Group, Snap, Baker Tilly",
 "names": [
 "John Deere",
-"The Aspen Group"
+"The Aspen Group",
+"Snap",
+"Baker Tilly"
 ],
 "street": "800 W. Fulton Market",
 "x": 656,
@@ -59,9 +62,10 @@
 "y": 383
 },
 {
-"name": "Valor Equity Partners",
+"name": "Valor Equity Partners, Roku",
 "names": [
-"Valor Equity Partners"
+"Valor Equity Partners",
+"Roku"
 ],
 "street": "320 N. Sangamon St.",
 "x": 489,
@@ -93,6 +97,96 @@
 "street": "1000 W. Fulton Market",
 "x": 438,
 "y": 445
+},
+{
+"name": "Coca-Cola",
+"names": [
+"Coca-Cola"
+],
+"street": "210 N. Peoria St.",
+"x": 646,
+"y": 438
+},
+{
+"name": "Steelcase",
+"names": [
+"Steelcase"
+],
+"street": "811 W. Fulton Market",
+"x": 687,
+"y": 349
+},
+{
+"name": "MillerKnoll",
+"names": [
+"MillerKnoll"
+],
+"street": "1100 W. Fulton Market",
+"x": 361,
+"y": 530
+},
+{
+"name": "Bissell",
+"names": [
+"Bissell"
+],
+"street": "1201 W. Lake St.",
+"x": 361,
+"y": 649
+},
+{
+"name": "Kimberly-Clark",
+"names": [
+"Kimberly-Clark"
+],
+"street": "1133 W. Fulton Market",
+"x": 337,
+"y": 576
+},
+{
+"name": "Live Nation",
+"names": [
+"Live Nation"
+],
+"street": "1020 W. Randolph St.",
+"x": 592,
+"y": 561
+},
+{
+"name": "Dyson",
+"names": [
+"Dyson"
+],
+"street": "1330 W. Fulton Market",
+"x": 100,
+"y": 652
+},
+{
+"name": "Norton Rose Fulbright",
+"names": [
+"Norton Rose Fulbright"
+],
+"street": "1045 W. Fulton Market",
+"x": 418,
+"y": 509
+},
+{
+"name": "CCC Information Services",
+"names": [
+"CCC Information Services"
+],
+"street": "167 N. Green St.",
+"x": 782,
+"y": 385
+},
+{
+"name": "Mars",
+"names": [
+"Mars"
+],
+"street": "400 N. Aberdeen St.",
+"x": 203,
+"y": 437
 }
 ],
 "restaurants": [
@@ -1108,13 +1202,13 @@
 },
 {
 "name": "From Ogilvie",
-"street": "16 min walk · 1.3 km",
+"street": "12 min walk",
 "x": 870,
 "y": 358
 },
 {
 "name": "From Union Station",
-"street": "18 min walk · Madison St. entrance",
+"street": "16 min walk · Madison St. entrance",
 "x": 866,
 "y": 294
 }

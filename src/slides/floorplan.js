@@ -5,6 +5,7 @@
 //   labels are set as live text over the plan: `at` (centre) and `size` are in
 //   the plan image's own pixels (image.size), so they scale with the box.
 //   kind: "street" (bold), "tag" (small level marker + figure).
+//   src: an image (a tenant's logo) instead of text, `size` tall.
 import { esc, img, nBand, ruleBar } from '../lib/html.js'
 
 const TAG = '<svg viewBox="0 0 10 10" aria-hidden="true"><circle cx="5" cy="5" r="4.2" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M5 5V.8A4.2 4.2 0 0 1 9.2 5zM5 5v4.2A4.2 4.2 0 0 1 .8 5z" fill="currentColor"/></svg>'
@@ -13,7 +14,7 @@ const labels = (s) => {
   if (!s.labels) return ''
   const k = s.image.box[2] / s.image.size[0]
   const px = (v) => +(v * k).toFixed(1)
-  return `<div class="plan-labels" aria-hidden="true">${s.labels.map((l) => `<span class="pl ${esc(l.kind || '')}" style="left:${px(l.at[0])}px;top:${px(l.at[1])}px;font-size:${px(l.size)}px${l.rotate ? `;--r:${l.rotate}deg` : ''}">${l.kind === 'tag' ? TAG : ''}${esc(l.text)}</span>`).join('')}</div>`
+  return `<div class="plan-labels" aria-hidden="true">${s.labels.map((l) => `<span class="pl ${esc(l.kind || '')}" style="left:${px(l.at[0])}px;top:${px(l.at[1])}px;font-size:${px(l.size)}px${l.rotate ? `;--r:${l.rotate}deg` : ''}">${l.src ? img(l.src, l.text || '', 'pl-img') : `${l.kind === 'tag' ? TAG : ''}${esc(l.text)}`}</span>`).join('')}</div>`
 }
 
 export default {

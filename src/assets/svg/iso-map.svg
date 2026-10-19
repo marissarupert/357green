@@ -1819,6 +1819,16 @@
 <g class="nbr" data-i="7" style="--d:0.23"><path d="M604 459V425"/><rect x="597" y="418" width="14" height="14" transform="rotate(45 604 425)"/></g>
 <g class="nbr" data-i="8" style="--d:0.23"><path d="M606 458V424"/><rect x="599" y="417" width="14" height="14" transform="rotate(45 606 424)"/></g>
 <g class="nbr" data-i="9" style="--d:0.33"><path d="M438 479V445"/><rect x="431" y="438" width="14" height="14" transform="rotate(45 438 445)"/></g>
+<g class="nbr" data-i="10" style="--d:0.29"><path d="M646 472V438"/><rect x="639" y="431" width="14" height="14" transform="rotate(45 646 438)"/></g>
+<g class="nbr" data-i="11" style="--d:0.26"><path d="M687 383V349"/><rect x="680" y="342" width="14" height="14" transform="rotate(45 687 349)"/></g>
+<g class="nbr" data-i="12" style="--d:0.55"><path d="M361 564V530"/><rect x="354" y="523" width="14" height="14" transform="rotate(45 361 530)"/></g>
+<g class="nbr" data-i="13" style="--d:0.74"><path d="M361 683V649"/><rect x="354" y="642" width="14" height="14" transform="rotate(45 361 649)"/></g>
+<g class="nbr" data-i="14" style="--d:0.65"><path d="M337 610V576"/><rect x="330" y="569" width="14" height="14" transform="rotate(45 337 576)"/></g>
+<g class="nbr" data-i="15" style="--d:0.47"><path d="M592 595V561"/><rect x="585" y="554" width="14" height="14" transform="rotate(45 592 561)"/></g>
+<g class="nbr" data-i="16" style="--d:1.00"><path d="M100 686V652"/><rect x="93" y="645" width="14" height="14" transform="rotate(45 100 652)"/></g>
+<g class="nbr" data-i="17" style="--d:0.45"><path d="M418 543V509"/><rect x="411" y="502" width="14" height="14" transform="rotate(45 418 509)"/></g>
+<g class="nbr" data-i="18" style="--d:0.46"><path d="M782 419V385"/><rect x="775" y="378" width="14" height="14" transform="rotate(45 782 385)"/></g>
+<g class="nbr" data-i="19" style="--d:0.71"><path d="M203 471V437"/><rect x="196" y="430" width="14" height="14" transform="rotate(45 203 437)"/></g>
 <g class="hotel" data-i="0" style="--d:0.68"><path d="M551 703V673"/><circle cx="551" cy="673" r="6.5"/></g>
 <g class="hotel" data-i="1" style="--d:0.46"><path d="M729 512V482"/><circle cx="729" cy="482" r="6.5"/></g>
 <g class="hotel" data-i="2" style="--d:0.65"><path d="M855 511V481"/><circle cx="855" cy="481" r="6.5"/></g>
