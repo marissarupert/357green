@@ -76,15 +76,20 @@ function mountKey(el, key) {
     tip.style.left = Math.min(Math.max(it.x, half + 12), w - half - 12) + 'px'
   }
   const hideTip = () => { tip.hidden = ring.hidden = true }
+  // one group at a time, plus Walk times, which can stay on over any of them
+  let show = '', walk = false
   const select = (sec) => {
-    map.dataset.show = sec || ''
-    chips.forEach((c) => c.setAttribute('aria-pressed', String(c.dataset.sec === sec)))
-    svg.classList.toggle('has-hl', !!sec)
+    if (sec === 'walk') walk = !walk
+    else { show = sec; if (!sec) walk = false }
+    map.dataset.show = show
+    map.dataset.walk = walk ? '1' : ''
+    chips.forEach((c) => c.setAttribute('aria-pressed', String(c.dataset.sec === 'walk' ? walk : c.dataset.sec === show)))
+    svg.classList.toggle('has-hl', !!(show || walk))
     svg.querySelectorAll('.hl').forEach((n) => n.classList.remove('hl'))
-    // lines and rings carry their key id; light the group's ones
-    for (const it of key[sec] || []) if (it.k) svg.querySelectorAll(`[data-k="${it.k}"]`).forEach((n) => n.classList.add('hl'))
+    // lines and rings carry their key id; light the chosen groups' ones
+    for (const g of [show, walk && 'walk']) for (const it of key[g] || []) if (it.k) svg.querySelectorAll(`[data-k="${it.k}"]`).forEach((n) => n.classList.add('hl'))
   }
-  chips.forEach((c) => c.addEventListener('click', () => select(map.dataset.show === c.dataset.sec ? '' : c.dataset.sec)))
+  chips.forEach((c) => c.addEventListener('click', () => select(c.dataset.sec === 'walk' || show !== c.dataset.sec ? c.dataset.sec : '')))
   // arrows move along the row (and don't change slides); Esc clears
   bar.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') { e.preventDefault(); select('') ; return }
@@ -102,34 +107,67 @@ function mountKey(el, key) {
     if (it) place(it)
   })
   svg.addEventListener('pointerout', (e) => { if (e.target.closest('.rest, .hotel, .nbr')) hideTip() })
-  // keep the on-map tags inside the panel, lift any that would sit on another
-  // tag of its group (neighbors cluster on Green St), and drop below its pin
-  // any that would run off the top; nothing covers the 357 Green label
-  requestAnimationFrame(() => {
+  // Place the on-map tags: each sits over its pin if it can; otherwise it moves
+  // up (or below, near the top), and sideways, to the nearest spot clear of
+  // the other tags of its group, the walk-time tags (which can show with any
+  // group) and 357 Green (tower, callout and label), and a thin leader line
+  // runs back to its pin. Logos load after the slide is built, so this runs
+  // again as each one arrives and the tags take their real widths.
+  const tagsEl = el.querySelector('.map-tags')
+  const NS = 'http://www.w3.org/2000/svg'
+  const leaders = document.createElementNS(NS, 'svg')
+  leaders.setAttribute('class', 'map-leaders')
+  tagsEl.prepend(leaders)
+  const tags = [...tagsEl.querySelectorAll('.map-tag-pin')]
+  tags.forEach((t) => { t.dataset.x = parseFloat(t.style.left); t.dataset.y = parseFloat(t.style.top) })
+  const box = (n, pad = 6) => { const b = n?.getBBox(); return b && { l: b.x - pad, r: b.x + b.width + pad, t: b.y - pad, b: b.y + b.height + pad } }
+  const layout = () => {
     const w = map.clientWidth || 914, h = map.clientHeight || 1080
-    const site = svg.querySelector('.callout text')?.getBBox()
-    const fixed = site ? [{ l: site.x - 6, r: site.x + site.width + 6, t: site.y - 4, b: site.y + site.height + 4 }] : []
+    const fixed = [box(svg.querySelector('.callout')), box(svg.querySelector('.b357'), 4)].filter(Boolean)
     const placed = []
-    const hits = (me, sec) => [...fixed, ...placed.filter((o) => o.sec === sec)].find((o) => me.l < o.r && me.r > o.l && me.t < o.b && me.b > o.t)
-    const tags = [...el.querySelectorAll('.map-tag-pin')].sort((a, b) => parseFloat(b.style.top) - parseFloat(a.style.top))
-    for (const t of tags) {
-      const half = t.offsetWidth / 2, th = t.offsetHeight, y = parseFloat(t.style.top)
-      const x = Math.min(Math.max(parseFloat(t.style.left), half + 12), w - half - 12)
-      t.style.left = x + 'px'
-      const above = (lift) => ({ l: x - half, r: x + half, b: y - 14 - lift, t: y - 14 - lift - th })
-      const below = (drop) => ({ l: x - half, r: x + half, t: y + 14 + drop, b: y + 14 + drop + th })
-      let lift = 0, box = above(0), hit
-      for (let n = 0; n < 8 && (hit = hits(box, t.dataset.sec)); n++) { lift += box.b - hit.t + 4; box = above(lift) }
-      if (box.t < 96) {
-        let drop = 0
-        box = below(0)
-        for (let n = 0; n < 8 && (hit = hits(box, t.dataset.sec)); n++) { drop += hit.b - box.t + 4; box = below(drop) }
-        if (box.b < h - 80) { t.classList.add('below'); if (drop) t.style.setProperty('--drop', drop + 'px') }
-        else { box = above(lift); if (lift) t.style.setProperty('--lift', lift + 'px') }
-      } else if (lift) t.style.setProperty('--lift', lift + 'px')
-      placed.push({ ...box, sec: t.dataset.sec })
+    const clear = (me, sec) => ![...fixed, ...placed.filter((o) => o.sec === sec || o.sec === 'walk')]
+      .some((o) => me.l < o.r && me.r > o.l && me.t < o.b && me.b > o.t)
+    leaders.replaceChildren()
+    // walk-time tags first (everything else keeps clear of them), then bottom up
+    const order = [...tags].sort((a, b) => (b.dataset.sec === 'walk') - (a.dataset.sec === 'walk') || b.dataset.y - a.dataset.y)
+    for (const t of order) {
+      t.classList.remove('below'); t.style.removeProperty('--lift'); t.style.removeProperty('--drop')
+      const x0 = +t.dataset.x, y0 = +t.dataset.y, half = t.offsetWidth / 2, th = t.offsetHeight, sec = t.dataset.sec
+      const at = (dx, dy, under) => {
+        const x = Math.min(Math.max(x0 + dx, half + 12), w - half - 12)
+        const t1 = under ? y0 + 14 + dy : y0 - 14 - dy - th
+        return { x, dy, under, l: x - half, r: x + half, t: t1, b: t1 + th }
+      }
+      const inside = (b) => b.t >= 96 && b.b <= h - 84
+      let best = null
+      for (let dy = 0; dy <= 360 && !best; dy += 12) {
+        for (const dx of [0, -30, 30, -60, 60, -95, 95, -130, 130]) {
+          for (const under of [false, true]) {
+            const b = at(dx, dy, under)
+            if (inside(b) && clear(b, sec)) { best = b; break }
+          }
+          if (best) break
+        }
+      }
+      best ||= at(0, 0, false)
+      t.style.left = best.x + 'px'
+      if (best.under) { t.classList.add('below'); if (best.dy) t.style.setProperty('--drop', best.dy + 'px') }
+      else if (best.dy) t.style.setProperty('--lift', best.dy + 'px')
+      placed.push({ ...best, sec })
+      // a leader back to the pin when the tag has moved off it
+      if (best.dy || Math.abs(best.x - x0) > 1) {
+        const ln = document.createElementNS(NS, 'line')
+        ln.setAttribute('x1', x0); ln.setAttribute('y1', y0)
+        ln.setAttribute('x2', best.x); ln.setAttribute('y2', best.under ? best.t : best.b)
+        ln.dataset.sec = sec
+        leaders.append(ln)
+      }
     }
-  })
+  }
+  let queued = 0
+  const relayout = () => { cancelAnimationFrame(queued); queued = requestAnimationFrame(layout) }
+  tagsEl.querySelectorAll('img').forEach((im) => im.addEventListener('load', relayout))
+  relayout()
   el._closeKey = () => { select(''); hideTip() }
 }
 

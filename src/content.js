@@ -82,6 +82,7 @@ export const slides = [
     theme: 'dark',
     // The entrance on Halsted at dusk (video render, loops seamlessly)
     video: { src: 'assets/video/entrance-night.mp4', poster: 'assets/video/entrance-night.jpg', position: '50% 88%' },
+    overlay: ['The Bar Is', 'Being Raised.'],   // leads into The New Standard
   },
 
   {
@@ -102,18 +103,18 @@ export const slides = [
     type: 'overview',
     theme: 'dark',
     title: 'Project Overview',
-    subtitle: '30-Stories / 824,000 SF',
+    subtitle: '30-Stories / 900,000 SF',
     image: { src: 'assets/renders/tower-street.jpg', alt: '357 Green tower seen from the street at the Halsted Street bridge' },
     // Two columns, read row by row: left, right, left, right…
     stats: [
       { value: '34,600 SF', detail: 'Typical <b>low-rise</b> floor plate<br>Floors 8-15' },
-      { value: '40,000 SF Amenities', detail: '10,000 SF on Floor 2<br>30,000 SF on Floor 15' },
+      { value: '60,000 SF Amenities', detail: '10,000 SF on Floor 2<br>30,000 SF on Floor 15<br>20,000 SF on Floor 29' },
       { value: '29,500 SF', detail: 'Typical <b>high-rise</b> floor plate<br>Floors 16-28' },
-      { value: 'Penthouse Restaurant', detail: 'Floor 29' },
+      { value: 'Penthouse Restaurant<br>Bar & Terrace', detail: 'Floor 29' },
       { value: '13’3” slab-to-slab heights', detail: 'Office Floors' },
       { value: 'Dialtone Bodega<br>& Coffee House' },
       { value: '300 SF Private Terraces', detail: 'On every office floor' },
-      { value: '450 Parking Stalls', detail: 'Levels 3-7' },
+      { value: '420 Parking Stalls', detail: 'Levels 3-7' },
       { value: 'Timeline', detail: 'Base building turnover 24 months following lease execution', wide: true },
     ],
   },
@@ -216,7 +217,7 @@ export const slides = [
     transit: [
       { lines: ['#00a1de'], name: 'Blue Line · Grand', detail: '4 min walk' },
       { lines: ['#009b3a', '#e27ea6'], name: 'Green & Pink Lines · Morgan', detail: '7 min walk' },
-      { lines: ['#4f7bbf'], name: 'Metra · Ogilvie & Union Station', detail: '15–20 min walk' },
+      { lines: ['#4f7bbf'], name: 'Metra · Ogilvie & Union Station', detail: '12–16 min walk' },
       { lines: [], name: 'Kennedy Expressway (I-90/94)', detail: 'Alongside the site' },
     ],
     // Neighbors' logos tag their buildings on the map (no row under the stats).
@@ -235,6 +236,21 @@ export const slides = [
       { src: 'assets/logos/mondelez.png', alt: 'Mondelēz', height: 52 },
       { src: 'assets/logos/harrison-street.svg', alt: 'Harrison Street', height: 40, tone: 'whiten' },
       { src: 'assets/logos/google.svg', alt: 'Google', height: 40 },
+      // the team's added tenants (named until their logos are in)
+      { alt: 'Snap' },
+      { alt: 'Baker Tilly' },
+      { alt: 'Chime' },
+      { alt: 'Roku' },
+      { alt: 'Coca-Cola' },
+      { alt: 'Steelcase' },
+      { alt: 'MillerKnoll' },
+      { alt: 'Bissell' },
+      { alt: 'Kimberly-Clark' },
+      { alt: 'Live Nation' },
+      { alt: 'Dyson' },
+      { alt: 'Norton Rose Fulbright' },
+      { alt: 'CCC Information Services' },
+      { alt: 'Mars' },
     ],
     // Hotels tagged on the map while Hotels is on, logos from each hotel's own
     // website or supplied by the team (no src: the name shows instead).
@@ -286,23 +302,25 @@ export const slides = [
     theme: 'light',
     eyebrow: 'Architecture',
     title: 'Elevated Materiality',
+    // the cladding-at-terraces drawing on its own (SCB precedent imagery to
+    // come); every callout points into it. Dots are placed on the drawing's
+    // fins, transom, spandrel band, guardrail and glass (drawing px x 0.449)
     diagrams: [
-      { src: 'assets/diagrams/materiality-cladding.jpg', alt: 'Tower cladding module', box: [40, 370, 491, 531] },
-      { src: 'assets/diagrams/materiality-terraces.jpg', alt: 'Tower cladding at terraces', box: [1248, 370, 522, 531] },
+      { src: 'assets/diagrams/materiality-terraces.jpg', alt: 'Tower cladding at terraces', box: [1080, 250, 680, 693] },
     ],
-    // at = label top-left, line = [x1, x2, y], dot = [x, y] (stage px; dots
-    // sit where the source drawings put their leader-line dots)
+    // at = label top-left, line = [x1, x2, y], dot = [x, y] (stage px);
+    // labels end at x 960 and their lines run from there to the dot
     callouts: [
-      { label: 'Primary vertical profile', at: [720, 447], line: [348, 712, 470], dot: [348, 470] },
-      { label: 'Secondary vertical profile', at: [722, 502], line: [241, 712, 525], dot: [241, 525] },
-      { label: 'Clear glass guardrail', at: [722, 570], line: [931, 1403, 593], dot: [1403, 593] },
-      { label: 'Metal spandrel', at: [722, 621], line: [879, 1370, 644], dot: [1370, 644] },
-      { label: 'Spandrel glass horizontal', at: [722, 674], line: [215, 710, 697], dot: [215, 697] },
-      { label: 'Vision glass high performance<br>low-e coating', at: [722, 778], line: [251, 706, 801], dot: [251, 801] },
+      { label: 'Primary vertical profile', at: [738, 357], line: [976, 1594, 380], dot: [1594, 380] },
+      { label: 'Secondary vertical profile', at: [709, 416], line: [976, 1622, 439], dot: [1622, 439] },
+      { label: 'Clear glass guardrail', at: [760, 518], line: [976, 1282, 541], dot: [1282, 541] },
+      { label: 'Spandrel glass horizontal', at: [715, 570], line: [976, 1556, 593], dot: [1556, 593] },
+      { label: 'Metal spandrel', at: [817, 663], line: [976, 1597, 686], dot: [1597, 686] },
+      { label: 'Vision glass high performance<br>low-e coating', at: [663, 708], line: [976, 1540, 731], dot: [1540, 731] },
     ],
     notes: [
-      { title: 'Tower Cladding', body: '2-story module provides texture at<br>larger scale for tower', x: 57, y: 921 },
-      { title: 'Tower Cladding at Terraces', body: 'Glass facade continues along one side so terraces feel carved<br>away from overall mass and offer all-season utility', x: 1056, y: 921 },
+      { title: 'Tower Cladding at Terraces', body: 'Glass facade continues along one side so<br>terraces feel carved away from overall<br>mass and offer all-season utility', x: 57, y: 560 },
+      { title: 'Tower Cladding', body: '2-story module provides texture at<br>larger scale for tower', x: 57, y: 800 },
     ],
   },
 
@@ -371,8 +389,8 @@ export const slides = [
     eyebrow: 'Tenant Experience',
     eyebrowAccent: 'Levels 2 & 15',
     title: 'Amenities & Wellness',
-    stat: { value: '40,000 SF', label: 'across three different floors' },
-    body: 'A full amenity floor anchors the tower’s mid-rise: a tenant lounge, outdoor terrace and state-of-the-art, spa-inspired wellness center. An 11,000 SF second-floor lounge and conference center spill onto a spacious patio overlooking the Paseo. And a rooftop restaurant and terrace offering stunning, 360-degree views of the entire city creates a new standard for the trophy office experience.',
+    stat: { value: '60,000 SF', label: 'across three different floors' },
+    body: 'A full amenity floor anchors the tower’s mid-rise: a tenant lounge, outdoor terrace and state-of-the-art, spa-inspired wellness center. A 10,000 SF second-floor lounge and conference center spill onto a spacious patio overlooking the Paseo. And a rooftop restaurant and terrace offering stunning, 360-degree views of the entire city creates a new standard for the trophy office experience.',
     cards: [
       {
         title: 'Lounge & Conference Center',
@@ -463,7 +481,14 @@ export const slides = [
       { swatch: '#bccad5', label: 'Lobby' },
       { swatch: '#8d9899', label: 'Loading Dock / Service Entry' },
     ],
-    image: { src: 'assets/plans/lobby.jpg', alt: 'Ground floor plan', box: [796, 70, 1038, 844] },
+    // the plan with its two retail labels painted out, so they can be set live:
+    // the restaurant, and Dialtone in the 1,400 SF space
+    image: { src: 'assets/plans/lobby-retail-open.jpg', alt: 'Ground floor plan', box: [796, 70, 1038, 844], size: [2446, 1988] },
+    labels: [
+      { text: 'Restaurant', at: [835, 648], size: 33 },
+      { text: '5,900 SF', at: [835, 698], size: 33 },
+      { text: 'Dialtone', src: 'assets/logos/dialtone.png', at: [1088, 1484], size: 66 },
+    ],
   },
 
   // ---------- 05 Views ----------
@@ -473,9 +498,9 @@ export const slides = [
     type: 'gallery',
     section: 'views',
     theme: 'dark',
-    // aerial-1…8 run once around the compass
+    // aerial-1…8 run once around the compass, from the high-rise floors (low-rise views to come)
     photos: ['East', 'Northeast', 'North', 'Northwest', 'West', 'Southwest', 'South', 'Southeast']
-      .map((dir, i) => ({ src: `assets/views/aerial-${i + 1}.jpg`, caption: `View ${dir}` })),
+      .map((dir, i) => ({ src: `assets/views/aerial-${i + 1}.jpg`, caption: `High-Rise View ${dir}` })),
   },
 
   // ---------- 06 Tenant Programming ----------
