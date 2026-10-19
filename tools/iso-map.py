@@ -374,8 +374,10 @@ if GIS:
             svg.append(f'<path class="metra" data-k="metra-{code}" d="{d}"/>')
             KEY['metra'].append({'k': f'metra-{code}', 'name': METRA[code]})
     CTA = {'Blue': '#00a1de', 'Green': '#00b43c', 'Pink': '#e27ea6'}
-    # the Green and Pink Lines share the Lake St track: where they run together
-    # each is drawn half a line-width to its own side, so both read side by side
+    # the Green and Pink Lines share the Lake St track. The two lines' data sit a
+    # few px apart along it, so wherever the Pink Line runs within 9 px of the
+    # Green it is redrawn parallel to the Green, one line-width to its side, and
+    # the two read side by side at full strength
     from shapely.geometry import MultiLineString
     def screen_parts(colour):
         out = []
@@ -389,27 +391,23 @@ if GIS:
         return out
     parts = {c: screen_parts(c) for c in CTA}
     gline = MultiLineString(parts['Green'])
-    pline = MultiLineString(parts['Pink'])
-    SIDE = 3   # px each way: the two lines' centres sit 6 px apart
-    def normal(at):
-        # the Green Line's direction where it passes nearest `at`, turned 90 degrees
+    APART = 6.5   # px between the two lines' centres
+    def beside(at):
         q = Point(at)
         ln = min(gline.geoms, key=lambda l: l.distance(q))
         d = ln.project(q)
-        a, b = ln.interpolate(max(d - 2, 0)), ln.interpolate(min(d + 2, ln.length))
+        on = ln.interpolate(d)
+        a, b = ln.interpolate(max(d - 3, 0)), ln.interpolate(min(d + 3, ln.length))
         dx, dy = b.x - a.x, b.y - a.y
         n = math.hypot(dx, dy) or 1
-        return -dy / n, dx / n
-    def shifted(pts, other, sign):
-        out = []
-        for a, b in pts:
-            if other.distance(Point(a, b)) < 2.5:
-                nx, ny = normal((a, b))
-                a, b = round(a + sign * SIDE * nx, 1), round(b + sign * SIDE * ny, 1)
-            out.append((a, b))
+        return round(on.x - dy / n * APART, 1), round(on.y + dx / n * APART, 1)
+    def densify(pts, step=6):
+        out = [pts[0]]
+        for (a, b), (c, d) in zip(pts, pts[1:]):
+            k = max(1, int(math.hypot(c - a, d - b) // step))
+            out += [(a + (c - a) * t / k, b + (d - b) * t / k) for t in range(1, k + 1)]
         return out
-    parts['Green'] = [shifted(p, pline, -1) for p in parts['Green']]
-    parts['Pink'] = [shifted(p, gline, 1) for p in parts['Pink']]
+    parts['Pink'] = [[beside(p) if gline.distance(Point(p)) < 9 else p for p in densify(pts)] for pts in parts['Pink']]
     for colour in ('Blue', 'Green', 'Pink'):
         d = ''.join('M' + 'L'.join(f'{a} {b}' for a, b in pts) for pts in parts[colour])
         if d:
