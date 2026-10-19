@@ -374,13 +374,47 @@ if GIS:
             svg.append(f'<path class="metra" data-k="metra-{code}" d="{d}"/>')
             KEY['metra'].append({'k': f'metra-{code}', 'name': METRA[code]})
     CTA = {'Blue': '#00a1de', 'Green': '#00b43c', 'Pink': '#e27ea6'}
-    for colour in ('Blue', 'Green', 'Pink'):
+    # the Green and Pink Lines share the Lake St track: where they run together
+    # each is drawn half a line-width to its own side, so both read side by side
+    from shapely.geometry import MultiLineString
+    def screen_parts(colour):
+        out = []
         for f in gis('llines'):
             if f['properties']['COLOR'] == colour:
-                d = lines_d(f['geometry'])
-                if d:
-                    svg.append(f'<path class="cta cta-{colour.lower()}" data-k="cta-{colour.lower()}" stroke="{CTA[colour]}" d="{d}"/>')
-                    KEY['cta'].append({'k': f'cta-{colour.lower()}', 'name': f'{colour} Line', 'colour': CTA[colour]})
+                g = shape(f['geometry'])
+                for ln in (g.geoms if hasattr(g, 'geoms') else [g]):
+                    pts = [gm(x, y) for x, y in ln.coords]
+                    if any(-50 < a < W + 50 and -50 < b < H + 50 for a, b in pts):
+                        out.append(pts)
+        return out
+    parts = {c: screen_parts(c) for c in CTA}
+    gline = MultiLineString(parts['Green'])
+    pline = MultiLineString(parts['Pink'])
+    SIDE = 3   # px each way: the two lines' centres sit 6 px apart
+    def normal(at):
+        # the Green Line's direction where it passes nearest `at`, turned 90 degrees
+        q = Point(at)
+        ln = min(gline.geoms, key=lambda l: l.distance(q))
+        d = ln.project(q)
+        a, b = ln.interpolate(max(d - 2, 0)), ln.interpolate(min(d + 2, ln.length))
+        dx, dy = b.x - a.x, b.y - a.y
+        n = math.hypot(dx, dy) or 1
+        return -dy / n, dx / n
+    def shifted(pts, other, sign):
+        out = []
+        for a, b in pts:
+            if other.distance(Point(a, b)) < 2.5:
+                nx, ny = normal((a, b))
+                a, b = round(a + sign * SIDE * nx, 1), round(b + sign * SIDE * ny, 1)
+            out.append((a, b))
+        return out
+    parts['Green'] = [shifted(p, pline, -1) for p in parts['Green']]
+    parts['Pink'] = [shifted(p, gline, 1) for p in parts['Pink']]
+    for colour in ('Blue', 'Green', 'Pink'):
+        d = ''.join('M' + 'L'.join(f'{a} {b}' for a, b in pts) for pts in parts[colour])
+        if d:
+            svg.append(f'<path class="cta cta-{colour.lower()}" data-k="cta-{colour.lower()}" stroke="{CTA[colour]}" d="{d}"/>')
+            KEY['cta'].append({'k': f'cta-{colour.lower()}', 'name': f'{colour} Line', 'colour': CTA[colour]})
 
 placed = False
 gx, gy = site_pt.x, site_pt.y
