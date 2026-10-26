@@ -4,7 +4,7 @@
 // Hovering or focusing a legend item fades the section back except that zone.
 // Fields: eyebrow, title,
 //         drawing{src, alt, box:[l,t,w,h]} or drawing{svg, alt, box},
-//         detail{src, alt, box, size?, note?{text, at:[x,y] in the detail image's px}}, ring:[l,t,w,h],
+//         detail{src, alt, box, size?, note?{text, sub?, at:[x,y], arrowTo?:[x,y]} in the detail image's px}, ring:[l,t,w,h],
 //         zones[{key, label, swatch, src?, box?}], callouts[{text, y, x1, x2, x}]
 //   drawing.svg names a vector redraw (tools/section-svg.py) shown inline; its
 //   zones are groups marked data-zone, so the raster zone overlays aren't needed.
@@ -14,6 +14,14 @@ import buildingSection from '../assets/svg/building-section.svg?raw'
 const SVGS = { 'building-section': buildingSection }
 
 const box = ([l, t, w, h]) => `left:${l}px;top:${t}px;width:${w}px;height:${h}px`
+
+// A label over the floor detail, with an arrow up to the point it names.
+const note = (d) => {
+  const pct = ([x, y]) => [x / d.size[0] * 100, y / d.size[1] * 100].map((v) => v.toFixed(1))
+  const [l, t] = pct(d.note.at)
+  const arrow = d.note.arrowTo ? (() => { const [, t0] = pct(d.note.arrowTo); return `<span class="detail-arrow" style="left:${l}%;top:${t0}%;height:${(t - t0).toFixed(1)}%"></span>` })() : ''
+  return `${arrow}<span class="detail-note" aria-hidden="true" style="left:${l}%;top:${t}%"><b>${esc(d.note.text)}</b>${d.note.sub ? `<span>${esc(d.note.sub)}</span>` : ''}</span>`
+}
 
 export default {
   render: (s) => `
@@ -26,7 +34,7 @@ export default {
     ${s.drawing.svg ? '' : `<div class="abs zone-dim" style="${box(s.drawing.box)}"></div>
     ${s.zones.map((z) => `<div class="abs zone" data-zone="${esc(z.key)}" style="${box(z.box)}">${img(z.src, '')}</div>`).join('')}`}
     <span class="abs ring" style="${box(s.ring)}"></span>
-    <div class="abs detail" data-in="up" data-at="1.1" style="${box(s.detail.box)}">${img(s.detail.src, s.detail.alt)}${s.detail.note ? `<span class="detail-note" aria-hidden="true" style="left:${(s.detail.note.at[0] / s.detail.size[0] * 100).toFixed(1)}%;top:${(s.detail.note.at[1] / s.detail.size[1] * 100).toFixed(1)}%">${esc(s.detail.note.text)}</span>` : ''}</div>
+    <div class="abs detail" data-in="up" data-at="1.1" style="${box(s.detail.box)}">${img(s.detail.src, s.detail.alt)}${s.detail.note ? note(s.detail) : ''}</div>
     ${s.callouts.map((c, i) => `
       <span class="abs leader" data-in="draw" data-at="${(1.5 + i * 0.28).toFixed(2)}" style="left:${c.x1}px;top:${c.y}px;width:${c.x2 - c.x1}px"></span>
       <p class="abs callout" data-in="fade" data-at="${(1.85 + i * 0.28).toFixed(2)}" style="left:${c.x}px;top:${c.y - 10}px">${esc(c.text)}</p>`).join('')}
