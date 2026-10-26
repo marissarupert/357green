@@ -8,7 +8,7 @@
 //         zones[{key, label, swatch, src?, box?}], callouts[{text, y, x1, x2, x}]
 //   drawing.svg names a vector redraw (tools/section-svg.py) shown inline; its
 //   zones are groups marked data-zone, so the raster zone overlays aren't needed.
-import { esc, img, nBand, ruleBar } from '../lib/html.js'
+import { esc, img, nBand, rich, ruleBar } from '../lib/html.js'
 import buildingSection from '../assets/svg/building-section.svg?raw'
 
 const SVGS = { 'building-section': buildingSection }
@@ -37,7 +37,7 @@ export default {
     <div class="abs detail" data-in="up" data-at="1.1" style="${box(s.detail.box)}">${img(s.detail.src, s.detail.alt)}${s.detail.note ? note(s.detail) : ''}</div>
     ${s.callouts.map((c, i) => `
       <span class="abs leader" data-in="draw" data-at="${(1.5 + i * 0.28).toFixed(2)}" style="left:${c.x1}px;top:${c.y}px;width:${c.x2 - c.x1}px"></span>
-      <p class="abs callout" data-in="fade" data-at="${(1.85 + i * 0.28).toFixed(2)}" style="left:${c.x}px;top:${c.y - 10}px">${esc(c.text)}</p>`).join('')}
+      <p class="abs callout" data-in="fade" data-at="${(1.85 + i * 0.28).toFixed(2)}" style="left:${c.x}px;top:${c.y - 10}px">${rich(c.text)}</p>`).join('')}
     <ul class="abs legend">
       ${s.zones.map((z, i) => `<li data-in="up" data-at="${(1.4 + i * 0.1).toFixed(2)}"><button data-zone="${esc(z.key)}"><i style="background:${esc(z.swatch)}"></i>${esc(z.label)}</button></li>`).join('')}
     </ul>
