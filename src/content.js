@@ -336,7 +336,7 @@ export const slides = [
     drawing: { svg: 'building-section', alt: 'Building section through the tower', box: [444, 345, 996, 715] }, // vector redraw: tools/section-svg.py
     // the detail is dimensioned 14'-0" floor to floor and 13'-3" to the bottom of a flat
     // slab with nothing below it; note sits in the open space under the slab (detail px)
-    detail: { src: 'assets/diagrams/section-detail.jpg', alt: 'Typical office floor section, 13’3” to bottom of slab, no joists', box: [50, 428, 394, 484], size: [636, 780], note: { text: 'No joists', at: [478, 262] } },
+    detail: { src: 'assets/diagrams/section-detail.jpg', alt: 'Typical office floor section, 13’3” to bottom of slab, no joists', box: [50, 428, 394, 484], size: [636, 780], note: { text: 'No joists', sub: 'Full 13’3” clear to the slab', at: [418, 268], arrowTo: [418, 187] } },
     ring: [753, 606, 42, 44],
     zones: [
       { key: 'office', label: 'Office', swatch: '#becad5' },
@@ -347,7 +347,7 @@ export const slides = [
     // leaders start just past the floor-number column
     callouts: [
       { text: 'Rooftop Restaurant', y: 434, x1: 975, x2: 1221, x: 1229 },
-      { text: '13’3” Clear to Underside of Slab on Office Floors, with No Joists Below', y: 575, x1: 975, x2: 1221, x: 1229 },
+      { text: 'No Joists: a Full 13’3” Clear to the Underside of the Slab on Office Floors', y: 575, x1: 975, x2: 1221, x: 1229 },
       { text: 'Full Amenity Floor with Tenant Lounge, Terrace and State of the Art “Spa Inspired” Wellness Center', y: 709, x1: 975, x2: 1221, x: 1229 },
       { text: '2nd Floor Conference Center and Bar', y: 963, x1: 975, x2: 1221, x: 1229 },
     ],

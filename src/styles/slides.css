@@ -419,7 +419,12 @@
 .s-section .rule-bar { left: 62px; top: 331px; width: 771px; }
 .s-section .drawing img, .s-section .detail img, .s-section .zone img { width: 100%; height: 100%; display: block; }
 /* a label set over the floor detail, in the drawing's own dimension type */
-.s-section .detail-note { position: absolute; transform: translate(-50%, -50%); font-size: 12px; font-weight: var(--w-demi); letter-spacing: .1em; text-transform: uppercase; color: #3c3d45; white-space: nowrap; }
+.s-section .detail-note { position: absolute; transform: translate(-50%, -50%); padding: 6px 10px 7px; border-radius: 4px; background: var(--copper); color: var(--white); text-align: center; white-space: nowrap; box-shadow: 0 3px 10px rgba(28, 29, 43, .25); }
+.s-section .detail-note b { display: block; font-size: 15px; font-weight: var(--w-demi); letter-spacing: .12em; text-transform: uppercase; line-height: 18px; }
+.s-section .detail-note span { display: block; font-size: 11px; letter-spacing: .03em; line-height: 14px; opacity: .92; }
+/* the arrow runs from the label up to the underside of the slab */
+.s-section .detail-arrow { position: absolute; width: 2px; margin-left: -1px; background: var(--copper); }
+.s-section .detail-arrow::before { content: ""; position: absolute; left: -5px; top: -1px; border: 6px solid transparent; border-top: 0; border-bottom: 9px solid var(--copper); }
 /* right edge of the ground fades out rather than stopping at the band */
 .s-section .drawing { -webkit-mask-image: linear-gradient(90deg, #000 88%, transparent); mask-image: linear-gradient(90deg, #000 88%, transparent); }
 .s-section .drawing.svg svg { display: block; width: 100%; height: 100%; }
