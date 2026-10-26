@@ -13,7 +13,7 @@ export const hairline = (cls = '') => `<span class="hairline ${cls}" data-in="li
 
 export const placeholderTag = (label = 'Placeholder') => `<span class="ph-tag">${esc(label)}</span>`
 
-// Wrap a leading figure ("34,600 SF", "120 +") so it can count up on entry.
+// Wrap a leading figure ("37,126 SF", "120 +") so it can count up on entry.
 // Figures glued to feet/inch marks (13’3”) are left alone.
 export function countable(html) {
   return html.replace(/^(\d{1,3}(?:,\d{3})+|\d+)(?![\d’'”".])/, (m) =>
