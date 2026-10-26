@@ -4,7 +4,7 @@
 // Hovering or focusing a legend item fades the section back except that zone.
 // Fields: eyebrow, title,
 //         drawing{src, alt, box:[l,t,w,h]} or drawing{svg, alt, box},
-//         detail{src, alt, box}, ring:[l,t,w,h],
+//         detail{src, alt, box, size?, note?{text, at:[x,y] in the detail image's px}}, ring:[l,t,w,h],
 //         zones[{key, label, swatch, src?, box?}], callouts[{text, y, x1, x2, x}]
 //   drawing.svg names a vector redraw (tools/section-svg.py) shown inline; its
 //   zones are groups marked data-zone, so the raster zone overlays aren't needed.
@@ -26,7 +26,7 @@ export default {
     ${s.drawing.svg ? '' : `<div class="abs zone-dim" style="${box(s.drawing.box)}"></div>
     ${s.zones.map((z) => `<div class="abs zone" data-zone="${esc(z.key)}" style="${box(z.box)}">${img(z.src, '')}</div>`).join('')}`}
     <span class="abs ring" style="${box(s.ring)}"></span>
-    <div class="abs detail" data-in="up" data-at="1.1" style="${box(s.detail.box)}">${img(s.detail.src, s.detail.alt)}</div>
+    <div class="abs detail" data-in="up" data-at="1.1" style="${box(s.detail.box)}">${img(s.detail.src, s.detail.alt)}${s.detail.note ? `<span class="detail-note" aria-hidden="true" style="left:${(s.detail.note.at[0] / s.detail.size[0] * 100).toFixed(1)}%;top:${(s.detail.note.at[1] / s.detail.size[1] * 100).toFixed(1)}%">${esc(s.detail.note.text)}</span>` : ''}</div>
     ${s.callouts.map((c, i) => `
       <span class="abs leader" data-in="draw" data-at="${(1.5 + i * 0.28).toFixed(2)}" style="left:${c.x1}px;top:${c.y}px;width:${c.x2 - c.x1}px"></span>
       <p class="abs callout" data-in="fade" data-at="${(1.85 + i * 0.28).toFixed(2)}" style="left:${c.x}px;top:${c.y - 10}px">${esc(c.text)}</p>`).join('')}

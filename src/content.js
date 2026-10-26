@@ -111,7 +111,7 @@ export const slides = [
       { value: '60,000 SF Amenities', detail: '10,000 SF on Floor 2<br>30,000 SF on Floor 15<br>20,000 SF on Floor 29' },
       { value: '33,186 SF', detail: 'Typical <b>high-rise</b> floor plate<br>Floors 16-28' },
       { value: 'Penthouse Restaurant<br>Bar & Terrace', detail: 'Floor 29' },
-      { value: '13’3” slab-to-slab heights', detail: 'Office Floors' },
+      { value: '13’3” clear heights', detail: 'Office Floors · no joists below the slab' },
       { value: 'Dialtone Bodega<br>& Coffee House' },
       { value: '300 SF Private Terraces', detail: 'On every office floor' },
       { value: '420 Parking Stalls', detail: 'Levels 3-7' },
@@ -334,7 +334,9 @@ export const slides = [
     title: 'Building Section',
     // Positions in stage px, scaled from the source drawings (section at 0.514).
     drawing: { svg: 'building-section', alt: 'Building section through the tower', box: [444, 345, 996, 715] }, // vector redraw: tools/section-svg.py
-    detail: { src: 'assets/diagrams/section-detail.jpg', alt: 'Typical office floor section, 13’3” to bottom of slab', box: [50, 428, 394, 484] },
+    // the detail is dimensioned 14'-0" floor to floor and 13'-3" to the bottom of a flat
+    // slab with nothing below it; note sits in the open space under the slab (detail px)
+    detail: { src: 'assets/diagrams/section-detail.jpg', alt: 'Typical office floor section, 13’3” to bottom of slab, no joists', box: [50, 428, 394, 484], size: [636, 780], note: { text: 'No joists', at: [478, 262] } },
     ring: [753, 606, 42, 44],
     zones: [
       { key: 'office', label: 'Office', swatch: '#becad5' },
@@ -345,7 +347,7 @@ export const slides = [
     // leaders start just past the floor-number column
     callouts: [
       { text: 'Rooftop Restaurant', y: 434, x1: 975, x2: 1221, x: 1229 },
-      { text: '13’3” Slab-to-Slab Heights on Office Floors', y: 575, x1: 975, x2: 1221, x: 1229 },
+      { text: '13’3” Clear to Underside of Slab on Office Floors, with No Joists Below', y: 575, x1: 975, x2: 1221, x: 1229 },
       { text: 'Full Amenity Floor with Tenant Lounge, Terrace and State of the Art “Spa Inspired” Wellness Center', y: 709, x1: 975, x2: 1221, x: 1229 },
       { text: '2nd Floor Conference Center and Bar', y: 963, x1: 975, x2: 1221, x: 1229 },
     ],
