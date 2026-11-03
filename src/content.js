@@ -113,7 +113,7 @@ export const slides = [
       { value: 'Penthouse Restaurant<br>Bar & Terrace', detail: 'Floor 29' },
       { value: '13’3” clear heights', detail: 'Office Floors · no joists below the slab' },
       { value: 'Dialtone Bodega<br>& Coffee House' },
-      { value: '300 SF Private Terraces', detail: 'On every office floor' },
+      { value: '375 SF Private Terraces', detail: 'On every office floor' },
       { value: '420 Parking Stalls', detail: 'Levels 3-7' },
       { value: 'Timeline', detail: 'Base building turnover 24 months following lease execution', wide: true },
     ],
@@ -176,7 +176,7 @@ export const slides = [
     subtitle: 'A Chicago Legacy Since 1931',
     titleLogo: 'assets/logos/scb.png', // the SCB mark, shown in white in place of the title
     body: [
-      'SCB (Solomon Cordwell Buenz) is a globally recognized architecture, planning, interior, and urban design firm founded in 1931 and headquartered in Chicago with offices in San Francisco, Boston, Seattle, Los Angeles, and Abu Dhabi.',
+      'SCB (Solomon Cordwell Buenz) is a globally recognized architecture, planning, interior, and urban design firm founded in 1931 and headquartered in Chicago with offices in San Francisco, Boston, Seattle, and Los Angeles.',
       'SCB is renowned for innovative workplaces, dense urban living, sustainable learning environments, adaptive reuse projects, and award-winning hospitality. The firm integrates architecture, interior design and urban planning to create people\u2011centered, performance\u2011driven spaces.',
     ],
     // Notable Chicago projects, from SCB's own case studies (scb.com), shown
@@ -500,9 +500,15 @@ export const slides = [
     type: 'gallery',
     section: 'views',
     theme: 'dark',
-    // aerial-1…8 run once around the compass, from the high-rise floors (low-rise views to come)
-    photos: ['East', 'Northeast', 'North', 'Northwest', 'West', 'Southwest', 'South', 'Southeast']
-      .map((dir, i) => ({ src: `assets/views/aerial-${i + 1}.jpg`, caption: `High-Rise View ${dir}` })),
+    // aerial-1…8 run once around the compass from the high-rise floors; low-1…5
+    // are the team's lower-floor set, each captioned with the direction of the
+    // high-rise view it matches
+    photos: [
+      ...['East', 'Northeast', 'North', 'Northwest', 'West', 'Southwest', 'South', 'Southeast']
+        .map((dir, i) => ({ src: `assets/views/aerial-${i + 1}.jpg`, caption: `High-Rise View ${dir}` })),
+      ...['East', 'Northeast', 'Northwest', 'Southwest', 'Southeast']
+        .map((dir, i) => ({ src: `assets/views/low-${i + 1}.jpg`, caption: `Low-Rise View ${dir}` })),
+    ],
   },
 
   // ---------- 06 Tenant Programming ----------
