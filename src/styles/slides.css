@@ -400,6 +400,8 @@
   transition: opacity .25s, transform .35s var(--ease);
 }
 .s-callouts .lens.on { opacity: 1; transform: scale(1); }
+/* a callout's photo pops out as a card rather than a round zoom */
+.s-callouts .lens.photo { border-radius: 6px; border-width: 4px; background-color: var(--charcoal); transform-origin: 0 50%; box-shadow: 0 18px 44px rgba(28, 29, 43, .35); }
 
 /* locked callout: everything but a spotlight around its dot fades back */
 .s-callouts .dim {

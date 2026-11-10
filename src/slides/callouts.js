@@ -6,7 +6,8 @@
 // of the drawings dim around a spotlight until it's clicked again or Esc.
 // Fields: eyebrow, title, diagrams[{src, alt, box:[l,t,w,h], caption?}] (a caption
 //         sets a photo with its label beneath, for a slide with no callouts),
-//         callouts[{label, at:[x,y] label top-left, line:[x1,x2,y], dot:[x,y]}],
+//         callouts[{label, at:[x,y] label top-left, line:[x1,x2,y], dot:[x,y], photo?}],
+//         (photo: an image that pops out on hover/click in place of the zoom lens)
 //         notes[{title, body, x, y}]
 import { esc, img, nBand, rich, ruleBar } from '../lib/html.js'
 
@@ -14,6 +15,7 @@ const START = 0.7 // seconds before the first callout
 const STEP = 0.32 // seconds between callouts
 const ZOOM = 2.6 // lens magnification
 const LENS = 180 // lens diameter, stage px
+const PHOTO_W = 280 // width of a callout's photo pop-out, stage px
 
 const inBox = ([x, y], [l, t, w, h]) => x >= l && x <= l + w && y >= t && y <= t + h
 
@@ -54,6 +56,9 @@ export default {
     // shows the drawing around the dot at ZOOM.
     const showLens = (i) => {
       const c = s.callouts[i]
+      if (c.photo) return showPhoto(c)
+      lens.classList.remove('photo')
+      lens.style.width = lens.style.height = ''
       const d = s.diagrams.find((g) => inBox(c.dot, g.box))
       if (!d) return lens.classList.remove('on')
       const [l, t, w, h] = d.box
@@ -67,6 +72,23 @@ export default {
         backgroundPosition: `${r - (c.dot[0] - l) * ZOOM}px ${r - (c.dot[1] - t) * ZOOM}px`,
       })
       lens.classList.add('on')
+    }
+    // A callout with a photo pops the photo out instead: a card just past the
+    // label's end of the line, centred on it, kept on the slide.
+    const showPhoto = (c) => {
+      const im = new Image()
+      im.src = c.photo
+      const place = () => {
+        const w = PHOTO_W, h = Math.round(PHOTO_W * (im.naturalHeight / im.naturalWidth || 1.3))
+        const labelEnd = Math.min(c.line[0], c.line[1])
+        const top = Math.min(Math.max(c.dot[1] - h / 2, 110), 1080 - 60 - h)
+        Object.assign(lens.style, {
+          left: `${labelEnd + 14}px`, top: `${top}px`, width: `${w}px`, height: `${h}px`,
+          backgroundImage: `url("${c.photo}")`, backgroundSize: 'cover', backgroundPosition: '50% 50%',
+        })
+        lens.classList.add('photo', 'on')
+      }
+      if (im.complete && im.naturalWidth) place(); else im.onload = place
     }
     const set = (i) => {
       el.querySelectorAll('.callouts [data-spot]').forEach((n) => n.classList.toggle('active', n.dataset.spot === i))
