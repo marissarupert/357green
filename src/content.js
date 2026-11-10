@@ -302,18 +302,27 @@ export const slides = [
     theme: 'light',
     eyebrow: 'Architecture',
     title: 'Elevated Materiality',
-    // the team's three facade photos, each labelled with the element it shows
-    // (they stand in for the cladding drawing and its callouts); equal tiles,
-    // cropped to fill, top-aligned with the notes
+    // the cladding-at-terraces drawing on its own (SCB precedent imagery to
+    // come); every callout points into it. Dots are placed on the drawing's
+    // fins, transom, spandrel band, guardrail and glass (drawing px x 0.449)
     diagrams: [
-      { src: 'assets/diagrams/materiality-primary.jpg', alt: 'Primary vertical profiles on a curved glass facade', box: [680, 400, 332, 480], caption: 'Primary vertical profile' },
-      { src: 'assets/diagrams/materiality-secondary.jpg', alt: 'Secondary vertical profiles across a facade', box: [1044, 400, 332, 480], caption: 'Secondary vertical profile' },
-      { src: 'assets/diagrams/materiality-vision-glass.jpg', alt: 'High-performance vision glass in a metal frame', box: [1408, 400, 332, 480], caption: 'Vision glass performance' },
+      { src: 'assets/diagrams/materiality-terraces.jpg', alt: 'Tower cladding at terraces', box: [1080, 250, 680, 693] },
     ],
-    callouts: [],
+    // at = label top-left, line = [x1, x2, y], dot = [x, y] (stage px);
+    // labels end at x 960 and their lines run from there to the dot.
+    // photo: the team's photo of that element, which pops out over the line on
+    // hover or click (the others show the drawing close up)
+    callouts: [
+      { label: 'Primary vertical profile', at: [738, 357], line: [976, 1594, 380], dot: [1594, 380], photo: 'assets/diagrams/materiality-primary.jpg' },
+      { label: 'Secondary vertical profile', at: [709, 416], line: [976, 1622, 439], dot: [1622, 439], photo: 'assets/diagrams/materiality-secondary.jpg' },
+      { label: 'Clear glass guardrail', at: [760, 518], line: [976, 1282, 541], dot: [1282, 541] },
+      { label: 'Spandrel glass horizontal', at: [715, 570], line: [976, 1556, 593], dot: [1556, 593] },
+      { label: 'Metal spandrel', at: [817, 663], line: [976, 1597, 686], dot: [1597, 686] },
+      { label: 'Vision glass performance', at: [711, 708], line: [976, 1540, 731], dot: [1540, 731], photo: 'assets/diagrams/materiality-vision-glass.jpg' },
+    ],
     notes: [
-      { title: 'Tower Cladding at Terraces', body: 'Glass facade continues along one side so<br>terraces feel carved away from overall<br>mass and offer all-season utility', x: 57, y: 400 },
-      { title: 'Tower Cladding', body: '2-story module provides texture at<br>larger scale for tower', x: 57, y: 660 },
+      { title: 'Tower Cladding at Terraces', body: 'Glass facade continues along one side so<br>terraces feel carved away from overall<br>mass and offer all-season utility', x: 57, y: 560 },
+      { title: 'Tower Cladding', body: '2-story module provides texture at<br>larger scale for tower', x: 57, y: 800 },
     ],
   },
 
