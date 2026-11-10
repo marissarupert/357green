@@ -368,6 +368,10 @@
 .s-callouts .eyebrow { left: 61px; top: 127px; }
 .s-callouts .title { left: 52px; top: 157px; font-size: 110px; line-height: 1; white-space: nowrap; }
 .s-callouts .rule-bar { left: 60px; top: 329px; width: 771px; }
+/* facade photos with their labels beneath */
+.s-callouts .diagram.photo { overflow: visible; }
+.s-callouts .diagram.photo img { object-fit: cover; box-shadow: 0 10px 28px rgba(28, 29, 43, .18); }
+.s-callouts .diagram-cap { position: absolute; left: 0; top: calc(100% + 18px); width: max-content; max-width: 300px; padding-top: 12px; border-top: 2px solid var(--copper); font-size: 19px; line-height: 26px; color: var(--midnight); }
 .s-callouts .callouts { left: 0; top: 0; width: 1920px; height: 1080px; pointer-events: none; }
 .s-callouts .callouts > * { pointer-events: auto; }
 .s-callouts .leader { position: absolute; height: 1px; background: var(--slate); transition: background .25s, height .25s; }
