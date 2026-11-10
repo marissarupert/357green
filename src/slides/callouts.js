@@ -4,7 +4,8 @@
 // spot on the diagram, and the reverse, and opens a zoom lens on the line
 // showing that spot close up. Clicking (or Enter) locks a callout: the rest
 // of the drawings dim around a spotlight until it's clicked again or Esc.
-// Fields: eyebrow, title, diagrams[{src, alt, box:[l,t,w,h]}],
+// Fields: eyebrow, title, diagrams[{src, alt, box:[l,t,w,h], caption?}] (a caption
+//         sets a photo with its label beneath, for a slide with no callouts),
 //         callouts[{label, at:[x,y] label top-left, line:[x1,x2,y], dot:[x,y]}],
 //         notes[{title, body, x, y}]
 import { esc, img, nBand, rich, ruleBar } from '../lib/html.js'
@@ -25,7 +26,7 @@ export default {
     <p class="abs eyebrow" data-in="up">${esc(s.eyebrow)}</p>
     <h1 class="abs title" data-in="up">${esc(s.title)}</h1>
     ${ruleBar()}
-    ${s.diagrams.map((d) => `<div class="abs diagram" data-in="fade" style="left:${d.box[0]}px;top:${d.box[1]}px;width:${d.box[2]}px;height:${d.box[3]}px">${img(d.src, d.alt)}</div>`).join('')}
+    ${s.diagrams.map((d, i) => `<div class="abs diagram${d.caption ? ' photo' : ''}" data-in="fade"${d.caption ? ` data-at="${(0.5 + i * 0.15).toFixed(2)}"` : ''} style="left:${d.box[0]}px;top:${d.box[1]}px;width:${d.box[2]}px;height:${d.box[3]}px">${img(d.src, d.alt)}${d.caption ? `<p class="diagram-cap">${rich(d.caption)}</p>` : ''}</div>`).join('')}
     <div class="abs dim" aria-hidden="true"></div>
     <div class="abs callouts">
       <div class="lens" aria-hidden="true"></div>
