@@ -303,16 +303,17 @@ export const slides = [
     eyebrow: 'Architecture',
     title: 'Elevated Materiality',
     // the team's three facade photos, each labelled with the element it shows
-    // (they stand in for the cladding drawing and its callouts)
+    // (they stand in for the cladding drawing and its callouts); equal tiles,
+    // cropped to fill, top-aligned with the notes
     diagrams: [
-      { src: 'assets/diagrams/materiality-primary.jpg', alt: 'Primary vertical profiles on a curved glass facade', box: [781, 420, 267, 380], caption: 'Primary vertical profile' },
-      { src: 'assets/diagrams/materiality-secondary.jpg', alt: 'Secondary vertical profiles across a facade', box: [1084, 420, 391, 380], caption: 'Secondary vertical profile' },
-      { src: 'assets/diagrams/materiality-vision-glass.jpg', alt: 'High-performance vision glass in a metal frame', box: [1511, 420, 229, 380], caption: 'Vision glass high performance<br>low-e coating' },
+      { src: 'assets/diagrams/materiality-primary.jpg', alt: 'Primary vertical profiles on a curved glass facade', box: [680, 400, 332, 480], caption: 'Primary vertical profile' },
+      { src: 'assets/diagrams/materiality-secondary.jpg', alt: 'Secondary vertical profiles across a facade', box: [1044, 400, 332, 480], caption: 'Secondary vertical profile' },
+      { src: 'assets/diagrams/materiality-vision-glass.jpg', alt: 'High-performance vision glass in a metal frame', box: [1408, 400, 332, 480], caption: 'Vision glass high performance<br>low-e coating' },
     ],
     callouts: [],
     notes: [
-      { title: 'Tower Cladding at Terraces', body: 'Glass facade continues along one side so<br>terraces feel carved away from overall<br>mass and offer all-season utility', x: 57, y: 560 },
-      { title: 'Tower Cladding', body: '2-story module provides texture at<br>larger scale for tower', x: 57, y: 800 },
+      { title: 'Tower Cladding at Terraces', body: 'Glass facade continues along one side so<br>terraces feel carved away from overall<br>mass and offer all-season utility', x: 57, y: 400 },
+      { title: 'Tower Cladding', body: '2-story module provides texture at<br>larger scale for tower', x: 57, y: 660 },
     ],
   },
 
