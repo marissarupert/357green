@@ -291,7 +291,8 @@ export const slides = [
       { title: 'Terraces on every floor', body: 'Setbacks step the tower into varying floor-plate sizes, creating private corner terraces that offer spectacular skyline views.' },
       { title: 'A refined skin', body: 'Warm horizontal metal profiles and glass give the tower a distinct, identifiable texture, differentiating it from its peers and harnessing the warmth and character of the neighborhood.' },
     ],
-    image: { src: 'assets/renders/view-from-expressway.jpg', alt: '357 Green seen from the Kennedy Expressway', focus: '46% 50%' },
+    // the lobby reception, centred on the desk and the artwork above it
+    image: { src: 'assets/renders/lobby-reception.jpg', alt: 'Lobby reception with stone columns, wood ceiling and artwork above the desk', focus: '50% 50%' },
   },
 
   {
