@@ -311,13 +311,10 @@ export const slides = [
     // at = label top-left, line = [x1, x2, y], dot = [x, y] (stage px);
     // labels end at x 960 and their lines run from there to the dot.
     // photo: the team's photo of that element, which pops out over the line on
-    // hover or click (the others show the drawing close up)
+    // hover or click
     callouts: [
       { label: 'Primary vertical profile', at: [738, 357], line: [976, 1594, 380], dot: [1594, 380], photo: 'assets/diagrams/materiality-primary.jpg' },
       { label: 'Secondary vertical profile', at: [709, 416], line: [976, 1622, 439], dot: [1622, 439], photo: 'assets/diagrams/materiality-secondary.jpg' },
-      { label: 'Clear glass guardrail', at: [760, 518], line: [976, 1282, 541], dot: [1282, 541] },
-      { label: 'Spandrel glass horizontal', at: [715, 570], line: [976, 1556, 593], dot: [1556, 593] },
-      { label: 'Metal spandrel', at: [817, 663], line: [976, 1597, 686], dot: [1597, 686] },
       { label: 'Vision glass performance', at: [711, 708], line: [976, 1540, 731], dot: [1540, 731], photo: 'assets/diagrams/materiality-vision-glass.jpg' },
     ],
     notes: [
