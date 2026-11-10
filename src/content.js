@@ -308,7 +308,7 @@ export const slides = [
     diagrams: [
       { src: 'assets/diagrams/materiality-primary.jpg', alt: 'Primary vertical profiles on a curved glass facade', box: [680, 400, 332, 480], caption: 'Primary vertical profile' },
       { src: 'assets/diagrams/materiality-secondary.jpg', alt: 'Secondary vertical profiles across a facade', box: [1044, 400, 332, 480], caption: 'Secondary vertical profile' },
-      { src: 'assets/diagrams/materiality-vision-glass.jpg', alt: 'High-performance vision glass in a metal frame', box: [1408, 400, 332, 480], caption: 'Vision glass high performance<br>low-e coating' },
+      { src: 'assets/diagrams/materiality-vision-glass.jpg', alt: 'High-performance vision glass in a metal frame', box: [1408, 400, 332, 480], caption: 'Vision glass performance' },
     ],
     callouts: [],
     notes: [
