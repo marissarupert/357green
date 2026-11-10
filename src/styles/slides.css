@@ -400,6 +400,11 @@
   transition: opacity .25s, transform .35s var(--ease);
 }
 .s-callouts .lens.on { opacity: 1; transform: scale(1); }
+/* without leader lines the labels read as a list, each with a copper marker
+   matching the dots on the drawing */
+.s-callouts .no-leaders .label { display: flex; align-items: center; gap: 14px; font-size: 25px; line-height: 34px; }
+.s-callouts .no-leaders .label::before { content: ""; flex: none; width: 12px; height: 12px; border-radius: 50%; border: 3px solid var(--copper); background: var(--white); transition: background .25s; }
+.s-callouts .no-leaders .label.active::before { background: var(--copper); }
 /* a callout's photo pops out as a card rather than a round zoom */
 .s-callouts .lens.photo { border-radius: 6px; border-width: 4px; background-color: var(--charcoal); transform-origin: 0 50%; box-shadow: 0 18px 44px rgba(28, 29, 43, .35); }
 

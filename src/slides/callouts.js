@@ -8,7 +8,8 @@
 //         sets a photo with its label beneath, for a slide with no callouts),
 //         callouts[{label, at:[x,y] label top-left, line:[x1,x2,y], dot:[x,y], photo?}],
 //         (photo: an image that pops out on hover/click in place of the zoom lens)
-//         notes[{title, body, x, y}]
+//         notes[{title, body, x, y}], leaders?: false (no line from label to dot),
+//         noteRules?: false (no rule under each note's title)
 import { esc, img, nBand, rich, ruleBar } from '../lib/html.js'
 
 const START = 0.7 // seconds before the first callout
@@ -30,20 +31,20 @@ export default {
     ${ruleBar()}
     ${s.diagrams.map((d, i) => `<div class="abs diagram${d.caption ? ' photo' : ''}" data-in="fade"${d.caption ? ` data-at="${(0.5 + i * 0.15).toFixed(2)}"` : ''} style="left:${d.box[0]}px;top:${d.box[1]}px;width:${d.box[2]}px;height:${d.box[3]}px">${img(d.src, d.alt)}${d.caption ? `<p class="diagram-cap"><span class="n">${String(i + 1).padStart(2, '0')}</span><span class="t">${rich(d.caption)}</span></p>` : ''}</div>`).join('')}
     <div class="abs dim" aria-hidden="true"></div>
-    <div class="abs callouts">
+    <div class="abs callouts${s.leaders === false ? ' no-leaders' : ''}">
       <div class="lens" aria-hidden="true"></div>
       ${s.callouts.map((c, i) => {
         // the line grows from the dot's end toward the label
         const fromLeft = Math.abs(c.dot[0] - Math.min(c.line[0], c.line[1])) < Math.abs(c.dot[0] - Math.max(c.line[0], c.line[1]))
         return `
-        <span class="leader" data-spot="${i}" data-in="draw" data-at="${(at(i) + 0.1).toFixed(2)}" style="left:${Math.min(c.line[0], c.line[1])}px;top:${c.line[2]}px;width:${Math.abs(c.line[1] - c.line[0])}px;transform-origin:${fromLeft ? 'left' : 'right'} center"></span>
+        ${s.leaders === false ? '' : `<span class="leader" data-spot="${i}" data-in="draw" data-at="${(at(i) + 0.1).toFixed(2)}" style="left:${Math.min(c.line[0], c.line[1])}px;top:${c.line[2]}px;width:${Math.abs(c.line[1] - c.line[0])}px;transform-origin:${fromLeft ? 'left' : 'right'} center"></span>`}
         <button class="dot" data-spot="${i}" data-in="pop" data-at="${at(i).toFixed(2)}" style="left:${c.dot[0]}px;top:${c.dot[1]}px;--pulse:${(at(i) + 0.3).toFixed(2)}s" aria-label="${esc(c.label.replace(/<br>/g, ' '))}"></button>
         <button class="label" data-spot="${i}" data-in="fade" data-at="${(at(i) + 0.55).toFixed(2)}" style="left:${c.at[0]}px;top:${c.at[1]}px">${rich(c.label)}</button>`
       }).join('')}
     </div>
     ${s.notes.map((n) => `
       <div class="abs note" data-in="up" style="left:${n.x}px;top:${n.y}px">
-        <h3>${esc(n.title)}</h3><span class="hairline"></span><p>${rich(n.body)}</p>
+        <h3>${esc(n.title)}</h3>${s.noteRules === false ? '' : '<span class="hairline"></span>'}<p>${rich(n.body)}</p>
       </div>`).join('')}
     ${nBand([1793, 0, 127, 1080], { vertical: true, origin: [1792 - 1793, -633] })}`
   },
@@ -80,10 +81,14 @@ export default {
       im.src = c.photo
       const place = () => {
         const w = PHOTO_W, h = Math.round(PHOTO_W * (im.naturalHeight / im.naturalWidth || 1.3))
-        const labelEnd = Math.min(c.line[0], c.line[1])
-        const top = Math.min(Math.max(c.dot[1] - h / 2, 110), 1080 - 60 - h)
+        // beside its label: past the end of the label list, centred on it, kept on the slide
+        const label = el.querySelector(`.callouts .label[data-spot="${s.callouts.indexOf(c)}"]`)
+        const listEnd = Math.max(...[...el.querySelectorAll('.callouts .label')].map((n) => n.offsetLeft + n.offsetWidth))
+        const left = s.leaders === false && label ? listEnd + 40 : Math.min(c.line[0], c.line[1]) + 14
+        const cy = s.leaders === false && label ? label.offsetTop + label.offsetHeight / 2 : c.dot[1]
+        const top = Math.min(Math.max(cy - h / 2, 110), 1080 - 60 - h)
         Object.assign(lens.style, {
-          left: `${labelEnd + 14}px`, top: `${top}px`, width: `${w}px`, height: `${h}px`,
+          left: `${left}px`, top: `${top}px`, width: `${w}px`, height: `${h}px`,
           backgroundImage: `url("${c.photo}")`, backgroundSize: 'cover', backgroundPosition: '50% 50%',
         })
         lens.classList.add('photo', 'on')

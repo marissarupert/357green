@@ -310,16 +310,19 @@ export const slides = [
     ],
     // at = label top-left, line = [x1, x2, y], dot = [x, y] (stage px);
     // labels end at x 960 and their lines run from there to the dot.
-    // photo: the team's photo of that element, which pops out over the line on
-    // hover or click
+    // photo: the team's photo of that element, which pops out by its label on
+    // hover or click. No leader lines and no rules under the notes' titles: the
+    // labels sit as a list beside the notes, top-aligned with them.
+    leaders: false,
+    noteRules: false,
     callouts: [
-      { label: 'Primary vertical profile', at: [738, 357], line: [976, 1594, 380], dot: [1594, 380], photo: 'assets/diagrams/materiality-primary.jpg' },
-      { label: 'Secondary vertical profile', at: [709, 416], line: [976, 1622, 439], dot: [1622, 439], photo: 'assets/diagrams/materiality-secondary.jpg' },
-      { label: 'Vision glass performance', at: [711, 708], line: [976, 1540, 731], dot: [1540, 731], photo: 'assets/diagrams/materiality-vision-glass.jpg' },
+      { label: 'Primary vertical profile', at: [640, 420], line: [976, 1594, 380], dot: [1594, 380], photo: 'assets/diagrams/materiality-primary.jpg' },
+      { label: 'Secondary vertical profile', at: [640, 478], line: [976, 1622, 439], dot: [1622, 439], photo: 'assets/diagrams/materiality-secondary.jpg' },
+      { label: 'Vision glass performance', at: [640, 536], line: [976, 1540, 731], dot: [1540, 731], photo: 'assets/diagrams/materiality-vision-glass.jpg' },
     ],
     notes: [
-      { title: 'Tower Cladding at Terraces', body: 'Glass facade continues along one side so<br>terraces feel carved away from overall<br>mass and offer all-season utility', x: 57, y: 560 },
-      { title: 'Tower Cladding', body: '2-story module provides texture at<br>larger scale for tower', x: 57, y: 800 },
+      { title: 'Tower Cladding at Terraces', body: 'Glass facade continues along one side so<br>terraces feel carved away from overall<br>mass and offer all-season utility', x: 57, y: 420 },
+      { title: 'Tower Cladding', body: '2-story module provides texture at<br>larger scale for tower', x: 57, y: 610 },
     ],
   },
 
