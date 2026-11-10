@@ -291,8 +291,7 @@ export const slides = [
       { title: 'Terraces on every floor', body: 'Setbacks step the tower into varying floor-plate sizes, creating private corner terraces that offer spectacular skyline views.' },
       { title: 'A refined skin', body: 'Warm horizontal metal profiles and glass give the tower a distinct, identifiable texture, differentiating it from its peers and harnessing the warmth and character of the neighborhood.' },
     ],
-    // the lobby reception, centred on the desk and the artwork above it
-    image: { src: 'assets/renders/lobby-reception.jpg', alt: 'Lobby reception with stone columns, wood ceiling and artwork above the desk', focus: '50% 50%' },
+    image: { src: 'assets/renders/view-from-expressway.jpg', alt: '357 Green seen from the Kennedy Expressway', focus: '46% 50%' },
   },
 
   {
@@ -382,6 +381,7 @@ export const slides = [
   render('paseo-arrival', null, 'tenant-experience', 'Arriving on the Paseo', 'assets/video/paseo-arrival.jpg', { video: 'assets/video/paseo-arrival.mp4' }),
   render('paseo-life', null, 'tenant-experience', 'Life on the Paseo', 'assets/video/paseo-life.jpg', { video: 'assets/video/paseo-life.mp4' }),
   render('green-street', 22, 'tenant-experience', 'View From Green Street Looking North East', 'assets/video/plaza-day.jpg', { video: 'assets/video/plaza-day.mp4' }),
+  render('lobby-reception', null, 'tenant-experience', 'Lobby', 'assets/renders/lobby-reception.jpg'),
 
   {
     id: 'amenities-wellness',
